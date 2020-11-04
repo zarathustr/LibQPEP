@@ -13,13 +13,32 @@ endif()
 
 set(CMAKE_CXX_STANDARD 11)
 find_package(Eigen3 REQUIRED)
-find_package( OpenCV REQUIRED )
-find_package(OpenGL REQUIRED)
-find_package(LAPACK REQUIRED)
-#find_packege(OpenMPI REQUIRED)
+find_package(OpenCV)
+find_package(LAPACK)
 
-include_directories(${EIGEN3_INCLUDE_DIR} ${OpenCV_INCLUDE_DIRS} ${OpenGL_INCLUDE_DIR})
-add_definitions(-D EIGEN_USE_BLAS)
+include_directories(${EIGEN3_INCLUDE_DIR})
+
+if(OpenCV_FOUND)
+    include_directories(${OpenCV_INCLUDE_DIRS})
+    add_definitions(-D USE_OPENCV)
+endif()
+
+if(LAPACK_FOUND)
+    add_definitions(-D EIGEN_USE_BLAS)
+endif()
+
+
+set(OMP_LIB "")
+if(APPLE OR LINUX)
+    if(EXISTS /usr/local/lib/libomp.a)
+        set(OMP_LIB /usr/local/lib/libomp.a)
+    elseif(EXISTS /usr/lib/libomp.a)
+        set(OMP_LIB /usr/lib/libomp.a)
+    else()
+        message(FATAL_ERROR "No OpenMP Library Found!")
+    endif()
+endif()
+
 
 add_executable(LibQPEP
         main.cpp
@@ -52,10 +71,5 @@ add_executable(LibQPEP
         solver_WQ_helper.cpp
         solver_WQ_helper.h)
 
-target_link_libraries(LibQPEP
-        ${OpenCV_LIBS}
-        ${OPENGL_LIBRARY}
-        ${FREEGLUT_LIBRARY}
-        ${LAPACK_LIBRARIES}
-        /usr/local/lib/libomp.a
-        /System/Library/Frameworks/GLUT.framework/Versions/A/GLUT)
+target_link_libraries(LibQPEP ${OMP_LIB} ${OpenCV_LIBS} ${LAPACK_LIBRARIES})
+

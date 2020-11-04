@@ -18,7 +18,7 @@ struct QPEP_runtime solver_WQ_approx(Eigen::MatrixXcd& sol_, const Eigen::Vector
     clock_t time1 = clock();
     Eigen::Matrix<double, 40, 27> RR;
     RR << - C1_.bottomRows(13), Eigen::Matrix<double, 27, 27>::Identity();
-    int AM_ind[27] = {38, 16, 1, 19, 2, 3, 21, 22, 4, 25, 5, 6, 28, 7, 8, 30, 31, 9, 34, 10, 11, 36, 37, 12, 39, 40, 13};
+    const int AM_ind[27] = {38, 16, 1, 19, 2, 3, 21, 22, 4, 25, 5, 6, 28, 7, 8, 30, 31, 9, 34, 10, 11, 36, 37, 12, 39, 40, 13};
     Eigen::Matrix<double, 27, 27> AM;
     for(int i = 0; i < 27; ++i)
     {
@@ -27,7 +27,6 @@ struct QPEP_runtime solver_WQ_approx(Eigen::MatrixXcd& sol_, const Eigen::Vector
 
     Eigen::EigenSolver<Eigen::Matrix<double, 27, 27> > eigs(AM);
     Eigen::Matrix<std::complex<double>, 27, 27> V = eigs.eigenvectors();
-    Eigen::Matrix<std::complex<double>, 27, 27> D(eigs.pseudoEigenvalueMatrix());
 
     for(int i = 0; i < 27; ++i)
     {

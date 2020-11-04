@@ -1,7 +1,3 @@
-//
-// Created by Jin Wu on 1/11/2020.
-//
-
 #ifndef LIBQPEP_QPEP_H
 #define LIBQPEP_QPEP_H
 

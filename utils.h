@@ -1,7 +1,3 @@
-//
-// Created by Jin Wu on 1/11/2020.
-//
-
 #ifndef LIBQPEP_UTILS_H
 #define LIBQPEP_UTILS_H
 
@@ -312,6 +308,19 @@ inline QPEP_runtime GaussJordanElimination(
         stat.timeDecomposition = (time2 - time1) / double(CLOCKS_PER_SEC);
     }
     return stat;
+}
+
+template <typename T>
+T mean(std::vector<T> data)
+{
+    int num = data.size();
+    assert(num > 0);
+
+    Eigen::MatrixXd s = data[0];
+    double factor = 1.0 / ((double) num);
+    if(num > 1)
+        std::for_each(data.begin() + 1, data.end(), [&s](Eigen::MatrixXd x){s += x;});
+    return s * factor;
 }
 
 #endif //LIBQPEP_UTILS_H

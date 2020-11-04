@@ -16,7 +16,7 @@ struct QPEP_runtime solver_WQ(Eigen::MatrixXcd& sol_, const Eigen::VectorXd& dat
     clock_t time1 = clock();
     Eigen::Matrix<double, 72, 40> RR;
     RR << - C1_.bottomRows(32), Eigen::Matrix<double, 40, 40>::Identity();
-    int AM_ind[40] = {34, 1, 2, 3, 4, 5, 6, 7, 8, 35,
+    const int AM_ind[40] = {34, 1, 2, 3, 4, 5, 6, 7, 8, 35,
                       9, 10, 46, 11, 12, 13, 14, 15, 16,
                       17, 18, 47, 19, 20, 50, 21, 22, 23,
                       24, 25, 26, 51, 40, 28, 52, 29, 30, 53, 31, 32};
@@ -28,12 +28,12 @@ struct QPEP_runtime solver_WQ(Eigen::MatrixXcd& sol_, const Eigen::VectorXd& dat
 
     Eigen::EigenSolver<Eigen::Matrix<double, 40, 40> > eigs(AM);
     Eigen::Matrix<std::complex<double>, 40, 40> V = eigs.eigenvectors();
-    Eigen::Matrix<std::complex<double>, 40, 40> D(eigs.pseudoEigenvalueMatrix());
+    Eigen::MatrixXcd D(eigs.eigenvalues());
 
     Eigen::VectorXcd scale(40);
     for(int i = 0; i < 40; ++i)
     {
-        scale(i) = sqrt(D(i, i) / (V(12, i) * V(34, i)));
+        scale(i) = sqrt(D(i) / (V(12, i) * V(34, i)));
         V.col(i) = V.col(i) * scale(i);
     }
 

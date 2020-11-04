@@ -6,6 +6,7 @@
 #include <vector>
 #include <map>
 #include <cassert>
+#include <fstream>
 
 #include <Eigen/Core>
 #include <Eigen/LU>
@@ -322,5 +323,109 @@ T mean(std::vector<T> data)
         std::for_each(data.begin() + 1, data.end(), [&s](Eigen::MatrixXd x){s += x;});
     return s * factor;
 }
+
+inline void readPnPdata(std::string filename,
+                 Eigen::Matrix3d& R0,
+                 Eigen::Vector3d& t0,
+                 Eigen::Matrix3d& K,
+                 std::vector<Eigen::Vector3d>& world_pt0,
+                 std::vector<Eigen::Vector2d>& image_pt0)
+{
+    std::ifstream input(filename);
+    double fx, fy, cx, cy;
+    input >> R0(0, 0) >> R0(0, 1) >> R0(0, 2) >>
+          R0(1, 0) >> R0(1, 1) >> R0(1, 2) >>
+          R0(2, 0) >> R0(2, 1) >> R0(2, 2);
+    input >> t0(0) >> t0(1) >> t0(2);
+    input >> fx >> fy >> cx >> cy;
+    K(0, 0) = fx;
+    K(1, 1) = fy;
+    K(0, 2) = cx;
+    K(1, 2) = cy;
+    K(2, 2) = 1.0;
+    int num = 0;
+    input >> num;
+    world_pt0.resize(num);
+    image_pt0.resize(num);
+    for(int i = 0; i < num; ++i)
+    {
+        input >> world_pt0[i](0) >> world_pt0[i](1) >> world_pt0[i](2);
+    }
+    for(int i = 0; i < num; ++i)
+    {
+        input >> image_pt0[i](0) >> image_pt0[i](1);
+    }
+    input.close();
+}
+
+
+inline void readpTopdata(std::string filename,
+                  Eigen::Matrix3d& R0,
+                  Eigen::Vector3d& t0,
+                  std::vector<Eigen::Vector3d>& r0,
+                  std::vector<Eigen::Vector3d>& b0,
+                  std::vector<Eigen::Vector3d>& nv)
+{
+    std::ifstream input(filename);
+    input >> R0(0, 0) >> R0(0, 1) >> R0(0, 2) >>
+          R0(1, 0) >> R0(1, 1) >> R0(1, 2) >>
+          R0(2, 0) >> R0(2, 1) >> R0(2, 2);
+    input >> t0(0) >> t0(1) >> t0(2);
+    int num = 0;
+    input >> num;
+    r0.resize(num);
+    b0.resize(num);
+    nv.resize(num);
+    for(int i = 0; i < num; ++i)
+    {
+        input >> r0[i](0) >> r0[i](1) >> r0[i](2);
+    }
+    for(int i = 0; i < num; ++i)
+    {
+        input >> b0[i](0) >> b0[i](1) >> b0[i](2);
+    }
+    for(int i = 0; i < num; ++i)
+    {
+        input >> nv[i](0) >> nv[i](1) >> nv[i](2);
+    }
+    input.close();
+}
+
+#ifdef USE_OPENCV
+#include <opencv2/core/types.hpp>
+#include <opencv2/core/core.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/calib3d/calib3d.hpp>
+#include <opencv2/highgui/highgui.hpp>
+
+inline std::vector<cv::Point3d> Vector3dToPoint3d(std::vector<Eigen::Vector3d> pt)
+{
+    std::vector<cv::Point3d> tmp;
+    for(int i = 0; i < pt.size(); ++i)
+    {
+        Eigen::Vector3d point = pt[i];
+        cv::Point3d vec;
+        vec.x = point(0);
+        vec.y = point(1);
+        vec.z = point(2);
+        tmp.push_back(vec);
+    }
+    return tmp;
+}
+
+inline std::vector<cv::Point2d> Vector2dToPoint2d(std::vector<Eigen::Vector2d> pt)
+{
+    std::vector<cv::Point2d> tmp;
+    for(int i = 0; i < pt.size(); ++i)
+    {
+        Eigen::Vector2d point = pt[i];
+        cv::Point2d vec;
+        vec.x = point(0);
+        vec.y = point(1);
+        tmp.push_back(vec);
+    }
+    return tmp;
+}
+#endif
 
 #endif //LIBQPEP_UTILS_H

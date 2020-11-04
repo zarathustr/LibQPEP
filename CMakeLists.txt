@@ -69,7 +69,7 @@ add_executable(LibQPEP
         solver_WQ.cpp
         solver_WQ.h
         solver_WQ_helper.cpp
-        solver_WQ_helper.h)
+        solver_WQ_helper.h CVLib.cpp CVLib.h)
 
 target_link_libraries(LibQPEP ${OMP_LIB} ${OpenCV_LIBS} ${LAPACK_LIBRARIES})
 

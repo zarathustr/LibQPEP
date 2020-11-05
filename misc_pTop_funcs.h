@@ -23,5 +23,13 @@ void eq_Jacob_pTop_func(Eigen::Matrix<double, 4, 1>& eq,
                         Eigen::Matrix<double, 4, 4>& Jacob,
                         const Eigen::MatrixXd& coef_f_q_sym,
                         const Eigen::Vector4d& q);
+void v_func_pTop(Eigen::Matrix<double, 28, 1>& v,
+                 const Eigen::Vector4d& q);
+void y_func_pTop(Eigen::Matrix<double, 9, 1>& y,
+                 const Eigen::Vector4d& q);
+void jv_func_pTop(Eigen::MatrixXd& jv,
+                  const Eigen::Vector4d& q);
+void jy_func_pTop(Eigen::MatrixXd& jy,
+                  const Eigen::Vector4d& q);
 
 #endif //LIBQPEP_MISC_PTOP_FUNCS_H

@@ -111,60 +111,75 @@ void plotQuatCov(cv::Mat& img,
     std::string str_min, str_max;
     char str[512];
 
-    for(int i = 0; i < 4; ++i)
+    std::vector<Eigen::Matrix4d> cov_list(2);
+    cov_list[0] = cov1;
+    cov_list[1] = cov2;
+    std::vector<cv::Scalar> color_list(2);
+    color_list[0] = cv::Scalar(1, 1, 1) * 0;
+    color_list[1] = cv::Scalar(1, 0, 0) * 220;
+
+    for(int k = 0; k < cov_list.size(); ++k)
     {
-        for(int j = i + 1; j < 4; ++j)
+        Eigen::Matrix4d cov = cov_list[k];
+        for(int i = 0; i < 4; ++i)
         {
-            bias(0) = (2.0 * j - 1.0) * img.rows / 6.0;
-            bias(1) = (2.0 * i + 1.0) * img.cols / 6.0;
-            plotCov4d(img, x_min, x_max, y_min, y_max,
-                      cov1, qs, mean_q, i + 1, j + 1,
-                      12, cv::Scalar(0, 0, 0) ,
-                      2, cv::Scalar(1, 1, 1) * 120, size, cv::LINE_8, bias);
+            for(int j = i + 1; j < 4; ++j)
+            {
+                bias(0) = (2.0 * j - 1.0) * img.rows / 6.0;
+                bias(1) = (2.0 * i + 1.0) * img.cols / 6.0;
+                plotCov4d(img, x_min, x_max, y_min, y_max,
+                          cov, qs, mean_q, i + 1, j + 1,
+                          12, color_list[k],
+                          2, cv::Scalar(1, 1, 1) * 120, size, cv::LINE_8, bias);
 
-            double rect_xx, rect_xy;
-            double rect_yx, rect_yy;
-            rect_xx = (j - 1) * img.cols / 3.0;
-            rect_yx = j * img.cols / 3.0;
-            rect_xy = i * img.cols / 3.0;
-            rect_yy = (i + 1) * img.cols / 3.0;
+                if(k == 1)
+                {
+                    double rect_xx, rect_xy;
+                    double rect_yx, rect_yy;
+                    rect_xx = (j - 1) * img.cols / 3.0;
+                    rect_yx = j * img.cols / 3.0;
+                    rect_xy = i * img.cols / 3.0;
+                    rect_yy = (i + 1) * img.cols / 3.0;
 
-            cv::rectangle( img,
-                           cv::Point( rect_xx + margin, rect_xy + margin ),
-                           cv::Point( rect_yx - margin, rect_yy - margin),
-                           cv::Scalar( 0, 0, 0 ), 2);
+                    cv::rectangle( img,
+                                   cv::Point( rect_xx + margin, rect_xy + margin ),
+                                   cv::Point( rect_yx - margin, rect_yy - margin),
+                                   cv::Scalar( 0, 0, 0 ), 2);
 
-            std::sprintf(str, "q%d", i);
-            str_min = std::string(str);
-            putText(img, str_min, cv::Point(rect_xx, (rect_xy + rect_yy) / 2.0),
-                    cv::FONT_HERSHEY_COMPLEX, 1, cv::Scalar(0, 0, 0), 2);
-            std::sprintf(str, "q%d", j);
-            str_min = std::string(str);
-            putText(img, str_min, cv::Point((rect_yx + rect_xx) / 2.0, rect_yy - margin + 5 * spacing),
-                    cv::FONT_HERSHEY_COMPLEX, 1, cv::Scalar(0, 0, 0), 2);
+                    std::sprintf(str, "q%d", i);
+                    str_min = std::string(str);
+                    putText(img, str_min, cv::Point(rect_xx, (rect_xy + rect_yy) / 2.0),
+                            cv::FONT_HERSHEY_COMPLEX, 1, cv::Scalar(0, 0, 0), 2);
+                    std::sprintf(str, "q%d", j);
+                    str_min = std::string(str);
+                    putText(img, str_min, cv::Point((rect_yx + rect_xx) / 2.0, rect_yy - margin + 5 * spacing),
+                            cv::FONT_HERSHEY_COMPLEX, 1, cv::Scalar(0, 0, 0), 2);
 
 
-            std::sprintf(str, "%.3e", y_min);
-            str_min = std::string(str);
-            std::sprintf(str, "%.3e", y_max);
-            str_max = std::string(str);
-            putText(img, str_min, cv::Point(rect_xx + margin + 1 * spacing, rect_xy + margin + 5 * spacing),
-                    cv::FONT_HERSHEY_COMPLEX, 1, cv::Scalar(0, 0, 0), 2);
+                    std::sprintf(str, "%.3e", y_min);
+                    str_min = std::string(str);
+                    std::sprintf(str, "%.3e", y_max);
+                    str_max = std::string(str);
+                    putText(img, str_min, cv::Point(rect_xx + margin + 1 * spacing, rect_xy + margin + 5 * spacing),
+                            cv::FONT_HERSHEY_COMPLEX, 1, cv::Scalar(0, 0, 0), 2);
 
-            putText(img, str_max, cv::Point(rect_xx + margin + 1 * spacing, rect_yy - margin - 2 * spacing),
-                    cv::FONT_HERSHEY_COMPLEX, 1, cv::Scalar(0, 0, 0), 2);
+                    putText(img, str_max, cv::Point(rect_xx + margin + 1 * spacing, rect_yy - margin - 2 * spacing),
+                            cv::FONT_HERSHEY_COMPLEX, 1, cv::Scalar(0, 0, 0), 2);
 
-            std::sprintf(str, "%.3e", x_min);
-            str_min = std::string(str);
-            std::sprintf(str, "%.3e", x_max);
-            str_max = std::string(str);
-            putText(img, str_min, cv::Point(rect_xx + spacing, rect_yy - margin + 5 * spacing),
-                    cv::FONT_HERSHEY_COMPLEX, 1, cv::Scalar(0, 0, 0), 2);
+                    std::sprintf(str, "%.3e", x_min);
+                    str_min = std::string(str);
+                    std::sprintf(str, "%.3e", x_max);
+                    str_max = std::string(str);
+                    putText(img, str_min, cv::Point(rect_xx + spacing, rect_yy - margin + 5 * spacing),
+                            cv::FONT_HERSHEY_COMPLEX, 1, cv::Scalar(0, 0, 0), 2);
 
-            putText(img, str_max, cv::Point(rect_yx - textlen, rect_yy - margin + 5 * spacing),
-                    cv::FONT_HERSHEY_COMPLEX, 1, cv::Scalar(0, 0, 0), 2);
+                    putText(img, str_max, cv::Point(rect_yx - textlen, rect_yy - margin + 5 * spacing),
+                            cv::FONT_HERSHEY_COMPLEX, 1, cv::Scalar(0, 0, 0), 2);
+                }
+            }
         }
     }
+
 
     margin = img.rows / 200;
     plotDataPoint(img,
@@ -177,9 +192,17 @@ void plotQuatCov(cv::Mat& img,
     cv::line( img,
               cv::Point(0 * img.cols / 3 + 1 * margin, 2 * img.rows / 3 + 12 * margin),
               cv::Point(0 * img.cols / 3 + 8 * margin, 2 * img.rows / 3 + 12 * margin),
-              cv::Scalar( 0, 0, 0 ), 2);
+              color_list[0], 2);
 
     putText(img, "Stat Quaternion Covariance", cv::Point(0 * img.cols / 3 + 10 * margin, 2 * img.rows / 3 + 14 * margin),
+            cv::FONT_HERSHEY_COMPLEX, 1, cv::Scalar(0, 0, 0), 2);
+
+    cv::line( img,
+              cv::Point(0 * img.cols / 3 + 1 * margin, 2 * img.rows / 3 + 18 * margin),
+              cv::Point(0 * img.cols / 3 + 8 * margin, 2 * img.rows / 3 + 18 * margin),
+              color_list[1], 2);
+
+    putText(img, "QPEP Quaternion Covariance", cv::Point(0 * img.cols / 3 + 10 * margin, 2 * img.rows / 3 + 20 * margin),
             cv::FONT_HERSHEY_COMPLEX, 1, cv::Scalar(0, 0, 0), 2);
 }
 

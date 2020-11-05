@@ -1037,6 +1037,8 @@ void mixed2_pTop_func(Eigen::Matrix<double, 4, 24>& coef_f_q_sym,
 
 
 void D_pTop_func(Eigen::Matrix<double, 3, 28>& D,
+                 Eigen::Matrix<double, 3, 9>& G,
+                 Eigen::Vector3d& c,
                  const Eigen::Matrix<double, 4, 24>& coef_f_q_sym)
 {
     double coef_f0_q_sym1 = coef_f_q_sym(0, 0);
@@ -1220,6 +1222,38 @@ void D_pTop_func(Eigen::Matrix<double, 3, 28>& D,
     D(2, 25) = -coef_f0_q_sym4+coef_f0_q_sym20-coef_f3_q_sym1*2.0+coef_f3_q_sym8+coef_f3_q_sym10;
     D(2, 26) = -coef_f0_q_sym3+coef_f0_q_sym21+coef_f3_q_sym9;
     D(2, 27) = -coef_f0_q_sym4+coef_f0_q_sym23-coef_f3_q_sym1+coef_f3_q_sym10;
+
+    G(0, 0) = coef_f0_q_sym11-coef_f1_q_sym18;
+    G(0, 1) = -coef_f1_q_sym22;
+    G(0, 2) = -coef_f1_q_sym24;
+    G(0, 3) = coef_f0_q_sym2+coef_f1_q_sym1*2.0-coef_f1_q_sym5+coef_f0_q_sym18+coef_f1_q_sym11;
+    G(0, 4) = coef_f0_q_sym3-coef_f1_q_sym6+coef_f0_q_sym22;
+    G(0, 5) = coef_f0_q_sym4-coef_f1_q_sym7+coef_f0_q_sym24;
+    G(0, 6) = coef_f1_q_sym1*2.0-coef_f1_q_sym8+coef_f1_q_sym11;
+    G(0, 7) = -coef_f1_q_sym9;
+    G(0, 8) = coef_f1_q_sym1*2.0-coef_f1_q_sym10+coef_f1_q_sym11;
+    G(1, 0) = -coef_f2_q_sym18;
+    G(1, 1) = coef_f0_q_sym11-coef_f2_q_sym22;
+    G(1, 2) = -coef_f2_q_sym24;
+    G(1, 3) = coef_f2_q_sym1*2.0-coef_f2_q_sym5+coef_f2_q_sym11;
+    G(1, 4) = coef_f0_q_sym2+coef_f0_q_sym18-coef_f2_q_sym6;
+    G(1, 5) = -coef_f2_q_sym7;
+    G(1, 6) = coef_f0_q_sym3+coef_f2_q_sym1*2.0+coef_f0_q_sym22-coef_f2_q_sym8+coef_f2_q_sym11;
+    G(1, 7) = coef_f0_q_sym4+coef_f0_q_sym24-coef_f2_q_sym9;
+    G(1, 8) = coef_f2_q_sym1*2.0-coef_f2_q_sym10+coef_f2_q_sym11;
+    G(2, 0) = -coef_f3_q_sym18;
+    G(2, 1) = -coef_f3_q_sym22;
+    G(2, 2) = coef_f0_q_sym11-coef_f3_q_sym24;
+    G(2, 3) = coef_f3_q_sym1*2.0-coef_f3_q_sym5+coef_f3_q_sym11;
+    G(2, 4) = -coef_f3_q_sym6;
+    G(2, 5) = coef_f0_q_sym2+coef_f0_q_sym18-coef_f3_q_sym7;
+    G(2, 6) = coef_f3_q_sym1*2.0-coef_f3_q_sym8+coef_f3_q_sym11;
+    G(2, 7) = coef_f0_q_sym3+coef_f0_q_sym22-coef_f3_q_sym9;
+    G(2, 8) = coef_f0_q_sym4+coef_f0_q_sym24+coef_f3_q_sym1*2.0-coef_f3_q_sym10+coef_f3_q_sym11;
+
+    c(0) = -coef_f1_q_sym1-coef_f1_q_sym11;
+    c(1) = -coef_f2_q_sym1-coef_f2_q_sym11;
+    c(2) = -coef_f3_q_sym1-coef_f3_q_sym11;
 }
 
 
@@ -1227,6 +1261,8 @@ void D_pTop_func(Eigen::Matrix<double, 3, 28>& D,
 void pTop_WQD(Eigen::Matrix<double, 4, 64>& W,
               Eigen::Matrix<double, 4, 4>& Q,
               Eigen::Matrix<double, 3, 28>& D,
+              Eigen::Matrix<double, 3, 9>& GG,
+              Eigen::Vector3d& c,
               Eigen::Matrix<double, 4, 24>& coef_f_q_sym,
               Eigen::Matrix<double, 1, 85>& coef_J_pure,
               Eigen::Matrix<double, 3, 11>& coefs_tq,
@@ -1429,5 +1465,5 @@ void pTop_WQD(Eigen::Matrix<double, 4, 64>& W,
     Eigen::Matrix<double, 4, 36> coef_Jacob_qt_syms;
     coef_Jacob_qt_syms << coef_Jacob1_qt, coef_Jacob2_qt, coef_Jacob3_qt, coef_Jacob4_qt;
     mixed2_pTop_func(coef_f_q_sym, W, Q, pinvG, coefs_tq, coef_Jacob_qt_syms);
-    D_pTop_func(D, coef_f_q_sym);
+    D_pTop_func(D, GG, c, coef_f_q_sym);
 }

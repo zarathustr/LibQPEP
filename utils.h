@@ -67,6 +67,8 @@ inline Eigen::Vector4d R2q(const Eigen::Matrix3d& R)
             G13 * G14 * G22 - G12 * G14 * G23 - G12 * G13 * G24 + G11 * G23 * G24 + G12 * G12 * G34 - G11 * G22 * G34,
             - ( G13 * G13 * G22 - 2 * G12 * G13 * G23 + G11 * G23 * G23 + G12 * G12 * G33 - G11 * G22 * G33 ));
     qRes.normalize();
+    if(qRes(0) < 0)
+        qRes = - qRes;
     return qRes;
 }
 

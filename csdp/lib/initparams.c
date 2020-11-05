@@ -35,7 +35,7 @@ void initparams(params,pprintlevel)
   params->affine=0;
   params->perturbobj=1;
   params->fastmode=0;
-  *pprintlevel=1;
+  *pprintlevel=0;
 
   /*
    * Attempt to open param.csdp.  If it doesn't open, then just use 

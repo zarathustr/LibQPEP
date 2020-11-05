@@ -16,7 +16,7 @@ find_package(Eigen3 REQUIRED)
 find_package(OpenCV)
 find_package(LAPACK)
 
-include_directories(${EIGEN3_INCLUDE_DIR})
+include_directories(${EIGEN3_INCLUDE_DIR} ./csdp/include)
 
 if(OpenCV_FOUND)
     include_directories(${OpenCV_INCLUDE_DIRS})
@@ -27,6 +27,12 @@ if(LAPACK_FOUND)
     add_definitions(-D EIGEN_USE_BLAS)
 endif()
 
+add_definitions(-D BIT64)
+add_definitions(-D USEOPENMP)
+add_definitions(-D SETNUMTHREADS)
+add_definitions(-D USESIGTERM)
+add_definitions(-D USEGETTIME)
+add_definitions(-D CAPSLAPACK)
 
 set(OMP_LIB "")
 if(APPLE OR LINUX)
@@ -69,7 +75,46 @@ add_executable(LibQPEP
         solver_WQ.cpp
         solver_WQ.h
         solver_WQ_helper.cpp
-        solver_WQ_helper.h CVLib.cpp CVLib.h)
+        solver_WQ_helper.h
+        CVLib.cpp
+        CVLib.h
+        ./csdp/lib/Fnorm.c
+        ./csdp/lib/chol.c
+        ./csdp/lib/linesearch.c
+        ./csdp/lib/norms.c
+        ./csdp/lib/qreig.c
+        ./csdp/lib/sym_mat.c
+        ./csdp/lib/zero_mat.c
+        ./csdp/lib/add_mat.c
+        ./csdp/lib/copy_mat.c
+        ./csdp/lib/make_i.c
+        ./csdp/lib/op_a.c
+        ./csdp/lib/readprob.c
+        ./csdp/lib/trace_prod.c
+        ./csdp/lib/addscaledmat.c
+        ./csdp/lib/easysdp.c
+        ./csdp/lib/makefill.c
+        ./csdp/lib/op_at.c
+        ./csdp/lib/readsol.c
+        ./csdp/lib/tweakgap.c
+        ./csdp/lib/allocmat.c
+        ./csdp/lib/freeprob.c
+        ./csdp/lib/mat_mult.c
+        ./csdp/lib/op_o.c
+        ./csdp/lib/sdp.c
+        ./csdp/lib/user_exit.c
+        ./csdp/lib/calc_dobj.c
+        ./csdp/lib/initparams.c
+        ./csdp/lib/mat_multsp.c
+        ./csdp/lib/packed.c
+        ./csdp/lib/solvesys.c
+        ./csdp/lib/writeprob.c
+        ./csdp/lib/calc_pobj.c
+        ./csdp/lib/initsoln.c
+        ./csdp/lib/matvec.c
+        ./csdp/lib/psd_feas.c
+        ./csdp/lib/sortentries.c
+        ./csdp/lib/writesol.c CovEstimation.cpp CovEstimation.h)
 
 target_link_libraries(LibQPEP ${OMP_LIB} ${OpenCV_LIBS} ${LAPACK_LIBRARIES})
 

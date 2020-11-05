@@ -1,0 +1,8 @@
+//
+// Created by Jin Wu on 6/11/2020.
+//
+
+#ifndef LIBQPEP_COVESTIMATION_H
+#define LIBQPEP_COVESTIMATION_H
+
+#endif //LIBQPEP_COVESTIMATION_H

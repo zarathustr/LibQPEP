@@ -35,7 +35,7 @@ void test_generateProjectedPoints()
     K.setZero();
     std::vector<Eigen::Vector3d> world_pt0;
     std::vector<Eigen::Vector2d> image_pt0;
-    const std::string filename = "/Users/zarathustra/git/LibQPEP/data/pnp_data1.txt";
+    const std::string filename = "../data/pnp_data1.txt";
     readPnPdata(filename, R0, t0, K, world_pt0, image_pt0);
 
     std::vector<Eigen::Vector2d> image_pt;
@@ -182,7 +182,7 @@ void test_pnp_WQD(const std::string& filename,
         std::cout << "Opencv UPnP X: " << std::endl << XX << std::endl;
     }
 
-
+#ifdef USE_OPENCV4
     cv::solvePnP(cv::Mat(world_pt0_cv), cv::Mat(image_pt0_cv), intrinsics, distCoeffs, rvec, tvec, false, cv::SOLVEPNP_AP3P);
     cv::Rodrigues(rvec, rotation_matrix);
     Rot << rotation_matrix.at<double>(0, 0), rotation_matrix.at<double>(0, 1), rotation_matrix.at<double>(0, 2),
@@ -217,6 +217,7 @@ void test_pnp_WQD(const std::string& filename,
     if(verbose) {
         std::cout << "Opencv IPPE Square X: " << std::endl << XX << std::endl;
     }
+#endif
 #endif
 }
 
@@ -502,9 +503,13 @@ void test_pTop_noise(const std::string& name,
     Eigen::Matrix4d cov;
 
     Eigen::MatrixXd cov_left_ = cov_left;
-    const double scaling = 1e4;
-    if(cov_left_.trace() <= 1e-7)
+    double scaling = 1.0;
+    double cov_tr = cov_left_.trace();
+//    if(cov_tr <= 1e-5)
+//    {
+        scaling = 3e-5 / (cov_tr);
         cov_left_ *= scaling;
+//    }
     csdp_cov(cov, F, cov_left_, q);
     cov = cov / scaling;
     std::cout << "Estimated Covariance:" << std::endl << cov << std::endl;
@@ -527,25 +532,25 @@ int main(int argc,char ** argv) {
     clock_t time1 = clock(), time2;
     double loops = 100.0;
 
-    Eigen::Vector4d q;
-    q << 0.319153034662463, 0.0137947360154964, 0.906900328581383, 0.274741405221315;
-    Eigen::Matrix3d cov_left;
-    cov_left << 4.32090178480567e-09, 1.9881316485166e-09, 7.57378543793111e-10,
-                1.98813164851657e-09, 5.7051245100625e-08, 2.83263963656342e-08,
-                7.57378543793107e-10, 2.83263963656342e-08, 1.43515132711022e-08;
-    Eigen::Matrix<double, 3, 4> F;
-    F << -0.0133788091155435,       -0.0319461589550735,       -0.0223229328790909,      -0.00211035440564425,
-         -0.150273289955035,      0.00919882917604315,        -0.657044040069996,        -0.239866632558646,
-         -0.0175483625464778,       0.00864823916809603,        -0.160369725637978,       -0.0703673441123501;
-
-    Eigen::Matrix4d cov;
-    time1 = clock();
-    for(int i = 0; i < loops; ++i)
-        csdp_cov(cov, F, cov_left, q);
-    time2 = clock();
-    std::cout << "Covariance: " << cov << std::endl;
-    time = time2 - time1;
-    std::cout << "CSDP Time: " << time / loops / double(CLOCKS_PER_SEC) << std::endl;
+//    Eigen::Vector4d q;
+//    q << 0.319153034662463, 0.0137947360154964, 0.906900328581383, 0.274741405221315;
+//    Eigen::Matrix3d cov_left;
+//    cov_left << 4.32090178480567e-09, 1.9881316485166e-09, 7.57378543793111e-10,
+//                1.98813164851657e-09, 5.7051245100625e-08, 2.83263963656342e-08,
+//                7.57378543793107e-10, 2.83263963656342e-08, 1.43515132711022e-08;
+//    Eigen::Matrix<double, 3, 4> F;
+//    F << -0.0133788091155435,       -0.0319461589550735,       -0.0223229328790909,      -0.00211035440564425,
+//         -0.150273289955035,      0.00919882917604315,        -0.657044040069996,        -0.239866632558646,
+//         -0.0175483625464778,       0.00864823916809603,        -0.160369725637978,       -0.0703673441123501;
+//
+//    Eigen::Matrix4d cov;
+//    time1 = clock();
+//    for(int i = 0; i < loops; ++i)
+//        csdp_cov(cov, F, cov_left, q);
+//    time2 = clock();
+//    std::cout << "Covariance: " << cov << std::endl;
+//    time = time2 - time1;
+//    std::cout << "CSDP Time: " << time / loops / double(CLOCKS_PER_SEC) << std::endl;
 
 
 #ifdef USE_OPENCV
@@ -556,8 +561,8 @@ int main(int argc,char ** argv) {
     cv::addWeighted(imageDraw, 0.0, ColorMask, 1.0, 0, imageDraw);
 
     const bool verbose = false;
-    test_pTop_noise("/Users/zarathustra/git/LibQPEP/data/pTop_data-100pt-1.txt",
-                    imageDraw, 1500, 1e-4, verbose);
+    test_pTop_noise("../data/pTop_data-100pt-1.txt",
+                    imageDraw, 1500, 1e-5, verbose);
 
     imshow("imageDraw", imageDraw);
     cv::waitKey(0);
@@ -572,8 +577,8 @@ int main(int argc,char ** argv) {
 
     for(int i = 0; i < (int) loops; ++i)
     {
-//        test_pnp_WQD("/Users/zarathustra/git/LibQPEP/data/pTop_data-5pt-1.txt", false);
-        test_pTop_WQD("/Users/zarathustra/git/LibQPEP/data/pTop_data-100pt-3.txt", false);
+//        test_pnp_WQD("../data/pTop_data-5pt-1.txt", false);
+        test_pTop_WQD("../data/pTop_data-100pt-1.txt", false);
     }
     time2 = clock();
     time = time2 - time1;

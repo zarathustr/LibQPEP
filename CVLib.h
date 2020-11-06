@@ -13,8 +13,13 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/calib3d/calib3d.hpp>
 #include <opencv2/highgui/highgui.hpp>
+#if WIN32
+#include <windows.h>
+#else
+#include <X11/Xlib.h>
+#endif
 
-
+void getScreenResolution(int &width, int &height);
 
 void plotCov4d(cv::Mat& img,
                double& x_min,
@@ -38,7 +43,8 @@ void plotQuatCov(cv::Mat& img,
                  const Eigen::Matrix4d& cov1,
                  const Eigen::Matrix4d& cov2,
                  const std::vector<Eigen::Vector4d>& qs,
-                 const Eigen::Vector4d& mean_q);
+                 const Eigen::Vector4d& mean_q,
+                 const double& fontsize);
 
 #endif
 

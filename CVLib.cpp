@@ -1,7 +1,19 @@
-#include "CVLib.h"
 #include "utils.h"
+#include "CVLib.h"
 
 #ifdef USE_OPENCV
+
+void getScreenResolution(int &width, int &height) {
+#if WIN32
+    width  = (int) GetSystemMetrics(SM_CXSCREEN);
+    height = (int) GetSystemMetrics(SM_CYSCREEN);
+#else
+    Display* disp = XOpenDisplay(NULL);
+    Screen*  scrn = DefaultScreenOfDisplay(disp);
+    width  = scrn->width;
+    height = scrn->height;
+#endif
+}
 
 cv::RotatedRect getErrorEllipse(const double& chisquare_val,
                                 const cv::Point2f& means,
@@ -98,13 +110,13 @@ void plotQuatCov(cv::Mat& img,
                  const Eigen::Matrix4d& cov1,
                  const Eigen::Matrix4d& cov2,
                  const std::vector<Eigen::Vector4d>& qs,
-                 const Eigen::Vector4d& mean_q)
+                 const Eigen::Vector4d& mean_q,
+                 const double& fontsize)
 {
     int num_data = qs.size();
     int margin = img.rows / 50;
     double size = img.rows / 6.0 - margin * 2;
     double spacing = 5.0;
-    double textlen = 200.0;
 
     Eigen::Vector2d bias;
     double x_min, x_max, y_min, y_max;
@@ -149,11 +161,11 @@ void plotQuatCov(cv::Mat& img,
                     std::sprintf(str, "q%d", i);
                     str_min = std::string(str);
                     putText(img, str_min, cv::Point(rect_xx, (rect_xy + rect_yy) / 2.0),
-                            cv::FONT_HERSHEY_COMPLEX, 1, cv::Scalar(0, 0, 0), 2);
+                            cv::FONT_HERSHEY_COMPLEX, fontsize, cv::Scalar(0, 0, 0), 2);
                     std::sprintf(str, "q%d", j);
                     str_min = std::string(str);
                     putText(img, str_min, cv::Point((rect_yx + rect_xx) / 2.0, rect_yy - margin + 5 * spacing),
-                            cv::FONT_HERSHEY_COMPLEX, 1, cv::Scalar(0, 0, 0), 2);
+                            cv::FONT_HERSHEY_COMPLEX, fontsize, cv::Scalar(0, 0, 0), 2);
 
 
                     std::sprintf(str, "%.3e", y_min);
@@ -161,20 +173,22 @@ void plotQuatCov(cv::Mat& img,
                     std::sprintf(str, "%.3e", y_max);
                     str_max = std::string(str);
                     putText(img, str_min, cv::Point(rect_xx + margin + 1 * spacing, rect_xy + margin + 5 * spacing),
-                            cv::FONT_HERSHEY_COMPLEX, 1, cv::Scalar(0, 0, 0), 2);
+                            cv::FONT_HERSHEY_COMPLEX, fontsize, cv::Scalar(0, 0, 0), 2);
 
                     putText(img, str_max, cv::Point(rect_xx + margin + 1 * spacing, rect_yy - margin - 2 * spacing),
-                            cv::FONT_HERSHEY_COMPLEX, 1, cv::Scalar(0, 0, 0), 2);
+                            cv::FONT_HERSHEY_COMPLEX, fontsize, cv::Scalar(0, 0, 0), 2);
 
                     std::sprintf(str, "%.3e", x_min);
                     str_min = std::string(str);
                     std::sprintf(str, "%.3e", x_max);
                     str_max = std::string(str);
                     putText(img, str_min, cv::Point(rect_xx + spacing, rect_yy - margin + 5 * spacing),
-                            cv::FONT_HERSHEY_COMPLEX, 1, cv::Scalar(0, 0, 0), 2);
+                            cv::FONT_HERSHEY_COMPLEX, fontsize, cv::Scalar(0, 0, 0), 2);
 
-                    putText(img, str_max, cv::Point(rect_yx - textlen, rect_yy - margin + 5 * spacing),
-                            cv::FONT_HERSHEY_COMPLEX, 1, cv::Scalar(0, 0, 0), 2);
+                    int baseline;
+                    cv::Size textlen = cv::getTextSize(str_max, cv::FONT_HERSHEY_COMPLEX, fontsize, 2, &baseline);
+                    putText(img, str_max, cv::Point(rect_yx - textlen.width, rect_yy - margin + 5 * spacing),
+                            cv::FONT_HERSHEY_COMPLEX, fontsize, cv::Scalar(0, 0, 0), 2);
                 }
             }
         }
@@ -187,7 +201,7 @@ void plotQuatCov(cv::Mat& img,
                   8, cv::Scalar(1, 1, 1) * 120);
 
     putText(img, "Data Points", cv::Point(0 * img.cols / 3 + 10 * margin, 2 * img.rows / 3 + 5 * margin),
-            cv::FONT_HERSHEY_COMPLEX, 1, cv::Scalar(0, 0, 0), 2);
+            cv::FONT_HERSHEY_COMPLEX, fontsize, cv::Scalar(0, 0, 0), 2);
 
     cv::line( img,
               cv::Point(0 * img.cols / 3 + 1 * margin, 2 * img.rows / 3 + 12 * margin),
@@ -195,7 +209,7 @@ void plotQuatCov(cv::Mat& img,
               color_list[0], 2);
 
     putText(img, "Stat Quaternion Covariance", cv::Point(0 * img.cols / 3 + 10 * margin, 2 * img.rows / 3 + 14 * margin),
-            cv::FONT_HERSHEY_COMPLEX, 1, cv::Scalar(0, 0, 0), 2);
+            cv::FONT_HERSHEY_COMPLEX, fontsize, cv::Scalar(0, 0, 0), 2);
 
     cv::line( img,
               cv::Point(0 * img.cols / 3 + 1 * margin, 2 * img.rows / 3 + 18 * margin),
@@ -203,7 +217,7 @@ void plotQuatCov(cv::Mat& img,
               color_list[1], 2);
 
     putText(img, "QPEP Quaternion Covariance", cv::Point(0 * img.cols / 3 + 10 * margin, 2 * img.rows / 3 + 20 * margin),
-            cv::FONT_HERSHEY_COMPLEX, 1, cv::Scalar(0, 0, 0), 2);
+            cv::FONT_HERSHEY_COMPLEX, fontsize, cv::Scalar(0, 0, 0), 2);
 }
 
 #endif

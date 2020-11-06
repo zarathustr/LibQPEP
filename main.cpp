@@ -96,7 +96,7 @@ void test_pnp_WQD(const std::string& filename,
     double min[27];
     struct QPEP_options opt;
     opt.ModuleName = "solver_WQ_1_2_3_4_5_9_13_17_33_49_approx";
-    opt.DecompositionMethod = "SparseLU";
+    opt.DecompositionMethod = "PartialPivLU";
 
     struct QPEP_runtime stat =
             QPEP_WQ_grobner(R, t, X, min, W_, Q_,
@@ -258,7 +258,7 @@ void test_pTop_WQD(const std::string& filename,
     double min[27];
     struct QPEP_options opt;
     opt.ModuleName = "solver_WQ_approx";
-    opt.DecompositionMethod = "SparseLU";
+    opt.DecompositionMethod = "PartialPivLU";
 
     struct QPEP_runtime stat =
             QPEP_WQ_grobner(R, t, X, min, W_, Q_,
@@ -304,6 +304,7 @@ void test_pTop_noise(const std::string& name,
                      cv::Mat& img,
                      const int& num,
                      const double& noise,
+                     const double& fontsize,
                      const bool& verbose) {
     if(rr0.size() < 3) {
         readpTopdata(name, R0, t0, rr0, bb0, nv0);
@@ -359,7 +360,7 @@ void test_pTop_noise(const std::string& name,
             double min[27];
             struct QPEP_options opt;
             opt.ModuleName = "solver_WQ_approx";
-            opt.DecompositionMethod = "SparseLU";
+            opt.DecompositionMethod = "PartialPivLU";
 
             struct QPEP_runtime stat =
                     QPEP_WQ_grobner(R, t, X, min, W_, Q_,
@@ -464,7 +465,7 @@ void test_pTop_noise(const std::string& name,
     double min[27];
     struct QPEP_options opt;
     opt.ModuleName = "solver_WQ_approx";
-    opt.DecompositionMethod = "SparseLU";
+    opt.DecompositionMethod = "PartialPivLU";
 
     struct QPEP_runtime stat =
             QPEP_WQ_grobner(R, t, X, min, W_, Q_,
@@ -520,7 +521,7 @@ void test_pTop_noise(const std::string& name,
         qs__[i] = qs[i];
     }
     double scale = fabs(cov_left.trace() / (F * cov * F.transpose()).trace());
-    plotQuatCov(img, Sigma_q_stat, scale * cov, qs__, mean_q);
+    plotQuatCov(img, Sigma_q_stat, scale * cov, qs__, mean_q, fontsize);
 
     std::cout << "Stat Covariance:" << std::endl << Sigma_q_stat << std::endl;
 }
@@ -554,15 +555,18 @@ int main(int argc,char ** argv) {
 
 
 #ifdef USE_OPENCV
-    const int row = 1920;
-    const int col = 1920;
+    int row, col;
+    getScreenResolution(col, row);
+    col = MIN(col, row);
+    row = col;
+    double fontsize = row / 1920.0;
     cv::Mat imageDraw = cv::Mat::zeros(row, col, CV_8UC3);
     cv::Mat ColorMask(row, col, CV_8UC3, cv::Scalar(1, 1, 1) * 255);
     cv::addWeighted(imageDraw, 0.0, ColorMask, 1.0, 0, imageDraw);
 
-    const bool verbose = false;
+    const bool verbose = true;
     test_pTop_noise("../data/pTop_data-100pt-1.txt",
-                    imageDraw, 1500, 1e-5, verbose);
+                    imageDraw, 1500, 1e-5, fontsize, verbose);
 
     imshow("imageDraw", imageDraw);
     cv::waitKey(0);

@@ -16,6 +16,7 @@ endif()
 if("${CMAKE_SYSTEM_NAME}" STREQUAL "Linux")
     set(CMAKE_CXX_COMPILER g++-8)
     set(CMAKE_C_COMPILER gcc-8)
+    set(LINUX_OS True)
 endif()
 
 
@@ -25,7 +26,9 @@ if(APPLE)
     else()
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Ofast -ffast-math -Xclang -fopenmp -pthread")
     endif()
-elseif(UNIX)
+endif()
+
+if(LINUX_OS)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Ofast -ffast-math -fopenmp -pthread -lpthread -lrt -lm -lz -lomp -llapack -lblas")
 endif()
 

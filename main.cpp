@@ -11,7 +11,6 @@
 #include "misc_pTop_funcs.h"
 #include "QPEP_lm_single.h"
 #include "QPEP.h"
-#include "omp.h"
 
 #ifdef USE_OPENCV
 #include <opencv2/core/types.hpp>
@@ -113,7 +112,7 @@ void test_pnp_WQD(const std::string& filename,
 
     if(verbose) {
         std::cout << "True X: " << std::endl << XX << std::endl;
-        std::cout << "QPEP X: " << std::endl << X << std::endl << std::endl;
+        std::cout << "QPEP X: " << std::endl << X.inverse() << std::endl << std::endl;
     }
 
 
@@ -147,15 +146,18 @@ void test_pnp_WQD(const std::string& filename,
     }
 
 
-    cv::solvePnP(cv::Mat(world_pt0_cv), cv::Mat(image_pt0_cv), intrinsics, distCoeffs, rvec, tvec, false, cv::SOLVEPNP_P3P);
-    cv::Rodrigues(rvec, rotation_matrix);
-    Rot << rotation_matrix.at<double>(0, 0), rotation_matrix.at<double>(0, 1), rotation_matrix.at<double>(0, 2),
-            rotation_matrix.at<double>(1, 0), rotation_matrix.at<double>(1, 1), rotation_matrix.at<double>(1, 2),
-            rotation_matrix.at<double>(2, 0), rotation_matrix.at<double>(2, 1), rotation_matrix.at<double>(2, 2);
-    Trans << tvec.at<double>(0), tvec.at<double>(1), tvec.at<double>(2);
-    XX << Rot, Trans, Eigen::Vector3d::Zero(3).transpose(), 1.0;
-    if(verbose) {
-        std::cout << "Opencv P3P X: " << std::endl << XX << std::endl;
+    if(world_pt0.size() == 4)
+    {
+        cv::solvePnP(cv::Mat(world_pt0_cv), cv::Mat(image_pt0_cv), intrinsics, distCoeffs, rvec, tvec, false, cv::SOLVEPNP_P3P);
+        cv::Rodrigues(rvec, rotation_matrix);
+        Rot << rotation_matrix.at<double>(0, 0), rotation_matrix.at<double>(0, 1), rotation_matrix.at<double>(0, 2),
+                rotation_matrix.at<double>(1, 0), rotation_matrix.at<double>(1, 1), rotation_matrix.at<double>(1, 2),
+                rotation_matrix.at<double>(2, 0), rotation_matrix.at<double>(2, 1), rotation_matrix.at<double>(2, 2);
+        Trans << tvec.at<double>(0), tvec.at<double>(1), tvec.at<double>(2);
+        XX << Rot, Trans, Eigen::Vector3d::Zero(3).transpose(), 1.0;
+        if(verbose) {
+            std::cout << "Opencv P3P X: " << std::endl << XX << std::endl;
+        }
     }
 
 
@@ -183,39 +185,41 @@ void test_pnp_WQD(const std::string& filename,
     }
 
 #ifdef USE_OPENCV4
-    cv::solvePnP(cv::Mat(world_pt0_cv), cv::Mat(image_pt0_cv), intrinsics, distCoeffs, rvec, tvec, false, cv::SOLVEPNP_AP3P);
-    cv::Rodrigues(rvec, rotation_matrix);
-    Rot << rotation_matrix.at<double>(0, 0), rotation_matrix.at<double>(0, 1), rotation_matrix.at<double>(0, 2),
-            rotation_matrix.at<double>(1, 0), rotation_matrix.at<double>(1, 1), rotation_matrix.at<double>(1, 2),
-            rotation_matrix.at<double>(2, 0), rotation_matrix.at<double>(2, 1), rotation_matrix.at<double>(2, 2);
-    Trans << tvec.at<double>(0), tvec.at<double>(1), tvec.at<double>(2);
-    XX << Rot, Trans, Eigen::Vector3d::Zero(3).transpose(), 1.0;
-    if(verbose) {
-        std::cout << "Opencv AP3P X: " << std::endl << XX << std::endl;
-    }
+    if(world_pt0.size() == 4)
+    {
+        cv::solvePnP(cv::Mat(world_pt0_cv), cv::Mat(image_pt0_cv), intrinsics, distCoeffs, rvec, tvec, false, cv::SOLVEPNP_AP3P);
+        cv::Rodrigues(rvec, rotation_matrix);
+        Rot << rotation_matrix.at<double>(0, 0), rotation_matrix.at<double>(0, 1), rotation_matrix.at<double>(0, 2),
+                rotation_matrix.at<double>(1, 0), rotation_matrix.at<double>(1, 1), rotation_matrix.at<double>(1, 2),
+                rotation_matrix.at<double>(2, 0), rotation_matrix.at<double>(2, 1), rotation_matrix.at<double>(2, 2);
+        Trans << tvec.at<double>(0), tvec.at<double>(1), tvec.at<double>(2);
+        XX << Rot, Trans, Eigen::Vector3d::Zero(3).transpose(), 1.0;
+        if(verbose) {
+            std::cout << "Opencv AP3P X: " << std::endl << XX << std::endl;
+        }
+
+        cv::solvePnP(cv::Mat(world_pt0_cv), cv::Mat(image_pt0_cv), intrinsics, distCoeffs, rvec, tvec, false, cv::SOLVEPNP_IPPE);
+        cv::Rodrigues(rvec, rotation_matrix);
+        Rot << rotation_matrix.at<double>(0, 0), rotation_matrix.at<double>(0, 1), rotation_matrix.at<double>(0, 2),
+                rotation_matrix.at<double>(1, 0), rotation_matrix.at<double>(1, 1), rotation_matrix.at<double>(1, 2),
+                rotation_matrix.at<double>(2, 0), rotation_matrix.at<double>(2, 1), rotation_matrix.at<double>(2, 2);
+        Trans << tvec.at<double>(0), tvec.at<double>(1), tvec.at<double>(2);
+        XX << Rot, Trans, Eigen::Vector3d::Zero(3).transpose(), 1.0;
+        if(verbose) {
+            std::cout << "Opencv IPPE X: " << std::endl << XX << std::endl;
+        }
 
 
-    cv::solvePnP(cv::Mat(world_pt0_cv), cv::Mat(image_pt0_cv), intrinsics, distCoeffs, rvec, tvec, false, cv::SOLVEPNP_IPPE);
-    cv::Rodrigues(rvec, rotation_matrix);
-    Rot << rotation_matrix.at<double>(0, 0), rotation_matrix.at<double>(0, 1), rotation_matrix.at<double>(0, 2),
-            rotation_matrix.at<double>(1, 0), rotation_matrix.at<double>(1, 1), rotation_matrix.at<double>(1, 2),
-            rotation_matrix.at<double>(2, 0), rotation_matrix.at<double>(2, 1), rotation_matrix.at<double>(2, 2);
-    Trans << tvec.at<double>(0), tvec.at<double>(1), tvec.at<double>(2);
-    XX << Rot, Trans, Eigen::Vector3d::Zero(3).transpose(), 1.0;
-    if(verbose) {
-        std::cout << "Opencv IPPE X: " << std::endl << XX << std::endl;
-    }
-
-
-    cv::solvePnP(cv::Mat(world_pt0_cv), cv::Mat(image_pt0_cv), intrinsics, distCoeffs, rvec, tvec, false, cv::SOLVEPNP_IPPE_SQUARE);
-    cv::Rodrigues(rvec, rotation_matrix);
-    Rot << rotation_matrix.at<double>(0, 0), rotation_matrix.at<double>(0, 1), rotation_matrix.at<double>(0, 2),
-            rotation_matrix.at<double>(1, 0), rotation_matrix.at<double>(1, 1), rotation_matrix.at<double>(1, 2),
-            rotation_matrix.at<double>(2, 0), rotation_matrix.at<double>(2, 1), rotation_matrix.at<double>(2, 2);
-    Trans << tvec.at<double>(0), tvec.at<double>(1), tvec.at<double>(2);
-    XX << Rot, Trans, Eigen::Vector3d::Zero(3).transpose(), 1.0;
-    if(verbose) {
-        std::cout << "Opencv IPPE Square X: " << std::endl << XX << std::endl;
+        cv::solvePnP(cv::Mat(world_pt0_cv), cv::Mat(image_pt0_cv), intrinsics, distCoeffs, rvec, tvec, false, cv::SOLVEPNP_IPPE_SQUARE);
+        cv::Rodrigues(rvec, rotation_matrix);
+        Rot << rotation_matrix.at<double>(0, 0), rotation_matrix.at<double>(0, 1), rotation_matrix.at<double>(0, 2),
+                rotation_matrix.at<double>(1, 0), rotation_matrix.at<double>(1, 1), rotation_matrix.at<double>(1, 2),
+                rotation_matrix.at<double>(2, 0), rotation_matrix.at<double>(2, 1), rotation_matrix.at<double>(2, 2);
+        Trans << tvec.at<double>(0), tvec.at<double>(1), tvec.at<double>(2);
+        XX << Rot, Trans, Eigen::Vector3d::Zero(3).transpose(), 1.0;
+        if(verbose) {
+            std::cout << "Opencv IPPE Square X: " << std::endl << XX << std::endl;
+        }
     }
 #endif
 #endif
@@ -504,13 +508,9 @@ void test_pTop_noise(const std::string& name,
     Eigen::Matrix4d cov;
 
     Eigen::MatrixXd cov_left_ = cov_left;
-    double scaling = 1.0;
     double cov_tr = cov_left_.trace();
-//    if(cov_tr <= 1e-5)
-//    {
-        scaling = 3e-5 / (cov_tr);
-        cov_left_ *= scaling;
-//    }
+    double scaling = 1.0 / (cov_tr);
+    cov_left_ *= scaling;
     csdp_cov(cov, F, cov_left_, q);
     cov = cov / scaling;
     std::cout << "Estimated Covariance:" << std::endl << cov << std::endl;
@@ -533,38 +533,18 @@ int main(int argc,char ** argv) {
     clock_t time1 = clock(), time2;
     double loops = 100.0;
 
-//    Eigen::Vector4d q;
-//    q << 0.319153034662463, 0.0137947360154964, 0.906900328581383, 0.274741405221315;
-//    Eigen::Matrix3d cov_left;
-//    cov_left << 4.32090178480567e-09, 1.9881316485166e-09, 7.57378543793111e-10,
-//                1.98813164851657e-09, 5.7051245100625e-08, 2.83263963656342e-08,
-//                7.57378543793107e-10, 2.83263963656342e-08, 1.43515132711022e-08;
-//    Eigen::Matrix<double, 3, 4> F;
-//    F << -0.0133788091155435,       -0.0319461589550735,       -0.0223229328790909,      -0.00211035440564425,
-//         -0.150273289955035,      0.00919882917604315,        -0.657044040069996,        -0.239866632558646,
-//         -0.0175483625464778,       0.00864823916809603,        -0.160369725637978,       -0.0703673441123501;
-//
-//    Eigen::Matrix4d cov;
-//    time1 = clock();
-//    for(int i = 0; i < loops; ++i)
-//        csdp_cov(cov, F, cov_left, q);
-//    time2 = clock();
-//    std::cout << "Covariance: " << cov << std::endl;
-//    time = time2 - time1;
-//    std::cout << "CSDP Time: " << time / loops / double(CLOCKS_PER_SEC) << std::endl;
-
 
 #ifdef USE_OPENCV
     int row, col;
     getScreenResolution(col, row);
-    col = MIN(col, row);
+    col = MIN(col, row) * 0.9;
     row = col;
     double fontsize = row / 1920.0;
     cv::Mat imageDraw = cv::Mat::zeros(row, col, CV_8UC3);
     cv::Mat ColorMask(row, col, CV_8UC3, cv::Scalar(1, 1, 1) * 255);
     cv::addWeighted(imageDraw, 0.0, ColorMask, 1.0, 0, imageDraw);
 
-    const bool verbose = true;
+    const bool verbose = false;
     test_pTop_noise("../data/pTop_data-100pt-1.txt",
                     imageDraw, 1500, 1e-5, fontsize, verbose);
 
@@ -577,12 +557,12 @@ int main(int argc,char ** argv) {
 //    test_generateProjectedPoints();
 
     time1 = clock();
-    loops = 10.0;
+    loops = 100.0;
 
     for(int i = 0; i < (int) loops; ++i)
     {
-//        test_pnp_WQD("../data/pTop_data-5pt-1.txt", false);
-        test_pTop_WQD("../data/pTop_data-100pt-1.txt", false);
+//        test_pnp_WQD("../data/pnp_data-50000pt-1.txt", true);
+        test_pTop_WQD("../data/pTop_data-250000pt-1.txt", false);
     }
     time2 = clock();
     time = time2 - time1;

@@ -15,6 +15,10 @@
 #include <Eigen/Sparse>
 #include "QPEP.h"
 
+#ifdef USE_SUPERLU
+#include <Eigen/SuperLUSupport>
+#endif
+
 
 inline Eigen::VectorXd vec(const Eigen::MatrixXd X)
 {
@@ -141,6 +145,7 @@ inline QPEP_runtime GaussJordanElimination(
 {
     assert(opt.DecompositionMethod == "SparseLU" ||
            opt.DecompositionMethod == "SparseQR" ||
+           opt.DecompositionMethod == "SuperLU" ||
            opt.DecompositionMethod == "HouseholderQR" ||
            opt.DecompositionMethod == "PartialPivLU" ||
            opt.DecompositionMethod == "SVD" ||
@@ -310,6 +315,24 @@ inline QPEP_runtime GaussJordanElimination(
         clock_t time2 = clock();
         stat.timeDecomposition = (time2 - time1) / double(CLOCKS_PER_SEC);
     }
+#ifdef USE_SUPERLU
+    else if(opt.DecompositionMethod == "Cholesky") {
+        clock_t time1 = clock();
+        Eigen::SparseMatrix<double> C1(size_GJ, size_GJ);
+        C1.setZero();
+        data_func(C1, C2, data);
+        Eigen::MatrixXd CC1(C1.toDense());
+        Eigen::LLT<Eigen::MatrixXd> solver(CC1);
+        for (int i = 0; i < C2.cols(); ++i) {
+            Eigen::VectorXd c1 = solver.solve(C2.col(i));
+            C1_.col(i) = c1;
+        }
+        clock_t time2 = clock();
+        stat.timeDecomposition = (time2 - time1) / double(CLOCKS_PER_SEC);
+    }
+#endif
+
+
     return stat;
 }
 

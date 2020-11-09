@@ -1,5 +1,13 @@
 #include "solver_WQ_approx_helper.h"
 
+
+
+#ifdef COMPILER_CLANG
+#pragma clang optimize off
+#elif defined(COMPILER_GCC)
+#pragma GCC optimize ("O0")
+#endif
+
 void data_func_WQ_approx_sparse(Eigen::SparseMatrix<double>& tmp,
                                             Eigen::MatrixXd& tmp2,
                                             const Eigen::VectorXd& data)

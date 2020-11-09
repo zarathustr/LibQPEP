@@ -1,20 +1,12 @@
 #include "pTop_WQD.h"
 #include "utils.h"
-//#include <list>
 #include <numeric>
 #include <thread>
+#ifndef NO_OMP
 #include "omp.h"
-//#include <iomanip>
+#endif
 
-void mixed_pTop_func(Eigen::Matrix<double, 3, 3>& G,
-                     Eigen::Matrix<double, 1, 85>& coef_J_pure,
-                     Eigen::Matrix<double, 1, 11>& coeftq1,
-                     Eigen::Matrix<double, 1, 11>& coeftq2,
-                     Eigen::Matrix<double, 1, 11>& coeftq3,
-                     Eigen::Matrix<double, 1, 36>& coef_Jacob1_qt,
-                     Eigen::Matrix<double, 1, 36>& coef_Jacob2_qt,
-                     Eigen::Matrix<double, 1, 36>& coef_Jacob3_qt,
-                     Eigen::Matrix<double, 1, 36>& coef_Jacob4_qt,
+void mixed_pTop_func(Eigen::Matrix<double, 1, 85>& coef_J_pure,
                      const Eigen::Matrix<double, 9, 1>& pack) {
     double r1 = pack(0);
     double r2 = pack(1);
@@ -29,169 +21,20 @@ void mixed_pTop_func(Eigen::Matrix<double, 3, 3>& G,
     double s_l_1_r_ = n3*n3;
     double s_l_2_r_ = n2*n2;
     double s_l_3_r_ = n1*n1;
-    double s_l_4_r_ = r1*r1;
-    double s_l_5_r_ = r3*r3;
-    double s_l_6_r_ = r2*r2;
     double s_l_7_r_ = -n1*r1+n2*r2+n3*r3;
     double s_l_8_r_ = n1*r1-n2*r2+n3*r3;
     double s_l_9_r_ = b1*n1+b2*n2+b3*n3;
     double s_l_10_r_ = n1*r1+n2*r2-n3*r3;
-    double s_l_11_r_ = s_l_1_r_*s_l_4_r_*8.0-s_l_2_r_*s_l_4_r_*8.0-s_l_1_r_*s_l_6_r_*8.0+s_l_2_r_*s_l_5_r_*8.0-s_l_3_r_*s_l_5_r_*8.0+s_l_3_r_*s_l_6_r_*8.0;
     double s_l_12_r_ = n1*r1+n2*r2+n3*r3;
     double s_l_13_r_ = n1*r2*4.0-n2*r1*4.0;
     double s_l_14_r_ = n2*r3*2.0+n3*r2*2.0;
     double s_l_15_r_ = n1*r2*4.0+n2*r1*4.0;
     double s_l_16_r_ = n1*r3*4.0-n3*r1*4.0;
     double s_l_17_r_ = n2*r3*2.0-n3*r2*2.0;
-    double s_l_18_r_ = n1*n2*r2*r3*1.2E1;
-    double s_l_19_r_ = n2*n3*r1*r3*1.2E1;
-    double s_l_20_r_ = n1*n3*r1*r2*1.2E1;
-    double s_l_21_r_ = n1*n2*r1*r3*1.2E1;
-    double s_l_22_r_ = n1*n3*r2*r3*1.2E1;
-    double s_l_23_r_ = n2*n3*r1*r2*1.2E1;
     double s_l_24_r_ = n1*r3*2.0+n3*r1*2.0;
     double s_l_25_r_ = n1*r3*2.0-n3*r1*2.0;
-    double s_l_26_r_ = b3*r2*s_l_1_r_*-4.0-b2*r3*s_l_2_r_*4.0-b1*n1*n2*r3*4.0-b1*n1*n3*r2*4.0-b2*n2*n3*r2*4.0-b3*n2*n3*r3*4.0;
-    double s_l_27_r_ = s_l_19_r_-s_l_22_r_+n1*n2*s_l_4_r_*4.0-n1*n2*s_l_5_r_*8.0+n1*n2*s_l_6_r_*4.0+r1*r2*s_l_1_r_*8.0-r1*r2*s_l_2_r_*4.0-r1*r2*s_l_3_r_*4.0;
-    double s_l_28_r_ = b2*r1*s_l_2_r_*-4.0-b1*r2*s_l_3_r_*4.0-b1*n1*n2*r1*4.0-b2*n1*n2*r2*4.0-b3*n1*n3*r2*4.0-b3*n2*n3*r1*4.0;
-    double s_l_29_r_ = s_l_18_r_-s_l_23_r_-n1*n3*s_l_4_r_*4.0-n1*n3*s_l_5_r_*4.0+n1*n3*s_l_6_r_*8.0+r1*r3*s_l_1_r_*4.0-r1*r3*s_l_2_r_*8.0+r1*r3*s_l_3_r_*4.0;
-    double s_l_30_r_ = s_l_20_r_-s_l_21_r_-n2*n3*s_l_4_r_*8.0+n2*n3*s_l_5_r_*4.0+n2*n3*s_l_6_r_*4.0-r2*r3*s_l_1_r_*4.0-r2*r3*s_l_2_r_*4.0+r2*r3*s_l_3_r_*8.0;
-    double s_l_31_r_ = s_l_18_r_+s_l_23_r_-n1*n3*s_l_4_r_*4.0-n1*n3*s_l_5_r_*4.0+n1*n3*s_l_6_r_*8.0-r1*r3*s_l_1_r_*4.0+r1*r3*s_l_2_r_*8.0-r1*r3*s_l_3_r_*4.0;
-    double s_l_32_r_ = s_l_20_r_+s_l_21_r_+n2*n3*s_l_4_r_*8.0-n2*n3*s_l_5_r_*4.0-n2*n3*s_l_6_r_*4.0-r2*r3*s_l_1_r_*4.0-r2*r3*s_l_2_r_*4.0+r2*r3*s_l_3_r_*8.0;
-    double s_l_33_r_ = s_l_19_r_+s_l_22_r_-n1*n2*s_l_4_r_*4.0+n1*n2*s_l_5_r_*8.0-n1*n2*s_l_6_r_*4.0+r1*r2*s_l_1_r_*8.0-r1*r2*s_l_2_r_*4.0-r1*r2*s_l_3_r_*4.0;
-    double s_l_34_r_ = n2*n3*r1*4.0;
-    double s_l_35_r_ = n1*n2*r3*4.0;
-    double s_l_36_r_ = b3*r2*s_l_1_r_*4.0-b2*r3*s_l_2_r_*4.0-b1*n1*n2*r3*4.0+b1*n1*n3*r2*4.0+b2*n2*n3*r2*4.0-b3*n2*n3*r3*4.0;
-    double s_l_37_r_ = s_l_20_r_+s_l_21_r_-n2*n3*s_l_4_r_*8.0+n2*n3*s_l_5_r_*4.0+n2*n3*s_l_6_r_*4.0+r2*r3*s_l_1_r_*4.0+r2*r3*s_l_2_r_*4.0-r2*r3*s_l_3_r_*8.0;
-    double s_l_38_r_ = s_l_18_r_+s_l_23_r_+n1*n3*s_l_4_r_*4.0+n1*n3*s_l_5_r_*4.0-n1*n3*s_l_6_r_*8.0+r1*r3*s_l_1_r_*4.0-r1*r3*s_l_2_r_*8.0+r1*r3*s_l_3_r_*4.0;
-    double s_l_39_r_ = s_l_19_r_+s_l_22_r_+n1*n2*s_l_4_r_*4.0-n1*n2*s_l_5_r_*8.0+n1*n2*s_l_6_r_*4.0-r1*r2*s_l_1_r_*8.0+r1*r2*s_l_2_r_*4.0+r1*r2*s_l_3_r_*4.0;
-    double s_l_40_r_ = n1*n3*r2*4.0;
-    double s_l_41_r_ = b3*s_l_34_r_+b2*r1*s_l_2_r_*4.0-b1*r2*s_l_3_r_*4.0+b1*n1*n2*r1*4.0-b2*n1*n2*r2*4.0-b3*n1*n3*r2*4.0;
-    double s_l_42_r_ = b2*s_l_35_r_-b3*r1*s_l_1_r_*4.0+b1*r3*s_l_3_r_*4.0-b1*n1*n3*r1*4.0-b2*n2*n3*r1*4.0+b3*n1*n3*r3*4.0;
-    double s_l_43_r_ = b3*r1*s_l_1_r_*-4.0-b1*r3*s_l_3_r_*4.0-b1*n1*n3*r1*4.0-b2*n1*n2*r3*4.0-b2*n2*n3*r1*4.0-b3*n1*n3*r3*4.0;
-    double s_l_44_r_ = s_l_1_r_*s_l_5_r_*-4.0+s_l_1_r_*s_l_6_r_*8.0+s_l_2_r_*s_l_5_r_*8.0+s_l_3_r_*s_l_4_r_*4.0-s_l_2_r_*s_l_6_r_*4.0-n2*n3*r2*r3*2.4E1;
-    double s_l_45_r_ = n2*n3*r3*4.0;
-    double s_l_46_r_ = n1*n2*r2*4.0;
-    double s_l_47_r_ = n1*n3*r1*4.0;
     double s_l_48_r_ = n1*r2*2.0+n2*r1*2.0;
-    double s_l_49_r_ = s_l_1_r_*s_l_5_r_*-4.0+s_l_1_r_*s_l_6_r_*8.0+s_l_2_r_*s_l_5_r_*8.0+s_l_3_r_*s_l_4_r_*4.0-s_l_2_r_*s_l_6_r_*4.0+n2*n3*r2*r3*2.4E1;
-    double s_l_50_r_ = s_l_1_r_*s_l_4_r_*8.0-s_l_1_r_*s_l_5_r_*4.0-s_l_3_r_*s_l_4_r_*4.0+s_l_2_r_*s_l_6_r_*4.0+s_l_3_r_*s_l_5_r_*8.0+n1*n3*r1*r3*2.4E1;
-    double s_l_51_r_ = s_l_1_r_*s_l_4_r_*8.0-s_l_1_r_*s_l_5_r_*4.0-s_l_3_r_*s_l_4_r_*4.0+s_l_2_r_*s_l_6_r_*4.0+s_l_3_r_*s_l_5_r_*8.0-n1*n3*r1*r3*2.4E1;
-    double s_l_52_r_ = s_l_1_r_*s_l_5_r_*4.0+s_l_2_r_*s_l_4_r_*8.0-s_l_3_r_*s_l_4_r_*4.0-s_l_2_r_*s_l_6_r_*4.0+s_l_3_r_*s_l_6_r_*8.0+n1*n2*r1*r2*2.4E1;
-    double s_l_53_r_ = s_l_1_r_*s_l_5_r_*4.0+s_l_2_r_*s_l_4_r_*8.0-s_l_3_r_*s_l_4_r_*4.0-s_l_2_r_*s_l_6_r_*4.0+s_l_3_r_*s_l_6_r_*8.0-n1*n2*r1*r2*2.4E1;
     double s_l_54_r_ = n1*r2*2.0-n2*r1*2.0;
-    double s_l_55_r_ = n2*n3*r2*4.0;
-    double s_l_56_r_ = n1*n2*r1*4.0;
-    double s_l_57_r_ = n1*n3*r3*4.0;
-    double s_l_58_r_ = n1*n3*r1*r2*2.4E1;
-    double s_l_59_r_ = n2*n3*r1*r3*2.4E1;
-    double s_l_60_r_ = n1*n2*r2*r3*2.4E1;
-    double s_l_61_r_ = -s_l_56_r_+r2*s_l_3_r_*4.0;
-    double s_l_62_r_ = r1*r2*s_l_3_r_*4.0;
-    double s_l_63_r_ = r1*r2*s_l_2_r_*4.0;
-    double s_l_64_r_ = -s_l_57_r_+r1*s_l_1_r_*4.0;
-    double s_l_65_r_ = n1*n3*s_l_5_r_*4.0;
-    double s_l_66_r_ = n1*n3*s_l_4_r_*4.0;
-    double s_l_67_r_ = -s_l_55_r_+r3*s_l_2_r_*4.0;
-    double s_l_68_r_ = r2*r3*s_l_1_r_*4.0;
-    double s_l_69_r_ = n1*n2*r1*r3*2.4E1;
-    double s_l_70_r_ = n2*n3*r2*r3*8.0;
-    double s_l_71_r_ = n1*n3*r1*r3*8.0;
-    double s_l_72_r_ = n1*n2*r1*r2*8.0;
-    double s_l_73_r_ = n1*n3*r2*r3*2.4E1;
-    double s_l_74_r_ = n2*n3*r1*r2*2.4E1;
-    double s_l_75_r_ = r2*r3*s_l_2_r_*4.0;
-    double s_l_76_r_ = n2*n3*s_l_6_r_*4.0;
-    double s_l_77_r_ = r2*r3*s_l_2_r_*8.0;
-    double s_l_78_r_ = r2*r3*s_l_1_r_*8.0;
-    double s_l_79_r_ = n2*n3*s_l_6_r_*8.0;
-    double s_l_80_r_ = n2*n3*s_l_5_r_*8.0;
-    double s_l_81_r_ = r1*r3*s_l_1_r_*1.2E1;
-    double s_l_82_r_ = n1*n3*s_l_4_r_*1.2E1;
-    double s_l_83_r_ = r1*r2*s_l_3_r_*1.2E1;
-    double s_l_84_r_ = n1*n2*s_l_6_r_*1.2E1;
-    double s_l_85_r_ = r1*r2*s_l_3_r_*8.0;
-    double s_l_86_r_ = r1*r2*s_l_2_r_*8.0;
-    double s_l_87_r_ = n1*n2*s_l_6_r_*8.0;
-    double s_l_88_r_ = n1*n2*s_l_4_r_*8.0;
-    double s_l_89_r_ = r1*r3*s_l_3_r_*8.0;
-    double s_l_90_r_ = r1*r3*s_l_1_r_*8.0;
-    double s_l_91_r_ = n1*n3*s_l_5_r_*8.0;
-    double s_l_92_r_ = n1*n3*s_l_4_r_*8.0;
-    double s_l_93_r_ = r2*r3*s_l_2_r_*1.2E1;
-    double s_l_94_r_ = n2*n3*s_l_5_r_*1.2E1;
-    double s_l_95_r_ = s_l_45_r_+r2*s_l_1_r_*4.0;
-    double s_l_96_r_ = s_l_45_r_-r2*s_l_1_r_*4.0;
-    double s_l_97_r_ = s_l_55_r_+r3*s_l_2_r_*4.0;
-    double s_l_98_r_ = s_l_57_r_+r1*s_l_1_r_*4.0;
-    double s_l_99_r_ = s_l_47_r_+r3*s_l_3_r_*4.0;
-    double s_l_100_r_ = s_l_47_r_-r3*s_l_3_r_*4.0;
-    double s_l_101_r_ = r1*r3*s_l_3_r_*4.0;
-    double s_l_102_r_ = s_l_46_r_+r1*s_l_2_r_*4.0;
-    double s_l_103_r_ = s_l_46_r_-r1*s_l_2_r_*4.0;
-    double s_l_104_r_ = s_l_56_r_+r2*s_l_3_r_*4.0;
-    double s_l_105_r_ = n1*n2*s_l_4_r_*4.0;
-    double s_l_106_r_ = -s_l_34_r_+s_l_40_r_;
-    double s_l_107_r_ = s_l_34_r_-s_l_35_r_;
-    double s_l_108_r_ = s_l_35_r_-s_l_40_r_;
-    double s_l_109_r_ = s_l_2_r_*s_l_6_r_*4.0;
-    double s_l_110_r_ = s_l_3_r_*s_l_4_r_*4.0;
-    double s_l_111_r_ = s_l_1_r_*s_l_5_r_*4.0;
-    double s_l_112_r_ = r2*r3*s_l_1_r_*1.2E1;
-    double s_l_113_r_ = n2*n3*s_l_6_r_*1.2E1;
-    double s_l_114_r_ = r1*r3*s_l_2_r_*1.6E1;
-    double s_l_115_r_ = n1*n2*s_l_4_r_*1.2E1;
-    double s_l_116_r_ = n1*n2*s_l_6_r_*4.0;
-    double s_l_117_r_ = s_l_19_r_-s_l_22_r_+s_l_62_r_+s_l_63_r_-s_l_105_r_-s_l_116_r_+n1*n2*s_l_5_r_*8.0-r1*r2*s_l_1_r_*8.0;
-    double s_l_118_r_ = n1*n2*s_l_5_r_*1.6E1;
-    double s_l_119_r_ = r1*r3*s_l_3_r_*1.2E1;
-    double s_l_120_r_ = r2*r3*s_l_3_r_*1.6E1;
-    double s_l_121_r_ = n2*n3*s_l_4_r_*1.6E1;
-    double s_l_122_r_ = r1*r3*s_l_1_r_*4.0;
-    double s_l_123_r_ = s_l_18_r_-s_l_23_r_+s_l_65_r_+s_l_66_r_-s_l_101_r_-s_l_122_r_-n1*n3*s_l_6_r_*8.0+r1*r3*s_l_2_r_*8.0;
-    double s_l_124_r_ = n2*n3*s_l_5_r_*4.0;
-    double s_l_125_r_ = s_l_20_r_-s_l_21_r_+s_l_68_r_+s_l_75_r_-s_l_76_r_-s_l_124_r_+n2*n3*s_l_4_r_*8.0-r2*r3*s_l_3_r_*8.0;
-    double s_l_126_r_ = n2*n3*r2*2.0;
-    double s_l_127_r_ = n1*n3*r1*2.0;
-    double s_l_128_r_ = n2*n3*r3*2.0;
-    double s_l_129_r_ = n1*n2*r1*2.0;
-    double s_l_130_r_ = n1*n3*r3*2.0;
-    double s_l_131_r_ = n1*n2*r2*2.0;
-    double s_l_132_r_ = b3*r3*s_l_1_r_*4.0;
-    double s_l_133_r_ = b2*r2*s_l_2_r_*4.0;
-    double s_l_134_r_ = n1*n3*s_l_5_r_*1.2E1;
-    double s_l_135_r_ = r1*r2*s_l_1_r_*1.6E1;
-    double s_l_136_r_ = r1*r2*s_l_2_r_*1.2E1;
-    double s_l_137_r_ = n1*n3*s_l_6_r_*1.6E1;
-    double s_l_138_r_ = r3*s_l_1_r_*4.0;
-    double s_l_139_r_ = r2*s_l_2_r_*4.0;
-    double s_l_140_r_ = r1*s_l_3_r_*4.0;
-    double s_l_141_r_ = r3*s_l_1_r_*2.0;
-    double s_l_142_r_ = r2*s_l_2_r_*2.0;
-    double s_l_143_r_ = r1*s_l_3_r_*2.0;
-    double s_l_144_r_ = s_l_35_r_+s_l_40_r_;
-    double s_l_145_r_ = s_l_34_r_+s_l_35_r_;
-    double s_l_146_r_ = s_l_34_r_+s_l_40_r_;
-    double s_l_147_r_ = b1*s_l_140_r_;
-    double s_l_148_r_ = b3*s_l_55_r_;
-    double s_l_149_r_ = b2*s_l_56_r_;
-    double s_l_150_r_ = b3*s_l_47_r_;
-    double s_l_151_r_ = b1*s_l_46_r_;
-    double s_l_152_r_ = r3*s_l_40_r_;
-    double s_l_153_r_ = b1*s_l_57_r_;
-    double s_l_154_r_ = b2*s_l_45_r_;
-    double s_l_155_r_ = r2*s_l_34_r_;
-    double s_l_156_r_ = r1*s_l_35_r_;
-
-    G(0, 0) = s_l_3_r_*-2.0;
-    G(0, 1) = n1*n2*-2.0;
-    G(0, 2) = n1*n3*-2.0;
-    G(1, 0) = n1*n2*-2.0;
-    G(1, 1) = s_l_2_r_*-2.0;
-    G(1, 2) = n2*n3*-2.0;
-    G(2, 0) = n1*n3*-2.0;
-    G(2, 1) = n2*n3*-2.0;
-    G(2, 2) = s_l_1_r_*-2.0;
 
     coef_J_pure(0, 0) = s_l_12_r_*s_l_12_r_;
     coef_J_pure(0, 1) = s_l_12_r_*s_l_17_r_*2.0;
@@ -278,194 +121,303 @@ void mixed_pTop_func(Eigen::Matrix<double, 3, 3>& G,
     coef_J_pure(0, 82) = s_l_1_r_;
     coef_J_pure(0, 83) = n3*s_l_9_r_*-2.0;
     coef_J_pure(0, 84) = s_l_9_r_*s_l_9_r_;
-
-    coeftq1(0, 0) = s_l_130_r_+s_l_131_r_+s_l_143_r_;
-    coeftq1(0, 1) = s_l_108_r_;
-    coeftq1(0, 2) = s_l_100_r_;
-    coeftq1(0, 3) = s_l_61_r_;
-    coeftq1(0, 4) = -s_l_130_r_-s_l_131_r_+s_l_143_r_;
-    coeftq1(0, 5) = s_l_104_r_;
-    coeftq1(0, 6) = s_l_99_r_;
-    coeftq1(0, 7) = -s_l_130_r_+s_l_131_r_-s_l_143_r_;
-    coeftq1(0, 8) = s_l_144_r_;
-    coeftq1(0, 9) = s_l_130_r_-s_l_131_r_-s_l_143_r_;
-    coeftq1(0, 10) = b1*s_l_3_r_*-2.0-b2*n1*n2*2.0-b3*n1*n3*2.0;
-
-    coeftq2(0, 0) = s_l_128_r_+s_l_129_r_+s_l_142_r_;
-    coeftq2(0, 1) = s_l_67_r_;
-    coeftq2(0, 2) = s_l_107_r_;
-    coeftq2(0, 3) = s_l_103_r_;
-    coeftq2(0, 4) = -s_l_128_r_+s_l_129_r_-s_l_142_r_;
-    coeftq2(0, 5) = s_l_102_r_;
-    coeftq2(0, 6) = s_l_145_r_;
-    coeftq2(0, 7) = -s_l_128_r_-s_l_129_r_+s_l_142_r_;
-    coeftq2(0, 8) = s_l_97_r_;
-    coeftq2(0, 9) = s_l_128_r_-s_l_129_r_-s_l_142_r_;
-    coeftq2(0, 10) = b2*s_l_2_r_*-2.0-b1*n1*n2*2.0-b3*n2*n3*2.0;
-
-    coeftq3(0, 0) = s_l_126_r_+s_l_127_r_+s_l_141_r_;
-    coeftq3(0, 1) = s_l_96_r_;
-    coeftq3(0, 2) = s_l_64_r_;
-    coeftq3(0, 3) = s_l_106_r_;
-    coeftq3(0, 4) = -s_l_126_r_+s_l_127_r_-s_l_141_r_;
-    coeftq3(0, 5) = s_l_146_r_;
-    coeftq3(0, 6) = s_l_98_r_;
-    coeftq3(0, 7) = s_l_126_r_-s_l_127_r_-s_l_141_r_;
-    coeftq3(0, 8) = s_l_95_r_;
-    coeftq3(0, 9) = -s_l_126_r_-s_l_127_r_+s_l_141_r_;
-    coeftq3(0, 10) = b3*s_l_1_r_*-2.0-b1*n1*n3*2.0-b2*n2*n3*2.0;
-
-    coef_Jacob1_qt(0, 0) = s_l_70_r_+s_l_71_r_+s_l_72_r_+s_l_109_r_+s_l_110_r_+s_l_111_r_;
-    coef_Jacob1_qt(0, 1) = -s_l_20_r_+s_l_21_r_+s_l_93_r_+s_l_94_r_-s_l_112_r_-s_l_113_r_;
-    coef_Jacob1_qt(0, 2) = -s_l_18_r_+s_l_23_r_+s_l_81_r_+s_l_82_r_-s_l_119_r_-s_l_134_r_;
-    coef_Jacob1_qt(0, 3) = -s_l_19_r_+s_l_22_r_+s_l_83_r_+s_l_84_r_-s_l_115_r_-s_l_136_r_;
-    coef_Jacob1_qt(0, 4) = s_l_44_r_;
-    coef_Jacob1_qt(0, 5) = s_l_59_r_+s_l_73_r_+s_l_85_r_+s_l_86_r_+s_l_87_r_+s_l_88_r_-s_l_118_r_-s_l_135_r_;
-    coef_Jacob1_qt(0, 6) = s_l_60_r_+s_l_74_r_+s_l_89_r_+s_l_90_r_+s_l_91_r_+s_l_92_r_-s_l_114_r_-s_l_137_r_;
-    coef_Jacob1_qt(0, 7) = s_l_51_r_;
-    coef_Jacob1_qt(0, 8) = s_l_58_r_+s_l_69_r_+s_l_77_r_+s_l_78_r_+s_l_79_r_+s_l_80_r_-s_l_120_r_-s_l_121_r_;
-    coef_Jacob1_qt(0, 9) = s_l_53_r_;
-    coef_Jacob1_qt(0, 10) = s_l_46_r_+s_l_57_r_+s_l_140_r_;
-    coef_Jacob1_qt(0, 11) = s_l_45_r_+s_l_56_r_+s_l_139_r_;
-    coef_Jacob1_qt(0, 12) = s_l_47_r_+s_l_55_r_+s_l_138_r_;
-    coef_Jacob1_qt(0, 13) = -s_l_132_r_-s_l_133_r_-b1*r1*s_l_3_r_*4.0-b1*n1*n2*r2*4.0-b2*n1*n2*r1*4.0-b1*n1*n3*r3*4.0-b3*n1*n3*r1*4.0-b2*n2*n3*r3*4.0-b3*n2*n3*r2*4.0;
-    coef_Jacob1_qt(0, 14) = s_l_68_r_-s_l_75_r_+s_l_76_r_-s_l_124_r_+s_l_156_r_-n1*n3*r1*r2*4.0;
-    coef_Jacob1_qt(0, 15) = s_l_123_r_;
-    coef_Jacob1_qt(0, 16) = s_l_117_r_;
-    coef_Jacob1_qt(0, 17) = s_l_125_r_;
-    coef_Jacob1_qt(0, 18) = s_l_11_r_;
-    coef_Jacob1_qt(0, 19) = s_l_30_r_;
-    coef_Jacob1_qt(0, 20) = s_l_108_r_;
-    coef_Jacob1_qt(0, 21) = s_l_67_r_;
-    coef_Jacob1_qt(0, 22) = s_l_96_r_;
-    coef_Jacob1_qt(0, 23) = s_l_36_r_;
-    coef_Jacob1_qt(0, 24) = s_l_65_r_-s_l_66_r_+s_l_101_r_-s_l_122_r_+s_l_155_r_-n1*n2*r2*r3*4.0;
-    coef_Jacob1_qt(0, 25) = s_l_27_r_;
-    coef_Jacob1_qt(0, 26) = s_l_29_r_;
-    coef_Jacob1_qt(0, 27) = s_l_100_r_;
-    coef_Jacob1_qt(0, 28) = s_l_107_r_;
-    coef_Jacob1_qt(0, 29) = s_l_64_r_;
-    coef_Jacob1_qt(0, 30) = s_l_42_r_;
-    coef_Jacob1_qt(0, 31) = -s_l_62_r_+s_l_63_r_+s_l_105_r_-s_l_116_r_+s_l_152_r_-n2*n3*r1*r3*4.0;
-    coef_Jacob1_qt(0, 32) = s_l_61_r_;
-    coef_Jacob1_qt(0, 33) = s_l_103_r_;
-    coef_Jacob1_qt(0, 34) = s_l_106_r_;
-    coef_Jacob1_qt(0, 35) = s_l_41_r_;
-
-    coef_Jacob2_qt(0, 0) = -s_l_68_r_+s_l_75_r_-s_l_76_r_+s_l_124_r_+s_l_156_r_-n1*n3*r1*r2*4.0;
-    coef_Jacob2_qt(0, 1) = s_l_44_r_;
-    coef_Jacob2_qt(0, 2) = s_l_39_r_;
-    coef_Jacob2_qt(0, 3) = s_l_38_r_;
-    coef_Jacob2_qt(0, 4) = -s_l_20_r_+s_l_21_r_-s_l_93_r_-s_l_94_r_+s_l_112_r_+s_l_113_r_;
-    coef_Jacob2_qt(0, 5) = s_l_60_r_-s_l_74_r_-s_l_89_r_-s_l_90_r_+s_l_91_r_+s_l_92_r_+s_l_114_r_-s_l_137_r_;
-    coef_Jacob2_qt(0, 6) = s_l_59_r_-s_l_73_r_+s_l_85_r_+s_l_86_r_-s_l_87_r_-s_l_88_r_+s_l_118_r_-s_l_135_r_;
-    coef_Jacob2_qt(0, 7) = s_l_125_r_;
-    coef_Jacob2_qt(0, 8) = s_l_11_r_;
-    coef_Jacob2_qt(0, 9) = s_l_30_r_;
-    coef_Jacob2_qt(0, 10) = s_l_108_r_;
-    coef_Jacob2_qt(0, 11) = s_l_67_r_;
-    coef_Jacob2_qt(0, 12) = s_l_96_r_;
-    coef_Jacob2_qt(0, 13) = s_l_36_r_;
-    coef_Jacob2_qt(0, 14) = s_l_70_r_-s_l_71_r_-s_l_72_r_+s_l_109_r_+s_l_110_r_+s_l_111_r_;
-    coef_Jacob2_qt(0, 15) = -s_l_19_r_-s_l_22_r_+s_l_83_r_-s_l_84_r_+s_l_115_r_-s_l_136_r_;
-    coef_Jacob2_qt(0, 16) = -s_l_18_r_-s_l_23_r_-s_l_81_r_+s_l_82_r_+s_l_119_r_-s_l_134_r_;
-    coef_Jacob2_qt(0, 17) = s_l_52_r_;
-    coef_Jacob2_qt(0, 18) = s_l_58_r_+s_l_69_r_-s_l_77_r_-s_l_78_r_-s_l_79_r_-s_l_80_r_+s_l_120_r_+s_l_121_r_;
-    coef_Jacob2_qt(0, 19) = s_l_50_r_;
-    coef_Jacob2_qt(0, 20) = -s_l_46_r_-s_l_57_r_+s_l_140_r_;
-    coef_Jacob2_qt(0, 21) = -s_l_45_r_+s_l_56_r_-s_l_139_r_;
-    coef_Jacob2_qt(0, 22) = s_l_47_r_-s_l_55_r_-s_l_138_r_;
-    coef_Jacob2_qt(0, 23) = s_l_132_r_+s_l_133_r_+s_l_148_r_+s_l_151_r_+s_l_153_r_+s_l_154_r_-b1*r1*s_l_3_r_*4.0-b2*n1*n2*r1*4.0-b3*n1*n3*r1*4.0;
-    coef_Jacob2_qt(0, 24) = -s_l_62_r_+s_l_63_r_-s_l_105_r_+s_l_116_r_-n1*n3*r2*r3*4.0-n2*n3*r1*r3*4.0;
-    coef_Jacob2_qt(0, 25) = s_l_31_r_;
-    coef_Jacob2_qt(0, 26) = s_l_33_r_;
-    coef_Jacob2_qt(0, 27) = s_l_104_r_;
-    coef_Jacob2_qt(0, 28) = s_l_102_r_;
-    coef_Jacob2_qt(0, 29) = s_l_146_r_;
-    coef_Jacob2_qt(0, 30) = s_l_28_r_;
-    coef_Jacob2_qt(0, 31) = s_l_65_r_-s_l_66_r_-s_l_101_r_+s_l_122_r_-n1*n2*r2*r3*4.0-n2*n3*r1*r2*4.0;
-    coef_Jacob2_qt(0, 32) = s_l_99_r_;
-    coef_Jacob2_qt(0, 33) = s_l_145_r_;
-    coef_Jacob2_qt(0, 34) = s_l_98_r_;
-    coef_Jacob2_qt(0, 35) = s_l_43_r_;
-
-    coef_Jacob3_qt(0, 0) = -s_l_65_r_+s_l_66_r_-s_l_101_r_+s_l_122_r_+s_l_155_r_-n1*n2*r2*r3*4.0;
-    coef_Jacob3_qt(0, 1) = s_l_39_r_;
-    coef_Jacob3_qt(0, 2) = s_l_51_r_;
-    coef_Jacob3_qt(0, 3) = s_l_37_r_;
-    coef_Jacob3_qt(0, 4) = s_l_123_r_;
-    coef_Jacob3_qt(0, 5) = s_l_58_r_-s_l_69_r_+s_l_77_r_+s_l_78_r_-s_l_79_r_-s_l_80_r_-s_l_120_r_+s_l_121_r_;
-    coef_Jacob3_qt(0, 6) = s_l_11_r_;
-    coef_Jacob3_qt(0, 7) = -s_l_18_r_+s_l_23_r_-s_l_81_r_-s_l_82_r_+s_l_119_r_+s_l_134_r_;
-    coef_Jacob3_qt(0, 8) = s_l_59_r_-s_l_73_r_-s_l_85_r_-s_l_86_r_+s_l_87_r_+s_l_88_r_-s_l_118_r_+s_l_135_r_;
-    coef_Jacob3_qt(0, 9) = s_l_29_r_;
-    coef_Jacob3_qt(0, 10) = s_l_100_r_;
-    coef_Jacob3_qt(0, 11) = s_l_107_r_;
-    coef_Jacob3_qt(0, 12) = s_l_64_r_;
-    coef_Jacob3_qt(0, 13) = s_l_42_r_;
-    coef_Jacob3_qt(0, 14) = s_l_62_r_-s_l_63_r_+s_l_105_r_-s_l_116_r_-n1*n3*r2*r3*4.0-n2*n3*r1*r3*4.0;
-    coef_Jacob3_qt(0, 15) = s_l_52_r_;
-    coef_Jacob3_qt(0, 16) = s_l_32_r_;
-    coef_Jacob3_qt(0, 17) = -s_l_19_r_-s_l_22_r_-s_l_83_r_+s_l_84_r_-s_l_115_r_+s_l_136_r_;
-    coef_Jacob3_qt(0, 18) = s_l_60_r_+s_l_74_r_-s_l_89_r_-s_l_90_r_-s_l_91_r_-s_l_92_r_+s_l_114_r_+s_l_137_r_;
-    coef_Jacob3_qt(0, 19) = s_l_33_r_;
-    coef_Jacob3_qt(0, 20) = s_l_104_r_;
-    coef_Jacob3_qt(0, 21) = s_l_102_r_;
-    coef_Jacob3_qt(0, 22) = s_l_146_r_;
-    coef_Jacob3_qt(0, 23) = s_l_28_r_;
-    coef_Jacob3_qt(0, 24) = -s_l_70_r_+s_l_71_r_-s_l_72_r_+s_l_109_r_+s_l_110_r_+s_l_111_r_;
-    coef_Jacob3_qt(0, 25) = -s_l_20_r_-s_l_21_r_+s_l_93_r_-s_l_94_r_-s_l_112_r_+s_l_113_r_;
-    coef_Jacob3_qt(0, 26) = s_l_49_r_;
-    coef_Jacob3_qt(0, 27) = s_l_46_r_-s_l_57_r_-s_l_140_r_;
-    coef_Jacob3_qt(0, 28) = -s_l_45_r_-s_l_56_r_+s_l_139_r_;
-    coef_Jacob3_qt(0, 29) = -s_l_47_r_+s_l_55_r_-s_l_138_r_;
-    coef_Jacob3_qt(0, 30) = s_l_132_r_-s_l_133_r_+s_l_147_r_+s_l_149_r_+s_l_150_r_+s_l_153_r_+s_l_154_r_-b1*n1*n2*r2*4.0-b3*n2*n3*r2*4.0;
-    coef_Jacob3_qt(0, 31) = s_l_68_r_-s_l_75_r_-s_l_76_r_+s_l_124_r_-n1*n2*r1*r3*4.0-n1*n3*r1*r2*4.0;
-    coef_Jacob3_qt(0, 32) = s_l_144_r_;
-    coef_Jacob3_qt(0, 33) = s_l_97_r_;
-    coef_Jacob3_qt(0, 34) = s_l_95_r_;
-    coef_Jacob3_qt(0, 35) = s_l_26_r_;
-
-    coef_Jacob4_qt(0, 0) = s_l_62_r_-s_l_63_r_-s_l_105_r_+s_l_116_r_+s_l_152_r_-n2*n3*r1*r3*4.0;
-    coef_Jacob4_qt(0, 1) = s_l_38_r_;
-    coef_Jacob4_qt(0, 2) = s_l_37_r_;
-    coef_Jacob4_qt(0, 3) = s_l_53_r_;
-    coef_Jacob4_qt(0, 4) = s_l_117_r_;
-    coef_Jacob4_qt(0, 5) = s_l_11_r_;
-    coef_Jacob4_qt(0, 6) = s_l_58_r_-s_l_69_r_-s_l_77_r_-s_l_78_r_+s_l_79_r_+s_l_80_r_+s_l_120_r_-s_l_121_r_;
-    coef_Jacob4_qt(0, 7) = s_l_27_r_;
-    coef_Jacob4_qt(0, 8) = s_l_60_r_-s_l_74_r_+s_l_89_r_+s_l_90_r_-s_l_91_r_-s_l_92_r_-s_l_114_r_+s_l_137_r_;
-    coef_Jacob4_qt(0, 9) = -s_l_19_r_+s_l_22_r_-s_l_83_r_-s_l_84_r_+s_l_115_r_+s_l_136_r_;
-    coef_Jacob4_qt(0, 10) = s_l_61_r_;
-    coef_Jacob4_qt(0, 11) = s_l_103_r_;
-    coef_Jacob4_qt(0, 12) = s_l_106_r_;
-    coef_Jacob4_qt(0, 13) = s_l_41_r_;
-    coef_Jacob4_qt(0, 14) = -s_l_65_r_+s_l_66_r_+s_l_101_r_-s_l_122_r_-n1*n2*r2*r3*4.0-n2*n3*r1*r2*4.0;
-    coef_Jacob4_qt(0, 15) = s_l_32_r_;
-    coef_Jacob4_qt(0, 16) = s_l_50_r_;
-    coef_Jacob4_qt(0, 17) = s_l_31_r_;
-    coef_Jacob4_qt(0, 18) = s_l_59_r_+s_l_73_r_-s_l_85_r_-s_l_86_r_-s_l_87_r_-s_l_88_r_+s_l_118_r_+s_l_135_r_;
-    coef_Jacob4_qt(0, 19) = -s_l_18_r_-s_l_23_r_+s_l_81_r_-s_l_82_r_-s_l_119_r_+s_l_134_r_;
-    coef_Jacob4_qt(0, 20) = s_l_99_r_;
-    coef_Jacob4_qt(0, 21) = s_l_145_r_;
-    coef_Jacob4_qt(0, 22) = s_l_98_r_;
-    coef_Jacob4_qt(0, 23) = s_l_43_r_;
-    coef_Jacob4_qt(0, 24) = -s_l_68_r_+s_l_75_r_+s_l_76_r_-s_l_124_r_-n1*n2*r1*r3*4.0-n1*n3*r1*r2*4.0;
-    coef_Jacob4_qt(0, 25) = s_l_49_r_;
-    coef_Jacob4_qt(0, 26) = -s_l_20_r_-s_l_21_r_-s_l_93_r_+s_l_94_r_+s_l_112_r_-s_l_113_r_;
-    coef_Jacob4_qt(0, 27) = s_l_144_r_;
-    coef_Jacob4_qt(0, 28) = s_l_97_r_;
-    coef_Jacob4_qt(0, 29) = s_l_95_r_;
-    coef_Jacob4_qt(0, 30) = s_l_26_r_;
-    coef_Jacob4_qt(0, 31) = -s_l_70_r_-s_l_71_r_+s_l_72_r_+s_l_109_r_+s_l_110_r_+s_l_111_r_;
-    coef_Jacob4_qt(0, 32) = -s_l_46_r_+s_l_57_r_-s_l_140_r_;
-    coef_Jacob4_qt(0, 33) = s_l_45_r_-s_l_56_r_-s_l_139_r_;
-    coef_Jacob4_qt(0, 34) = -s_l_47_r_-s_l_55_r_+s_l_138_r_;
-    coef_Jacob4_qt(0, 35) = -s_l_132_r_+s_l_133_r_+s_l_147_r_+s_l_148_r_+s_l_149_r_+s_l_150_r_+s_l_151_r_-b1*n1*n3*r3*4.0-b2*n2*n3*r3*4.0;
 }
 
 
-void mixed2_pTop_func(Eigen::Matrix<double, 4, 24>& coef_f_q_sym,
+
+void mixed2_pTop_func(Eigen::Matrix<double, 3, 3>& G,
+                     Eigen::Matrix<double, 1, 11>& coeftq1,
+                     Eigen::Matrix<double, 1, 11>& coeftq2,
+                     Eigen::Matrix<double, 1, 11>& coeftq3,
+                     Eigen::Matrix<double, 1, 36>& coef_Jacob1_qt,
+                     Eigen::Matrix<double, 1, 36>& coef_Jacob2_qt,
+                     Eigen::Matrix<double, 1, 36>& coef_Jacob3_qt,
+                     Eigen::Matrix<double, 1, 36>& coef_Jacob4_qt,
+                     const Eigen::Matrix<double, 1, 85>& coef_J_pure) {
+        double coef_J1 = coef_J_pure(0);
+        double coef_J2 = coef_J_pure(1);
+        double coef_J3 = coef_J_pure(2);
+        double coef_J4 = coef_J_pure(3);
+        double coef_J5 = coef_J_pure(4);
+        double coef_J6 = coef_J_pure(5);
+        double coef_J7 = coef_J_pure(6);
+        double coef_J8 = coef_J_pure(7);
+        double coef_J9 = coef_J_pure(8);
+        double coef_J10 = coef_J_pure(9);
+        double coef_J11 = coef_J_pure(10);
+        double coef_J12 = coef_J_pure(11);
+        double coef_J13 = coef_J_pure(12);
+        double coef_J14 = coef_J_pure(13);
+        double coef_J15 = coef_J_pure(14);
+        double coef_J16 = coef_J_pure(15);
+        double coef_J17 = coef_J_pure(16);
+        double coef_J18 = coef_J_pure(17);
+        double coef_J19 = coef_J_pure(18);
+        double coef_J20 = coef_J_pure(19);
+        double coef_J21 = coef_J_pure(20);
+        double coef_J22 = coef_J_pure(21);
+        double coef_J23 = coef_J_pure(22);
+        double coef_J24 = coef_J_pure(23);
+        double coef_J25 = coef_J_pure(24);
+        double coef_J26 = coef_J_pure(25);
+        double coef_J27 = coef_J_pure(26);
+        double coef_J28 = coef_J_pure(27);
+        double coef_J29 = coef_J_pure(28);
+        double coef_J30 = coef_J_pure(29);
+        double coef_J31 = coef_J_pure(30);
+        double coef_J32 = coef_J_pure(31);
+        double coef_J33 = coef_J_pure(32);
+        double coef_J34 = coef_J_pure(33);
+        double coef_J35 = coef_J_pure(34);
+        double coef_J36 = coef_J_pure(35);
+        double coef_J37 = coef_J_pure(36);
+        double coef_J38 = coef_J_pure(37);
+        double coef_J39 = coef_J_pure(38);
+        double coef_J40 = coef_J_pure(39);
+        double coef_J41 = coef_J_pure(40);
+        double coef_J42 = coef_J_pure(41);
+        double coef_J43 = coef_J_pure(42);
+        double coef_J44 = coef_J_pure(43);
+        double coef_J45 = coef_J_pure(44);
+        double coef_J46 = coef_J_pure(45);
+        double coef_J47 = coef_J_pure(46);
+        double coef_J48 = coef_J_pure(47);
+        double coef_J49 = coef_J_pure(48);
+        double coef_J50 = coef_J_pure(49);
+        double coef_J51 = coef_J_pure(50);
+        double coef_J52 = coef_J_pure(51);
+        double coef_J53 = coef_J_pure(52);
+        double coef_J54 = coef_J_pure(53);
+        double coef_J55 = coef_J_pure(54);
+        double coef_J56 = coef_J_pure(55);
+        double coef_J57 = coef_J_pure(56);
+        double coef_J58 = coef_J_pure(57);
+        double coef_J59 = coef_J_pure(58);
+        double coef_J60 = coef_J_pure(59);
+        double coef_J61 = coef_J_pure(60);
+        double coef_J62 = coef_J_pure(61);
+        double coef_J63 = coef_J_pure(62);
+        double coef_J64 = coef_J_pure(63);
+        double coef_J65 = coef_J_pure(64);
+        double coef_J66 = coef_J_pure(65);
+        double coef_J67 = coef_J_pure(66);
+        double coef_J68 = coef_J_pure(67);
+        double coef_J69 = coef_J_pure(68);
+        double coef_J70 = coef_J_pure(69);
+        double coef_J71 = coef_J_pure(70);
+        double coef_J72 = coef_J_pure(71);
+        double coef_J73 = coef_J_pure(72);
+        double coef_J74 = coef_J_pure(73);
+        double coef_J75 = coef_J_pure(74);
+        double coef_J76 = coef_J_pure(75);
+        double coef_J77 = coef_J_pure(76);
+        double coef_J78 = coef_J_pure(77);
+        double coef_J79 = coef_J_pure(78);
+        double coef_J80 = coef_J_pure(79);
+        double coef_J81 = coef_J_pure(80);
+        double coef_J82 = coef_J_pure(81);
+        double coef_J83 = coef_J_pure(82);
+        double coef_J84 = coef_J_pure(83);
+        double coef_J85 = coef_J_pure(84);
+
+        G(0, 0) = coef_J76*-2.0;
+        G(0, 1) = -coef_J77;
+        G(0, 2) = -coef_J78;
+        G(1, 0) = -coef_J77;
+        G(1, 1) = coef_J80*-2.0;
+        G(1, 2) = -coef_J81;
+        G(2, 0) = -coef_J78;
+        G(2, 1) = -coef_J81;
+        G(2, 2) = coef_J83*-2.0;
+
+        coeftq1(0, 0) = coef_J11;
+        coeftq1(0, 1) = coef_J21;
+        coeftq1(0, 2) = coef_J28;
+        coeftq1(0, 3) = coef_J33;
+        coeftq1(0, 4) = coef_J43;
+        coeftq1(0, 5) = coef_J50;
+        coeftq1(0, 6) = coef_J55;
+        coeftq1(0, 7) = coef_J62;
+        coeftq1(0, 8) = coef_J67;
+        coeftq1(0, 9) = coef_J72;
+        coeftq1(0, 10) = coef_J79;
+
+        coeftq2(0, 0) = coef_J12;
+        coeftq2(0, 1) = coef_J22;
+        coeftq2(0, 2) = coef_J29;
+        coeftq2(0, 3) = coef_J34;
+        coeftq2(0, 4) = coef_J44;
+        coeftq2(0, 5) = coef_J51;
+        coeftq2(0, 6) = coef_J56;
+        coeftq2(0, 7) = coef_J63;
+        coeftq2(0, 8) = coef_J68;
+        coeftq2(0, 9) = coef_J73;
+        coeftq2(0, 10) = coef_J82;
+
+        coeftq3(0, 0) = coef_J13;
+        coeftq3(0, 1) = coef_J23;
+        coeftq3(0, 2) = coef_J30;
+        coeftq3(0, 3) = coef_J35;
+        coeftq3(0, 4) = coef_J45;
+        coeftq3(0, 5) = coef_J52;
+        coeftq3(0, 6) = coef_J57;
+        coeftq3(0, 7) = coef_J64;
+        coeftq3(0, 8) = coef_J69;
+        coeftq3(0, 9) = coef_J74;
+        coeftq3(0, 10) = coef_J84;
+
+        coef_Jacob1_qt(0, 0) = coef_J1*4.0;
+        coef_Jacob1_qt(0, 1) = coef_J2*3.0;
+        coef_Jacob1_qt(0, 2) = coef_J3*3.0;
+        coef_Jacob1_qt(0, 3) = coef_J4*3.0;
+        coef_Jacob1_qt(0, 4) = coef_J5*2.0;
+        coef_Jacob1_qt(0, 5) = coef_J6*2.0;
+        coef_Jacob1_qt(0, 6) = coef_J7*2.0;
+        coef_Jacob1_qt(0, 7) = coef_J8*2.0;
+        coef_Jacob1_qt(0, 8) = coef_J9*2.0;
+        coef_Jacob1_qt(0, 9) = coef_J10*2.0;
+        coef_Jacob1_qt(0, 10) = coef_J11*2.0;
+        coef_Jacob1_qt(0, 11) = coef_J12*2.0;
+        coef_Jacob1_qt(0, 12) = coef_J13*2.0;
+        coef_Jacob1_qt(0, 13) = coef_J14*2.0;
+        coef_Jacob1_qt(0, 14) = coef_J15;
+        coef_Jacob1_qt(0, 15) = coef_J16;
+        coef_Jacob1_qt(0, 16) = coef_J17;
+        coef_Jacob1_qt(0, 17) = coef_J18;
+        coef_Jacob1_qt(0, 18) = coef_J19;
+        coef_Jacob1_qt(0, 19) = coef_J20;
+        coef_Jacob1_qt(0, 20) = coef_J21;
+        coef_Jacob1_qt(0, 21) = coef_J22;
+        coef_Jacob1_qt(0, 22) = coef_J23;
+        coef_Jacob1_qt(0, 23) = coef_J24;
+        coef_Jacob1_qt(0, 24) = coef_J25;
+        coef_Jacob1_qt(0, 25) = coef_J26;
+        coef_Jacob1_qt(0, 26) = coef_J27;
+        coef_Jacob1_qt(0, 27) = coef_J28;
+        coef_Jacob1_qt(0, 28) = coef_J29;
+        coef_Jacob1_qt(0, 29) = coef_J30;
+        coef_Jacob1_qt(0, 30) = coef_J31;
+        coef_Jacob1_qt(0, 31) = coef_J32;
+        coef_Jacob1_qt(0, 32) = coef_J33;
+        coef_Jacob1_qt(0, 33) = coef_J34;
+        coef_Jacob1_qt(0, 34) = coef_J35;
+        coef_Jacob1_qt(0, 35) = coef_J36;
+
+        coef_Jacob2_qt(0, 0) = coef_J2;
+        coef_Jacob2_qt(0, 1) = coef_J5*2.0;
+        coef_Jacob2_qt(0, 2) = coef_J6;
+        coef_Jacob2_qt(0, 3) = coef_J7;
+        coef_Jacob2_qt(0, 4) = coef_J15*3.0;
+        coef_Jacob2_qt(0, 5) = coef_J16*2.0;
+        coef_Jacob2_qt(0, 6) = coef_J17*2.0;
+        coef_Jacob2_qt(0, 7) = coef_J18;
+        coef_Jacob2_qt(0, 8) = coef_J19;
+        coef_Jacob2_qt(0, 9) = coef_J20;
+        coef_Jacob2_qt(0, 10) = coef_J21;
+        coef_Jacob2_qt(0, 11) = coef_J22;
+        coef_Jacob2_qt(0, 12) = coef_J23;
+        coef_Jacob2_qt(0, 13) = coef_J24;
+        coef_Jacob2_qt(0, 14) = coef_J37*4.0;
+        coef_Jacob2_qt(0, 15) = coef_J38*3.0;
+        coef_Jacob2_qt(0, 16) = coef_J39*3.0;
+        coef_Jacob2_qt(0, 17) = coef_J40*2.0;
+        coef_Jacob2_qt(0, 18) = coef_J41*2.0;
+        coef_Jacob2_qt(0, 19) = coef_J42*2.0;
+        coef_Jacob2_qt(0, 20) = coef_J43*2.0;
+        coef_Jacob2_qt(0, 21) = coef_J44*2.0;
+        coef_Jacob2_qt(0, 22) = coef_J45*2.0;
+        coef_Jacob2_qt(0, 23) = coef_J46*2.0;
+        coef_Jacob2_qt(0, 24) = coef_J47;
+        coef_Jacob2_qt(0, 25) = coef_J48;
+        coef_Jacob2_qt(0, 26) = coef_J49;
+        coef_Jacob2_qt(0, 27) = coef_J50;
+        coef_Jacob2_qt(0, 28) = coef_J51;
+        coef_Jacob2_qt(0, 29) = coef_J52;
+        coef_Jacob2_qt(0, 30) = coef_J53;
+        coef_Jacob2_qt(0, 31) = coef_J54;
+        coef_Jacob2_qt(0, 32) = coef_J55;
+        coef_Jacob2_qt(0, 33) = coef_J56;
+        coef_Jacob2_qt(0, 34) = coef_J57;
+        coef_Jacob2_qt(0, 35) = coef_J58;
+
+        coef_Jacob3_qt(0, 0) = coef_J3;
+        coef_Jacob3_qt(0, 1) = coef_J6;
+        coef_Jacob3_qt(0, 2) = coef_J8*2.0;
+        coef_Jacob3_qt(0, 3) = coef_J9;
+        coef_Jacob3_qt(0, 4) = coef_J16;
+        coef_Jacob3_qt(0, 5) = coef_J18*2.0;
+        coef_Jacob3_qt(0, 6) = coef_J19;
+        coef_Jacob3_qt(0, 7) = coef_J25*3.0;
+        coef_Jacob3_qt(0, 8) = coef_J26*2.0;
+        coef_Jacob3_qt(0, 9) = coef_J27;
+        coef_Jacob3_qt(0, 10) = coef_J28;
+        coef_Jacob3_qt(0, 11) = coef_J29;
+        coef_Jacob3_qt(0, 12) = coef_J30;
+        coef_Jacob3_qt(0, 13) = coef_J31;
+        coef_Jacob3_qt(0, 14) = coef_J38;
+        coef_Jacob3_qt(0, 15) = coef_J40*2.0;
+        coef_Jacob3_qt(0, 16) = coef_J41;
+        coef_Jacob3_qt(0, 17) = coef_J47*3.0;
+        coef_Jacob3_qt(0, 18) = coef_J48*2.0;
+        coef_Jacob3_qt(0, 19) = coef_J49;
+        coef_Jacob3_qt(0, 20) = coef_J50;
+        coef_Jacob3_qt(0, 21) = coef_J51;
+        coef_Jacob3_qt(0, 22) = coef_J52;
+        coef_Jacob3_qt(0, 23) = coef_J53;
+        coef_Jacob3_qt(0, 24) = coef_J59*4.0;
+        coef_Jacob3_qt(0, 25) = coef_J60*3.0;
+        coef_Jacob3_qt(0, 26) = coef_J61*2.0;
+        coef_Jacob3_qt(0, 27) = coef_J62*2.0;
+        coef_Jacob3_qt(0, 28) = coef_J63*2.0;
+        coef_Jacob3_qt(0, 29) = coef_J64*2.0;
+        coef_Jacob3_qt(0, 30) = coef_J65*2.0;
+        coef_Jacob3_qt(0, 31) = coef_J66;
+        coef_Jacob3_qt(0, 32) = coef_J67;
+        coef_Jacob3_qt(0, 33) = coef_J68;
+        coef_Jacob3_qt(0, 34) = coef_J69;
+        coef_Jacob3_qt(0, 35) = coef_J70;
+
+        coef_Jacob4_qt(0, 0) = coef_J4;
+        coef_Jacob4_qt(0, 1) = coef_J7;
+        coef_Jacob4_qt(0, 2) = coef_J9;
+        coef_Jacob4_qt(0, 3) = coef_J10*2.0;
+        coef_Jacob4_qt(0, 4) = coef_J17;
+        coef_Jacob4_qt(0, 5) = coef_J19;
+        coef_Jacob4_qt(0, 6) = coef_J20*2.0;
+        coef_Jacob4_qt(0, 7) = coef_J26;
+        coef_Jacob4_qt(0, 8) = coef_J27*2.0;
+        coef_Jacob4_qt(0, 9) = coef_J32*3.0;
+        coef_Jacob4_qt(0, 10) = coef_J33;
+        coef_Jacob4_qt(0, 11) = coef_J34;
+        coef_Jacob4_qt(0, 12) = coef_J35;
+        coef_Jacob4_qt(0, 13) = coef_J36;
+        coef_Jacob4_qt(0, 14) = coef_J39;
+        coef_Jacob4_qt(0, 15) = coef_J41;
+        coef_Jacob4_qt(0, 16) = coef_J42*2.0;
+        coef_Jacob4_qt(0, 17) = coef_J48;
+        coef_Jacob4_qt(0, 18) = coef_J49*2.0;
+        coef_Jacob4_qt(0, 19) = coef_J54*3.0;
+        coef_Jacob4_qt(0, 20) = coef_J55;
+        coef_Jacob4_qt(0, 21) = coef_J56;
+        coef_Jacob4_qt(0, 22) = coef_J57;
+        coef_Jacob4_qt(0, 23) = coef_J58;
+        coef_Jacob4_qt(0, 24) = coef_J60;
+        coef_Jacob4_qt(0, 25) = coef_J61*2.0;
+        coef_Jacob4_qt(0, 26) = coef_J66*3.0;
+        coef_Jacob4_qt(0, 27) = coef_J67;
+        coef_Jacob4_qt(0, 28) = coef_J68;
+        coef_Jacob4_qt(0, 29) = coef_J69;
+        coef_Jacob4_qt(0, 30) = coef_J70;
+        coef_Jacob4_qt(0, 31) = coef_J71*4.0;
+        coef_Jacob4_qt(0, 32) = coef_J72*2.0;
+        coef_Jacob4_qt(0, 33) = coef_J73*2.0;
+        coef_Jacob4_qt(0, 34) = coef_J74*2.0;
+        coef_Jacob4_qt(0, 35) = coef_J75*2.0;
+
+}
+
+
+void mixed3_pTop_func(Eigen::Matrix<double, 4, 24>& coef_f_q_sym,
                       Eigen::Matrix<double, 4, 64>& W,
                       Eigen::Matrix<double, 4, 4>& Q,
                       const Eigen::Matrix<double, 3, 3>& pinvG,
@@ -1273,70 +1225,27 @@ void pTop_WQD(Eigen::Matrix<double, 4, 64>& W,
 {
     int len = rr.size();
 
-    Eigen::Matrix<double, 1, 11> coeftq1;
-    Eigen::Matrix<double, 1, 11> coeftq2;
-    Eigen::Matrix<double, 1, 11> coeftq3;
-    Eigen::Matrix<double, 1, 36> coef_Jacob1_qt;
-    Eigen::Matrix<double, 1, 36> coef_Jacob2_qt;
-    Eigen::Matrix<double, 1, 36> coef_Jacob3_qt;
-    Eigen::Matrix<double, 1, 36> coef_Jacob4_qt;
-    Eigen::Matrix3d G;
-
 
     double factor = 1.0 / ((double) len);
     const int cores = std::thread::hardware_concurrency();
     const int section = len / cores;
     const int remainder = len % cores;
-    const int num_threshold = 5000;
+    const int num_threshold = 50000;
 
     if(len < 16)
     {
-        G.setZero();
         coef_J_pure.setZero();
-        coeftq1.setZero();
-        coeftq2.setZero();
-        coeftq2.setZero();
-        coef_Jacob1_qt.setZero();
-        coef_Jacob2_qt.setZero();
-        coef_Jacob3_qt.setZero();
-        coef_Jacob4_qt.setZero();
         for(int i = 0; i < len; ++i)
         {
             Eigen::Matrix<double, 9, 1> pack;
             pack << rr[i], bb[i], nv[i];
-            Eigen::Matrix<double, 1, 11> coeftq1s_;
-            Eigen::Matrix<double, 1, 11> coeftq2s_;
-            Eigen::Matrix<double, 1, 11> coeftq3s_;
-            Eigen::Matrix<double, 1, 36> coef_Jacob1_qts_;
-            Eigen::Matrix<double, 1, 36> coef_Jacob2_qts_;
-            Eigen::Matrix<double, 1, 36> coef_Jacob3_qts_;
-            Eigen::Matrix<double, 1, 36> coef_Jacob4_qts_;
             Eigen::Matrix<double, 1, 85> coef_J_pures_;
-            Eigen::Matrix3d Gs_;
-            mixed_pTop_func(Gs_, coef_J_pures_, coeftq1s_, coeftq2s_, coeftq3s_,
-                            coef_Jacob1_qts_, coef_Jacob2_qts_, coef_Jacob3_qts_, coef_Jacob4_qts_,
-                            pack);
-            G += Gs_;
+            mixed_pTop_func(coef_J_pures_, pack);
             coef_J_pure += coef_J_pures_;
-            coeftq1 += coeftq1s_;
-            coeftq2 += coeftq2s_;
-            coeftq3 += coeftq3s_;
-            coef_Jacob1_qt += coef_Jacob1_qts_;
-            coef_Jacob2_qt += coef_Jacob2_qts_;
-            coef_Jacob3_qt += coef_Jacob3_qts_;
-            coef_Jacob4_qt += coef_Jacob4_qts_;
         }
     }
     else if(len >= 16 && len < num_threshold)
     {
-        std::vector<Eigen::Matrix3d> Gs(len, Eigen::Matrix<double, 3, 3>::Zero());
-        std::vector<Eigen::Matrix<double, 1, 11> > coeftq1s(len, Eigen::Matrix<double, 1, 11>::Zero());
-        std::vector<Eigen::Matrix<double, 1, 11> > coeftq2s(len, Eigen::Matrix<double, 1, 11>::Zero());
-        std::vector<Eigen::Matrix<double, 1, 11> > coeftq3s(len, Eigen::Matrix<double, 1, 11>::Zero());
-        std::vector<Eigen::Matrix<double, 1, 36> > coef_Jacob1_qts(len, Eigen::Matrix<double, 1, 36>::Zero());
-        std::vector<Eigen::Matrix<double, 1, 36> > coef_Jacob2_qts(len, Eigen::Matrix<double, 1, 36>::Zero());
-        std::vector<Eigen::Matrix<double, 1, 36> > coef_Jacob3_qts(len, Eigen::Matrix<double, 1, 36>::Zero());
-        std::vector<Eigen::Matrix<double, 1, 36> > coef_Jacob4_qts(len, Eigen::Matrix<double, 1, 36>::Zero());
         std::vector<Eigen::Matrix<double, 1, 85> > coef_J_pures(len, Eigen::Matrix<double, 1, 85>::Zero());
         std::vector<Eigen::Matrix<double, 9, 1> > pack(len);
 
@@ -1346,36 +1255,25 @@ void pTop_WQD(Eigen::Matrix<double, 4, 64>& W,
 
         for(int ii = 0; ii < len; ++ii)
         {
-            mixed_pTop_func(Gs[ii], coef_J_pures[ii], coeftq1s[ii], coeftq2s[ii], coeftq3s[ii],
-                            coef_Jacob1_qts[ii], coef_Jacob2_qts[ii], coef_Jacob3_qts[ii], coef_Jacob4_qts[ii], pack[ii]);
+            mixed_pTop_func(coef_J_pures[ii], pack[ii]);
         }
 
-        G = factor * std::accumulate(Gs.begin(), Gs.end(), Eigen::Matrix3d::Zero().eval());
-        coeftq1 = factor * std::accumulate(coeftq1s.begin(), coeftq1s.end(), Eigen::Matrix<double, 1, 11>::Zero().eval());
-        coeftq2 = factor * std::accumulate(coeftq2s.begin(), coeftq2s.end(), Eigen::Matrix<double, 1, 11>::Zero().eval());
-        coeftq3 = factor * std::accumulate(coeftq3s.begin(), coeftq3s.end(), Eigen::Matrix<double, 1, 11>::Zero().eval());
-        coef_Jacob1_qt = factor * std::accumulate(coef_Jacob1_qts.begin(), coef_Jacob1_qts.end(), Eigen::Matrix<double, 1, 36>::Zero().eval());
-        coef_Jacob2_qt = factor * std::accumulate(coef_Jacob2_qts.begin(), coef_Jacob2_qts.end(), Eigen::Matrix<double, 1, 36>::Zero().eval());
-        coef_Jacob3_qt = factor * std::accumulate(coef_Jacob3_qts.begin(), coef_Jacob3_qts.end(), Eigen::Matrix<double, 1, 36>::Zero().eval());
-        coef_Jacob4_qt = factor * std::accumulate(coef_Jacob4_qts.begin(), coef_Jacob4_qts.end(), Eigen::Matrix<double, 1, 36>::Zero().eval());
         coef_J_pure = factor * std::accumulate(coef_J_pures.begin(), coef_J_pures.end(), Eigen::Matrix<double, 1, 85>::Zero().eval());
     }
     else if(len >= num_threshold)
     {
+#ifndef NO_OMP
         omp_set_num_threads(cores);
-        std::vector<Eigen::Matrix3d> Gss(cores + 1, Eigen::Matrix<double, 3, 3>::Zero());
-        std::vector<Eigen::Matrix<double, 1, 11> > coeftq1ss(cores + 1, Eigen::Matrix<double, 1, 11>::Zero());
-        std::vector<Eigen::Matrix<double, 1, 11> > coeftq2ss(cores + 1, Eigen::Matrix<double, 1, 11>::Zero());
-        std::vector<Eigen::Matrix<double, 1, 11> > coeftq3ss(cores + 1, Eigen::Matrix<double, 1, 11>::Zero());
-        std::vector<Eigen::Matrix<double, 1, 36> > coef_Jacob1_qtss(cores + 1, Eigen::Matrix<double, 1, 36>::Zero());
-        std::vector<Eigen::Matrix<double, 1, 36> > coef_Jacob2_qtss(cores + 1, Eigen::Matrix<double, 1, 36>::Zero());
-        std::vector<Eigen::Matrix<double, 1, 36> > coef_Jacob3_qtss(cores + 1, Eigen::Matrix<double, 1, 36>::Zero());
-        std::vector<Eigen::Matrix<double, 1, 36> > coef_Jacob4_qtss(cores + 1, Eigen::Matrix<double, 1, 36>::Zero());
+#endif
         std::vector<Eigen::Matrix<double, 1, 85> > coef_J_puress(cores + 1, Eigen::Matrix<double, 1, 85>::Zero());
         {
+#ifndef NO_OMP
 #pragma omp parallel
+#endif
             {
+#ifndef NO_OMP
 #pragma omp for
+#endif
                 for(int j = 0; j <= cores; ++j)
                 {
                     int length = 0;
@@ -1384,66 +1282,42 @@ void pTop_WQD(Eigen::Matrix<double, 4, 64>& W,
                     else if(j == cores)
                         length = remainder;
 
-                    Eigen::Matrix<double, 1, 11> coeftq1s(Eigen::Matrix<double, 1, 11>::Zero());
-                    Eigen::Matrix<double, 1, 11> coeftq2s(Eigen::Matrix<double, 1, 11>::Zero());
-                    Eigen::Matrix<double, 1, 11> coeftq3s(Eigen::Matrix<double, 1, 11>::Zero());
-                    Eigen::Matrix<double, 1, 36> coef_Jacob1_qts(Eigen::Matrix<double, 1, 36>::Zero());
-                    Eigen::Matrix<double, 1, 36> coef_Jacob2_qts(Eigen::Matrix<double, 1, 36>::Zero());
-                    Eigen::Matrix<double, 1, 36> coef_Jacob3_qts(Eigen::Matrix<double, 1, 36>::Zero());
-                    Eigen::Matrix<double, 1, 36> coef_Jacob4_qts(Eigen::Matrix<double, 1, 36>::Zero());
                     Eigen::Matrix<double, 1, 85> coef_J_pures(Eigen::Matrix<double, 1, 85>::Zero());
-                    Eigen::Matrix3d Gs(Eigen::Matrix3d::Zero());
 
                     for(int i = 0; i < length; ++i)
                     {
                         int ii = j * section + i;
                         Eigen::Matrix<double, 9, 1> pack;
                         pack << rr[ii], bb[ii], nv[ii];
-                        Eigen::Matrix<double, 1, 11> coeftq1s_;
-                        Eigen::Matrix<double, 1, 11> coeftq2s_;
-                        Eigen::Matrix<double, 1, 11> coeftq3s_;
-                        Eigen::Matrix<double, 1, 36> coef_Jacob1_qts_;
-                        Eigen::Matrix<double, 1, 36> coef_Jacob2_qts_;
-                        Eigen::Matrix<double, 1, 36> coef_Jacob3_qts_;
-                        Eigen::Matrix<double, 1, 36> coef_Jacob4_qts_;
                         Eigen::Matrix<double, 1, 85> coef_J_pures_;
-                        Eigen::Matrix3d Gs_;
-                        mixed_pTop_func(Gs_, coef_J_pures_, coeftq1s_, coeftq2s_, coeftq3s_,
-                                        coef_Jacob1_qts_, coef_Jacob2_qts_, coef_Jacob3_qts_, coef_Jacob4_qts_,
-                                        pack);
-                        Gs += Gs_;
+                        mixed_pTop_func(coef_J_pures_, pack);
                         coef_J_pures += coef_J_pures_;
-                        coeftq1s += coeftq1s_;
-                        coeftq2s += coeftq2s_;
-                        coeftq3s += coeftq3s_;
-                        coef_Jacob1_qts += coef_Jacob1_qts_;
-                        coef_Jacob2_qts += coef_Jacob2_qts_;
-                        coef_Jacob3_qts += coef_Jacob3_qts_;
-                        coef_Jacob4_qts += coef_Jacob4_qts_;
                     }
 
-                    Gss[j] = factor * Gs;
-                    coeftq1ss[j] = factor * coeftq1s;
-                    coeftq2ss[j] = factor * coeftq2s;
-                    coeftq3ss[j] = factor * coeftq3s;
-                    coef_Jacob1_qtss[j] = factor * coef_Jacob1_qts;
-                    coef_Jacob2_qtss[j] = factor * coef_Jacob2_qts;
-                    coef_Jacob3_qtss[j] = factor * coef_Jacob3_qts;
-                    coef_Jacob4_qtss[j] = factor * coef_Jacob4_qts;
                     coef_J_puress[j] = factor * coef_J_pures;
                 }
             }
         }
-        G = std::accumulate(Gss.begin(), Gss.end(), Eigen::Matrix3d::Zero().eval());
-        coeftq1 = std::accumulate(coeftq1ss.begin(), coeftq1ss.end(), Eigen::Matrix<double, 1, 11>::Zero().eval());
-        coeftq2 = std::accumulate(coeftq2ss.begin(), coeftq2ss.end(), Eigen::Matrix<double, 1, 11>::Zero().eval());
-        coeftq3 = std::accumulate(coeftq3ss.begin(), coeftq3ss.end(), Eigen::Matrix<double, 1, 11>::Zero().eval());
-        coef_Jacob1_qt = std::accumulate(coef_Jacob1_qtss.begin(), coef_Jacob1_qtss.end(), Eigen::Matrix<double, 1, 36>::Zero().eval());
-        coef_Jacob2_qt = std::accumulate(coef_Jacob2_qtss.begin(), coef_Jacob2_qtss.end(), Eigen::Matrix<double, 1, 36>::Zero().eval());
-        coef_Jacob3_qt = std::accumulate(coef_Jacob3_qtss.begin(), coef_Jacob3_qtss.end(), Eigen::Matrix<double, 1, 36>::Zero().eval());
-        coef_Jacob4_qt = std::accumulate(coef_Jacob4_qtss.begin(), coef_Jacob4_qtss.end(), Eigen::Matrix<double, 1, 36>::Zero().eval());
         coef_J_pure = std::accumulate(coef_J_puress.begin(), coef_J_puress.end(), Eigen::Matrix<double, 1, 85>::Zero().eval());
     }
+
+    Eigen::Matrix<double, 1, 11> coeftq1;
+    Eigen::Matrix<double, 1, 11> coeftq2;
+    Eigen::Matrix<double, 1, 11> coeftq3;
+    Eigen::Matrix<double, 1, 36> coef_Jacob1_qt;
+    Eigen::Matrix<double, 1, 36> coef_Jacob2_qt;
+    Eigen::Matrix<double, 1, 36> coef_Jacob3_qt;
+    Eigen::Matrix<double, 1, 36> coef_Jacob4_qt;
+    Eigen::Matrix3d G;
+    coeftq1.setZero();
+    coeftq2.setZero();
+    coeftq3.setZero();
+    coef_Jacob1_qt.setZero();
+    coef_Jacob2_qt.setZero();
+    coef_Jacob3_qt.setZero();
+    coef_Jacob4_qt.setZero();
+    G.setZero();
+    mixed2_pTop_func(G, coeftq1, coeftq2, coeftq3, coef_Jacob1_qt, coef_Jacob2_qt, coef_Jacob3_qt, coef_Jacob4_qt, coef_J_pure);
 
 
     auto svd = G.jacobiSvd(Eigen::ComputeFullU | Eigen::ComputeFullV);
@@ -1464,6 +1338,6 @@ void pTop_WQD(Eigen::Matrix<double, 4, 64>& W,
 
     Eigen::Matrix<double, 4, 36> coef_Jacob_qt_syms;
     coef_Jacob_qt_syms << coef_Jacob1_qt, coef_Jacob2_qt, coef_Jacob3_qt, coef_Jacob4_qt;
-    mixed2_pTop_func(coef_f_q_sym, W, Q, pinvG, coefs_tq, coef_Jacob_qt_syms);
+    mixed3_pTop_func(coef_f_q_sym, W, Q, pinvG, coefs_tq, coef_Jacob_qt_syms);
     D_pTop_func(D, GG, c, coef_f_q_sym);
 }

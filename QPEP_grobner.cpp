@@ -1,3 +1,14 @@
+// LibQPEP: A Library for Globally Optimal Solving Quadratic Pose Estimation Problems,
+//          It also gives highly accurate uncertainty description of the solutions.
+//
+// Authors: Jin Wu and Ming Liu
+// Affiliation: Hong Kong University of Science and Technology (HKUST)
+// Emails: jin_wu_uestc@hotmail.com; eelium@ust.hk
+//
+//
+// QPEP_grobner.cpp: Solving QPEPs using different Groebner-basis methods
+
+
 #include "QPEP_grobner.h"
 #include "utils.h"
 #include <cstdlib>

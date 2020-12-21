@@ -1,17 +1,38 @@
+// LibQPEP: A Library for Globally Optimal Solving Quadratic Pose Estimation Problems,
+//          It also gives highly accurate uncertainty description of the solutions.
+//
+// Authors: Jin Wu and Ming Liu
+// Affiliation: Hong Kong University of Science and Technology (HKUST)
+// Emails: jin_wu_uestc@hotmail.com; eelium@ust.hk
+//
+//
+// CVLib.cpp: Visualization libraries
+
+
 #include "utils.h"
 #include "CVLib.h"
 
 #ifdef USE_OPENCV
+
+#ifdef OSX_10_9
+#include <CoreGraphics/CGDisplayConfiguration.h>
+#endif
 
 void getScreenResolution(int &width, int &height) {
 #if WIN32
     width  = (int) GetSystemMetrics(SM_CXSCREEN);
     height = (int) GetSystemMetrics(SM_CYSCREEN);
 #else
+#ifndef OSX_10_9
     Display* disp = XOpenDisplay(NULL);
     Screen*  scrn = DefaultScreenOfDisplay(disp);
     width  = scrn->width;
     height = scrn->height;
+#else
+    auto mainDisplayId = CGMainDisplayID();
+    width = CGDisplayPixelsWide(mainDisplayId);
+    height = CGDisplayPixelsHigh(mainDisplayId);
+#endif
 #endif
 }
 

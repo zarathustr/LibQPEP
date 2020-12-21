@@ -1,3 +1,15 @@
+// LibQPEP: A Library for Globally Optimal Solving Quadratic Pose Estimation Problems,
+//          It also gives highly accurate uncertainty description of the solutions.
+//
+// Authors: Jin Wu and Ming Liu
+// Affiliation: Hong Kong University of Science and Technology (HKUST)
+// Emails: jin_wu_uestc@hotmail.com; eelium@ust.hk
+//
+//
+// main.cpp: Demos and visualization
+
+
+
 #include <iostream>
 #include "generateProjectedPoints.h"
 #include "solver_WQ_1_2_3_4_5_9_13_17_33_49_approx.h"

@@ -1,3 +1,14 @@
+// LibQPEP: A Library for Globally Optimal Solving Quadratic Pose Estimation Problems,
+//          It also gives highly accurate uncertainty description of the solutions.
+//
+// Authors: Jin Wu and Ming Liu
+// Affiliation: Hong Kong University of Science and Technology (HKUST)
+// Emails: jin_wu_uestc@hotmail.com; eelium@ust.hk
+//
+//
+// misc_pnp_funcs.cpp: Functions for computation of PnP problems
+
+
 #include "misc_pnp_funcs.h"
 
 std::vector<double> mon_J_pure_pnp_func(const Eigen::Quaterniond& q, const Eigen::Vector3d& t)

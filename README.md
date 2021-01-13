@@ -22,11 +22,11 @@ A library that deals with generalized quadratic pose estimation problems (QPEPs)
 ![](https://github.com/zarathustr/LibQPEP/blob/master/perspective_diagram.png)
 
 # Authors
-Affiliation: RAM-LAB, Hong Kong University of Science and Technology (HKUST)
+Affiliation: **RAM-LAB**, Hong Kong University of Science and Technology (**HKUST**)
 
-Main Contributor: Jin Wu (https://github.com/zarathustr), jin_wu_uestc@hotmail.com
+Main Contributor: **Jin Wu** (https://github.com/zarathustr), jin_wu_uestc@hotmail.com
 
-Core Contributors: Xiangcheng Hu (https://github.com/JokerJohn), Ming Liu (https://www.ece.ust.hk/eelium)
+Core Contributors: **Xiangcheng Hu** (https://github.com/JokerJohn), **Ming Liu** (https://www.ece.ust.hk/eelium)
 
 
 # Usage
@@ -58,7 +58,7 @@ The ```MATLAB``` of version over R2007b is required for proper evaluation. The M
 
 
 # Publication
-Wu, J., Zheng, Y., Gao, Z., Jiang, Y., Hu, X., Zhu, Y., Jiao, J., Liu, M. (2020)
+Wu, J., Zheng, Y., Gao, Z., Jiang, Y., Hu, X., Zhu, Y., Jiao, J., Liu*, M. (2020)
            Quadratic Pose Estimation Problems: Unified Solutions, 
            Solvability/Observability Analysis and Uncertainty Description 
            in A Globally Optimal Framework.

@@ -42,7 +42,7 @@ make -j4
 ```
 
 ## Dependencies
-Mandatory dependencies are: X11, LAPACK, BLAS. For Ubuntu users, please follow https://github.com/eddelbuettel/mkl4deb to install Intel MKL library. OpenCV is optional. However, if you need visualization of covariances, OpenCV must be installed. We support OpenCV 2.x to 4.x.
+Mandatory dependencies are: X11, LAPACK, BLAS, Eigen3. For Ubuntu users, please follow https://github.com/eddelbuettel/mkl4deb to install Intel MKL library. OpenCV is optional. However, if you need visualization of covariances, OpenCV must be installed. We support OpenCV 2.x to 4.x.
 
 ## Demo Program
 Just run

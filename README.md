@@ -19,6 +19,8 @@ A library that deals with generalized quadratic pose estimation problems (QPEPs)
 
 9. Multi-GNSS attitude determination problem
 
+![](https://github.com/zarathustr/LibQPEP/blob/master/perspective_diagram.png)
+
 # Authors
 Affiliation: RAM-LAB, Hong Kong University of Science and Technology (HKUST)
 

@@ -1,0 +1,12 @@
+function obj = coeftq3_pnp_func_new(in1)
+coef_J13 = in1(:,13);
+coef_J22 = in1(:,22);
+coef_J32 = in1(:,32);
+coef_J41 = in1(:,41);
+coef_J51 = in1(:,51);
+coef_J61 = in1(:,61);
+coef_J28 = in1(:,28);
+coef_J47 = in1(:,47);
+coef_J65 = in1(:,65);
+coef_J57 = in1(:,57);
+obj = [coef_J13,coef_J22,coef_J28,coef_J32,coef_J41,coef_J47,coef_J51,coef_J57,coef_J61,coef_J65];

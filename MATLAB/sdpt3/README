@@ -1,0 +1,52 @@
+SDPT3 4.0
+MATLAB software for semidefinite-quadratic-linear programming
+Kim-Chuan Toh, Michael J. Todd, and Reha H. Tutuncu
+
+Installation
+------------
+
+To build the executable mex-files from the c-files,
+the most direct method is to run the MATLAB script file
+
+>> install_sdpt3 
+
+SDPT3 comes with binaries compiled for 32- and 64-bit
+flavors of Mac, Linux, and PC. If for some reason these
+MEX files do not work for you (for instance if you have a
+very old version of MATLAB), you may need to recompile.
+To do so, type this command:
+
+>> install_sdpt3 -rebuild
+
+You will need to have compilers installed, and MEX will
+need to be configured to work with those compilers. 
+Unfortunately we cannot offer assistance with this.
+
+Paths
+-----
+
+The installation script may add one or more directories to
+your MATLAB path if they are not already present. If so,
+you will need to save your path if you wish to use SDPT3
+between sessions. To do so, use the command
+
+>> savepath
+
+or use the "Save Path..." option in the GUI.
+
+Demo
+----
+
+To test your installation, run the following command:
+
+>> sqlpdemo
+
+Octave Support
+--------------
+
+(Michael C. Grant) Observant users will notice apparent
+support for Octave in install_sdpt3. I am attempting to make
+SDPT3 compatible with Octave 3.8 or later. This support is
+at the moment completely unsupported. Use with caution.
+
+

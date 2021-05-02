@@ -1173,7 +1173,7 @@ void pnp_WQD(Eigen::Matrix<double, 4, 64>& W,
 
     std::vector<Eigen::Matrix<double, 10, 1> > pack(len);
     for(int i = 0; i < len; ++i)
-    {_
+    {
         pack[i] << image_pt[i], world_pt[i], fx, fy, cx, cy, scale;
     }
 

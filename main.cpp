@@ -336,90 +336,86 @@ void test_pTop_noise(const std::string& name,
     std::vector<Eigen::MatrixXd > cs(num);
     std::vector<Eigen::MatrixXd > ts(num);
 
-//#pragma omp parallel
-    {
-//#pragma omp for
-        for(int j = 0; j < num; ++j) {
-            std::vector<Eigen::Vector3d> rr(rr0);
-            std::vector<Eigen::Vector3d> bb(bb0);
-            std::vector<Eigen::Vector3d> nv(nv0);
-            for (int i = 0; i < rr.size(); ++i) {
-                rr[i] += noise * Eigen::Vector3d::Random();
-                bb[i] += noise * Eigen::Vector3d::Random();
-                nv[i] += noise * Eigen::Vector3d::Random();
-            }
-
-            Eigen::Matrix<double, 4, 64> W;
-            Eigen::Matrix<double, 4, 4> Q;
-            Eigen::Matrix<double, 3, 28> D;
-            Eigen::Matrix<double, 3, 9> G;
-            Eigen::Vector3d c;
-            Eigen::Matrix<double, 4, 24> coef_f_q_sym;
-            Eigen::Matrix<double, 1, 85> coef_J_pure;
-            Eigen::Matrix<double, 3, 11> coefs_tq;
-            Eigen::Matrix<double, 3, 3> pinvG;
-            pTop_WQD(W, Q, D, G, c, coef_f_q_sym, coef_J_pure, coefs_tq, pinvG, rr, bb, nv);
-
-            Eigen::Matrix<double, 3, 64> W_ = W.topRows(3);
-            Eigen::Matrix<double, 3, 4> Q_ = Q.topRows(3);
-            W_.row(0) = W.row(0) + W.row(1) + W.row(2);
-            W_.row(1) = W.row(1) + W.row(2) + W.row(3);
-            W_.row(2) = W.row(2) + W.row(3) + W.row(0);
-
-            Q_.row(0) = Q.row(0) + Q.row(1) + Q.row(2);
-            Q_.row(1) = Q.row(1) + Q.row(2) + Q.row(3);
-            Q_.row(2) = Q.row(2) + Q.row(3) + Q.row(0);
-
-            Eigen::Matrix3d R;
-            Eigen::Vector3d t;
-            Eigen::Matrix4d X;
-            double min[27];
-            struct QPEP_options opt;
-            opt.ModuleName = "solver_WQ_approx";
-            opt.DecompositionMethod = "PartialPivLU";
-
-            struct QPEP_runtime stat =
-                    QPEP_WQ_grobner(R, t, X, min, W_, Q_,
-                                    reinterpret_cast<solver_func_handle>(solver_WQ_approx),
-                                    reinterpret_cast<mon_J_pure_func_handle>(mon_J_pure_pTop_func),
-                                    reinterpret_cast<t_func_handle>(t_pTop_func),
-                                    coef_J_pure, coefs_tq, pinvG, nullptr, opt);
-
-            Eigen::Vector4d q0 = R2q(R);
-
-            stat = QPEP_lm_single(R, t, X, q0, 100, 5e-2,
-                                  reinterpret_cast<eq_Jacob_func_handle>(eq_Jacob_pTop_func),
-                                  reinterpret_cast<t_func_handle>(t_pTop_func),
-                                  coef_f_q_sym, coefs_tq, pinvG, stat);
-
-            q0 = R2q(R);
-            qs[j].resize(4, 1);
-            qs[j] = q0;
-            ts[j].resize(3, 1);
-            ts[j] = t;
-            Eigen::Matrix<double, 28, 1> v;
-            Eigen::Matrix<double, 9, 1> y;
-            v.setZero();
-            y.setZero();
-            v_func_pTop(v, q0);
-            y_func_pTop(y, q0);
-            vs[j].resize(28, 1);
-            vs[j] = v;
-            ys[j].resize(9, 1);
-            ys[j] = y;
-            ds[j].resize(3 * 28, 1);
-            ds[j] = vec(D);
-            gs[j].resize(3 * 9, 1);
-            gs[j] = vec(G);
-            cs[j].resize(3, 1);
-            cs[j] = c;
-
-            if (verbose) {
-                std::cout << "True X: " << std::endl << XX << std::endl;
-                std::cout << "QPEP X: " << std::endl << X << std::endl << std::endl;
-            }
+    for(int j = 0; j < num; ++j) {
+        std::vector<Eigen::Vector3d> rr(rr0);
+        std::vector<Eigen::Vector3d> bb(bb0);
+        std::vector<Eigen::Vector3d> nv(nv0);
+        for (int i = 0; i < rr.size(); ++i) {
+            rr[i] += noise * Eigen::Vector3d::Random();
+            bb[i] += noise * Eigen::Vector3d::Random();
+            nv[i] += noise * Eigen::Vector3d::Random();
         }
-    };
+
+        Eigen::Matrix<double, 4, 64> W;
+        Eigen::Matrix<double, 4, 4> Q;
+        Eigen::Matrix<double, 3, 28> D;
+        Eigen::Matrix<double, 3, 9> G;
+        Eigen::Vector3d c;
+        Eigen::Matrix<double, 4, 24> coef_f_q_sym;
+        Eigen::Matrix<double, 1, 85> coef_J_pure;
+        Eigen::Matrix<double, 3, 11> coefs_tq;
+        Eigen::Matrix<double, 3, 3> pinvG;
+        pTop_WQD(W, Q, D, G, c, coef_f_q_sym, coef_J_pure, coefs_tq, pinvG, rr, bb, nv);
+
+        Eigen::Matrix<double, 3, 64> W_ = W.topRows(3);
+        Eigen::Matrix<double, 3, 4> Q_ = Q.topRows(3);
+        W_.row(0) = W.row(0) + W.row(1) + W.row(2);
+        W_.row(1) = W.row(1) + W.row(2) + W.row(3);
+        W_.row(2) = W.row(2) + W.row(3) + W.row(0);
+
+        Q_.row(0) = Q.row(0) + Q.row(1) + Q.row(2);
+        Q_.row(1) = Q.row(1) + Q.row(2) + Q.row(3);
+        Q_.row(2) = Q.row(2) + Q.row(3) + Q.row(0);
+
+        Eigen::Matrix3d R;
+        Eigen::Vector3d t;
+        Eigen::Matrix4d X;
+        double min[27];
+        struct QPEP_options opt;
+        opt.ModuleName = "solver_WQ_approx";
+        opt.DecompositionMethod = "PartialPivLU";
+
+        struct QPEP_runtime stat =
+                QPEP_WQ_grobner(R, t, X, min, W_, Q_,
+                                reinterpret_cast<solver_func_handle>(solver_WQ_approx),
+                                reinterpret_cast<mon_J_pure_func_handle>(mon_J_pure_pTop_func),
+                                reinterpret_cast<t_func_handle>(t_pTop_func),
+                                coef_J_pure, coefs_tq, pinvG, nullptr, opt);
+
+        Eigen::Vector4d q0 = R2q(R);
+
+        stat = QPEP_lm_single(R, t, X, q0, 100, 5e-2,
+                              reinterpret_cast<eq_Jacob_func_handle>(eq_Jacob_pTop_func),
+                              reinterpret_cast<t_func_handle>(t_pTop_func),
+                              coef_f_q_sym, coefs_tq, pinvG, stat);
+
+        q0 = R2q(R);
+        qs[j].resize(4, 1);
+        qs[j] = q0;
+        ts[j].resize(3, 1);
+        ts[j] = t;
+        Eigen::Matrix<double, 28, 1> v;
+        Eigen::Matrix<double, 9, 1> y;
+        v.setZero();
+        y.setZero();
+        v_func_pTop(v, q0);
+        y_func_pTop(y, q0);
+        vs[j].resize(28, 1);
+        vs[j] = v;
+        ys[j].resize(9, 1);
+        ys[j] = y;
+        ds[j].resize(3 * 28, 1);
+        ds[j] = vec(D);
+        gs[j].resize(3 * 9, 1);
+        gs[j] = vec(G);
+        cs[j].resize(3, 1);
+        cs[j] = c;
+
+        if (verbose) {
+            std::cout << "True X: " << std::endl << XX << std::endl;
+            std::cout << "QPEP X: " << std::endl << X << std::endl << std::endl;
+        }
+    }
 
     Eigen::Vector4d mean_q = mean(qs);
 
@@ -545,6 +541,11 @@ int main(int argc,char ** argv) {
     clock_t time1 = clock(), time2;
     double loops = 100.0;
 
+#ifndef NO_OMP
+    int num_threads_ = omp_get_max_threads();
+    omp_set_num_threads(num_threads_);
+    Eigen::setNbThreads(num_threads_);
+#endif
 
 #ifdef USE_OPENCV
     int row, col;
@@ -573,13 +574,12 @@ int main(int argc,char ** argv) {
 
     for(int i = 0; i < (int) loops; ++i)
     {
-//        test_pnp_WQD("../data/pnp_data-50000pt-1.txt", true);
-        test_pTop_WQD("../data/pTop_data-250000pt-1.txt", false);
+//        test_pnp_WQD("../data/pnp_data-50000pt-1.txt", false);
+        test_pTop_WQD("../data/pTop_data-2500000pt-1.txt", false);
     }
     time2 = clock();
     time = time2 - time1;
     std::cout << "Time: " << time / loops / double(CLOCKS_PER_SEC) << std::endl;
-
 
     return 0;
 }

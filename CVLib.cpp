@@ -14,7 +14,7 @@
 
 #ifdef USE_OPENCV
 
-#ifdef OSX_10_9
+#if defined(OSX_10_9) || defined(OSX_BIG_SUR)
 #include <CoreGraphics/CGDisplayConfiguration.h>
 #endif
 
@@ -23,7 +23,7 @@ void getScreenResolution(int &width, int &height) {
     width  = (int) GetSystemMetrics(SM_CXSCREEN);
     height = (int) GetSystemMetrics(SM_CYSCREEN);
 #else
-#ifndef OSX_10_9
+#if !defined(OSX_10_9) && !defined(OSX_BIG_SUR)
     Display* disp = XOpenDisplay(NULL);
     Screen*  scrn = DefaultScreenOfDisplay(disp);
     width  = scrn->width;

@@ -70,7 +70,8 @@ std::vector<Eigen::Vector3d> bb0;
 std::vector<Eigen::Vector3d> nv0;
 
 void test_pnp_WQD(const std::string& filename,
-                  const bool& verbose)
+                  const bool& verbose,
+                  const bool& use_opencv)
 {
     if(image_pt0.size() < 3)
     {
@@ -126,6 +127,9 @@ void test_pnp_WQD(const std::string& filename,
         std::cout << "True X: " << std::endl << XX << std::endl;
         std::cout << "QPEP X: " << std::endl << X.inverse() << std::endl << std::endl;
     }
+
+    if(!use_opencv)
+        return;
 
 
 #ifdef USE_OPENCV
@@ -574,8 +578,8 @@ int main(int argc,char ** argv) {
 
     for(int i = 0; i < (int) loops; ++i)
     {
-//        test_pnp_WQD("../data/pnp_data-50000pt-1.txt", false);
-        test_pTop_WQD("../data/pTop_data-2500000pt-1.txt", false);
+//        test_pnp_WQD("../data/pnp_data-50000pt-1.txt", false, false);
+        test_pTop_WQD("../data/pTop_data-4096pt-1.txt", false);
     }
     time2 = clock();
     time = time2 - time1;

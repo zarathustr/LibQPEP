@@ -126,7 +126,6 @@ endif()
 
 
 set(srcs
-        main.cpp
         generateProjectedPoints.cpp
         pnp_WQD.cpp
         solver_WQ_1_2_3_4_5_9_13_17_33_49_approx.cpp
@@ -200,15 +199,15 @@ set(incs
         CVLib.h
         CovEstimation.h)
 
-add_executable(LibQPEP-test ${srcs})
+add_executable(LibQPEP-test main.cpp)
 add_library (LibQPEP ${srcs})
 
 if(NOT LINUX_OS)
-    target_link_libraries(LibQPEP-test ${OMP_LIB} ${OpenCV_LIBS} ${LAPACK_LIBRARIES} ${X11_LIBRARIES} ${BLAS_LIBRARIES})
     target_link_libraries(LibQPEP ${OMP_LIB} ${OpenCV_LIBS} ${LAPACK_LIBRARIES} ${X11_LIBRARIES} ${BLAS_LIBRARIES})
+    target_link_libraries(LibQPEP-test LibQPEP ${OMP_LIB} ${OpenCV_LIBS} ${LAPACK_LIBRARIES} ${X11_LIBRARIES} ${BLAS_LIBRARIES})
 else()
-    target_link_libraries(LibQPEP-test ${OMP_LIB} ${OpenCV_LIBS} ${LAPACK_LIBRARIES} ${X11_LIBRARIES} ${BLAS_LIBRARIES} mkl_gf_lp64 mkl_intel_thread mkl_gnu_thread mkl_blas95_lp64 mkl_intel_lp64 mkl_sequential mkl_core pthread iomp5 X11)
     target_link_libraries(LibQPEP ${OMP_LIB} ${OpenCV_LIBS} ${LAPACK_LIBRARIES} ${X11_LIBRARIES} ${BLAS_LIBRARIES} mkl_gf_lp64 mkl_intel_thread mkl_gnu_thread mkl_blas95_lp64 mkl_intel_lp64 mkl_sequential mkl_core pthread iomp5 X11)
+    target_link_libraries(LibQPEP-test LibQPEP ${OMP_LIB} ${OpenCV_LIBS} ${LAPACK_LIBRARIES} ${X11_LIBRARIES} ${BLAS_LIBRARIES} mkl_gf_lp64 mkl_intel_thread mkl_gnu_thread mkl_blas95_lp64 mkl_intel_lp64 mkl_sequential mkl_core pthread iomp5 X11)
 endif()
 
 include(GNUInstallDirs)

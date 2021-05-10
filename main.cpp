@@ -574,7 +574,7 @@ int main(int argc,char ** argv) {
 //    test_generateProjectedPoints();
 
     time1 = clock();
-    loops = 100.0;
+    loops = 1000.0;
 
     for(int i = 0; i < (int) loops; ++i)
     {

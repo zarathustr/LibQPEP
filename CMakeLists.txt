@@ -125,38 +125,22 @@ else()
 endif()
 
 
-add_executable(LibQPEP
+set(srcs
         main.cpp
         generateProjectedPoints.cpp
-        generateProjectedPoints.h
         pnp_WQD.cpp
-        pnp_WQD.h
         solver_WQ_1_2_3_4_5_9_13_17_33_49_approx.cpp
-        solver_WQ_1_2_3_4_5_9_13_17_33_49_approx.h
-        solver_WQ_1_2_3_4_5_9_13_17_33_49_approx_helper.cpp
-        solver_WQ_1_2_3_4_5_9_13_17_33_49_approx_helper.h
-        QPEP_grobner.h
         QPEP_grobner.cpp
-        utils.h
-        misc_pnp_funcs.h
         misc_pnp_funcs.cpp
         QPEP_lm_single.cpp
-        QPEP_lm_single.h
-        pTop_WQD.cpp
-        pTop_WQD.h
         misc_pTop_funcs.cpp
-        misc_pTop_funcs.h
+        pTop_WQD.cpp
         solver_WQ_approx_helper.cpp
-        solver_WQ_approx_helper.h
+        solver_WQ_1_2_3_4_5_9_13_17_33_49_approx_helper.cpp
         solver_WQ_approx.cpp
-        solver_WQ_approx.h
-        QPEP.h
         solver_WQ.cpp
-        solver_WQ.h
         solver_WQ_helper.cpp
-        solver_WQ_helper.h
         CVLib.cpp
-        CVLib.h
         ./csdp/lib/Fnorm.c
         ./csdp/lib/chol.c
         ./csdp/lib/linesearch.c
@@ -195,11 +179,81 @@ add_executable(LibQPEP
         ./csdp/lib/sortentries.c
         ./csdp/lib/writesol.c
         CovEstimation.cpp
+        )
+
+set(incs
+        generateProjectedPoints.h
+        pnp_WQD.h
+        solver_WQ_1_2_3_4_5_9_13_17_33_49_approx.h
+        solver_WQ_1_2_3_4_5_9_13_17_33_49_approx_helper.h
+        QPEP_grobner.h
+        utils.h
+        misc_pnp_funcs.h
+        QPEP_lm_single.h
+        pTop_WQD.h
+        misc_pTop_funcs.h
+        solver_WQ_approx_helper.h
+        solver_WQ_approx.h
+        QPEP.h
+        solver_WQ.h
+        solver_WQ_helper.h
+        CVLib.h
         CovEstimation.h)
 
+add_executable(LibQPEP-test ${srcs})
+add_library (LibQPEP ${srcs})
+
 if(NOT LINUX_OS)
+    target_link_libraries(LibQPEP-test ${OMP_LIB} ${OpenCV_LIBS} ${LAPACK_LIBRARIES} ${X11_LIBRARIES} ${BLAS_LIBRARIES})
     target_link_libraries(LibQPEP ${OMP_LIB} ${OpenCV_LIBS} ${LAPACK_LIBRARIES} ${X11_LIBRARIES} ${BLAS_LIBRARIES})
 else()
+    target_link_libraries(LibQPEP-test ${OMP_LIB} ${OpenCV_LIBS} ${LAPACK_LIBRARIES} ${X11_LIBRARIES} ${BLAS_LIBRARIES} mkl_gf_lp64 mkl_intel_thread mkl_gnu_thread mkl_blas95_lp64 mkl_intel_lp64 mkl_sequential mkl_core pthread iomp5 X11)
     target_link_libraries(LibQPEP ${OMP_LIB} ${OpenCV_LIBS} ${LAPACK_LIBRARIES} ${X11_LIBRARIES} ${BLAS_LIBRARIES} mkl_gf_lp64 mkl_intel_thread mkl_gnu_thread mkl_blas95_lp64 mkl_intel_lp64 mkl_sequential mkl_core pthread iomp5 X11)
 endif()
 
+include(GNUInstallDirs)
+install(TARGETS LibQPEP
+        EXPORT ${PROJECT_NAME}-config
+        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/../lib/
+        )
+install(FILES ${incs} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME})
+
+export(
+        TARGETS LibQPEP
+        FILE ${PROJECT_NAME}-config.cmake
+)
+install(
+        EXPORT ${PROJECT_NAME}-config
+        DESTINATION share/${PROJECT_NAME}/cmake
+)
+
+
+# Create variable for the local build tree
+get_property(CONF_INCLUDE_DIRS DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY INCLUDE_DIRECTORIES)
+
+# Create variable with the library location
+set(QPEP_LIB ${PROJECT_NAME})
+
+# Configure config file for local build tree
+configure_file(${PROJECT_NAME}Config.cmake.in
+        "${PROJECT_BINARY_DIR}/${PROJECT_NAME}Config.cmake" @ONLY)
+
+# 2- installation build #
+
+# Change the include location for the case of an install location
+set(CONF_INCLUDE_DIRS ${INSTALL_INCLUDE_DIR} ${CONF_INCLUDE_DIRS} )
+
+configure_file(${PROJECT_NAME}Config.cmake.in
+        "${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/${PROJECT_NAME}Config.cmake" @ONLY)
+
+#install(
+#        FILES
+#        "${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/${PROJECT_NAME}Config.cmake"
+#        DESTINATION "${INSTALL_CMAKE_DIR}" COMPONENT dev
+#)
+
+install (
+        FILES
+        "${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/${PROJECT_NAME}Config.cmake"
+        DESTINATION "share/${PROJECT_NAME}/cmake/"
+)

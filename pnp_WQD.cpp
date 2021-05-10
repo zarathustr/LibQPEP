@@ -1164,7 +1164,9 @@ void pnp_WQD(Eigen::Matrix<double, 4, 64>& W,
              const double& scale)
 {
     if(!init){
+#ifndef NO_OMP
         num_threads_ = omp_get_max_threads();
+#endif
         init = true;
     }
 

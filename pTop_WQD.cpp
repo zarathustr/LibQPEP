@@ -1235,7 +1235,9 @@ void pTop_WQD(Eigen::Matrix<double, 4, 64>& W,
               const std::vector<Eigen::Vector3d>& nv)
 {
     if(!init){
+#ifndef NO_OMP
         num_threads_ = omp_get_max_threads();
+#endif
         init = true;
     }
 

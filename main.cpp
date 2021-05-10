@@ -33,6 +33,10 @@
 #include "CVLib.h"
 #endif
 
+#ifndef NO_OMP
+#include "omp.h"
+#endif
+
 #include "CovEstimation.h"
 #include <Eigen/../unsupported/Eigen/KroneckerProduct>
 

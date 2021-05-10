@@ -47,7 +47,7 @@ endif()
 
 if(LINUX_OS)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Ofast -ffast-math -pthread -lpthread -lrt -lm -lz")
-    add_definitions(-D NO_OMP)
+    #add_definitions(-D NO_OMP)
     include_directories(/opt/intel/mkl/include /opt/intel/oneapi/mkl/latest/include)
     link_directories(
     	/opt/intel/mkl/lib/intel64 
@@ -122,6 +122,8 @@ if(OSX OR OSX_BIGSUR)
         message(FATAL_ERROR "Mac OS Detected but No OpenMP Library Found!")
     endif()
 else()
+    find_package(OpenMP REQUIRED)
+    set(OMP_LIB ${OpenMP_CXX_FLAGS})
 endif()
 
 

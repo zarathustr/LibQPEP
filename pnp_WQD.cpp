@@ -13,6 +13,9 @@
 #include "utils.h"
 #include <numeric>
 #include <thread>
+#ifndef NO_OMP
+#include "omp.h"
+#endif
 
 
 void mixed_pnp_func(

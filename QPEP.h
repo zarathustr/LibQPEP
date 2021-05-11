@@ -9,7 +9,7 @@ struct QPEP_options {
 };
 
 struct QPEP_runtime {
-    double timeDataPrepare = 1e15;
+    double timeDecompositionDataPrepare = 1e15;
     double timeDecomposition = 1e15;
     double timeGrobner = 1e15;
     double timeEigen = 1e15;

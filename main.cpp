@@ -65,26 +65,33 @@ void test_generateProjectedPoints()
     }
 }
 
-static Eigen::Matrix3d R0;
-static Eigen::Vector3d t0;
-static Eigen::Matrix3d K;
-static std::vector<Eigen::Vector3d> world_pt0;
-static std::vector<Eigen::Vector2d> image_pt0;
-std::vector<Eigen::Vector3d> rr0;
-std::vector<Eigen::Vector3d> bb0;
-std::vector<Eigen::Vector3d> nv0;
+static Eigen::Matrix3d __R0;
+static Eigen::Vector3d __t0;
+static Eigen::Matrix3d __K;
+static std::vector<Eigen::Vector3d> __world_pt0;
+static std::vector<Eigen::Vector2d> __image_pt0;
+static std::vector<Eigen::Vector3d> __rr0;
+static std::vector<Eigen::Vector3d> __bb0;
+static std::vector<Eigen::Vector3d> __nv0;
 
-void test_pnp_WQD(const std::string& filename,
-                  const bool& verbose,
+void test_pnp_WQD_init(const std::string& filename)
+{
+    if(__image_pt0.size() < 3)
+    {
+        __K.setZero();
+        readPnPdata(filename, __R0, __t0, __K, __world_pt0, __image_pt0);
+    }
+}
+
+void test_pnp_WQD(const bool& verbose,
                   const bool& use_opencv)
 {
-    if(image_pt0.size() < 3)
-    {
-        K.setZero();
-        readPnPdata(filename, R0, t0, K, world_pt0, image_pt0);
-    }
+    Eigen::Matrix3d R0 = __R0;
+    Eigen::Vector3d t0 = __t0;
+    Eigen::Matrix3d K = __K;
+    std::vector<Eigen::Vector3d> world_pt0 = __world_pt0;
+    std::vector<Eigen::Vector2d> image_pt0 = __image_pt0;
 
-    struct QPEP_runtime stat;
     clock_t time1 = clock();
     Eigen::Matrix4d XX;
     XX << R0, t0, Eigen::Vector3d::Zero(3).transpose(), 1.0;
@@ -108,7 +115,7 @@ void test_pnp_WQD(const std::string& filename,
     Q_.row(1) = Q.row(1) + Q.row(2) + Q.row(3);
     Q_.row(2) = Q.row(2) + Q.row(3) + Q.row(0);
     clock_t time2 = clock();
-    stat.timeDataPrepare = (time2 - time1) / double(CLOCKS_PER_SEC);
+    double timeDataPrepare = ((double)(time2 - time1)) / double(CLOCKS_PER_SEC);
 
 
     Eigen::Matrix3d R;
@@ -119,7 +126,7 @@ void test_pnp_WQD(const std::string& filename,
     opt.ModuleName = "solver_WQ_1_2_3_4_5_9_13_17_33_49_approx";
     opt.DecompositionMethod = "LinSolve";
 
-    stat = QPEP_WQ_grobner(R, t, X, min, W_, Q_,
+    struct QPEP_runtime stat = QPEP_WQ_grobner(R, t, X, min, W_, Q_,
                     reinterpret_cast<solver_func_handle>(solver_WQ_1_2_3_4_5_9_13_17_33_49_approx),
                     reinterpret_cast<mon_J_pure_func_handle>(mon_J_pure_pnp_func),
                     reinterpret_cast<t_func_handle>(t_pnp_func),
@@ -132,11 +139,12 @@ void test_pnp_WQD(const std::string& filename,
                    coef_f_q_sym, coefs_tq, pinvG, stat);
 
     if(verbose) {
-        std::cout << "Time DataPrepare: " << std::endl << stat.timeDataPrepare << " s " << std::endl;
-        std::cout << "Time Decomposition: " << std::endl << stat.timeDecomposition << " s " << std::endl;
-        std::cout << "Time Grobner: " << std::endl << stat.timeGrobner << " s " << std::endl;
-        std::cout << "Time Eigen: " << std::endl << stat.timeEigen << " s " << std::endl;
-        std::cout << "Time LM: " << std::endl << stat.timeLM << " s " << std::endl;
+        std::cout << "Time DataPrepare: " << timeDataPrepare << " s " << std::endl;
+        std::cout << "Time DecompositionDataPrepare: " << stat.timeDecompositionDataPrepare << " s " << std::endl;
+        std::cout << "Time Decomposition: " << stat.timeDecomposition << " s " << std::endl;
+        std::cout << "Time Grobner: " << stat.timeGrobner << " s " << std::endl;
+        std::cout << "Time Eigen: " << stat.timeEigen << " s " << std::endl;
+        std::cout << "Time LM: " << stat.timeLM << " s " << std::endl;
         std::cout << "True X: " << std::endl << XX << std::endl;
         std::cout << "QPEP X: " << std::endl << X.inverse() << std::endl << std::endl;
     }
@@ -256,13 +264,18 @@ void test_pnp_WQD(const std::string& filename,
 
 
 
-void test_pTop_WQD(const std::string& filename,
-                   const bool& verbose) {
-    if(rr0.size() < 3) {
-        readpTopdata(filename, R0, t0, rr0, bb0, nv0);
+void test_pTop_WQD_init(const std::string& filename)
+{
+    if(__rr0.size() < 3) {
+        readpTopdata(filename, __R0, __t0, __rr0, __bb0, __nv0);
     }
+}
+void test_pTop_WQD(const bool& verbose) {
+    std::vector<Eigen::Vector3d> rr0 = __rr0;
+    std::vector<Eigen::Vector3d> bb0 = __bb0;
+    std::vector<Eigen::Vector3d> nv0 = __nv0;
     Eigen::Matrix4d XX;
-    XX << R0, t0, Eigen::Vector3d::Zero(3).transpose(), 1.0;
+    XX << __R0, __t0, Eigen::Vector3d::Zero(3).transpose(), 1.0;
 
     Eigen::Matrix<double, 4, 64> W;
     Eigen::Matrix<double, 4, 4> Q;
@@ -333,17 +346,22 @@ Eigen::MatrixXd covx(const std::vector<Eigen::MatrixXd>& x,
     return mean(res);
 }
 
-void test_pTop_noise(const std::string& name,
-                     cv::Mat& img,
+void test_pTop_noise_init(const std::string& name)
+{
+    if(__rr0.size() < 3) {
+        readpTopdata(name, __R0, __t0, __rr0, __bb0, __nv0);
+    }
+}
+void test_pTop_noise(cv::Mat& img,
                      const int& num,
                      const double& noise,
                      const double& fontsize,
                      const bool& verbose) {
-    if(rr0.size() < 3) {
-        readpTopdata(name, R0, t0, rr0, bb0, nv0);
-    }
+    std::vector<Eigen::Vector3d> rr0 = __rr0;
+    std::vector<Eigen::Vector3d> bb0 = __bb0;
+    std::vector<Eigen::Vector3d> nv0 = __nv0;
     Eigen::Matrix4d XX;
-    XX << R0, t0, Eigen::Vector3d::Zero(3).transpose(), 1.0;
+    XX << __R0, __t0, Eigen::Vector3d::Zero(3).transpose(), 1.0;
 
     std::vector<Eigen::MatrixXd> qs(num);
     std::vector<Eigen::MatrixXd> ys(num);
@@ -576,8 +594,8 @@ int main(int argc,char ** argv) {
     cv::addWeighted(imageDraw, 0.0, ColorMask, 1.0, 0, imageDraw);
 
     const bool verbose = false;
-    test_pTop_noise("../data/pTop_data-100pt-1.txt",
-                    imageDraw, 1500, 1e-5, fontsize, verbose);
+    test_pTop_noise_init("../data/pTop_data-100pt-1.txt");
+    test_pTop_noise(imageDraw, 1500, 1e-5, fontsize, verbose);
 
     imshow("imageDraw", imageDraw);
     cv::waitKey(0);
@@ -585,18 +603,19 @@ int main(int argc,char ** argv) {
 
 
     std::cout.precision(16);
-//    test_generateProjectedPoints();
 
     time1 = clock();
     loops = 1000.0;
+    test_pnp_WQD_init("../data/pnp_data-50000pt-1.txt");
+//    test_pTop_noise_init("../data/pTop_data-4096pt-1.txt");
 
 #ifndef NO_OMP
 #pragma omp parallel for num_threads(num_threads_) schedule(static) ordered
 #endif
     for(int i = 0; i < (int) loops; ++i)
     {
-        test_pnp_WQD("../data/pnp_data-50000pt-1.txt", true, false);
-//        test_pTop_WQD("../data/pTop_data-4096pt-1.txt", false);
+        test_pnp_WQD(true, false);
+//        test_pTop_WQD(false);
     }
     time2 = clock();
     time = time2 - time1;

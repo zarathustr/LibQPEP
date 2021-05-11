@@ -321,12 +321,14 @@ inline QPEP_runtime GaussJordanElimination(
         Eigen::SparseMatrix<double> C1(size_GJ, size_GJ);
         C1.setZero();
         data_func(C1, C2, data);
+        clock_t time2 = clock();
+        stat.timeDecompositionDataPrepare = (time2 - time1) / double(CLOCKS_PER_SEC);
         Eigen::SparseMatrix<double> C1T = C1.transpose();
         Eigen::SparseMatrix<double> AA = C1T * C1;
         Eigen::MatrixXd BB = C1T.toDense() * C2;
         C1_ = AA.toDense().inverse() * BB;
-        clock_t time2 = clock();
-        stat.timeDecomposition = (time2 - time1) / double(CLOCKS_PER_SEC);
+        clock_t time3 = clock();
+        stat.timeDecomposition = (time3 - time2) / double(CLOCKS_PER_SEC);
     }
 #ifdef USE_SUPERLU
     else if(opt.DecompositionMethod == "Cholesky") {

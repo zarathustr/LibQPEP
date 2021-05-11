@@ -3,6 +3,7 @@ project(LibQPEP)
 
 message("Compiler version is: ${CMAKE_SYSTEM_VERSION}")
 message("System version is: ${CMAKE_SYSTEM_NAME}")
+message("Architecture is: ${CMAKE_SYSTEM_PROCESSOR}")
 
 if("${CMAKE_SYSTEM_NAME}" STREQUAL "Darwin")
     set(CMAKE_CXX_COMPILER clang++)
@@ -22,6 +23,9 @@ if("${CMAKE_SYSTEM_NAME}" STREQUAL "Darwin")
 
     if(OSX_BIGSUR)
         add_definitions(-D OSX_BIG_SUR)
+	if("${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "arm64")
+		add_definitions(-D NO_OMP)
+	endif()
         set(CMAKE_EXE_LINKER_FLAGS "-framework CoreGraphics")
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Ofast -ffast-math -Xclang -fopenmp -pthread")
     elseif(OSX_10_9)

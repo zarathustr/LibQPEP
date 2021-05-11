@@ -151,7 +151,8 @@ inline QPEP_runtime GaussJordanElimination(
            opt.DecompositionMethod == "SVD" ||
            opt.DecompositionMethod == "BDCSVD" ||
            opt.DecompositionMethod == "Inv" ||
-           opt.DecompositionMethod == "Cholesky");
+           opt.DecompositionMethod == "Cholesky" ||
+           opt.DecompositionMethod == "LinSolve");
 
     struct QPEP_runtime stat = stat_;
     C1_.resize(size_GJ, size_AM);
@@ -312,6 +313,18 @@ inline QPEP_runtime GaussJordanElimination(
             Eigen::VectorXd c1 = solver.solve(C2.col(i));
             C1_.col(i) = c1;
         }
+        clock_t time2 = clock();
+        stat.timeDecomposition = (time2 - time1) / double(CLOCKS_PER_SEC);
+    }
+    else if(opt.DecompositionMethod == "LinSolve") {
+        clock_t time1 = clock();
+        Eigen::SparseMatrix<double> C1(size_GJ, size_GJ);
+        C1.setZero();
+        data_func(C1, C2, data);
+        Eigen::SparseMatrix<double> C1T = C1.transpose();
+        Eigen::SparseMatrix<double> AA = C1T * C1;
+        Eigen::MatrixXd BB = C1T.toDense() * C2;
+        C1_ = AA.toDense().inverse() * BB;
         clock_t time2 = clock();
         stat.timeDecomposition = (time2 - time1) / double(CLOCKS_PER_SEC);
     }

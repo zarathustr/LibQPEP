@@ -552,6 +552,7 @@ int main(int argc,char ** argv) {
 #ifndef NO_OMP
     int num_threads_ = omp_get_max_threads();
     omp_set_num_threads(num_threads_);
+    Eigen::initParallel();
     Eigen::setNbThreads(num_threads_);
 #endif
 
@@ -582,8 +583,8 @@ int main(int argc,char ** argv) {
 
     for(int i = 0; i < (int) loops; ++i)
     {
-//        test_pnp_WQD("../data/pnp_data-50000pt-1.txt", false, false);
-        test_pTop_WQD("../data/pTop_data-4096pt-1.txt", false);
+        test_pnp_WQD("../data/pnp_data-50000pt-1.txt", false, false);
+//        test_pTop_WQD("../data/pTop_data-4096pt-1.txt", false);
     }
     time2 = clock();
     time = time2 - time1;

@@ -35,6 +35,7 @@
 
 #ifndef NO_OMP
 #include "omp.h"
+int num_threads_ = 0;
 #endif
 
 #include "CovEstimation.h"
@@ -83,6 +84,8 @@ void test_pnp_WQD(const std::string& filename,
         readPnPdata(filename, R0, t0, K, world_pt0, image_pt0);
     }
 
+    struct QPEP_runtime stat;
+    clock_t time1 = clock();
     Eigen::Matrix4d XX;
     XX << R0, t0, Eigen::Vector3d::Zero(3).transpose(), 1.0;
     double problem_scale = 1e-8;
@@ -104,6 +107,8 @@ void test_pnp_WQD(const std::string& filename,
     Q_.row(0) = Q.row(0) + Q.row(1) + Q.row(2);
     Q_.row(1) = Q.row(1) + Q.row(2) + Q.row(3);
     Q_.row(2) = Q.row(2) + Q.row(3) + Q.row(0);
+    clock_t time2 = clock();
+    stat.timeDataPrepare = (time2 - time1) / double(CLOCKS_PER_SEC);
 
 
     Eigen::Matrix3d R;
@@ -112,10 +117,9 @@ void test_pnp_WQD(const std::string& filename,
     double min[27];
     struct QPEP_options opt;
     opt.ModuleName = "solver_WQ_1_2_3_4_5_9_13_17_33_49_approx";
-    opt.DecompositionMethod = "PartialPivLU";
+    opt.DecompositionMethod = "LinSolve";
 
-    struct QPEP_runtime stat =
-            QPEP_WQ_grobner(R, t, X, min, W_, Q_,
+    stat = QPEP_WQ_grobner(R, t, X, min, W_, Q_,
                     reinterpret_cast<solver_func_handle>(solver_WQ_1_2_3_4_5_9_13_17_33_49_approx),
                     reinterpret_cast<mon_J_pure_func_handle>(mon_J_pure_pnp_func),
                     reinterpret_cast<t_func_handle>(t_pnp_func),
@@ -128,6 +132,11 @@ void test_pnp_WQD(const std::string& filename,
                    coef_f_q_sym, coefs_tq, pinvG, stat);
 
     if(verbose) {
+        std::cout << "Time DataPrepare: " << std::endl << stat.timeDataPrepare << " s " << std::endl;
+        std::cout << "Time Decomposition: " << std::endl << stat.timeDecomposition << " s " << std::endl;
+        std::cout << "Time Grobner: " << std::endl << stat.timeGrobner << " s " << std::endl;
+        std::cout << "Time Eigen: " << std::endl << stat.timeEigen << " s " << std::endl;
+        std::cout << "Time LM: " << std::endl << stat.timeLM << " s " << std::endl;
         std::cout << "True X: " << std::endl << XX << std::endl;
         std::cout << "QPEP X: " << std::endl << X.inverse() << std::endl << std::endl;
     }
@@ -550,7 +559,7 @@ int main(int argc,char ** argv) {
     double loops = 100.0;
 
 #ifndef NO_OMP
-    int num_threads_ = omp_get_max_threads();
+    num_threads_ = omp_get_max_threads();
     omp_set_num_threads(num_threads_);
     Eigen::initParallel();
     Eigen::setNbThreads(num_threads_);
@@ -581,9 +590,12 @@ int main(int argc,char ** argv) {
     time1 = clock();
     loops = 1000.0;
 
+#ifndef NO_OMP
+#pragma omp parallel for num_threads(num_threads_) schedule(static) ordered
+#endif
     for(int i = 0; i < (int) loops; ++i)
     {
-        test_pnp_WQD("../data/pnp_data-50000pt-1.txt", false, false);
+        test_pnp_WQD("../data/pnp_data-50000pt-1.txt", true, false);
 //        test_pTop_WQD("../data/pTop_data-4096pt-1.txt", false);
     }
     time2 = clock();

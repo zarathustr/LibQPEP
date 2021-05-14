@@ -1176,14 +1176,20 @@ void pnp_WQD(Eigen::Matrix<double, 4, 64>& W,
     double cx = K(0, 2);
     double cy = K(1, 2);
 
+    clock_t time1 = clock();
     std::vector<Eigen::Matrix<double, 10, 1> > pack(len);
-    for(int i = 0; i < len; ++i)
     {
-        pack[i] << image_pt[i], world_pt[i], fx, fy, cx, cy, scale;
+#ifndef NO_OMP
+#pragma omp parallel for num_threads(num_threads_) schedule(static) ordered
+#endif
+        for(int i = 0; i < len; ++i)
+        {
+            pack[i] << image_pt[i], world_pt[i], fx, fy, cx, cy, scale;
+        }
     }
 
     double factor = 1.0 / ((double) len);
-    if(len < 5000000)
+
     {
         std::vector<Eigen::Matrix<double, 1, 70> > coef_J_pures(len, Eigen::Matrix<double, 1, 70>::Zero());
 #ifndef NO_OMP
@@ -1194,33 +1200,8 @@ void pnp_WQD(Eigen::Matrix<double, 4, 64>& W,
 
         coef_J_pure = factor * std::accumulate(coef_J_pures.begin(), coef_J_pures.end(), Eigen::Matrix<double, 1, 70>::Zero().eval());
     }
-    else
-    {
-        const size_t nthreads = std::thread::hardware_concurrency();
-        std::vector<Eigen::Matrix<double, 1, 70> > coef_J_pures(nthreads, Eigen::Matrix<double, 1, 70>::Zero());
-        std::vector<std::thread> threads(nthreads);
-        for(int s = 0; s < nthreads; s++)
-        {
-            threads[s] = std::thread(std::bind(
-                    [&](const int bi, const int ei, const int s)
-                    {
-                        int chunk = len / nthreads + 1;
-                        std::vector<Eigen::Matrix<double, 1, 70> > coef_J_pures_(chunk, Eigen::Matrix<double, 1, 70>::Zero());
+    clock_t time2 = clock();
 
-                        int counter = 0;
-                        for(int i = bi; i < ei; i++)
-                        {
-                            mixed_pnp_func(coef_J_pures_[counter], pack[i]);
-                            counter = counter + 1;
-                        }
-
-                        coef_J_pures[s] = factor * std::accumulate(coef_J_pures_.begin(), coef_J_pures_.end(), Eigen::Matrix<double, 1, 70>::Zero().eval());
-                    }, s * len / nthreads, (s + 1) == nthreads ? len : (s + 1) * len / nthreads, s));
-        }
-        std::for_each(threads.begin(), threads.end(), [](std::thread& x){x.join();});
-
-        coef_J_pure = factor * std::accumulate(coef_J_pures.begin(), coef_J_pures.end(), Eigen::Matrix<double, 1, 70>::Zero().eval());
-    }
 
     Eigen::Matrix<double, 1, 10> coeftq1;
     Eigen::Matrix<double, 1, 10> coeftq2;
@@ -1239,7 +1220,7 @@ void pnp_WQD(Eigen::Matrix<double, 4, 64>& W,
     coef_Jacob4_qt.setZero();
     G.setZero();
     mixed2_pnp_func(G, coeftq1, coeftq2, coeftq3, coef_Jacob1_qt, coef_Jacob2_qt, coef_Jacob3_qt, coef_Jacob4_qt, coef_J_pure);
-
+    clock_t time3 = clock();
 
     auto svd = G.jacobiSvd(Eigen::ComputeFullU | Eigen::ComputeFullV);
     const auto &singularValues = svd.singularValues();
@@ -1254,6 +1235,7 @@ void pnp_WQD(Eigen::Matrix<double, 4, 64>& W,
     }
 
     pinvG = svd.matrixV() * singularValuesInv * svd.matrixU().transpose();
+    clock_t time4 = clock();
 
     coefs_tq << coeftq1, coeftq2, coeftq3;
 
@@ -1261,5 +1243,12 @@ void pnp_WQD(Eigen::Matrix<double, 4, 64>& W,
     coef_Jacob_qt_syms << coef_Jacob1_qt, coef_Jacob2_qt, coef_Jacob3_qt, coef_Jacob4_qt;
     mixed3_pnp_func(coef_f_q_sym, W, Q, pinvG, coefs_tq, coef_Jacob_qt_syms);
     D_pnp_func(D, coef_f_q_sym);
+    clock_t time5 = clock();
+
+    std::cout << "Stage 1: " << (double)((time2 - time1) / double(CLOCKS_PER_SEC)) << std::endl;
+    std::cout << "Stage 2: " << (double)((time3 - time2) / double(CLOCKS_PER_SEC)) << std::endl;
+    std::cout << "Stage 3: " << (double)((time4 - time3) / double(CLOCKS_PER_SEC)) << std::endl;
+    std::cout << "Stage 4: " << (double)((time5 - time4) / double(CLOCKS_PER_SEC)) << std::endl;
+
 }
 

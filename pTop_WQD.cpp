@@ -1244,68 +1244,27 @@ void pTop_WQD(Eigen::Matrix<double, 4, 64>& W,
     int len = rr.size();
 
     double factor = 1.0 / ((double) len);
-    const int cores = std::thread::hardware_concurrency();
-    const int section = len / cores;
-    const int remainder = len % cores;
-    const int num_threshold = 50000000;
 
-    if(len < 16)
-    {
-        coef_J_pure.setZero();
-        for(int i = 0; i < len; ++i)
-        {
-            Eigen::Matrix<double, 9, 1> pack;
-            pack << rr[i], bb[i], nv[i];
-            Eigen::Matrix<double, 1, 85> coef_J_pures_;
-            mixed_pTop_func(coef_J_pures_, pack);
-            coef_J_pure += coef_J_pures_;
-        }
-    }
-    else if(len >= 16 && len < num_threshold)
     {
         std::vector<Eigen::Matrix<double, 1, 85> > coef_J_pures(len, Eigen::Matrix<double, 1, 85>::Zero());
         std::vector<Eigen::Matrix<double, 9, 1> > pack(len);
 
+#ifndef NO_OMP
+#pragma omp parallel for num_threads(num_threads_) schedule(static) ordered
+#endif
         for(int i = 0; i < len; ++i) {
             pack[i] << rr[i], bb[i], nv[i];
         }
 
+#ifndef NO_OMP
+#pragma omp parallel for num_threads(num_threads_) schedule(static) ordered
+#endif
         for(int ii = 0; ii < len; ++ii)
         {
             mixed_pTop_func(coef_J_pures[ii], pack[ii]);
         }
 
         coef_J_pure = factor * std::accumulate(coef_J_pures.begin(), coef_J_pures.end(), Eigen::Matrix<double, 1, 85>::Zero().eval());
-    }
-    else if(len >= num_threshold)
-    {
-        std::vector<Eigen::Matrix<double, 1, 85> > coef_J_puress(cores + 1, Eigen::Matrix<double, 1, 85>::Zero());
-#ifndef NO_OMP
-#pragma omp parallel for num_threads(num_threads_) schedule(static) ordered
-#endif
-        for(int j = 0; j <= cores; ++j)
-        {
-            int length = 0;
-            if(j < cores)
-                length = section;
-            else if(j == cores)
-                length = remainder;
-
-            Eigen::Matrix<double, 1, 85> coef_J_pures(Eigen::Matrix<double, 1, 85>::Zero());
-
-            for(int i = 0; i < length; ++i)
-            {
-                int ii = j * section + i;
-                Eigen::Matrix<double, 9, 1> pack;
-                pack << rr[ii], bb[ii], nv[ii];
-                Eigen::Matrix<double, 1, 85> coef_J_pures_;
-                mixed_pTop_func(coef_J_pures_, pack);
-                coef_J_pures += coef_J_pures_;
-            }
-
-            coef_J_puress[j] = factor * coef_J_pures;
-        }
-        coef_J_pure = std::accumulate(coef_J_puress.begin(), coef_J_puress.end(), Eigen::Matrix<double, 1, 85>::Zero().eval());
     }
 
     Eigen::Matrix<double, 1, 11> coeftq1;

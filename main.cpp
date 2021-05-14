@@ -146,7 +146,7 @@ void test_pnp_WQD(const bool& verbose,
         std::cout << "Time Eigen: " << stat.timeEigen << " s " << std::endl;
         std::cout << "Time LM: " << stat.timeLM << " s " << std::endl;
         std::cout << "True X: " << std::endl << XX << std::endl;
-        std::cout << "QPEP X: " << std::endl << X.inverse() << std::endl << std::endl;
+        std::cout << "QPEP X: " << std::endl << X << std::endl << std::endl;
     }
 
     if(!use_opencv)
@@ -548,14 +548,15 @@ void test_pTop_noise(cv::Mat& img,
                                V_cal * Sigma_dg_stat * Y_cal.transpose() + V_cal * Sigma_dc_stat + Y_cal * Sigma_gc_stat +
                                Sigma_cd_stat * V_cal.transpose() + Sigma_cg_stat * Y_cal.transpose() + Y_cal * Sigma_gd_stat * V_cal.transpose();
 
+    clock_t time1 = clock();
     Eigen::Matrix4d cov;
-
     Eigen::MatrixXd cov_left_ = cov_left;
     double cov_tr = cov_left_.trace();
     double scaling = 1.0 / (cov_tr);
     cov_left_ *= scaling;
     csdp_cov(cov, F, cov_left_, q);
     cov = cov / scaling;
+    clock_t time2 = clock();
     std::cout << "Estimated Covariance:" << std::endl << cov << std::endl;
 
     std::vector<Eigen::Vector4d> qs__(num);
@@ -567,6 +568,7 @@ void test_pTop_noise(cv::Mat& img,
     plotQuatCov(img, Sigma_q_stat, scale * cov, qs__, mean_q, fontsize);
 
     std::cout << "Stat Covariance:" << std::endl << Sigma_q_stat << std::endl;
+    std::cout << "Time CSDP Covariance Estimation: " << (time2 - time1) / double(CLOCKS_PER_SEC) << std::endl;
 }
 #endif
 
@@ -593,9 +595,8 @@ int main(int argc,char ** argv) {
     cv::Mat ColorMask(row, col, CV_8UC3, cv::Scalar(1, 1, 1) * 255);
     cv::addWeighted(imageDraw, 0.0, ColorMask, 1.0, 0, imageDraw);
 
-    const bool verbose = false;
     test_pTop_noise_init("../data/pTop_data-100pt-1.txt");
-    test_pTop_noise(imageDraw, 1500, 1e-5, fontsize, verbose);
+    test_pTop_noise(imageDraw, 1500, 1e-5, fontsize, false);
 
     imshow("imageDraw", imageDraw);
     cv::waitKey(0);
@@ -606,17 +607,20 @@ int main(int argc,char ** argv) {
 
     time1 = clock();
     loops = 1000.0;
-    test_pnp_WQD_init("../data/pnp_data-50000pt-1.txt");
-//    test_pTop_noise_init("../data/pTop_data-4096pt-1.txt");
+    test_pnp_WQD_init("../data/pnp_data-5000pt-1.txt");
+//    test_pTop_WQD_init("../data/pTop_data-4096pt-1.txt");
 
+    {
 #ifndef NO_OMP
 #pragma omp parallel for num_threads(num_threads_) schedule(static) ordered
 #endif
-    for(int i = 0; i < (int) loops; ++i)
-    {
-        test_pnp_WQD(true, false);
+        for(int i = 0; i < (int) loops; ++i)
+        {
+            test_pnp_WQD(true, false);
 //        test_pTop_WQD(false);
+        }
     }
+
     time2 = clock();
     time = time2 - time1;
     std::cout << "Time: " << time / loops / double(CLOCKS_PER_SEC) << std::endl;

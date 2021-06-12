@@ -57,12 +57,15 @@ endif()
 if(LINUX_OS)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Ofast -ffast-math -pthread -lpthread -lrt -lm -lz")
     #add_definitions(-D NO_OMP)
-    include_directories(/opt/intel/mkl/include /opt/intel/oneapi/mkl/latest/include)
-    link_directories(
-    	/opt/intel/mkl/lib/intel64 
-    	/opt/intel/lib/intel64
-    	/opt/intel/oneapi/mkl/latest/lib/intel64
-    	/opt/intel/oneapi/intelpython/python3.7/lib/)
+
+    if(NOT "${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "aarch64" AND NOT "${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "arm64")
+    	include_directories(/opt/intel/mkl/include /opt/intel/oneapi/mkl/latest/include)
+    	link_directories(
+    		/opt/intel/mkl/lib/intel64 
+    		/opt/intel/lib/intel64
+    		/opt/intel/oneapi/mkl/latest/lib/intel64
+    		/opt/intel/oneapi/intelpython/python3.7/lib/)
+    endif()
 endif()
 
 set(CMAKE_CXX_STANDARD 11)
@@ -219,8 +222,13 @@ if(NOT LINUX_OS)
     target_link_libraries(LibQPEP ${OMP_LIB} ${OpenCV_LIBS} ${LAPACK_LIBRARIES} ${X11_LIBRARIES} ${BLAS_LIBRARIES})
     target_link_libraries(LibQPEP-test LibQPEP ${OMP_LIB} ${OpenCV_LIBS} ${LAPACK_LIBRARIES} ${X11_LIBRARIES} ${BLAS_LIBRARIES})
 else()
-    target_link_libraries(LibQPEP ${OMP_LIB} ${OpenCV_LIBS} ${LAPACK_LIBRARIES} ${X11_LIBRARIES} ${BLAS_LIBRARIES} mkl_gf_lp64 mkl_intel_thread mkl_gnu_thread mkl_blas95_lp64 mkl_intel_lp64 mkl_sequential mkl_core pthread iomp5 X11)
-    target_link_libraries(LibQPEP-test LibQPEP ${OMP_LIB} ${OpenCV_LIBS} ${LAPACK_LIBRARIES} ${X11_LIBRARIES} ${BLAS_LIBRARIES} mkl_gf_lp64 mkl_intel_thread mkl_gnu_thread mkl_blas95_lp64 mkl_intel_lp64 mkl_sequential mkl_core pthread iomp5 X11)
+    if(NOT "${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "aarch64" AND NOT "${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "arm64")
+    	target_link_libraries(LibQPEP ${OMP_LIB} ${OpenCV_LIBS} ${LAPACK_LIBRARIES} ${X11_LIBRARIES} ${BLAS_LIBRARIES} mkl_gf_lp64 mkl_intel_thread mkl_gnu_thread mkl_blas95_lp64 mkl_intel_lp64 mkl_sequential mkl_core pthread iomp5 X11)
+    	target_link_libraries(LibQPEP-test LibQPEP ${OMP_LIB} ${OpenCV_LIBS} ${LAPACK_LIBRARIES} ${X11_LIBRARIES} ${BLAS_LIBRARIES} mkl_gf_lp64 mkl_intel_thread mkl_gnu_thread mkl_blas95_lp64 mkl_intel_lp64 mkl_sequential mkl_core pthread iomp5 X11)
+    else()
+	target_link_libraries(LibQPEP ${OMP_LIB} ${OpenCV_LIBS} ${LAPACK_LIBRARIES} ${X11_LIBRARIES} ${BLAS_LIBRARIES} pthread iomp5 X11)
+    	target_link_libraries(LibQPEP-test LibQPEP ${OMP_LIB} ${OpenCV_LIBS} ${LAPACK_LIBRARIES} ${X11_LIBRARIES} ${BLAS_LIBRARIES} pthread iomp5 X11)
+    endif()
 endif()
 
 include(GNUInstallDirs)

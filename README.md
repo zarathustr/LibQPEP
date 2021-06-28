@@ -6,7 +6,7 @@
 
 
 # LibQPEP
-A library that deals with generalized quadratic pose estimation problems (QPEPs). The algorithm aims to obtain globally optimal pose estimates together with globally optimal covariance estimates. Typically it can deals with the following problems:
+A library that deals with generalized quadratic pose estimation problems (QPEPs). The algorithm aims to obtain globally optimal pose together with globally optimal covariance estimates. Typically it can solve the following problems:
 
 1. Perspective-n-Points (PnP)
 

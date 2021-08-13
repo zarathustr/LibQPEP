@@ -25,14 +25,7 @@ if("${CMAKE_SYSTEM_NAME}" STREQUAL "Darwin")
     if(OSX_BIGSUR)
         add_definitions(-D OSX_BIG_SUR)
 	set(CMAKE_EXE_LINKER_FLAGS "-framework CoreGraphics")
-	if("${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "arm64")
-		#message("Using Apple M1 processors, disabling OpenMP")
-		#add_definitions(-D NO_OMP)
-		#set(NO_OPENMP TRUE)
-		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Xpreprocessor -fopenmp -Ofast -ffast-math -pthread")
-	else()
-		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Xpreprocessor -fopenmp -Ofast -ffast-math -pthread")
-	endif()
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Xpreprocessor -fopenmp -Ofast -ffast-math -pthread")
     elseif(OSX_10_9)
         add_definitions(-D NO_OMP)
         add_definitions(-D OSX_10_9)
@@ -49,14 +42,11 @@ if(${CMAKE_COMPILER_IS_GNUCC} OR ${CMAKE_COMPILER_IS_GNUCXX})
 endif()
 
 if("${CMAKE_SYSTEM_NAME}" STREQUAL "Linux")
-#    set(CMAKE_CXX_COMPILER g++-8)
-#    set(CMAKE_C_COMPILER gcc-8)
     set(LINUX_OS True)
 endif()
 
 if(LINUX_OS)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Ofast -ffast-math -pthread -lpthread -lrt -lm -lz")
-    #add_definitions(-D NO_OMP)
 
     if(NOT "${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "aarch64" AND NOT "${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "arm64")
     	include_directories(/opt/intel/mkl/include /opt/intel/oneapi/mkl/latest/include)
@@ -270,12 +260,6 @@ set(CONF_INCLUDE_DIRS ${INSTALL_INCLUDE_DIR} ${CONF_INCLUDE_DIRS} )
 
 configure_file(${PROJECT_NAME}Config.cmake.in
         "${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/${PROJECT_NAME}Config.cmake" @ONLY)
-
-#install(
-#        FILES
-#        "${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/${PROJECT_NAME}Config.cmake"
-#        DESTINATION "${INSTALL_CMAKE_DIR}" COMPONENT dev
-#)
 
 install (
         FILES

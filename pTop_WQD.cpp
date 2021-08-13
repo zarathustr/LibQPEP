@@ -1250,14 +1250,14 @@ void pTop_WQD(Eigen::Matrix<double, 4, 64>& W,
         std::vector<Eigen::Matrix<double, 9, 1> > pack(len);
 
 #ifndef NO_OMP
-#pragma omp parallel for num_threads(num_threads_) schedule(static) ordered
+#pragma omp parallel for num_threads(num_threads_)
 #endif
         for(int i = 0; i < len; ++i) {
             pack[i] << rr[i], bb[i], nv[i];
         }
 
 #ifndef NO_OMP
-#pragma omp parallel for num_threads(num_threads_) schedule(static) ordered
+#pragma omp parallel for num_threads(num_threads_)
 #endif
         for(int ii = 0; ii < len; ++ii)
         {

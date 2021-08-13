@@ -14,7 +14,7 @@
 
 
 #ifdef COMPILER_CLANG
-#pragma clang optimize off
+#pragma clang optimize on
 #elif defined(COMPILER_GCC)
 #pragma GCC optimize ("O0")
 #endif

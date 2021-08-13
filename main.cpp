@@ -572,11 +572,20 @@ void test_pTop_noise(cv::Mat& img,
 }
 #endif
 
+
+enum TestMethods {
+    METHOD_PNP = 1,
+    METHOD_PTOP,
+} method;
 int main(int argc,char ** argv) {
 
     double time = 0.0;
     clock_t time1 = clock(), time2;
     double loops = 100.0;
+    
+    //TODO: Change this to METHOD_PTOP
+    //      if you need to test Point-to-Plane Registration
+    method = METHOD_PNP;
 
 #ifndef NO_OMP
     num_threads_ = omp_get_max_threads();
@@ -607,17 +616,22 @@ int main(int argc,char ** argv) {
 
     time1 = clock();
     loops = 1000.0;
-    test_pnp_WQD_init("../data/pnp_data-5000pt-1.txt");
-//    test_pTop_WQD_init("../data/pTop_data-4096pt-1.txt");
+    
+    if(method == METHOD_PNP)
+        test_pnp_WQD_init("../data/pnp_data-50000pt-1.txt");
+    else
+        test_pTop_WQD_init("../data/pTop_data-4096pt-1.txt");
 
     {
 #ifndef NO_OMP
-#pragma omp parallel for num_threads(num_threads_) schedule(static) ordered
+#pragma omp parallel for num_threads(num_threads_)
 #endif
         for(int i = 0; i < (int) loops; ++i)
         {
-            test_pnp_WQD(true, false);
-//        test_pTop_WQD(false);
+            if(method == METHOD_PNP)
+                test_pnp_WQD(true, false);
+            else
+                test_pTop_WQD(true);
         }
     }
 

@@ -18,7 +18,7 @@ Eigen::VectorXd absvec(const Eigen::VectorXd vec)
     Eigen::VectorXd t(vec);
     for(int i = 0; i < vec.size(); ++i)
     {
-        t(i) = abs(t(i));
+        t(i) = std::fabs(t(i));
     }
     return t;
 }

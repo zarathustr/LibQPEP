@@ -59,7 +59,7 @@ inline Eigen::Vector4d R2q(const Eigen::Matrix3d& R)
 {
     double det = R.determinant();
     double orthogonality = (R.transpose() * R).trace();
-    assert(abs(det - 1.0) < 1e-12 && abs(orthogonality - 3.0) < 1e-12);
+    assert(std::fabs(det - 1.0) < 1e-12 && std::fabs(orthogonality - 3.0) < 1e-12);
 
     double G11 = R(0, 0) + R(1, 1) + R(2, 2) - 3.0, G12 = R(1, 2) - R(2, 1), G13 = R(2, 0) - R(0, 2), G14 = R(0, 1) - R(1, 0);
     double G22 = R(0, 0) - R(1, 1) - R(2, 2) - 3.0, G23 = R(0, 1) + R(1, 0), G24 = R(0, 2) + R(2, 0);
@@ -275,6 +275,7 @@ inline QPEP_runtime GaussJordanElimination(
         clock_t time2 = clock();
         stat.timeDecomposition = (time2 - time1) / double(CLOCKS_PER_SEC);
     }
+#if EIGEN_VERSION_AT_LEAST(3,3,0)
     else if(opt.DecompositionMethod == "BDCSVD") {
         clock_t time1 = clock();
         Eigen::SparseMatrix<double> C1(size_GJ, size_GJ);
@@ -288,6 +289,7 @@ inline QPEP_runtime GaussJordanElimination(
         clock_t time2 = clock();
         stat.timeDecomposition = (time2 - time1) / double(CLOCKS_PER_SEC);
     }
+#endif
     else if(opt.DecompositionMethod == "Inv") {
         clock_t time1 = clock();
         Eigen::SparseMatrix<double> C1(size_GJ, size_GJ);

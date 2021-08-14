@@ -16,7 +16,9 @@
 #if WIN32
 #include <windows.h>
 #else
+#if !defined(OSX_10_9) && !defined(OSX_BIG_SUR)
 #include <X11/Xlib.h>
+#endif
 #endif
 
 void getScreenResolution(int &width, int &height);

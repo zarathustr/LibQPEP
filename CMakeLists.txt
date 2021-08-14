@@ -221,10 +221,11 @@ set(incs
         CovEstimation.h)
 
 add_executable(LibQPEP-test main.cpp)
-add_library (LibQPEP ${srcs})
+add_library (LibQPEP SHARED ${srcs})
 
 if(NOT LINUX_OS)
-    target_link_libraries(LibQPEP ${OMP_LIB} ${OpenCV_LIBS} ${LAPACK_LIBRARIES} ${X11_LIBRARIES} ${BLAS_LIBRARIES})
+    find_library(CORE_GRAPHICS CoreGraphics QUIET)
+    target_link_libraries(LibQPEP ${OMP_LIB} ${OpenCV_LIBS} ${LAPACK_LIBRARIES} ${X11_LIBRARIES} ${BLAS_LIBRARIES} ${CORE_GRAPHICS})
     target_link_libraries(LibQPEP-test LibQPEP ${OMP_LIB} ${OpenCV_LIBS} ${LAPACK_LIBRARIES} ${X11_LIBRARIES} ${BLAS_LIBRARIES})
 else()
     if(NOT "${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "armhf" AND NOT "${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "aarch64" AND NOT "${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "arm64")

@@ -73,6 +73,5 @@ The ```MATLAB``` of version over R2007b is required for proper evaluation. The M
 
 ## Publication
 Wu, J., Zheng, Y., Gao, Z., Jiang, Y., Hu, X., Zhu, Y., Jiao, J., Liu*, M. (2020)
-           Quadratic Pose Estimation Problems: Unified Solutions, 
-           Solvability/Observability Analysis and Uncertainty Description 
-           in A Globally Optimal Framework.
+           Quadratic Pose Estimation Problems: Globally Optimal Solutions, 
+           Solvability/Observability Analysis and Uncertainty Description.

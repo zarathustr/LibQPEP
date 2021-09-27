@@ -52,8 +52,17 @@ if(LINUX_OS)
     	/opt/intel/oneapi/mkl/latest/lib/intel64
     	/opt/intel/oneapi/intelpython/python3.7/lib/)
 endif()
-
-find_package(Eigen3 REQUIRED)
+find_package(Eigen3 QUIET)
+if(NOT EIGEN3_FOUND)
+  # Fallback to cmake_modules
+  find_package(cmake_modules REQUIRED)
+  find_package(Eigen REQUIRED)
+  set(EIGEN3_INCLUDE_DIRS ${EIGEN_INCLUDE_DIRS})
+  set(EIGEN3_LIBRARIES ${EIGEN_LIBRARIES})  # Not strictly necessary as Eigen is head only
+  # Possibly map additional variables to the EIGEN3_ prefix.
+else()
+  set(EIGEN3_INCLUDE_DIRS ${EIGEN3_INCLUDE_DIR})
+endif()
 find_package(BLAS REQUIRED)
 find_package(LAPACK REQUIRED)
 

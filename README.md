@@ -70,6 +70,7 @@ The ```MATLAB``` of version over R2007b is required for proper evaluation. The M
 ## Applications (C++ & ROS Codes)
 1. Point-to-plane Registration: https://github.com/zarathustr/libpointmatcher_QPEP (Can be used in ROS with https://github.com/ethz-asl/ethzasl_icp_mapping and https://github.com/ANYbotics/pointmatcher-ros)
 2. Perspective-n-Points for SLAM Cloop Closure: https://github.com/zarathustr/DSO-QPEP-Loop-Closure
+3. Hand-eye Calibration
 
 ## Publication
 Wu, J., Zheng, Y., Gao, Z., Jiang, Y., Hu, X., Zhu, Y., Jiao, J., Liu*, M. (2020)

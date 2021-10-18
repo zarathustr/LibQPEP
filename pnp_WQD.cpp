@@ -1245,10 +1245,10 @@ void pnp_WQD(Eigen::Matrix<double, 4, 64>& W,
     D_pnp_func(D, coef_f_q_sym);
     clock_t time5 = clock();
 
-    std::cout << "Stage 1: " << (double)((time2 - time1) / double(CLOCKS_PER_SEC)) << std::endl;
-    std::cout << "Stage 2: " << (double)((time3 - time2) / double(CLOCKS_PER_SEC)) << std::endl;
-    std::cout << "Stage 3: " << (double)((time4 - time3) / double(CLOCKS_PER_SEC)) << std::endl;
-    std::cout << "Stage 4: " << (double)((time5 - time4) / double(CLOCKS_PER_SEC)) << std::endl;
+    // std::cout << "Stage 1: " << (double)((time2 - time1) / double(CLOCKS_PER_SEC)) << std::endl;
+    // std::cout << "Stage 2: " << (double)((time3 - time2) / double(CLOCKS_PER_SEC)) << std::endl;
+    // std::cout << "Stage 3: " << (double)((time4 - time3) / double(CLOCKS_PER_SEC)) << std::endl;
+    // std::cout << "Stage 4: " << (double)((time5 - time4) / double(CLOCKS_PER_SEC)) << std::endl;
 
 }
 

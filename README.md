@@ -72,6 +72,9 @@ The ```MATLAB``` of version over R2007b is required for proper evaluation. The M
 2. Perspective-n-Points for SLAM Cloop Closure: https://github.com/zarathustr/DSO-QPEP-Loop-Closure
 3. Hand-eye Calibration
 
+## Supplementary Material
+The usage of the theoretical proofs and mapping toolbox can be found in the supplementary file ```suppl.pdf```
+
 ## Publication
 Wu, J., Zheng, Y., Gao, Z., Jiang, Y., Hu, X., Zhu, Y., Jiao, J., Liu*, M. (2020)
            Quadratic Pose Estimation Problems: Globally Optimal Solutions, 

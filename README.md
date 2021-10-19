@@ -46,8 +46,8 @@ In the C++ code, the file ```main.cpp``` contains demos of pose and covariance e
 git clone https://github.com/zarathustr/LibQPEP
 mkdir build
 cd build
-cmake ..
-make -j4
+cmake .. -DCMAKE_BUILD_TYPE=Release
+make install
 ```
 
 ## Dependencies

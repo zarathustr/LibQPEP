@@ -1648,7 +1648,7 @@ struct QPEP_runtime QPEP_lm_fsolve(Eigen::Matrix3d& R,
                                    const struct QPEP_runtime& stat_)
 {
 #ifdef __linux__
-    return QPEP_lm_fsolve(R, t, X, q0, max_iter, mu, eq_Jacob_func, t_func, coef_f_q_sym, coefs_tq, pinvG, W, Q, stat_);
+    return QPEP_lm_single(R, t, X, q0, max_iter, mu, eq_Jacob_func, t_func, coef_f_q_sym, coefs_tq, pinvG, stat_);
 #endif
     clock_t time1 = clock();
     struct QPEP_runtime stat = stat_;

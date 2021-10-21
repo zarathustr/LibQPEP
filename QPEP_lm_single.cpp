@@ -1605,7 +1605,7 @@ struct QPEP_runtime QPEP_lm_single(Eigen::Matrix3d& R,
     {
         residual = absvec(last_q) - absvec(qq0);
         err = residual.norm();
-        if(err < 1e-16 || (j > 0 && grad.norm < 1e-16))
+        if(err < 1e-16 || (j > 0 && grad.norm() < 1e-16))
         {
             break;
         }

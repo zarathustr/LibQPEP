@@ -419,10 +419,10 @@ void test_pTop_noise(cv::Mat& img,
 
         Eigen::Vector4d q0 = R2q(R);
 
-        stat = QPEP_lm_fsolve(R, t, X, q0, 100, 5e-2,
+        stat = QPEP_lm_single(R, t, X, q0, 100, 5e-2,
                               reinterpret_cast<eq_Jacob_func_handle>(eq_Jacob_pTop_func),
                               reinterpret_cast<t_func_handle>(t_pTop_func),
-                              coef_f_q_sym, coefs_tq, pinvG, W, Q, stat);
+                              coef_f_q_sym, coefs_tq, pinvG, stat);
 
         q0 = R2q(R);
         qs[j].resize(4, 1);

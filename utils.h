@@ -57,9 +57,9 @@ inline Eigen::Matrix3d q2R(const Eigen::Quaterniond& q)
 
 inline Eigen::Vector4d R2q(const Eigen::Matrix3d& R)
 {
-    double det = R.determinant();
-    double orthogonality = (R.transpose() * R).trace();
-    assert(std::fabs(det - 1.0) < 1e-12 && std::fabs(orthogonality - 3.0) < 1e-12);
+    //double det = R.determinant();
+    //double orthogonality = (R.transpose() * R).trace();
+    //assert(std::fabs(det - 1.0) < 1e-12 && std::fabs(orthogonality - 3.0) < 1e-12);
 
     double G11 = R(0, 0) + R(1, 1) + R(2, 2) - 3.0, G12 = R(1, 2) - R(2, 1), G13 = R(2, 0) - R(0, 2), G14 = R(0, 1) - R(1, 0);
     double G22 = R(0, 0) - R(1, 1) - R(2, 2) - 3.0, G23 = R(0, 1) + R(1, 0), G24 = R(0, 2) + R(2, 0);

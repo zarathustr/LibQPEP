@@ -1605,11 +1605,11 @@ struct QPEP_runtime QPEP_lm_single(Eigen::Matrix3d& R,
     {
         residual = absvec(last_q) - absvec(qq0);
         err = residual.norm();
-        if(err < 1e-20)
+        if(err < 1e-16 || (j > 0 && grad.norm < 1e-16))
         {
             break;
         }
-        else if(err >= 1e-20 && err < last_err / 2.0)
+        else if(err >= 1e-16 && err < last_err / 2.0)
         {
             mu_ = mu_ / 2.0;
         }
@@ -1647,6 +1647,9 @@ struct QPEP_runtime QPEP_lm_fsolve(Eigen::Matrix3d& R,
                                    const Eigen::MatrixXd& Q,
                                    const struct QPEP_runtime& stat_)
 {
+#ifdef __linux__
+    return QPEP_lm_fsolve(R, t, X, q0, max_iter, mu, eq_Jacob_func, t_func, coef_f_q_sym, coefs_tq, pinvG, W, Q, stat_);
+#endif
     clock_t time1 = clock();
     struct QPEP_runtime stat = stat_;
     double x_init[5] = {};

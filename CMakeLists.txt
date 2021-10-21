@@ -68,6 +68,7 @@ if(LINUX_OS)
     		/opt/intel/lib/intel64
     		/opt/intel/oneapi/mkl/latest/lib/intel64
     		/opt/intel/oneapi/intelpython/python3.7/lib/)
+	set(MKL_LIBS "-lmkl_gf_lp64 -lmkl_intel_thread -lmkl_gnu_thread -lmkl_blas95_lp64 -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthread -liomp5")
     endif()
 endif()
 
@@ -119,8 +120,6 @@ endif()
 
 if(LAPACK_FOUND AND NOT NO_MKL)
     add_definitions(-D EIGEN_USE_BLAS)
-    link_directories(/opt/intel/mkl/lib/intel64)
-    set(MKL_LIBS "-lmkl_gf_lp64 -lmkl_intel_thread -lmkl_gnu_thread -lmkl_blas95_lp64 -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthread -liomp5")
 else()
     message("Disabling MKL and LAPACK")
 endif()

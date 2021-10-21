@@ -138,6 +138,7 @@ void test_pnp_WQD(const bool& verbose,
                    reinterpret_cast<t_func_handle>(t_pnp_func),
                    coef_f_q_sym, coefs_tq, pinvG, stat);
 
+#pragma omp critical
     if(verbose) {
         std::cout << "Time DataPrepare: " << timeDataPrepare << " s " << std::endl;
         std::cout << "Time DecompositionDataPrepare: " << stat.timeDecompositionDataPrepare << " s " << std::endl;
@@ -178,6 +179,8 @@ void test_pnp_WQD(const bool& verbose,
     Eigen::Vector3d Trans;
     Trans << tvec.at<double>(0), tvec.at<double>(1), tvec.at<double>(2);
     XX << Rot, Trans, Eigen::Vector3d::Zero(3).transpose(), 1.0;
+    
+#pragma omp critical
     if(verbose) {
         std::cout << "Opencv EPnP X: " << std::endl << XX << std::endl;
     }
@@ -192,6 +195,7 @@ void test_pnp_WQD(const bool& verbose,
                 rotation_matrix.at<double>(2, 0), rotation_matrix.at<double>(2, 1), rotation_matrix.at<double>(2, 2);
         Trans << tvec.at<double>(0), tvec.at<double>(1), tvec.at<double>(2);
         XX << Rot, Trans, Eigen::Vector3d::Zero(3).transpose(), 1.0;
+  #pragma omp critical
         if(verbose) {
             std::cout << "Opencv P3P X: " << std::endl << XX << std::endl;
         }
@@ -205,6 +209,7 @@ void test_pnp_WQD(const bool& verbose,
             rotation_matrix.at<double>(2, 0), rotation_matrix.at<double>(2, 1), rotation_matrix.at<double>(2, 2);
     Trans << tvec.at<double>(0), tvec.at<double>(1), tvec.at<double>(2);
     XX << Rot, Trans, Eigen::Vector3d::Zero(3).transpose(), 1.0;
+#pragma omp critical
     if(verbose) {
         std::cout << "Opencv DLS X: " << std::endl << XX << std::endl;
     }
@@ -217,6 +222,7 @@ void test_pnp_WQD(const bool& verbose,
             rotation_matrix.at<double>(2, 0), rotation_matrix.at<double>(2, 1), rotation_matrix.at<double>(2, 2);
     Trans << tvec.at<double>(0), tvec.at<double>(1), tvec.at<double>(2);
     XX << Rot, Trans, Eigen::Vector3d::Zero(3).transpose(), 1.0;
+#pragma omp critical
     if(verbose) {
         std::cout << "Opencv UPnP X: " << std::endl << XX << std::endl;
     }
@@ -231,6 +237,7 @@ void test_pnp_WQD(const bool& verbose,
                 rotation_matrix.at<double>(2, 0), rotation_matrix.at<double>(2, 1), rotation_matrix.at<double>(2, 2);
         Trans << tvec.at<double>(0), tvec.at<double>(1), tvec.at<double>(2);
         XX << Rot, Trans, Eigen::Vector3d::Zero(3).transpose(), 1.0;
+#pragma omp critical
         if(verbose) {
             std::cout << "Opencv AP3P X: " << std::endl << XX << std::endl;
         }
@@ -242,6 +249,7 @@ void test_pnp_WQD(const bool& verbose,
                 rotation_matrix.at<double>(2, 0), rotation_matrix.at<double>(2, 1), rotation_matrix.at<double>(2, 2);
         Trans << tvec.at<double>(0), tvec.at<double>(1), tvec.at<double>(2);
         XX << Rot, Trans, Eigen::Vector3d::Zero(3).transpose(), 1.0;
+#pragma omp critical
         if(verbose) {
             std::cout << "Opencv IPPE X: " << std::endl << XX << std::endl;
         }
@@ -254,6 +262,7 @@ void test_pnp_WQD(const bool& verbose,
                 rotation_matrix.at<double>(2, 0), rotation_matrix.at<double>(2, 1), rotation_matrix.at<double>(2, 2);
         Trans << tvec.at<double>(0), tvec.at<double>(1), tvec.at<double>(2);
         XX << Rot, Trans, Eigen::Vector3d::Zero(3).transpose(), 1.0;
+#pragma omp critical
         if(verbose) {
             std::cout << "Opencv IPPE Square X: " << std::endl << XX << std::endl;
         }
@@ -319,7 +328,8 @@ void test_pTop_WQD(const bool& verbose) {
                    reinterpret_cast<eq_Jacob_func_handle>(eq_Jacob_pTop_func),
                    reinterpret_cast<t_func_handle>(t_pTop_func),
                    coef_f_q_sym, coefs_tq, pinvG, stat);
-
+    
+#pragma omp critical
     if(verbose)
     {
         std::cout << "True X: " << std::endl << XX << std::endl;
@@ -557,6 +567,7 @@ void test_pTop_noise(cv::Mat& img,
     csdp_cov(cov, F, cov_left_, q);
     cov = cov / scaling;
     clock_t time2 = clock();
+#pragma omp critical
     std::cout << "Estimated Covariance:" << std::endl << cov << std::endl;
 
     std::vector<Eigen::Vector4d> qs__(num);
@@ -567,6 +578,7 @@ void test_pTop_noise(cv::Mat& img,
     double scale = fabs(cov_left.trace() / (F * cov * F.transpose()).trace());
     plotQuatCov(img, Sigma_q_stat, scale * cov, qs__, mean_q, fontsize);
 
+#pragma omp critical
     std::cout << "Stat Covariance:" << std::endl << Sigma_q_stat << std::endl;
     std::cout << "Time CSDP Covariance Estimation: " << (time2 - time1) / double(CLOCKS_PER_SEC) << std::endl;
 }
@@ -637,7 +649,7 @@ int main(int argc,char ** argv) {
 
     time2 = clock();
     time = time2 - time1;
-    std::cout << "Time: " << time / loops / double(CLOCKS_PER_SEC) << std::endl;
+    std::cout << "Time: " << time / loops / double(CLOCKS_PER_SEC) << "s" << std::endl;
 
     return 0;
 }

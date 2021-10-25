@@ -82,6 +82,10 @@ The ```MATLAB``` of version over R2007b is required for proper evaluation. The M
 2. Perspective-n-Points for SLAM Cloop Closure: https://github.com/zarathustr/DSO-QPEP-Loop-Closure
 3. Hand-eye Calibration
 
+## Extensions
+1. For single-precision (float) and long-double implementation, please go to https://github.com/zarathustr/QPEP-MultiPrecision.
+2. For solving QPEPs with random sample consensus (RANSAC), please go to https://github.com/zarathustr/QPEP-RANSAC.
+
 ## Supplementary Material
 The usage of the theoretical proofs and mapping toolbox can be found in the supplementary file ```suppl.pdf```
 

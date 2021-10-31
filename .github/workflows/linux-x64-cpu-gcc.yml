@@ -29,7 +29,7 @@ jobs:
         run: sudo apt-get update
         
       - name: build-essential
-        run: sudo apt-get install cmake
+        run: sudo apt-get install cmake libeigen3-dev
                 
       - name: protobuf
         run: sudo apt-get install libprotobuf-dev protobuf-compiler libopencv-dev

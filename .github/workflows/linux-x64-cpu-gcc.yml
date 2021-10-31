@@ -29,7 +29,7 @@ jobs:
         run: sudo apt-get update
                 
       - name: protobuf
-        run: sudo apt-get install libprotobuf-dev protobuf-compiler linopencv-dev
+        run: sudo apt-get install libprotobuf-dev protobuf-compiler libopencv-dev
       
       - name: build
         run: |

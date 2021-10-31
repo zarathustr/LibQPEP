@@ -27,6 +27,9 @@ jobs:
       
       - name: update
         run: sudo apt-get update
+        
+      - name: build-essential
+        run: sudo apt-get install cmake
                 
       - name: protobuf
         run: sudo apt-get install libprotobuf-dev protobuf-compiler libopencv-dev

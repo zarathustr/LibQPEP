@@ -76,7 +76,7 @@ set(CMAKE_CXX_STANDARD 11)
 find_package(Eigen3 QUIET)
 if(NOT EIGEN3_FOUND)
   # Fallback to cmake_modules
-  find_package(cmake_modules REQUIRED)
+  #find_package(cmake_modules REQUIRED)
   find_package(Eigen REQUIRED)
   set(EIGEN3_INCLUDE_DIRS ${EIGEN_INCLUDE_DIRS})
   set(EIGEN3_LIBRARIES ${EIGEN_LIBRARIES})  # Not strictly necessary as Eigen is head only
@@ -261,6 +261,12 @@ install(TARGETS LibQPEP
         EXPORT ${PROJECT_NAME}-config
         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/../lib/
         )
+INSTALL(CODE "execute_process( \
+    COMMAND ${CMAKE_COMMAND} -E create_symlink \
+    ${CMAKE_INSTALL_PREFIX}/lib/libLibQPEP.so \
+    ${CMAKE_INSTALL_PREFIX}/lib/libLibQPEP.a   \
+    )"
+)
 install(FILES ${incs} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME})
 
 export(
@@ -296,3 +302,4 @@ install (
         "${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/${PROJECT_NAME}Config.cmake"
         DESTINATION "share/${PROJECT_NAME}/cmake/"
 )
+

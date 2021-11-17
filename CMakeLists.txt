@@ -261,12 +261,15 @@ install(TARGETS LibQPEP
         EXPORT ${PROJECT_NAME}-config
         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/../lib/
         )
-INSTALL(CODE "execute_process( \
-    COMMAND ${CMAKE_COMMAND} -E create_symlink \
-    ${CMAKE_INSTALL_PREFIX}/lib/libLibQPEP.so \
-    ${CMAKE_INSTALL_PREFIX}/lib/libLibQPEP.a   \
-    )"
-)
+
+if(LINUX_OS)
+	INSTALL(CODE "execute_process( \
+    		COMMAND ${CMAKE_COMMAND} -E create_symlink \
+   		 ${CMAKE_INSTALL_PREFIX}/lib/libLibQPEP.so \
+    		${CMAKE_INSTALL_PREFIX}/lib/libLibQPEP.a   \
+    		)"
+	)
+endif()
 install(FILES ${incs} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME})
 
 export(

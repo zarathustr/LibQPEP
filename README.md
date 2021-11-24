@@ -33,7 +33,7 @@ Affiliation: **RAM-LAB**, Hong Kong University of Science and Technology (**HKUS
 
 Main Contributor: **Jin Wu** (https://github.com/zarathustr), jin_wu_uestc@hotmail.com
 
-Core Contributors: **Xiangcheng Hu** (https://github.com/JokerJohn), **Ming Liu** (https://www.ece.ust.hk/eelium)
+Core Contributors: **Xiangcheng Hu** (https://github.com/JokerJohn)
 
 
 # Usage
@@ -93,6 +93,6 @@ VINS-Mono: https://github.com/zarathustr/VINS-Mono-QPEP
 The usage of the theoretical proofs and mapping toolbox can be found in the supplementary file ```suppl.pdf```
 
 ## Publication
-Wu, J., Zheng, Y., Gao, Z., Jiang, Y., Hu, X., Zhu, Y., Jiao, J., Liu*, M. (2020)
+Wu, J., Zheng, Y., Gao, Z., Jiang, Y., Hu, X., Zhu, Y., Jiao, J., Liu, M. (2020)
            Quadratic Pose Estimation Problems: Globally Optimal Solutions, 
            Solvability/Observability Analysis and Uncertainty Description.

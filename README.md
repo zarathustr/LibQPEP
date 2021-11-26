@@ -31,9 +31,9 @@ A library that deals with generalized quadratic pose estimation problems (QPEPs)
 # Authors
 Affiliation: **RAM-LAB**, Hong Kong University of Science and Technology (**HKUST**)
 
-Main Contributor: **Jin Wu** (https://github.com/zarathustr), jin_wu_uestc@hotmail.com
+Contributor: **Jin Wu** (https://github.com/zarathustr), jin_wu_uestc@hotmail.com
 
-Core Contributors: **Xiangcheng Hu** (https://github.com/JokerJohn)
+Supervisor: **Prof. Ming Liu**, Dean of RAM-LAB, HKUST.
 
 
 # Usage

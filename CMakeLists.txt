@@ -158,10 +158,6 @@ if(NOT OSX_10_9 AND NOT LINUX_OS AND NOT NO_OPENMP)
     add_definitions(-D USEGETTIME)
 endif()
 
-if(NOT LINUX_OS)
-add_definitions(-D CAPSLAPACK)
-endif()
-
 if(OSX OR OSX_BIGSUR)
     find_package(OpenMP REQUIRED)
     if(NOT NO_OPENMP)

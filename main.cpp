@@ -124,8 +124,11 @@ void test_pnp_WQD(const bool& verbose,
     double min[27];
     struct QPEP_options opt;
     opt.ModuleName = "solver_WQ_1_2_3_4_5_9_13_17_33_49_approx";
+#ifndef USE_DARWIN
     opt.DecompositionMethod = "PartialPivLU";
-//    opt.DecompositionMethod = "LinSolve";
+#else
+    opt.DecompositionMethod = "LinSolve";
+#endif
 
     struct QPEP_runtime stat = QPEP_WQ_grobner(R, t, X, min, W_, Q_,
                     reinterpret_cast<solver_func_handle>(solver_WQ_1_2_3_4_5_9_13_17_33_49_approx),

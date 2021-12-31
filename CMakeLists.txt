@@ -14,6 +14,7 @@ if("${CMAKE_SYSTEM_NAME}" STREQUAL "Darwin")
     set(CMAKE_CXX_COMPILER clang++)
     set(CMAKE_C_COMPILER clang)
     add_definitions(-D COMPILER_CLANG)
+    add_definitions(-D USE_DARWIN)
 
     if("${CMAKE_SYSTEM_VERSION}" GREATER "20.0.0")
         message("Using OS X Big Sur")

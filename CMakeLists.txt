@@ -106,6 +106,8 @@ if(OPENCL_FOUND)
         message("Found ViennaCL!")
         include_directories(${VIENNACL_INCLUDE_DIR})
         add_definitions(-DUSE_OPENCL)
+    else()
+        message(WARNING "The ViennaCL Library is not installed! Will disable OpenCL features!")
     endif()
 endif()
 

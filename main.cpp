@@ -468,12 +468,6 @@ void test_pTop_noise(cv::Mat& img,
     }
 
     Eigen::Vector4d mean_q = mean(qs);
-
-//    std::vector<Eigen::MatrixXd> qs_(qs);
-//    std::for_each(qs_.begin(), qs_.end(), [=](Eigen::Vector4d& x){x = x - mean_q;});
-//    Eigen::Matrix4d res(Eigen::Matrix4d::Zero());
-//    std::for_each(qs_.begin(), qs_.end(), [&res](const Eigen::Vector4d& x){res += x * x.transpose();});
-//    Eigen::Matrix4d Sigma_data_stat_ = res * 1.0 / ((double) qs_.size());
     Eigen::Matrix4d Sigma_q_stat = covx(qs, qs);
     Eigen::MatrixXd Sigma_t_stat = covx(ts, ts);
     Eigen::MatrixXd Sigma_v_stat = covx(vs, vs);
@@ -582,6 +576,7 @@ void test_pTop_noise(cv::Mat& img,
     }
     double scale = fabs(cov_left.trace() / (F * cov * F.transpose()).trace());
     plotQuatCov(img, Sigma_q_stat, scale * cov, qs__, mean_q, fontsize);
+
 
 #pragma omp critical
     std::cout << "Stat Covariance:" << std::endl << Sigma_q_stat << std::endl;

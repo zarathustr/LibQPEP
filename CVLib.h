@@ -23,29 +23,18 @@
 
 void getScreenResolution(int &width, int &height);
 
-void plotCov4d(cv::Mat& img,
-               double& x_min,
-               double& x_max,
-               double& y_min,
-               double& y_max,
-               const Eigen::Matrix4d& cov,
-               const std::vector<Eigen::Vector4d>& data,
-               const Eigen::Vector4d& mean,
-               const int& a,
-               const int& b,
-               const int& ellipse_size,
-               const cv::Scalar& ellipse_color,
-               const int& point_size,
-               const cv::Scalar& point_color,
-               const double& size,
-               const int& linestyle,
-               const Eigen::Vector2d& bias);
-
 void plotQuatCov(cv::Mat& img,
                  const Eigen::Matrix4d& cov1,
                  const Eigen::Matrix4d& cov2,
                  const std::vector<Eigen::Vector4d>& qs,
                  const Eigen::Vector4d& mean_q,
+                 const double& fontsize);
+
+void plotTransCov(cv::Mat& img,
+                 const Eigen::Matrix3d& cov1,
+                 const Eigen::Matrix3d& cov2,
+                 const std::vector<Eigen::Vector3d>& qs,
+                 const Eigen::Vector3d& mean_q,
                  const double& fontsize);
 
 #endif

@@ -124,7 +124,8 @@ void test_pnp_WQD(const bool& verbose,
     double min[27];
     struct QPEP_options opt;
     opt.ModuleName = "solver_WQ_1_2_3_4_5_9_13_17_33_49_approx";
-    opt.DecompositionMethod = "LinSolve";
+    opt.DecompositionMethod = "PartialPivLU";
+//    opt.DecompositionMethod = "LinSolve";
 
     struct QPEP_runtime stat = QPEP_WQ_grobner(R, t, X, min, W_, Q_,
                     reinterpret_cast<solver_func_handle>(solver_WQ_1_2_3_4_5_9_13_17_33_49_approx),
@@ -418,7 +419,11 @@ void test_pTop_noise(cv::Mat& img,
         double min[27];
         struct QPEP_options opt;
         opt.ModuleName = "solver_WQ_approx";
+#ifdef USE_OPENCL
+        opt.DecompositionMethod = "ViennaCL-GMRES";
+#else
         opt.DecompositionMethod = "PartialPivLU";
+#endif
 
         struct QPEP_runtime stat =
                 QPEP_WQ_grobner(R, t, X, min, W_, Q_,
@@ -616,7 +621,9 @@ int main(int argc,char ** argv) {
     cv::Mat ColorMask(row, col, CV_8UC3, cv::Scalar(1, 1, 1) * 255);
     cv::addWeighted(imageDraw, 0.0, ColorMask, 1.0, 0, imageDraw);
 
-    test_pTop_noise_init("../data/pTop_data-100pt-1.txt");
+    std::string src_dir(CURRENT_SRC_DIR);
+    std::cout << "Current Source Directory: " << src_dir << std::endl;
+    test_pTop_noise_init(src_dir + "/data/pTop_data-100pt-1.txt");
     test_pTop_noise(imageDraw, 1500, 1e-5, fontsize, false);
 
     imshow("imageDraw", imageDraw);
@@ -630,9 +637,9 @@ int main(int argc,char ** argv) {
     loops = 1000.0;
     
     if(method == METHOD_PNP)
-        test_pnp_WQD_init("../data/pnp_data-500pt-1.txt");
+        test_pnp_WQD_init(src_dir + "/data/pnp_data-500pt-1.txt");
     else
-        test_pTop_WQD_init("../data/pTop_data-4096pt-1.txt");
+        test_pTop_WQD_init(src_dir + "/data/pTop_data-4096pt-1.txt");
 
     {
 #ifndef NO_OMP

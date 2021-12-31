@@ -72,6 +72,8 @@ if(LINUX_OS)
     endif()
 endif()
 
+add_definitions(-DCURRENT_SRC_DIR="${CMAKE_CURRENT_SOURCE_DIR}")
+
 set(CMAKE_CXX_STANDARD 11)
 find_package(Eigen3 QUIET)
 if(NOT EIGEN3_FOUND)
@@ -85,6 +87,28 @@ else()
   set(EIGEN3_INCLUDE_DIRS ${EIGEN3_INCLUDE_DIR})
 endif()
 
+if(LINUX_OS AND NOT "${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "armhf" AND NOT "${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "aarch64" AND NOT "${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "arm64")
+    find_package(CUDA QUIET)
+    if(CUDA_FOUND)
+        message("Found CUDA in ${CUDA_TOOLKIT_ROOT_DIR}!")
+        message("Found OpenCL in ${CUDA_OpenCL_LIBRARY}")
+        message("Found CUBLAS Libs in ${CUDA_CUBLAS_LIBRARIES}")
+        add_definitions(-DUSE_CUDA)
+        set(OPENCL_LIBRARY ${CUDA_OpenCL_LIBRARY})
+        set(OPENCL_INCLUDE_DIR "${CUDA_TOOLKIT_ROOT_DIR}/include")
+    endif()
+endif()
+
+find_package(OpenCL QUIET)
+if(OPENCL_FOUND)
+    find_package(ViennaCL QUIET)
+    if(VIENNACL_FOUND)
+        message("Found ViennaCL!")
+        include_directories(${VIENNACL_INCLUDE_DIR})
+        add_definitions(-DUSE_OPENCL)
+    endif()
+endif()
+
 find_package(BLAS REQUIRED)
 find_package(LAPACK REQUIRED)
 find_package(X11)
@@ -94,8 +118,8 @@ else()
     find_package(OpenCV ${OPENCV_VER} EXACT REQUIRED PATHS ${OPENCV_PATH})
 endif()
 
-if(SUPERLU)
-    find_package(superlu)
+find_package(superlu QUIET)
+if(SUPERLU_FOUND)
     add_definitions(-DUSE_SUPERLU)
     message("Using SuperLU for Acceleration of Linear System Solving")
 endif()
@@ -217,6 +241,7 @@ set(srcs
         ./csdp/lib/sortentries.c
         ./csdp/lib/writesol.c
         CovEstimation.cpp
+        utils.cpp
         )
 
 set(incs
@@ -251,8 +276,8 @@ else()
     	target_link_libraries(LibQPEP ${OMP_LIB} ${OpenCV_LIBS} ${LAPACK_LIBRARIES} ${X11_LIBRARIES} ${BLAS_LIBRARIES} ${MKL_LIBS} -lX11)
     	target_link_libraries(LibQPEP-test LibQPEP ${OMP_LIB} ${OpenCV_LIBS} ${LAPACK_LIBRARIES} ${X11_LIBRARIES} ${BLAS_LIBRARIES} ${MKL_LIBS} -lX11)
     else()
-	target_link_libraries(LibQPEP ${OMP_LIB} ${OpenCV_LIBS} ${LAPACK_LIBRARIES} ${X11_LIBRARIES} ${BLAS_LIBRARIES} ${OMP_LIB} -lX11)
-    	target_link_libraries(LibQPEP-test LibQPEP ${OMP_LIB} ${OpenCV_LIBS} ${LAPACK_LIBRARIES} ${X11_LIBRARIES} ${BLAS_LIBRARIES} ${OMP_LIB} -lX11)
+        target_link_libraries(LibQPEP ${OMP_LIB} ${OpenCV_LIBS} ${LAPACK_LIBRARIES} ${X11_LIBRARIES} ${BLAS_LIBRARIES} ${OMP_LIB} ${OPENCL_LIBRARY} ${CUDA_CUBLAS_LIBRARIES} -lX11)
+        target_link_libraries(LibQPEP-test LibQPEP ${OMP_LIB} ${OpenCV_LIBS} ${LAPACK_LIBRARIES} ${X11_LIBRARIES} ${BLAS_LIBRARIES} ${OMP_LIB} ${OPENCL_LIBRARY} ${CUDA_CUBLAS_LIBRARIES} -lX11)
     endif()
 endif()
 

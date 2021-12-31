@@ -1,0 +1,7 @@
+build
+build/*
+build*
+cmake*
+cmake*/*
+cmake
+CMakeLists.txt.user

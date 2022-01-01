@@ -94,7 +94,10 @@ VINS-Mono: https://github.com/zarathustr/VINS-Mono-QPEP
 ## Supplementary Material
 The usage of the theoretical proofs and mapping toolbox can be found in the supplementary file ```suppl.pdf```
 
-## Publication
+# How to Contribute to LibQPEP?
+The C++ version of LibQPEP originates from its MATLAB version codes in the ```code``` folder. To define a quadratic pose estimation problem (QPEP), we recommend that the problem can be written in the form of scalar objective function ```L``` such that the pose ```T``` on SE(3) is optimized via ```argmin J```, subject to the SO(3) constraints in ```T```. Then, please follow the ```syms*``` files in the root of MATLAB demo codes to generate the required numerical matrices for QPEP. After that, you may need to convert the matrices into C++ callable functions. Please refer to ```misc_*_funcs.cpp``` files for such a conversion. Finally, you may solve the problem via the provided solvers. If one needs the covariance estimation, please follow the steps in ```main.cpp```, where an example of the covariance estimation of point-to-plane registration has been presented. 
+
+# Publication
 Wu, J., Zheng, Y., Gao, Z., Jiang, Y., Hu, X., Zhu, Y., Jiao, J., Liu, M. (2020)
            Quadratic Pose Estimation Problems: Globally Optimal Solutions, 
            Solvability/Observability Analysis and Uncertainty Description.

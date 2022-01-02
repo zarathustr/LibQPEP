@@ -41,7 +41,7 @@ The C++ codes are built using ```CMake``` toolkit under the ```C++11``` programm
 
 In the C++ code, the file ```main.cpp``` contains demos of pose and covariance estimation. The function ```QPEP_grobner``` solves the QPEP via Groebner-basis elimination by Larsson et al. https://github.com/vlarsson. Using ```QPEP_lm_single```, the solved pose will be refined by the Levenberg-Marquadt (LM) iteration. Finally, the function ```csdp_cov``` estimates the covariance information.
 
-The LibQPEP can be accelerated by many approaches, including OpenMP, Intel MKL, BLAS, LAPACK, CUBLAS (CUDA), and OpenCL. 
+The LibQPEP can be accelerated by many parallel-computing approaches, including OpenMP, Intel MKL, BLAS, LAPACK, CUBLAS (CUDA), Metal Performance Shaders, and OpenCL. 
 
 ## C++ Compilation
 ```bash

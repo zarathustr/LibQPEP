@@ -4,10 +4,11 @@
 %
 %
 % Articles: 
-%      Wu, J., Zheng, Y., Gao, Z., Jiang, Y., Hu, X., Zhu, Y., Jiao, J., Liu, M. (2020)
-%           Quadratic Pose Estimation Problems: Unified Solutions, 
-%           Solvability/Observability Analysis and Uncertainty Description 
-%           in A Globally Optimal Framework.
+%      Wu, J., Zheng, Y., Gao, Z., Jiang, Y., Hu, X., Zhu, Y., Jiao, J., Liu, M. (2022)
+%           Quadratic Pose Estimation Problems: Globally Optimal Solutions, 
+%           Solvability/Observability Analysis and Uncertainty Description.
+%           IEEE Transactions on Robotics.
+%           https://doi.org/10.1109/TRO.2022.3155880
 %
 %      Nguyen, H., Pham, Q. (2018) On the Covariance of AX = XB.                             
 %           IEEE Transactions on Robotics.
@@ -34,8 +35,15 @@ clc
 warning('off');
 format long g
 
-pybinpath = '/usr/local/bin/python2.7';
-systlibpath = '/usr/local/lib';
+% pybinpath = '/usr/local/bin/python2.7';
+% systlibpath = '/usr/local/lib';
+
+% pybinpath = '/usr/bin/python2.7';
+% systlibpath = '/usr/lib';
+
+pybinpath = '/usr/bin/python2.7';
+systlibpath = '/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python';
+
 str = sprintf('! export DYLD_LIBRARY_PATH=%s:DYLD_LIBRARY_PATH', systlibpath);
 eval(str);
 

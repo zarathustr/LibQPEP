@@ -4,7 +4,12 @@
 // Authors: Jin Wu and Ming Liu
 // Affiliation: Hong Kong University of Science and Technology (HKUST)
 // Emails: jin_wu_uestc@hotmail.com; eelium@ust.hk
-//
+// Reference: Wu, J., et al. (2022) Quadratic Pose Estimation Problems: 
+//                                  Globally Optimal Solutions, 
+//                                  Solvability/Observability Analysis,
+//                                  and Uncertainty Description.
+//                                  IEEE Transactions on Robotics.
+//                                  https://doi.org/10.1109/TRO.2022.3155880
 //
 // main.cpp: Demos and visualization
 

@@ -100,4 +100,4 @@ The C++ version of LibQPEP originates from its MATLAB version codes in the ```co
 # Publication
 Wu, J., Zheng, Y., Gao, Z., Jiang, Y., Hu, X., Zhu, Y., Jiao, J., Liu, M. (2022)
            Quadratic Pose Estimation Problems: Globally Optimal Solutions, 
-           Solvability/Observability Analysis and Uncertainty Description, **IEEE Transactions on Robotics**, https://doi.org/10.1109/TRO.2022.3155880.
+           Solvability/Observability Analysis and Uncertainty Description, ***IEEE Transactions on Robotics***, https://doi.org/10.1109/TRO.2022.3155880.

@@ -33,7 +33,7 @@ Affiliation: **RAM-LAB**, Hong Kong University of Science and Technology (**HKUS
 
 Contributor: **Jin Wu** (https://github.com/zarathustr), jin_wu_uestc@hotmail.com
 
-Supervisor: **Prof. Ming Liu**, Dean of RAM-LAB, HKUST.
+Supervisor: **Prof. Ming Liu**, Dean of RAM-LAB, HKUST (https://ram-lab.com)
 
 
 # Usage

@@ -44,6 +44,7 @@ endif()
 
 if(NO_OMP)
     add_definitions(-DNO_OMP)
+    message("Disabling OpenMP!")
 endif()
 
 if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)

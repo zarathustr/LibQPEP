@@ -322,7 +322,11 @@ void test_pTop_WQD(const bool& verbose) {
     double min[27];
     struct QPEP_options opt;
     opt.ModuleName = "solver_WQ_approx";
+#ifdef USE_OPENCL
+    opt.DecompositionMethod = "ViennaCL-GMRES";
+#else
     opt.DecompositionMethod = "PartialPivLU";
+#endif
 
     struct QPEP_runtime stat =
             QPEP_WQ_grobner(R, t, X, min, W_, Q_,
@@ -605,7 +609,25 @@ int main(int argc,char ** argv) {
     
     //TODO: Change this to METHOD_PTOP
     //      if you need to test Point-to-Plane Registration
-    method = METHOD_PNP;
+    method = METHOD_PTOP;
+    if(argc > 1)
+    {
+        if(!strcmp(argv[1], "pnp")){
+            method = METHOD_PNP;
+            std::cout << "Testing PnP Examples!" << std::endl;
+        }
+        else{
+            method = METHOD_PTOP;
+            std::cout << "Testing Point-to-Plane Examples!" << std::endl;
+        }
+    }
+    else
+        std::cout << "Testing Point-to-Plane Examples!" << std::endl;
+    
+    
+#ifdef USE_OPENCL
+    std::cout << "Using ViennaCL for Solution to Linear Systems" << std::endl;
+#endif
 
 #ifndef NO_OMP
     num_threads_ = omp_get_max_threads();

@@ -19,8 +19,7 @@
 #include "CVLib.h"
 
 #ifdef USE_OPENCV
-
-#if defined(OSX_10_9) || defined(OSX_BIG_SUR)
+#if defined(USE_DARWIN)
 #include <CoreGraphics/CGDisplayConfiguration.h>
 #endif
 
@@ -29,16 +28,24 @@ void getScreenResolution(int &width, int &height) {
     width  = (int) GetSystemMetrics(SM_CXSCREEN);
     height = (int) GetSystemMetrics(SM_CYSCREEN);
 #else
-#if !defined(OSX_10_9) && !defined(OSX_BIG_SUR)
     Display* disp = XOpenDisplay(NULL);
+    #if defined(USE_DARWIN)
+    if(!disp)
+    {
+        auto mainDisplayId = CGMainDisplayID();
+        width = CGDisplayPixelsWide(mainDisplayId);
+        height = CGDisplayPixelsHigh(mainDisplayId);
+    }
+    else{
+        Screen*  scrn = DefaultScreenOfDisplay(disp);
+        width  = scrn->width;
+        height = scrn->height;
+    }
+    #else
     Screen*  scrn = DefaultScreenOfDisplay(disp);
     width  = scrn->width;
     height = scrn->height;
-#else
-    auto mainDisplayId = CGMainDisplayID();
-    width = CGDisplayPixelsWide(mainDisplayId);
-    height = CGDisplayPixelsHigh(mainDisplayId);
-#endif
+    #endif
 #endif
 }
 

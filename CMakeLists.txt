@@ -156,7 +156,7 @@ endif()
 
 if(LAPACK_FOUND AND NOT NO_MKL)
     add_definitions(-D EIGEN_USE_BLAS)
-    set(MKL_LIBS "")
+    unset(MKL_LIBS)
 else()
     message("Disabling MKL and LAPACK")
 endif()

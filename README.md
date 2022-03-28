@@ -51,7 +51,12 @@ cd build
 cmake .. -DCMAKE_BUILD_TYPE=Release
 make install
 ```
-Note: Using ```Clang``` compiler on Unbuntu 16.04, 18.04 will be much faster than ```GCC```!
+Note: Using ```Clang``` compiler on Unbuntu 16.04, 18.04 will be much faster than ```GCC```! To use the ```Clang``` compiler in ```CMake```, follow these instructions:
+```
+CC=/usr/bin/clang CXX=/usr/bin/clang cmake ..
+make install
+```
+where ```/usr/bin/clang``` directs to the path of the installed ```Clang``` compiler.
 
 ## Dependencies
 1. Mandatory dependencies are: ```X11```, ```LAPACK```, ```BLAS```, ```Eigen3```.

@@ -51,7 +51,7 @@ cd build
 cmake .. -DCMAKE_BUILD_TYPE=Release
 make install
 ```
-Note: Using ```Clang``` compiler on Unbuntu 16.04, 18.04 will be much faster than ```GCC```! To use the ```Clang``` compiler in ```CMake```, follow these instructions:
+Note: Using ```Clang``` compiler on Unbuntu 16.04, 18.04 will be much faster than ```GCC```! For Ubuntu 20.04 and macOS, the execution speed will be consistent. To use the ```Clang``` compiler in ```CMake```, follow these instructions:
 ```
 CC=/usr/bin/clang CXX=/usr/bin/clang cmake ..
 make install

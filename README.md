@@ -43,6 +43,8 @@ In the C++ code, the file ```main.cpp``` contains demos of pose and covariance e
 
 The LibQPEP can be accelerated by many parallel-computing approaches, including OpenMP, Intel MKL, BLAS, LAPACK, CUBLAS (CUDA), Metal Performance Shaders, and OpenCL. 
 
+The LibQPEP now supports multi-architecture hardwares including Nvidia TK1/TX1/TX2/Xavier, RK3399, NXP iMX.6x Series, and softwares including MATLAB R2007~R2022.
+
 ## C++ Compilation
 ```bash
 git clone https://github.com/zarathustr/LibQPEP

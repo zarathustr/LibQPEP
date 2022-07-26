@@ -68,6 +68,17 @@ Just run
 ```bash
 ./LibQPEP-test
 ```
+To specify an algorithm to test, please use:
+```
+./LibQPEP-test [PnP | PtoP | Hand-eye]
+```
+To include a certain data file for test, please run:
+```
+./LibQPEP-test [PnP | PtoP | Hand-eye] data_file
+```
+A successful execution of ```PtoP``` (Point-to-Plane Registration) will output:
+
+![alt tag](test_result.png)
 
 ## Library Installation
 This depends on the CMake prefix you set by ```-DCMAKE_INSTALL_PREFIX=path_to_your_install```. The standard path is ```/usr/local```. Use ```make install``` to install the headers and libraries along with ```CMake``` and ```pkgconfig``` files.

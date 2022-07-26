@@ -4,5 +4,9 @@ build*
 cmake*
 cmake*/*
 cmake
+cmake-build-debug
+cmake-build-debug/*
+cmake-build-release
+cmake-build-release/*
 MATLAB/cope/*.pyc
 CMakeLists.txt.user

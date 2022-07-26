@@ -381,7 +381,7 @@ QPEP_runtime GaussJordanElimination(
     return stat;
 }
 
-void readPnPdata(std::string filename,
+void readPnPdata(const std::string& filename,
                  Eigen::Matrix3d& R0,
                  Eigen::Vector3d& t0,
                  Eigen::Matrix3d& K,
@@ -416,7 +416,7 @@ void readPnPdata(std::string filename,
 }
 
 
-void readpTopdata(std::string filename,
+void readpTopdata(const std::string& filename,
                   Eigen::Matrix3d& R0,
                   Eigen::Vector3d& t0,
                   std::vector<Eigen::Vector3d>& r0,
@@ -444,6 +444,41 @@ void readpTopdata(std::string filename,
     for(int i = 0; i < num; ++i)
     {
         input >> nv[i](0) >> nv[i](1) >> nv[i](2);
+    }
+    input.close();
+}
+
+
+
+void readHandEyedata(const std::string& filename,
+                  Eigen::Matrix3d& R0,
+                  Eigen::Vector3d& t0,
+                  std::vector<Eigen::Matrix4d>& As,
+                  std::vector<Eigen::Matrix4d>& Bs)
+{
+    std::ifstream input(filename);
+    input >> R0(0, 0) >> R0(0, 1) >> R0(0, 2) >>
+          R0(1, 0) >> R0(1, 1) >> R0(1, 2) >>
+          R0(2, 0) >> R0(2, 1) >> R0(2, 2);
+    input >> t0(0) >> t0(1) >> t0(2);
+    int num = 0;
+    input >> num;
+    As.resize(num);
+    Bs.resize(num);
+
+    for(int i = 0; i < num; ++i)
+    {
+        input >> As[i](0, 0) >> As[i](0, 1) >> As[i](0, 2) >> As[i](0, 3)
+              >> As[i](1, 0) >> As[i](1, 1) >> As[i](1, 2) >> As[i](1, 3)
+              >> As[i](2, 0) >> As[i](2, 1) >> As[i](2, 2) >> As[i](2, 3)
+              >> As[i](3, 0) >> As[i](3, 1) >> As[i](3, 2) >> As[i](3, 3);
+    }
+    for(int i = 0; i < num; ++i)
+    {
+        input >> Bs[i](0, 0) >> Bs[i](0, 1) >> Bs[i](0, 2) >> Bs[i](0, 3)
+              >> Bs[i](1, 0) >> Bs[i](1, 1) >> Bs[i](1, 2) >> Bs[i](1, 3)
+              >> Bs[i](2, 0) >> Bs[i](2, 1) >> Bs[i](2, 2) >> Bs[i](2, 3)
+              >> Bs[i](3, 0) >> Bs[i](3, 1) >> Bs[i](3, 2) >> Bs[i](3, 3);
     }
     input.close();
 }

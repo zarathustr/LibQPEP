@@ -24,8 +24,10 @@
 #include "QPEP_grobner.h"
 #include "pnp_WQD.h"
 #include "pTop_WQD.h"
+#include "hand_eye_WQD.h"
 #include "misc_pnp_funcs.h"
 #include "misc_pTop_funcs.h"
+#include "misc_hand_eye_funcs.h"
 #include "QPEP_lm_single.h"
 #include "QPEP.h"
 
@@ -78,6 +80,8 @@ static std::vector<Eigen::Vector2d> __image_pt0;
 static std::vector<Eigen::Vector3d> __rr0;
 static std::vector<Eigen::Vector3d> __bb0;
 static std::vector<Eigen::Vector3d> __nv0;
+static std::vector<Eigen::Matrix4d> __As0;
+static std::vector<Eigen::Matrix4d> __Bs0;
 
 void test_pnp_WQD_init(const std::string& filename)
 {
@@ -330,16 +334,86 @@ void test_pTop_WQD(const bool& verbose) {
 
     struct QPEP_runtime stat =
             QPEP_WQ_grobner(R, t, X, min, W_, Q_,
+                            reinterpret_cast<solver_func_handle>(solver_WQ_approx),
+                            reinterpret_cast<mon_J_pure_func_handle>(mon_J_pure_pTop_func),
+                            reinterpret_cast<t_func_handle>(t_pTop_func),
+                            coef_J_pure, coefs_tq, pinvG, nullptr, opt);
+
+    Eigen::Vector4d q0 = R2q(R);
+
+    stat = QPEP_lm_single(R, t, X, q0, 100, 5e-2,
+                          reinterpret_cast<eq_Jacob_func_handle>(eq_Jacob_pTop_func),
+                          reinterpret_cast<t_func_handle>(t_pTop_func),
+                          coef_f_q_sym, coefs_tq, pinvG, stat);
+
+#pragma omp critical
+    if(verbose)
+    {
+        std::cout << "True X: " << std::endl << XX << std::endl;
+        std::cout << "QPEP X: " << std::endl << X << std::endl << std::endl;
+    }
+}
+
+
+
+void test_hand_eye_init(const std::string& filename)
+{
+    if(__As0.size() < 3) {
+        readHandEyedata(filename, __R0, __t0, __As0, __Bs0);
+    }
+}
+void test_hand_eye(const bool& verbose) {
+    std::vector<Eigen::Matrix4d> As0 = __As0;
+    std::vector<Eigen::Matrix4d> Bs0 = __Bs0;
+
+    Eigen::Matrix4d XX;
+    XX << __R0, __t0, Eigen::Vector3d::Zero(3).transpose(), 1.0;
+
+    Eigen::Matrix<double, 4, 64> W;
+    Eigen::Matrix<double, 4, 4> Q;
+    Eigen::Matrix<double, 3, 28> D;
+    Eigen::Matrix<double, 3, 9> G;
+    Eigen::Vector3d c;
+    Eigen::Matrix<double, 4, 24> coef_f_q_sym;
+    Eigen::Matrix<double, 1, 85> coef_J_pure;
+    Eigen::Matrix<double, 3, 11> coefs_tq;
+    Eigen::Matrix<double, 3, 3> pinvG;
+    hand_eye_WQD(W, Q, D, G, c, coef_f_q_sym, coef_J_pure, coefs_tq, pinvG, As0, Bs0);
+
+    Eigen::Matrix<double, 3, 64> W_ = W.topRows(3);
+    Eigen::Matrix<double, 3, 4> Q_ = Q.topRows(3);
+    W_.row(0) = W.row(0) + W.row(1) + W.row(2);
+    W_.row(1) = W.row(1) + W.row(2) + W.row(3);
+    W_.row(2) = W.row(2) + W.row(3) + W.row(0);
+
+    Q_.row(0) = Q.row(0) + Q.row(1) + Q.row(2);
+    Q_.row(1) = Q.row(1) + Q.row(2) + Q.row(3);
+    Q_.row(2) = Q.row(2) + Q.row(3) + Q.row(0);
+
+    Eigen::Matrix3d R;
+    Eigen::Vector3d t;
+    Eigen::Matrix4d X;
+    double min[27];
+    struct QPEP_options opt;
+    opt.ModuleName = "solver_WQ_approx";
+#ifdef USE_OPENCL
+    opt.DecompositionMethod = "ViennaCL-GMRES";
+#else
+    opt.DecompositionMethod = "PartialPivLU";
+#endif
+
+    struct QPEP_runtime stat =
+            QPEP_WQ_grobner(R, t, X, min, W_, Q_,
                     reinterpret_cast<solver_func_handle>(solver_WQ_approx),
-                    reinterpret_cast<mon_J_pure_func_handle>(mon_J_pure_pTop_func),
-                    reinterpret_cast<t_func_handle>(t_pTop_func),
+                    reinterpret_cast<mon_J_pure_func_handle>(mon_J_pure_hand_eye_func),
+                    reinterpret_cast<t_func_handle>(t_hand_eye_func),
                     coef_J_pure, coefs_tq, pinvG, nullptr, opt);
 
     Eigen::Vector4d q0 = R2q(R);
 
     stat = QPEP_lm_single(R, t, X, q0, 100, 5e-2,
-                   reinterpret_cast<eq_Jacob_func_handle>(eq_Jacob_pTop_func),
-                   reinterpret_cast<t_func_handle>(t_pTop_func),
+                   reinterpret_cast<eq_Jacob_func_handle>(eq_Jacob_hand_eye_func),
+                   reinterpret_cast<t_func_handle>(t_hand_eye_func),
                    coef_f_q_sym, coefs_tq, pinvG, stat);
     
 #pragma omp critical
@@ -600,7 +674,15 @@ void test_pTop_noise(cv::Mat& img,
 enum TestMethods {
     METHOD_PNP = 1,
     METHOD_PTOP,
+    METHOD_HAND_EYE
 } method;
+
+static void print_usage()
+{
+    std::cout << "Bare running of this program executes the test of Point-to-Plane registration with covariance tests (Needs OpenCV)." << std::endl;
+    std::cout << "To test other solvers, please run: ./LibQPEP-test [PnP | PtoP | Hand-eye]" << std::endl;
+    std::cout << "To include specific data file, please run: ./LibQPEP-test [PnP | PtoP | Hand-eye] [data_file_name]" << std::endl;
+}
 int main(int argc,char ** argv) {
 
     double time = 0.0;
@@ -610,19 +692,39 @@ int main(int argc,char ** argv) {
     //TODO: Change this to METHOD_PTOP
     //      if you need to test Point-to-Plane Registration
     method = METHOD_PTOP;
+    std::string data_file;
     if(argc > 1)
     {
-        if(!strcmp(argv[1], "pnp")){
+        if(!strcmp(argv[1], "PnP")){
             method = METHOD_PNP;
-            std::cout << "Testing PnP Examples!" << std::endl;
+            std::cout << "Testing Perspective-n-Points (PnP) Examples!" << std::endl;
+            if(argc == 2)
+                data_file = std::string("/data/pnp_data-500pt-1.txt");
         }
-        else{
+        else if(!strcmp(argv[1], "PtoP")){
             method = METHOD_PTOP;
-            std::cout << "Testing Point-to-Plane Examples!" << std::endl;
+            std::cout << "Testing Point-to-Plane Registration Examples!" << std::endl;
+            if(argc == 2)
+                data_file = std::string("/data/pTop_data-4096pt-1.txt");
+        }
+        else if(!strcmp(argv[1], "Hand-eye")){
+            method = METHOD_HAND_EYE;
+            std::cout << "Testing Hand-eye Calibration Examples!" << std::endl;
+            if(argc == 2)
+                data_file = std::string("/data/hand_eye_data-20pt-1.txt");
+        }
+        else
+        {
+            print_usage();
+        }
+
+        if(argc > 2)
+        {
+            data_file = std::string(argv[1]);
         }
     }
     else
-        std::cout << "Testing Point-to-Plane Examples!" << std::endl;
+        std::cout << "Testing Point-to-Plane Registration Examples!" << std::endl;
     
     
 #ifdef USE_OPENCL
@@ -636,23 +738,26 @@ int main(int argc,char ** argv) {
     Eigen::setNbThreads(num_threads_);
 #endif
 
-#ifdef USE_OPENCV
-    int row, col;
-    getScreenResolution(col, row);
-    col = MIN(col, row) * 0.9;
-    row = col;
-    double fontsize = row / 1920.0;
-    cv::Mat imageDraw = cv::Mat::zeros(row, col, CV_8UC3);
-    cv::Mat ColorMask(row, col, CV_8UC3, cv::Scalar(1, 1, 1) * 255);
-    cv::addWeighted(imageDraw, 0.0, ColorMask, 1.0, 0, imageDraw);
-
     std::string src_dir(CURRENT_SRC_DIR);
-    std::cout << "Current Source Directory: " << src_dir << std::endl;
-    test_pTop_noise_init(src_dir + "/data/pTop_data-100pt-1.txt");
-    test_pTop_noise(imageDraw, 1500, 1e-5, fontsize, false);
+#ifdef USE_OPENCV
+    if(method == METHOD_PTOP)
+    {
+        int row, col;
+        getScreenResolution(col, row);
+        col = MIN(col, row) * 0.9;
+        row = col;
+        double fontsize = row / 1920.0;
+        cv::Mat imageDraw = cv::Mat::zeros(row, col, CV_8UC3);
+        cv::Mat ColorMask(row, col, CV_8UC3, cv::Scalar(1, 1, 1) * 255);
+        cv::addWeighted(imageDraw, 0.0, ColorMask, 1.0, 0, imageDraw);
 
-    imshow("imageDraw", imageDraw);
-    cv::waitKey(0);
+        std::cout << "Current Source Directory: " << src_dir << std::endl;
+        test_pTop_noise_init(src_dir + "/data/pTop_data-100pt-1.txt");
+        test_pTop_noise(imageDraw, 1500, 1e-5, fontsize, false);
+
+        imshow("imageDraw", imageDraw);
+        cv::waitKey(0);
+    }
 #endif
 
 
@@ -660,11 +765,14 @@ int main(int argc,char ** argv) {
 
     time1 = clock();
     loops = 1000.0;
-    
+
+    std::string full_file = src_dir + data_file;
     if(method == METHOD_PNP)
-        test_pnp_WQD_init(src_dir + "/data/pnp_data-500pt-1.txt");
-    else
-        test_pTop_WQD_init(src_dir + "/data/pTop_data-4096pt-1.txt");
+        test_pnp_WQD_init(full_file);
+    else if(method == METHOD_PTOP)
+        test_pTop_WQD_init(full_file);
+    else if(method == METHOD_HAND_EYE)
+        test_hand_eye_init(full_file);
 
     {
 #ifndef NO_OMP
@@ -674,8 +782,10 @@ int main(int argc,char ** argv) {
         {
             if(method == METHOD_PNP)
                 test_pnp_WQD(true, false);
-            else
+            else if(method == METHOD_PTOP)
                 test_pTop_WQD(true);
+            else if(method == METHOD_HAND_EYE)
+                test_hand_eye(true);
         }
     }
 

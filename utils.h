@@ -175,14 +175,20 @@ inline double powers(double x, double order)
 
 typedef void (* data_func_handle)(Eigen::SparseMatrix<double>& C1, Eigen::MatrixXd& C2, const Eigen::VectorXd& data);
 
-void readpTopdata(std::string filename,
+void readpTopdata(const std::string& filename,
                   Eigen::Matrix3d& R0,
                   Eigen::Vector3d& t0,
                   std::vector<Eigen::Vector3d>& r0,
                   std::vector<Eigen::Vector3d>& b0,
                   std::vector<Eigen::Vector3d>& nv);
 
-void readPnPdata(std::string filename,
+void readHandEyedata(const std::string& filename,
+                  Eigen::Matrix3d& R0,
+                  Eigen::Vector3d& t0,
+                  std::vector<Eigen::Matrix4d>& As,
+                  std::vector<Eigen::Matrix4d>& Bs);
+
+void readPnPdata(const std::string& filename,
                  Eigen::Matrix3d& R0,
                  Eigen::Vector3d& t0,
                  Eigen::Matrix3d& K,

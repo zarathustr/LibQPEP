@@ -11,8 +11,8 @@
 //                                  IEEE Transactions on Robotics.
 //                                  https://doi.org/10.1109/TRO.2022.3155880
 
-#ifndef LIBQPEP_PNP_WQD_H
-#define LIBQPEP_PNP_WQD_H
+#ifndef LIBQPEP_HAND_EYE_WQD_H
+#define LIBQPEP_HAND_EYE_WQD_H
 
 #include <time.h>
 #include <iostream>
@@ -29,17 +29,16 @@
 #include <Eigen/Dense>
 #include <Eigen/Geometry> // For Quaternion
 
+void hand_eye_WQD(Eigen::Matrix<double, 4, 64>& W,
+              Eigen::Matrix<double, 4, 4>& Q,
+              Eigen::Matrix<double, 3, 28>& D,
+              Eigen::Matrix<double, 3, 9>& G,
+              Eigen::Vector3d& c,
+              Eigen::Matrix<double, 4, 24>& coef_f_q_sym,
+              Eigen::Matrix<double, 1, 85>& coef_J_pure,
+              Eigen::Matrix<double, 3, 11>& coefs_tq,
+              Eigen::Matrix<double, 3, 3>& pinvG,
+              const std::vector<Eigen::Matrix4d>& As,
+              const std::vector<Eigen::Matrix4d>& Bs);
 
-void pnp_WQD(Eigen::Matrix<double, 4, 64>& W,
-             Eigen::Matrix<double, 4, 4>& Q,
-             Eigen::Matrix<double, 3, 37>& D,
-             Eigen::Matrix<double, 4, 24>& coef_f_q_sym,
-             Eigen::Matrix<double, 1, 70>& coef_J_pure,
-             Eigen::Matrix<double, 3, 10>& coefs_tq,
-             Eigen::Matrix<double, 3, 3>& pinvG,
-             const std::vector<Eigen::Vector2d>& image_pt,
-             const std::vector<Eigen::Vector3d>& world_pt,
-             const Eigen::Matrix3d& K,
-             const double& scale);
-
-#endif //LIBQPEP_PNP_WQD_H
+#endif //LIBQPEP_HAND_EYE_WQD_H

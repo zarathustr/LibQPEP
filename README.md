@@ -9,21 +9,13 @@
 A library that deals with generalized quadratic pose estimation problems (QPEPs). The algorithm aims to obtain globally optimal pose together with globally optimal covariance estimates. Typically it can solve the following problems:
 
 1. Perspective-n-Points (PnP)
-
 2. Perspective-n-Lines (PnL)
-
 3. Perspective-n-Points and Lines (PnPL)
-
 4. Hand-eye Calibration
-
 5. Point-to-plane Registration
-
 6. Conics-based Camera Pose Estimation
-
 7. Multi-robot relative pose problem from range measurements
-
 8. Forward kinematics of parallel robots
-
 9. Multi-GNSS attitude determination problem
 
 ![alt tag](chart.png)
@@ -45,6 +37,12 @@ The LibQPEP can be accelerated by many parallel-computing approaches, including 
 
 The LibQPEP now supports multi-architecture hardwares including Nvidia TK1/TX1/TX2/Xavier, RK3399, NXP iMX.6x Series, and softwares including MATLAB R2007~R2022.
 
+## Dependencies
+1. Mandatory dependencies are: ```X11```, ```LAPACK```, ```BLAS```, ```Eigen3```. For ```OSX``` and ```macOS``` users, please feel free to install the dependencies via ```Homebrew``` or ```MacPorts```.
+2. For Ubuntu users, please follow https://github.com/eddelbuettel/mkl4deb to install Intel ```MKL``` library. 
+3. ```OpenCV``` is optional. However, if you need visualization of covariances, OpenCV must be installed. We support ```OpenCV 2.x to 4.x```.
+4. To enable ```OpenCL``` support, please install ```ViennaCL``` (https://github.com/viennacl/viennacl-dev). Also note that, the ```OpenCL``` is efficient only if the graphics devices are based on either Intel/ARM Graphics or Intel Compute Stick. For NVidia/AMD/ATI graphics card, the memory copy processing time is significantly longer.
+
 ## C++ Compilation
 ```bash
 git clone https://github.com/zarathustr/LibQPEP
@@ -65,11 +63,6 @@ For Ubuntu 14.04 or below users, please specify the option for disabling the ```
 cmake .. -DNO_MKL=TRUE
 ```
 
-## Dependencies
-1. Mandatory dependencies are: ```X11```, ```LAPACK```, ```BLAS```, ```Eigen3```.
-2. For Ubuntu users, please follow https://github.com/eddelbuettel/mkl4deb to install Intel ```MKL``` library. 
-3. ```OpenCV``` is optional. However, if you need visualization of covariances, OpenCV must be installed. We support ```OpenCV 2.x to 4.x```.
-
 ## Demo Program
 Just run
 ```bash
@@ -80,7 +73,7 @@ Just run
 This depends on the CMake prefix you set by ```-DCMAKE_INSTALL_PREFIX=path_to_your_install```. The standard path is ```/usr/local```. Use ```make install``` to install the headers and libraries along with ```CMake``` and ```pkgconfig``` files.
 
 ## Troubleshooting
-On the Linux machines, if you encounter the following error:
+1. On the Linux machines, if you encounter the following error:
 ```
 No rule to make target '/usr/local/share/LibQPEP/cmake/../../../lib/libLibQPEP.a'
 ```
@@ -90,6 +83,19 @@ sudo ln -s /usr/local/share/LibQPEP/cmake/../../../lib/libLibQPEP.so /usr/local/
 ```
 provided that your CMake install prefix is ```/usr/local```.
 
+2. On old ```Mac OS X``` machines, the support of ```OpenMP``` may be incomplete. There are two ways for solution:
+   1) Install higher-version LLVM compilers using ```MacPorts```.
+   2) Use ```CMake``` options:
+    ```
+    cmake .. -DNO_OMP=TRUE
+    ```
+   
+3. To specify a certain version of ```OpenCV```, please follow:
+    ```
+    cmake .. -DOPENCV_VER=X.Y.Z -DOPENCV_PATH=your/path/to/opencv
+    ```
+    where ```OPENCV_VER``` is the exact version of your ```OpenCV``` (e.g. 3.2.0, 4.5.0, 2.4.9), while ```OPENCV_PATH``` directs to the install prefix path, e.g. /usr/local for default.
+
 ## MATLAB Demo Kit
 The ```MATLAB``` of version over R2007b is required for proper evaluation. The MATLAB demo kit mainly consists of examples showing how QPEPs are constructed and solved. Three files ```syms_hand_eye.m, syms_pnp.m, syms_pTop.m``` contain symbolic generators for expression functions of hand-eye calibration, PnP and point-to-plane registration problems. Two test files ```test_rel_att.m``` and ```test_stewart.m``` illustrate how range-based relative pose problem and the forward kinematics problem of Stewart platform can be transformed into QPEPs. The final three files ```test_cov_hand_eye.m, test_cov_pnp.m``` and ```test_cov_pTop.m``` consist of globally optimal solutions and covariance estimation. The comparison with method of Nguyen et al. is shown in ```nguyen_covariance.m```. This comparison with Nguyen et al. requires installation of ```Python 2.7```, with packages of ```numpy```, ```trimesh```, ```scipy```, and ```matplotlib (2.2.4, strict!)```. The implementation is ported directly from the original authors' repository https://github.com/dinhhuy2109/python-cope. Users can change the path in the script to choose the proper Python interpreter. In covariance estimation codes of MATLAB, we use the SeDuMi as a general optimizer, since it is free and flexible. 
 
@@ -98,11 +104,12 @@ The ```MATLAB``` of version over R2007b is required for proper evaluation. The M
 2. Perspective-n-Points for SLAM Cloop Closure: 
 DSO: https://github.com/zarathustr/DSO-QPEP-Loop-Closure
 VINS-Mono: https://github.com/zarathustr/VINS-Mono-QPEP
-3. Hand-eye Calibration
+3. Hand-eye Calibration (ROS): https://github.com/zarathustr/Global-Hand-Eye-Calib-Toolkit
 
 ## Extensions
 1. For single-precision (float) and long-double implementation, please go to https://github.com/zarathustr/QPEP-MultiPrecision.
 2. For solving QPEPs with random sample consensus (RANSAC), please go to https://github.com/zarathustr/QPEP-RANSAC.
+3. For arbitrary-precision implementation, please go to https://github.com/zarathustr/QPEP-MPFR.
 
 ## Supplementary Material
 The usage of the theoretical proofs and mapping toolbox can be found in the supplementary file ```suppl.pdf```

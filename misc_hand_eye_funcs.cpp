@@ -4,22 +4,21 @@
 // Authors: Jin Wu and Ming Liu
 // Affiliation: Hong Kong University of Science and Technology (HKUST)
 // Emails: jin_wu_uestc@hotmail.com; eelium@ust.hk
-// Reference: Wu, J., et al. (2022) Quadratic Pose Estimation Problems: 
-//                                  Globally Optimal Solutions, 
+// Reference: Wu, J., et al. (2022) Quadratic Pose Estimation Problems:
+//                                  Globally Optimal Solutions,
 //                                  Solvability/Observability Analysis,
 //                                  and Uncertainty Description.
 //                                  IEEE Transactions on Robotics.
 //                                  https://doi.org/10.1109/TRO.2022.3155880
 //
 //
-// misc_pTop_funcs.cpp: Functions for computation of Point-to-Plane registration problems
+// misc_hand_eye_funcs.cpp: Functions for computation of hand-eye calibration problems
 
 
-#include "misc_pTop_funcs.h"
-
+#include "misc_hand_eye_funcs.h"
 
 Eigen::Vector3d
-t_pTop_func(const Eigen::MatrixXd &pinvG, const Eigen::MatrixXd &coefs_tq, const Eigen::Quaterniond &q) {
+t_hand_eye_func(const Eigen::MatrixXd &pinvG, const Eigen::MatrixXd &coefs_tq, const Eigen::Quaterniond &q) {
     double pinvG1_1 = pinvG(0, 0);
     double pinvG1_2 = pinvG(0, 1);
     double pinvG1_3 = pinvG(0, 2);
@@ -39,7 +38,6 @@ t_pTop_func(const Eigen::MatrixXd &pinvG, const Eigen::MatrixXd &coefs_tq, const
     double coefs_tq1_8 = coefs_tq(0, 7);
     double coefs_tq1_9 = coefs_tq(0, 8);
     double coefs_tq1_10 = coefs_tq(0, 9);
-    double coefs_tq1_11 = coefs_tq(0, 10);
     double coefs_tq2_1 = coefs_tq(1, 0);
     double coefs_tq2_2 = coefs_tq(1, 1);
     double coefs_tq2_3 = coefs_tq(1, 2);
@@ -50,7 +48,6 @@ t_pTop_func(const Eigen::MatrixXd &pinvG, const Eigen::MatrixXd &coefs_tq, const
     double coefs_tq2_8 = coefs_tq(1, 7);
     double coefs_tq2_9 = coefs_tq(1, 8);
     double coefs_tq2_10 = coefs_tq(1, 9);
-    double coefs_tq2_11 = coefs_tq(1, 10);
     double coefs_tq3_1 = coefs_tq(2, 0);
     double coefs_tq3_2 = coefs_tq(2, 1);
     double coefs_tq3_3 = coefs_tq(2, 2);
@@ -61,6 +58,8 @@ t_pTop_func(const Eigen::MatrixXd &pinvG, const Eigen::MatrixXd &coefs_tq, const
     double coefs_tq3_8 = coefs_tq(2, 7);
     double coefs_tq3_9 = coefs_tq(2, 8);
     double coefs_tq3_10 = coefs_tq(2, 9);
+    double coefs_tq1_11 = coefs_tq(0, 10);
+    double coefs_tq2_11 = coefs_tq(1, 10);
     double coefs_tq3_11 = coefs_tq(2, 10);
     double q0 = q.x();
     double q1 = q.y();
@@ -101,11 +100,12 @@ t_pTop_func(const Eigen::MatrixXd &pinvG, const Eigen::MatrixXd &coefs_tq, const
            q1 * q2 * (coefs_tq1_6 * pinvG3_1 + coefs_tq2_6 * pinvG3_2 + coefs_tq3_6 * pinvG3_3) +
            q1 * q3 * (coefs_tq1_7 * pinvG3_1 + coefs_tq2_7 * pinvG3_2 + coefs_tq3_7 * pinvG3_3) +
            q2 * q3 * (coefs_tq1_9 * pinvG3_1 + coefs_tq2_9 * pinvG3_2 + coefs_tq3_9 * pinvG3_3);
+
     return t;
 }
 
 
-std::vector<double> mon_J_pure_pTop_func(const Eigen::Quaterniond &q, const Eigen::Vector3d &t) {
+std::vector<double> mon_J_pure_hand_eye_func(const Eigen::Quaterniond &q, const Eigen::Vector3d &t) {
     double q0 = q.x();
     double q1 = q.y();
     double q2 = q.z();
@@ -211,10 +211,10 @@ std::vector<double> mon_J_pure_pTop_func(const Eigen::Quaterniond &q, const Eige
 }
 
 
-void eq_Jacob_pTop_func(Eigen::Matrix<double, 4, 1> &eq,
-                        Eigen::Matrix<double, 4, 4> &Jacob,
-                        const Eigen::MatrixXd &coef_f_q_sym,
-                        const Eigen::Vector4d &q) {
+void eq_Jacob_hand_eye_func(Eigen::Matrix<double, 4, 1> &eq,
+                      Eigen::Matrix<double, 4, 4> &Jacob,
+                      const Eigen::MatrixXd &coef_f_q_sym,
+                      const Eigen::Vector4d &q) {
     double coef_f0_q_sym1 = coef_f_q_sym(0, 0);
     double coef_f0_q_sym2 = coef_f_q_sym(0, 1);
     double coef_f0_q_sym3 = coef_f_q_sym(0, 2);
@@ -561,140 +561,4 @@ void eq_Jacob_pTop_func(Eigen::Matrix<double, 4, 1> &eq,
     for (int i = 0; i < 4; ++i)
         for (int j = 0; j < 4; ++j)
             Jacob(i, j) = symobj[i][j];
-}
-
-
-void v_func_pTop(Eigen::Matrix<double, 28, 1> &v,
-                 const Eigen::Vector4d &q) {
-    v(0, 0) = (q(0) * q(0) * q(0)) * q(1);
-    v(1, 0) = (q(0) * q(0) * q(0)) * q(2);
-    v(2, 0) = (q(0) * q(0) * q(0)) * q(3);
-    v(3, 0) = q(0) * (q(1) * q(1) * q(1));
-    v(4, 0) = q(0) * (q(1) * q(1)) * q(2);
-    v(5, 0) = q(0) * (q(1) * q(1)) * q(3);
-    v(6, 0) = q(0) * q(1) * (q(2) * q(2));
-    v(7, 0) = q(0) * q(1) * q(2) * q(3);
-    v(8, 0) = q(0) * q(1) * (q(3) * q(3));
-    v(9, 0) = q(0) * (q(2) * q(2) * q(2));
-    v(10, 0) = q(0) * (q(2) * q(2)) * q(3);
-    v(11, 0) = q(0) * q(2) * (q(3) * q(3));
-    v(12, 0) = q(0) * (q(3) * q(3) * q(3));
-    v(13, 0) = q(1) * q(1) * q(1) * q(1);
-    v(14, 0) = (q(1) * q(1) * q(1)) * q(2);
-    v(15, 0) = (q(1) * q(1) * q(1)) * q(3);
-    v(16, 0) = (q(1) * q(1)) * (q(2) * q(2));
-    v(17, 0) = (q(1) * q(1)) * q(2) * q(3);
-    v(18, 0) = (q(1) * q(1)) * (q(3) * q(3));
-    v(19, 0) = q(1) * (q(2) * q(2) * q(2));
-    v(20, 0) = q(1) * (q(2) * q(2)) * q(3);
-    v(21, 0) = q(1) * q(2) * (q(3) * q(3));
-    v(22, 0) = q(1) * (q(3) * q(3) * q(3));
-    v(23, 0) = q(2) * q(2) * q(2) * q(2);
-    v(24, 0) = (q(2) * q(2) * q(2)) * q(3);
-    v(25, 0) = (q(2) * q(2)) * (q(3) * q(3));
-    v(26, 0) = q(2) * (q(3) * q(3) * q(3));
-    v(27, 0) = q(3) * q(3) * q(3) * q(3);
-}
-
-
-void y_func_pTop(Eigen::Matrix<double, 9, 1> &y,
-                 const Eigen::Vector4d &q) {
-    y(0, 0) = q(0) * q(1);
-    y(1, 0) = q(0) * q(2);
-    y(2, 0) = q(0) * q(3);
-    y(3, 0) = q(1) * q(1);
-    y(4, 0) = q(1) * q(2);
-    y(5, 0) = q(1) * q(3);
-    y(6, 0) = q(2) * q(2);
-    y(7, 0) = q(2) * q(3);
-    y(8, 0) = q(3) * q(3);
-}
-
-
-void jv_func_pTop(Eigen::MatrixXd &jv,
-                  const Eigen::Vector4d &q) {
-    jv(0, 0) = (q(0) * q(0)) * q(1) * 3.0;
-    jv(0, 1) = q(0) * q(0) * q(0);
-    jv(1, 0) = (q(0) * q(0)) * q(2) * 3.0;
-    jv(1, 2) = q(0) * q(0) * q(0);
-    jv(2, 0) = (q(0) * q(0)) * q(3) * 3.0;
-    jv(2, 3) = q(0) * q(0) * q(0);
-    jv(3, 0) = q(1) * q(1) * q(1);
-    jv(3, 1) = q(0) * (q(1) * q(1)) * 3.0;
-    jv(4, 0) = (q(1) * q(1)) * q(2);
-    jv(4, 1) = q(0) * q(1) * q(2) * 2.0;
-    jv(4, 2) = q(0) * (q(1) * q(1));
-    jv(5, 0) = (q(1) * q(1)) * q(3);
-    jv(5, 1) = q(0) * q(1) * q(3) * 2.0;
-    jv(5, 3) = q(0) * (q(1) * q(1));
-    jv(6, 0) = q(1) * (q(2) * q(2));
-    jv(6, 1) = q(0) * (q(2) * q(2));
-    jv(6, 2) = q(0) * q(1) * q(2) * 2.0;
-    jv(7, 0) = q(1) * q(2) * q(3);
-    jv(7, 1) = q(0) * q(2) * q(3);
-    jv(7, 2) = q(0) * q(1) * q(3);
-    jv(7, 3) = q(0) * q(1) * q(2);
-    jv(8, 0) = q(1) * (q(3) * q(3));
-    jv(8, 1) = q(0) * (q(3) * q(3));
-    jv(8, 3) = q(0) * q(1) * q(3) * 2.0;
-    jv(9, 0) = q(2) * q(2) * q(2);
-    jv(9, 2) = q(0) * (q(2) * q(2)) * 3.0;
-    jv(10, 0) = (q(2) * q(2)) * q(3);
-    jv(10, 2) = q(0) * q(2) * q(3) * 2.0;
-    jv(10, 3) = q(0) * (q(2) * q(2));
-    jv(11, 0) = q(2) * (q(3) * q(3));
-    jv(11, 2) = q(0) * (q(3) * q(3));
-    jv(11, 3) = q(0) * q(2) * q(3) * 2.0;
-    jv(12, 0) = q(3) * q(3) * q(3);
-    jv(12, 3) = q(0) * (q(3) * q(3)) * 3.0;
-    jv(13, 1) = (q(1) * q(1) * q(1)) * 4.0;
-    jv(14, 1) = (q(1) * q(1)) * q(2) * 3.0;
-    jv(14, 2) = q(1) * q(1) * q(1);
-    jv(15, 1) = (q(1) * q(1)) * q(3) * 3.0;
-    jv(15, 3) = q(1) * q(1) * q(1);
-    jv(16, 1) = q(1) * (q(2) * q(2)) * 2.0;
-    jv(16, 2) = (q(1) * q(1)) * q(2) * 2.0;
-    jv(17, 1) = q(1) * q(2) * q(3) * 2.0;
-    jv(17, 2) = (q(1) * q(1)) * q(3);
-    jv(17, 3) = (q(1) * q(1)) * q(2);
-    jv(18, 1) = q(1) * (q(3) * q(3)) * 2.0;
-    jv(18, 3) = (q(1) * q(1)) * q(3) * 2.0;
-    jv(19, 1) = q(2) * q(2) * q(2);
-    jv(19, 2) = q(1) * (q(2) * q(2)) * 3.0;
-    jv(20, 1) = (q(2) * q(2)) * q(3);
-    jv(20, 2) = q(1) * q(2) * q(3) * 2.0;
-    jv(20, 3) = q(1) * (q(2) * q(2));
-    jv(21, 1) = q(2) * (q(3) * q(3));
-    jv(21, 2) = q(1) * (q(3) * q(3));
-    jv(21, 3) = q(1) * q(2) * q(3) * 2.0;
-    jv(22, 1) = q(3) * q(3) * q(3);
-    jv(22, 3) = q(1) * (q(3) * q(3)) * 3.0;
-    jv(23, 2) = (q(2) * q(2) * q(2)) * 4.0;
-    jv(24, 2) = (q(2) * q(2)) * q(3) * 3.0;
-    jv(24, 3) = q(2) * q(2) * q(2);
-    jv(25, 2) = q(2) * (q(3) * q(3)) * 2.0;
-    jv(25, 3) = (q(2) * q(2)) * q(3) * 2.0;
-    jv(26, 2) = q(3) * q(3) * q(3);
-    jv(26, 3) = q(2) * (q(3) * q(3)) * 3.0;
-    jv(27, 3) = (q(3) * q(3) * q(3)) * 4.0;
-}
-
-
-void jy_func_pTop(Eigen::MatrixXd &jy,
-                  const Eigen::Vector4d &q) {
-    jy(0, 0) = q(1);
-    jy(0, 1) = q(0);
-    jy(1, 0) = q(2);
-    jy(1, 2) = q(0);
-    jy(2, 0) = q(3);
-    jy(2, 3) = q(0);
-    jy(3, 1) = q(1) * 2.0;
-    jy(4, 1) = q(2);
-    jy(4, 2) = q(1);
-    jy(5, 1) = q(3);
-    jy(5, 3) = q(1);
-    jy(6, 2) = q(2) * 2.0;
-    jy(7, 2) = q(3);
-    jy(7, 3) = q(2);
-    jy(8, 3) = q(3) * 2.0;
 }

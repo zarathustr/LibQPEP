@@ -7,8 +7,9 @@ message("Architecture is: ${CMAKE_SYSTEM_PROCESSOR}")
 set(NO_OPENMP FALSE)
 if("${CMAKE_BUILD_TYPE}" STREQUAL "")
     message("No Build Type Specified")
-    set(CMAKE_BUILD_TYPE "Debug")
+    set(CMAKE_BUILD_TYPE "Release")
 endif()
+message("CMake Build Type: ${CMAKE_BUILD_TYPE}")
 
 if("${CMAKE_SYSTEM_NAME}" STREQUAL "Darwin")
     set(CMAKE_CXX_COMPILER clang++)
@@ -30,21 +31,27 @@ if("${CMAKE_SYSTEM_NAME}" STREQUAL "Darwin")
     if(OSX_BIGSUR)
         add_definitions(-D OSX_BIG_SUR)
 	    set(CMAKE_EXE_LINKER_FLAGS "-framework CoreGraphics")
-	    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Xpreprocessor -fopenmp -Ofast -ffast-math -pthread -g")
+	    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
     elseif(OSX_10_9)
-        add_definitions(-D NO_OMP)
         add_definitions(-D OSX_10_9)
         set(CMAKE_EXE_LINKER_FLAGS "-framework CoreGraphics")
-        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Ofast -ffast-math -pthread -stdlib=libc++ -g")
-        message("Operating system is Mac OS X 10.9 or below, disabling OpenMP")
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread -stdlib=libc++")
     else()
-        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Xpreprocessor -fopenmp -Ofast -ffast-math -pthread -g")
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
     endif()
 endif()
 
 if(NO_OMP)
     add_definitions(-DNO_OMP)
     message("Disabling OpenMP!")
+else()
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Xpreprocessor -fopenmp")
+endif()
+
+if("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -g")
+else()
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -ffast-math")
 endif()
 
 if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
@@ -205,7 +212,9 @@ set(srcs
         misc_pnp_funcs.cpp
         QPEP_lm_single.cpp
         misc_pTop_funcs.cpp
+        misc_hand_eye_funcs.cpp
         pTop_WQD.cpp
+        hand_eye_WQD.cpp
         solver_WQ_approx_helper.cpp
         solver_WQ_1_2_3_4_5_9_13_17_33_49_approx_helper.cpp
         solver_WQ_approx.cpp
@@ -263,7 +272,9 @@ set(incs
         misc_pnp_funcs.h
         QPEP_lm_single.h
         pTop_WQD.h
+        hand_eye_WQD.h
         misc_pTop_funcs.h
+        misc_hand_eye_funcs.h
         solver_WQ_approx_helper.h
         solver_WQ_approx.h
         QPEP.h

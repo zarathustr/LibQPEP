@@ -215,6 +215,8 @@ set(srcs
         misc_hand_eye_funcs.cpp
         pTop_WQD.cpp
         hand_eye_WQD.cpp
+        hand_eye_small_rotation.cpp
+        pTop_small_rotation.cpp
         solver_WQ_approx_helper.cpp
         solver_WQ_1_2_3_4_5_9_13_17_33_49_approx_helper.cpp
         solver_WQ_approx.cpp
@@ -273,6 +275,8 @@ set(incs
         QPEP_lm_single.h
         pTop_WQD.h
         hand_eye_WQD.h
+        hand_eye_small_rotation.h
+        pTop_small_rotation.h
         misc_pTop_funcs.h
         misc_hand_eye_funcs.h
         solver_WQ_approx_helper.h

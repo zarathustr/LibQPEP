@@ -28,6 +28,8 @@
 #include "misc_pnp_funcs.h"
 #include "misc_pTop_funcs.h"
 #include "misc_hand_eye_funcs.h"
+#include "hand_eye_small_rotation.h"
+#include "pTop_small_rotation.h"
 #include "QPEP_lm_single.h"
 #include "QPEP.h"
 
@@ -424,6 +426,40 @@ void test_hand_eye(const bool& verbose) {
     }
 }
 
+void test_hand_eye_small_rotation(int len, double scale, double noise, bool verbose)
+{
+    Eigen::Matrix3d R_true = orthonormalize(Eigen::Matrix3d::Identity() + scale * randomMatrix(3, 3, 1e6));
+    Eigen::Vector3d t_true = randomMatrix(3, 1, 1e6);
+    Eigen::Matrix4d X_true;
+    X_true << R_true, t_true, Eigen::Vector3d::Zero(3).transpose(), 1.0;
+
+    std::vector<Eigen::Matrix4d> As(len);
+    std::vector<Eigen::Matrix4d> Bs(len);
+
+    for(int i = 0; i < len; ++i)
+    {
+        Eigen::Matrix3d R = orthonormalize(randomMatrix(3, 3, 1e6));
+        Eigen::Vector3d t = randomMatrix(3, 1, 1e6);
+        As[i] << R, t, Eigen::Vector3d::Zero(3).transpose(), 1.0;
+        Bs[i] = X_true.inverse() * As[i] * X_true;
+        Bs[i].topLeftCorner(3, 3) += noise * randomMatrix(3, 3, 1e6);
+        Bs[i].topLeftCorner(3, 3) = orthonormalize(Bs[i].topLeftCorner(3, 3));
+        Bs[i].topRightCorner(3, 1) = Bs[i].topRightCorner(3, 1) + noise * randomMatrix(3, 1, 1e6);
+    }
+
+    Eigen::Matrix4d X0;
+    hand_eye_small_rotation(X0, As, Bs);
+    Eigen::Matrix4d X;
+    hand_eye_small_rotation_refine(X, As, Bs, X0, 10);
+#pragma omp critical
+    if(verbose)
+    {
+        std::cout << "True X: " << std::endl << X_true << std::endl << std::endl;
+        std::cout << "QPEP X (Small Rotation): " << std::endl << X0 << std::endl;
+        std::cout << "QPEP X (Small Rotation, Refined): " << std::endl << X << std::endl << std::endl;
+    }
+
+}
 
 #ifdef USE_OPENCV
 
@@ -670,6 +706,42 @@ void test_pTop_noise(cv::Mat& img,
 }
 #endif
 
+void test_pTop_small_rotation(std::string name, double noise, bool verbose)
+{
+    Eigen::Matrix3d R_true;
+    Eigen::Vector3d t_true;
+    Eigen::Matrix4d X_true;
+    std::vector<Eigen::Vector3d> rr0, rr;
+    std::vector<Eigen::Vector3d> bb0, bb;
+    std::vector<Eigen::Vector3d> nv0, nv;
+    readpTopdata(name, R_true, t_true, rr0, bb0, nv0);
+    int len = rr.size();
+    X_true << R_true, t_true, Eigen::Vector3d::Zero(3).transpose(), 1.0;
+    rr = rr0;
+    bb = bb0;
+    nv = nv0;
+
+    for(int i = 0; i < len; ++i)
+    {
+        rr[i] += noise * randomMatrix(3, 1, 1e6);
+        bb[i] += noise * randomMatrix(3, 1, 1e6);
+        nv[i] += noise * randomMatrix(3, 1, 1e6);
+    }
+
+    Eigen::Matrix4d X0;
+    pTop_small_rotation(X0, rr, bb, nv);
+    Eigen::Matrix4d X;
+    pTop_small_rotation_refine(X, rr, bb, nv, X0, 10);
+#pragma omp critical
+    if(verbose)
+    {
+        std::cout << "True X: " << std::endl << X_true << std::endl << std::endl;
+        std::cout << "QPEP X (Small Rotation): " << std::endl << X0 << std::endl;
+        std::cout << "QPEP X (Small Rotation, Refined): " << std::endl << X << std::endl << std::endl;
+    }
+
+}
+
 
 enum TestMethods {
     METHOD_PNP = 1,
@@ -788,6 +860,11 @@ int main(int argc,char ** argv) {
                 test_hand_eye(true);
         }
     }
+
+    if(method == METHOD_HAND_EYE)
+        test_hand_eye_small_rotation(10, 1e-3, 1e-6, true);
+    else if(method == METHOD_PTOP)
+        test_pTop_small_rotation(src_dir + "/data/pTop_data-10000pt-small-angle.txt", 1e-3, true);
 
     time2 = clock();
     time = time2 - time1;

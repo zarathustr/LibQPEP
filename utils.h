@@ -217,6 +217,9 @@ T mean(std::vector<T> data)
     return s * factor;
 }
 
+Eigen::Matrix3d orthonormalize(const Eigen::Matrix3d& R);
+Eigen::MatrixXd randomMatrix(const int& dim1, const int& dim2, const int& resolution);
+
 #ifdef USE_OPENCV
 #include <opencv2/core/types.hpp>
 #include <opencv2/core/core.hpp>

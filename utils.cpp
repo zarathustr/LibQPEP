@@ -16,6 +16,8 @@
 
 
 #include "utils.h"
+#include <random>
+#include <ctime>
 #ifdef USE_OPENCL
 #include <viennacl/linalg/cg.hpp>
 #include <viennacl/linalg/gmres.hpp>
@@ -56,6 +58,26 @@ std::vector<cv::Point2d> Vector2dToPoint2d(std::vector<Eigen::Vector2d> pt)
 }
 #endif
 
+Eigen::Matrix3d orthonormalize(const Eigen::Matrix3d& R)
+{
+    Eigen::JacobiSVD<Eigen::Matrix3d> solver(R, Eigen::ComputeFullU | Eigen::ComputeFullV);
+    Eigen::Vector3d singularValues = solver.singularValues();
+    Eigen::Matrix3d S;
+    S.setIdentity();
+    if(singularValues(2) < 0) {
+        S(2, 2) = -1.0;
+    }
+    return solver.matrixU() * S * solver.matrixV().transpose();
+}
+
+Eigen::MatrixXd randomMatrix(const int& dim1, const int& dim2, const int& resolution)
+{
+    static std::default_random_engine e(time(0));
+    double res = resolution;
+    static std::normal_distribution<double> n(0, res) ;
+    Eigen::MatrixXd m = Eigen::MatrixXd::Zero(dim1, dim2).unaryExpr([](double dummy){return n(e);});
+    return m * (1.0 / res);
+}
 
 QPEP_runtime GaussJordanElimination(
         Eigen::MatrixXd& C1_,

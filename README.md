@@ -27,6 +27,8 @@ Contributor: **Jin Wu** (https://github.com/zarathustr), jin_wu_uestc@hotmail.co
 
 Supervisor: **Prof. Ming Liu**, Dean of RAM-LAB, HKUST (https://ram-lab.com)
 
+Co-Contributors: **Xiangcheng Hu**, HKUST (https://github.com/JokerJohn), 
+**Heng Li**, Unity Drive Inc.
 
 # Usage
 The C++ codes are built using ```CMake``` toolkit under the ```C++11``` programming standard. The codes have been verified on the ```Ubuntu 14.04/16.04/18.04``` (```GCC``` Compilers 5.0 ~ 10.0), Mac ```OS X 10.5.8/10.6.8/10.7.5/10.8.5/10.9.5/10.10/10.12/10.14/10.15``` (```Clang``` Compilers 3 ~ 11). We support multiple architectures, including x86, armhf, arm64, etc.

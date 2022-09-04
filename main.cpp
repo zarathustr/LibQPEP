@@ -42,11 +42,6 @@
 #include "CVLib.h"
 #endif
 
-#ifndef NO_OMP
-#include "omp.h"
-int num_threads_ = 0;
-#endif
-
 #include "CovEstimation.h"
 #include <Eigen/../unsupported/Eigen/KroneckerProduct>
 
@@ -803,13 +798,6 @@ int main(int argc,char ** argv) {
     std::cout << "Using ViennaCL for Solution to Linear Systems" << std::endl;
 #endif
 
-#ifndef NO_OMP
-    num_threads_ = omp_get_max_threads();
-    omp_set_num_threads(num_threads_);
-    Eigen::initParallel();
-    Eigen::setNbThreads(num_threads_);
-#endif
-
     std::string src_dir(CURRENT_SRC_DIR);
 #ifdef USE_OPENCV
     if(method == METHOD_PTOP)
@@ -847,9 +835,6 @@ int main(int argc,char ** argv) {
         test_hand_eye_init(full_file);
 
     {
-#ifndef NO_OMP
-#pragma omp parallel for num_threads(num_threads_)
-#endif
         for(int i = 0; i < (int) loops; ++i)
         {
             if(method == METHOD_PNP)

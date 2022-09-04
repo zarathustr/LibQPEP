@@ -21,10 +21,6 @@
 #include <map>
 #include <cassert>
 
-#ifndef NO_OMP
-#include "omp.h"
-#endif
-
 #include <Eigen/Core>
 #include <Eigen/LU>
 #include <Eigen/Dense>

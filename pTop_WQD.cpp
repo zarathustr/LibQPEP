@@ -19,10 +19,6 @@
 #include <numeric>
 #include <thread>
 
-#ifndef NO_OMP
-#include "omp.h"
-#endif
-
 void mixed_pTop_func(Eigen::Matrix<double, 1, 85> &coef_J_pure,
                      const Eigen::Matrix<double, 9, 1> &pack) {
     double r1 = pack(0);
@@ -7780,9 +7776,6 @@ void D_pTop_func(Eigen::Matrix<double, 3, 28> &D,
     c(2) = -coef_f3_q_sym1 - coef_f3_q_sym11;
 }
 
-static bool init = false;
-static int num_threads_ = 0;
-
 void pTop_WQD(Eigen::Matrix<double, 4, 64> &W,
               Eigen::Matrix<double, 4, 4> &Q,
               Eigen::Matrix<double, 3, 28> &D,
@@ -7795,12 +7788,6 @@ void pTop_WQD(Eigen::Matrix<double, 4, 64> &W,
               const std::vector<Eigen::Vector3d> &rr,
               const std::vector<Eigen::Vector3d> &bb,
               const std::vector<Eigen::Vector3d> &nv) {
-    if (!init) {
-#ifndef NO_OMP
-        num_threads_ = omp_get_max_threads();
-#endif
-        init = true;
-    }
 
     int len = rr.size();
 
@@ -7810,16 +7797,10 @@ void pTop_WQD(Eigen::Matrix<double, 4, 64> &W,
         std::vector<Eigen::Matrix<double, 1, 85> > coef_J_pures(len, Eigen::Matrix<double, 1, 85>::Zero());
         std::vector<Eigen::Matrix<double, 9, 1> > pack(len);
 
-#ifndef NO_OMP
-#pragma omp parallel for num_threads(num_threads_)
-#endif
         for (int i = 0; i < len; ++i) {
             pack[i] << rr[i], bb[i], nv[i];
         }
 
-#ifndef NO_OMP
-#pragma omp parallel for num_threads(num_threads_)
-#endif
         for (int ii = 0; ii < len; ++ii) {
             mixed_pTop_func(coef_J_pures[ii], pack[ii]);
         }

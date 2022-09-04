@@ -19,10 +19,6 @@
 #include <numeric>
 #include <thread>
 
-#ifndef NO_OMP
-#include "omp.h"
-#endif
-
 static double Power(double a, double b) {
     if (b == 2.0)
         return a * a;
@@ -7621,7 +7617,6 @@ void D_hand_eye_func(Eigen::Matrix<double, 3, 28> &D,
 
 
 static bool init = false;
-static int num_threads_ = 0;
 
 void hand_eye_WQD(Eigen::Matrix<double, 4, 64> &W,
               Eigen::Matrix<double, 4, 4> &Q,
@@ -7635,9 +7630,6 @@ void hand_eye_WQD(Eigen::Matrix<double, 4, 64> &W,
               const std::vector<Eigen::Matrix4d> &As,
               const std::vector<Eigen::Matrix4d> &Bs) {
     if (!init) {
-#ifndef NO_OMP
-        num_threads_ = omp_get_max_threads();
-#endif
         init = true;
     }
 
@@ -7664,9 +7656,7 @@ void hand_eye_WQD(Eigen::Matrix<double, 4, 64> &W,
         std::vector<Eigen::Matrix<double, 1, 36> > coef_Jacob3_qts(len, Eigen::Matrix<double, 1, 36>::Zero());
         std::vector<Eigen::Matrix<double, 1, 36> > coef_Jacob4_qts(len, Eigen::Matrix<double, 1, 36>::Zero());
         std::vector<Eigen::Matrix3d > Gs(len, Eigen::Matrix3d::Zero());
-#ifndef NO_OMP
-#pragma omp parallel for num_threads(num_threads_)
-#endif
+
         for (int ii = 0; ii < len; ++ii) {
             mixed_hand_eye_func(coef_J_pures[ii], As[ii], Bs[ii]);
             mixed2_hand_eye_func(Gs[ii], coeftq1s[ii], coeftq2s[ii], coeftq3s[ii],

@@ -19,9 +19,6 @@
 #include "utils.h"
 #include <numeric>
 #include <thread>
-#ifndef NO_OMP
-#include "omp.h"
-#endif
 
 
 void mixed_pnp_func(
@@ -1154,9 +1151,6 @@ void D_pnp_func(Eigen::Matrix<double, 3, 37> D,
     D(2, 36) = coef_f0_q_sym24;
 }
 
-static bool init = false;
-static int num_threads_ = 0;
-
 void pnp_WQD(Eigen::Matrix<double, 4, 64>& W,
              Eigen::Matrix<double, 4, 4>& Q,
              Eigen::Matrix<double, 3, 37>& D,
@@ -1169,12 +1163,6 @@ void pnp_WQD(Eigen::Matrix<double, 4, 64>& W,
              const Eigen::Matrix3d& K,
              const double& scale)
 {
-    if(!init){
-#ifndef NO_OMP
-        num_threads_ = omp_get_max_threads();
-#endif
-        init = true;
-    }
 
     int len = image_pt.size();
     double fx = K(0, 0);
@@ -1185,9 +1173,6 @@ void pnp_WQD(Eigen::Matrix<double, 4, 64>& W,
     clock_t time1 = clock();
     std::vector<Eigen::Matrix<double, 10, 1> > pack(len);
     {
-#ifndef NO_OMP
-#pragma omp parallel for num_threads(num_threads_)
-#endif
         for(int i = 0; i < len; ++i)
         {
             pack[i] << image_pt[i], world_pt[i], fx, fy, cx, cy, scale;
@@ -1198,9 +1183,6 @@ void pnp_WQD(Eigen::Matrix<double, 4, 64>& W,
 
     {
         std::vector<Eigen::Matrix<double, 1, 70> > coef_J_pures(len, Eigen::Matrix<double, 1, 70>::Zero());
-#ifndef NO_OMP
-#pragma omp parallel for num_threads(num_threads_)
-#endif
         for(int i = 0; i < len; ++i)
             mixed_pnp_func(coef_J_pures[i], pack[i]);
 

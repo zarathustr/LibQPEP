@@ -4,104 +4,6 @@
 #  LibQPEP_LIBRARIES    - libraries to link against
 
 include(CMakeFindDependencyMacro)
-message("LibQPEP Compiler version is: ${CMAKE_SYSTEM_VERSION}")
-message("LibQPEP System version is: ${CMAKE_SYSTEM_NAME}")
-
-if("${CMAKE_SYSTEM_NAME}" STREQUAL "Darwin")
-    set(CMAKE_CXX_COMPILER clang++)
-    set(CMAKE_C_COMPILER clang)
-    add_definitions(-D COMPILER_CLANG)
-
-    if("${CMAKE_SYSTEM_VERSION}" GREATER "20.0.0")
-        message("LibQPEP Using OS X Big Sur")
-        set(OSX_BIGSUR True)
-    elseif("${CMAKE_SYSTEM_VERSION}" GREATER "15.6.0" AND "${CMAKE_SYSTEM_VERSION}" LESS "20.0.0")
-        message("LibQPEP Detected Mac OS X")
-        set(OSX True)
-    else()
-        message("LibQPEP Detected old Mac OS X system, while 10.7 is the lowest version supported")
-        set(OSX_10_9 True)
-    endif()
-
-    if(OSX_BIGSUR)
-        add_definitions(-D OSX_BIG_SUR)
-        set(CMAKE_EXE_LINKER_FLAGS "-framework CoreGraphics")
-    elseif(OSX_10_9)
-        add_definitions(-D NO_OMP)
-        add_definitions(-D OSX_10_9)
-        set(CMAKE_EXE_LINKER_FLAGS "-framework CoreGraphics")
-        message("LibQPEP Operating system is Mac OS X 10.9 or below, disabling OpenMP")
-    else()
-        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Ofast -ffast-math -Xclang -fopenmp -pthread")
-    endif()
-endif()
-
-if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
-    add_definitions(-D COMPILER_GCC)
-    set(USE_CLANG False)
-elseif(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
-    add_definitions(-D COMPILER_CLANG)
-    set(USE_CLANG True)
-    message("Using Clang compiler.")
-endif()
-
-if("${CMAKE_SYSTEM_NAME}" STREQUAL "Linux")
-    set(LINUX_OS True)
-endif()
-
-if(LINUX_OS)
-    if(NOT USE_CLANG)
-    	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Ofast -ffast-math -pthread -lpthread -lrt -lm -lz -g")
-    else()
-    	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Xpreprocessor -fopenmp -Ofast -ffast-math -pthread -lpthread -lrt -lm -lz -g")
-        set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lstdc++ -lomp")
-    endif()
-
-    if(NOT "${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "armhf" AND NOT "${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "aarch64" AND NOT "${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "arm64")
-    	include_directories(/opt/intel/mkl/include /opt/intel/oneapi/mkl/latest/include)
-    	link_directories(
-    		/opt/intel/mkl/lib/intel64 
-    		/opt/intel/lib/intel64
-    		/opt/intel/oneapi/mkl/latest/lib/intel64
-    		/opt/intel/oneapi/intelpython/python3.7/lib/)
-    endif()
-endif()
-
-add_definitions(-DCURRENT_SRC_DIR="${CMAKE_CURRENT_SOURCE_DIR}")
-
-set(CMAKE_CXX_STANDARD 11)
-find_package(Eigen3 QUIET)
-if(NOT EIGEN3_FOUND)
-  # Fallback to cmake_modules
-  find_package(cmake_modules REQUIRED)
-  find_package(Eigen REQUIRED)
-  set(EIGEN3_INCLUDE_DIRS ${EIGEN_INCLUDE_DIRS})
-  set(EIGEN3_LIBRARIES ${EIGEN_LIBRARIES})  # Not strictly necessary as Eigen is head only
-  # Possibly map additional variables to the EIGEN3_ prefix.
-else()
-  set(EIGEN3_INCLUDE_DIRS ${EIGEN3_INCLUDE_DIR})
-endif()
-find_package(BLAS REQUIRED)
-find_package(LAPACK REQUIRED)
-
-if(OSX OR OSX_BIGSUR)
-    if(EXISTS /usr/local/lib/libomp.a)
-        set(OMP_LIB /usr/local/lib/libomp.a)
-    elseif(EXISTS /usr/local/lib/libomp.dylib)
-        set(OMP_LIB /usr/local/lib/libomp.dylib)
-    elseif(EXISTS /opt/local/lib/libomp.a)
-        set(OMP_LIB /opt/local/lib/libomp.a)
-    elseif(EXISTS /opt/local/lib/libomp.dylib)
-        set(OMP_LIB /opt/local/lib/libomp.dylib)
-    elseif(EXISTS /usr/lib/libomp.a)
-        set(OMP_LIB /usr/lib/libomp.a)
-    elseif(EXISTS /usr/lib/libomp.dylib)
-        set(OMP_LIB /usr/lib/libomp.dylib)
-    else()
-        message(FATAL_ERROR "LibQPEP Mac OS Detected but No OpenMP Library Found!")
-    endif()
-else()
-endif()
 include(${CMAKE_CURRENT_LIST_DIR}/LibQPEP-config.cmake)
 
 # Compute paths
@@ -112,18 +14,16 @@ set(qpep_INCLUDE_DIRS "${CMAKE_CURRENT_LIST_DIR}/../../../include" "@CONF_INCLUD
 set(QPEP_INCLUDE_DIRS "${CMAKE_CURRENT_LIST_DIR}/../../../include" "@CONF_INCLUDE_DIRS@")
 set(LibQPEP_INCLUDE_DIR "${CMAKE_CURRENT_LIST_DIR}/../../../include" "@CONF_INCLUDE_DIRS@")
 
-find_package(OpenCV)
-    if(OpenCV_FOUND)
-        set(LibQPEP_LIBRARIES "${CMAKE_CURRENT_LIST_DIR}/../../../lib/lib@QPEP_LIB@.a;@EXTERNAL_LIBS@;@OMP_LIB@;@OpenCV_LIBS@;@LAPACK_LIBRARIES@;@X11_LIBRARIES@")
-        set(LibQPEP_LIBRARIES "${CMAKE_CURRENT_LIST_DIR}/../../../lib/lib@QPEP_LIB@.a;@EXTERNAL_LIBS@;@OMP_LIB@;@OpenCV_LIBS@;@LAPACK_LIBRARIES@;@X11_LIBRARIES@")
-        set(qpep_LIBRARIES "${CMAKE_CURRENT_LIST_DIR}/../../../lib/lib@QPEP_LIB@.a;@EXTERNAL_LIBS@;@OMP_LIB@;@OpenCV_LIBS@;@LAPACK_LIBRARIES@;@X11_LIBRARIES@")
-        set(QPEP_LIBRARIES "${CMAKE_CURRENT_LIST_DIR}/../../../lib/lib@QPEP_LIB@.a;@EXTERNAL_LIBS@;@OMP_LIB@;@OpenCV_LIBS@;@LAPACK_LIBRARIES@;@X11_LIBRARIES@")
-    else()
-        set(LibQPEP_LIBRARIES "${CMAKE_CURRENT_LIST_DIR}/../../../lib/lib@QPEP_LIB@.a;@EXTERNAL_LIBS@;@OMP_LIB@;@LAPACK_LIBRARIES@;@X11_LIBRARIES@")
-        set(LibQPEP_LIBRARIES "${CMAKE_CURRENT_LIST_DIR}/../../../lib/lib@QPEP_LIB@.a;@EXTERNAL_LIBS@;@OMP_LIB@;@LAPACK_LIBRARIES@;@X11_LIBRARIES@")
-        set(qpep_LIBRARIES "${CMAKE_CURRENT_LIST_DIR}/../../../lib/lib@QPEP_LIB@.a;@EXTERNAL_LIBS@;@OMP_LIB@;@LAPACK_LIBRARIES@;@X11_LIBRARIES@")
-        set(QPEP_LIBRARIES "${CMAKE_CURRENT_LIST_DIR}/../../../lib/lib@QPEP_LIB@.a;@EXTERNAL_LIBS@;@OMP_LIB@;@LAPACK_LIBRARIES@;@X11_LIBRARIES@")
-    endif()
+if("${CMAKE_SYSTEM_NAME}" STREQUAL "Linux")
+    set(SUFFIX "so")
+elseif("${CMAKE_SYSTEM_NAME}" STREQUAL "Darwin")
+    set(SUFFIX "dylib")
+endif()
+
+set(LibQPEP_LIBRARIES "${CMAKE_CURRENT_LIST_DIR}/../../../lib/lib@QPEP_LIB@.${SUFFIX};@EXTERNAL_LIBS@")
+set(LibQPEP_LIBRARIES "${CMAKE_CURRENT_LIST_DIR}/../../../lib/lib@QPEP_LIB@.${SUFFIX};@EXTERNAL_LIBS@")
+set(qpep_LIBRARIES "${CMAKE_CURRENT_LIST_DIR}/../../../lib/lib@QPEP_LIB@.${SUFFIX};@EXTERNAL_LIBS@")
+set(QPEP_LIBRARIES "${CMAKE_CURRENT_LIST_DIR}/../../../lib/lib@QPEP_LIB@.${SUFFIX};@EXTERNAL_LIBS@")
 
 # This causes catkin simple to link against these libraries
 set(LibQPEP_FOUND_CATKIN_PROJECT true)

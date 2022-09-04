@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.6)
 project(LibQPEP)
 
-include(LIBQPEP-basics.cmake)
+include(LibQPEP-basics.cmake)
 
 
 set(srcs

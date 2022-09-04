@@ -35,15 +35,14 @@ The C++ codes are built using ```CMake``` toolkit under the ```C++11``` programm
 
 In the C++ code, the file ```main.cpp``` contains demos of pose and covariance estimation. The function ```QPEP_grobner``` solves the QPEP via Groebner-basis elimination by Larsson et al. https://github.com/vlarsson. Using ```QPEP_lm_single```, the solved pose will be refined by the Levenberg-Marquadt (LM) iteration. Finally, the function ```csdp_cov``` estimates the covariance information.
 
-The LibQPEP can be accelerated by many parallel-computing approaches, including Intel MKL, BLAS, LAPACK, CUBLAS (CUDA), Metal Performance Shaders, and OpenCL. 
+The LibQPEP can be accelerated by many parallel-computing approaches, including BLAS, LAPACK, CUBLAS (CUDA), Metal Performance Shaders, and OpenCL. 
 
 The LibQPEP now supports multi-architecture hardwares including Nvidia TK1/TX1/TX2/Xavier, RK3399, NXP iMX.6x Series, and softwares including MATLAB R2007~R2022.
 
 ## Dependencies
 1. Mandatory dependencies are: ```X11```, ```LAPACK```, ```BLAS```, ```Eigen3```. For ```OSX``` and ```macOS``` users, please feel free to install the dependencies via ```Homebrew``` or ```MacPorts```.
-2. For Ubuntu users, please follow https://github.com/eddelbuettel/mkl4deb to install Intel ```MKL``` library. 
-3. ```OpenCV``` is optional. However, if you need visualization of covariances, OpenCV must be installed. We support ```OpenCV 2.x to 4.x```.
-4. To enable ```OpenCL``` support, please install ```ViennaCL``` (https://github.com/viennacl/viennacl-dev). Also note that, the ```OpenCL``` is efficient only if the graphics devices are based on either Intel/ARM Graphics or Intel Compute Stick. For NVidia/AMD/ATI graphics card, the memory copy processing time is significantly longer.
+2. ```OpenCV``` is optional. However, if you need visualization of covariances, OpenCV must be installed. We support ```OpenCV 2.x to 4.x```.
+3. To enable ```OpenCL``` support, please install ```ViennaCL``` (https://github.com/viennacl/viennacl-dev). Also note that, the ```OpenCL``` is efficient only if the graphics devices are based on either Intel/ARM Graphics or Intel Compute Stick. For NVidia/AMD/ATI graphics card, the memory copy processing time is significantly longer.
 
 ## C++ Compilation
 ```bash
@@ -59,11 +58,6 @@ CC=/usr/bin/clang CXX=/usr/bin/clang cmake ..
 make install
 ```
 where ```/usr/bin/clang``` directs to the path of the installed ```Clang``` compiler.
-
-For Ubuntu 14.04 or below users, please specify the option for disabling the ```MKL``` library:
-```
-cmake .. -DNO_MKL=TRUE
-```
 
 ## Demo Program
 Just run

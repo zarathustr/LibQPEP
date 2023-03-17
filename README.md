@@ -107,6 +107,7 @@ The ```MATLAB``` of version over R2007b is required for proper evaluation. The M
 DSO: https://github.com/zarathustr/DSO-QPEP-Loop-Closure
 VINS-Mono: https://github.com/zarathustr/VINS-Mono-QPEP
 3. Hand-eye Calibration (ROS): https://github.com/zarathustr/Global-Hand-Eye-Calib-Toolkit
+4. Event-Camera/Lidar extrainsic calibration: https://github.com/HKUSTGZ-IADC/LCECalib
 
 ## Extensions
 1. For single-precision (float) and long-double implementation, please go to https://github.com/zarathustr/QPEP-MultiPrecision.

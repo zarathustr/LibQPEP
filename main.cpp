@@ -826,6 +826,7 @@ int main(int argc,char ** argv) {
 #endif
 
     std::string src_dir(CURRENT_SRC_DIR);
+    std::string full_file = src_dir + data_file;
 #ifdef USE_OPENCV
     if(method == METHOD_PTOP)
     {
@@ -839,7 +840,7 @@ int main(int argc,char ** argv) {
         cv::addWeighted(imageDraw, 0.0, ColorMask, 1.0, 0, imageDraw);
 
         std::cout << "Current Source Directory: " << src_dir << std::endl;
-        test_pTop_noise_init(src_dir + "/data/pTop_data-100pt-1.txt");
+        test_pTop_noise_init(full_file);
         test_pTop_noise(imageDraw, 1500, 1e-5, fontsize, false);
 
         imshow("imageDraw", imageDraw);
@@ -853,7 +854,6 @@ int main(int argc,char ** argv) {
     time1 = clock();
     loops = 1000.0;
 
-    std::string full_file = src_dir + data_file;
     if(method == METHOD_PNP)
         test_pnp_WQD_init(full_file);
     else if(method == METHOD_PTOP)

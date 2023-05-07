@@ -17,13 +17,6 @@
 
 #include "solver_WQ_helper.h"
 
-
-#ifdef COMPILER_CLANG
-#pragma clang optimize on
-#elif defined(COMPILER_GCC)
-#pragma GCC optimize ("O0")
-#endif
-
 void data_func_solver_WQ_func(Eigen::SparseMatrix<double>& C1,
                               Eigen::MatrixXd& C2,
                               const Eigen::VectorXd& data)

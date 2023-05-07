@@ -18,14 +18,6 @@
 #include "solver_WQ_1_2_3_4_5_9_13_17_33_49_approx_helper.h"
 
 
-
-#ifdef COMPILER_CLANG
-#pragma clang optimize on
-#elif defined(COMPILER_GCC)
-#pragma GCC optimize ("O0")
-#endif
-
-
 void data_func_WQ_1_2_3_4_5_9_13_17_33_49_approx(Eigen::SparseMatrix<double>& tmp,
                                           Eigen::MatrixXd& tmp2,
                                           const Eigen::VectorXd& data)

@@ -89,14 +89,46 @@ void test_pnp_WQD_init(const std::string& filename)
     }
 }
 
+std::vector<Eigen::Vector3d> addNoise(std::vector<Eigen::Vector3d> A, double level)
+{
+    std::vector<Eigen::Vector3d> B = A;
+    for(int i = 0; i < B.size(); ++i)
+    {
+        B[i] += level * randomMatrix(3, 1, 1000);
+    }
+    return B;
+}
+
+std::vector<Eigen::Vector2d> addNoise(std::vector<Eigen::Vector2d> A, double level)
+{
+    std::vector<Eigen::Vector2d> B = A;
+    for(int i = 0; i < B.size(); ++i)
+    {
+        B[i] += level * randomMatrix(2, 1, 1000);
+    }
+    return B;
+}
+
+std::vector<Eigen::Matrix4d> addNoise(std::vector<Eigen::Matrix4d> A, double rot_level, double trans_level)
+{
+    std::vector<Eigen::Matrix4d> B = A;
+    for(int i = 0; i < B.size(); ++i)
+    {
+        B[i].topLeftCorner(3, 3) += rot_level * randomMatrix(3, 3, 1000);
+        B[i].topLeftCorner(3, 3) = orthonormalize(B[i].topLeftCorner(3, 3));
+        B[i].topRightCorner(3, 1) += trans_level * randomMatrix(3, 1, 1000);
+    }
+    return B;
+}
+
 void test_pnp_WQD(const bool& verbose,
                   const bool& use_opencv)
 {
     Eigen::Matrix3d R0 = __R0;
     Eigen::Vector3d t0 = __t0;
     Eigen::Matrix3d K = __K;
-    std::vector<Eigen::Vector3d> world_pt0 = __world_pt0;
-    std::vector<Eigen::Vector2d> image_pt0 = __image_pt0;
+    std::vector<Eigen::Vector3d> world_pt0 = addNoise(__world_pt0, 1e-2);
+    std::vector<Eigen::Vector2d> image_pt0 = addNoise(__image_pt0, 1e-2);
 
     clock_t time1 = clock();
     Eigen::Matrix4d XX;
@@ -290,9 +322,9 @@ void test_pTop_WQD_init(const std::string& filename)
     }
 }
 void test_pTop_WQD(const bool& verbose) {
-    std::vector<Eigen::Vector3d> rr0 = __rr0;
-    std::vector<Eigen::Vector3d> bb0 = __bb0;
-    std::vector<Eigen::Vector3d> nv0 = __nv0;
+    std::vector<Eigen::Vector3d> rr0 = addNoise(__rr0, 1e-2);
+    std::vector<Eigen::Vector3d> bb0 = addNoise(__bb0, 1e-2);
+    std::vector<Eigen::Vector3d> nv0 = addNoise(__nv0, 1e-2);
     Eigen::Matrix4d XX;
     XX << __R0, __t0, Eigen::Vector3d::Zero(3).transpose(), 1.0;
 
@@ -360,8 +392,8 @@ void test_hand_eye_init(const std::string& filename)
     }
 }
 void test_hand_eye(const bool& verbose) {
-    std::vector<Eigen::Matrix4d> As0 = __As0;
-    std::vector<Eigen::Matrix4d> Bs0 = __Bs0;
+    std::vector<Eigen::Matrix4d> As0 = addNoise(__As0, 1e-2, 1e-2);
+    std::vector<Eigen::Matrix4d> Bs0 = addNoise(__Bs0, 1e-2, 1e-2);
 
     Eigen::Matrix4d XX;
     XX << __R0, __t0, Eigen::Vector3d::Zero(3).transpose(), 1.0;
@@ -500,14 +532,9 @@ void test_pTop_noise(cv::Mat& img,
     std::vector<Eigen::MatrixXd > ts(num);
 
     for(int j = 0; j < num; ++j) {
-        std::vector<Eigen::Vector3d> rr(rr0);
-        std::vector<Eigen::Vector3d> bb(bb0);
-        std::vector<Eigen::Vector3d> nv(nv0);
-        for (int i = 0; i < rr.size(); ++i) {
-            rr[i] += noise * Eigen::Vector3d::Random();
-            bb[i] += noise * Eigen::Vector3d::Random();
-            nv[i] += noise * Eigen::Vector3d::Random();
-        }
+        std::vector<Eigen::Vector3d> rr = addNoise(rr0, noise);
+        std::vector<Eigen::Vector3d> bb = addNoise(bb0, noise);
+        std::vector<Eigen::Vector3d> nv = addNoise(nv0, noise);
 
         Eigen::Matrix<double, 4, 64> W;
         Eigen::Matrix<double, 4, 4> Q;
@@ -787,7 +814,7 @@ int main(int argc,char ** argv) {
 
         if(argc > 2)
         {
-            data_file = std::string(argv[1]);
+            data_file = std::string(argv[2]);
         }
     }
     else

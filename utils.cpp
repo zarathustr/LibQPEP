@@ -200,6 +200,8 @@ QPEP_runtime GaussJordanElimination(
                 }
             }
         }
+        clock_t time2 = clock();
+        //std::cout << "GJ Elimination " << opt.DecompositionMethod << " data_func time: " << (time2 - time1) / double(CLOCKS_PER_SEC) << std::endl;
 
         Eigen::PartialPivLU<Eigen::MatrixXd > solver;
         if(is_symmetric)
@@ -212,8 +214,8 @@ QPEP_runtime GaussJordanElimination(
             solver.compute(CC1.transpose() * CC1);
             C1_ = solver.solve(CC1.transpose() * C2);
         }
-        clock_t time2 = clock();
-        stat.timeDecomposition = (time2 - time1) / double(CLOCKS_PER_SEC);
+        clock_t time3 = clock();
+        stat.timeDecomposition = (time3 - time1) / double(CLOCKS_PER_SEC);
     }
     else if(opt.DecompositionMethod == "SVD") {
         clock_t time1 = clock();

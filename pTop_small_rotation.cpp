@@ -133,7 +133,8 @@ void pTop_small_rotation_refine(Eigen::Matrix4d& X,
     for(int j = 0; j < num; ++j)
     {
         X = X0_;
-        for(int i = 0; i < RR.size(); ++i) {
+        int len = RR.size();
+        for(int i = 0; i < len; ++i) {
             RR[i] = X.topLeftCorner(3, 3) * rr[i] + X.topRightCorner(3, 1);
         }
         pTop_small_rotation(X, RR, bb, nv);

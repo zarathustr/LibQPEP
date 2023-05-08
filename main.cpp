@@ -749,24 +749,21 @@ void test_pTop_small_rotation(std::string name, double noise, bool verbose)
     readpTopdata(name, R_true, t_true, rr0, bb0, nv0);
     int len = rr.size();
     X_true << R_true, t_true, Eigen::Vector3d::Zero(3).transpose(), 1.0;
-    rr = rr0;
-    bb = bb0;
-    nv = nv0;
+    rr = addNoise(rr0, noise);
+    bb = addNoise(bb0, noise);
+    nv = addNoise(nv0, noise);
 
-    for(int i = 0; i < len; ++i)
-    {
-        rr[i] += noise * randomMatrix(3, 1, 1e6);
-        bb[i] += noise * randomMatrix(3, 1, 1e6);
-        nv[i] += noise * randomMatrix(3, 1, 1e6);
-    }
-
+    clock_t time1 = clock();
     Eigen::Matrix4d X0;
     pTop_small_rotation(X0, rr, bb, nv);
     Eigen::Matrix4d X;
     pTop_small_rotation_refine(X, rr, bb, nv, X0, 10);
+    clock_t time2 = clock();
+    double time = ((double)(time2 - time1)) / double(CLOCKS_PER_SEC);
 #pragma omp critical
     if(verbose)
     {
+        std::cout << "Time: " << time << " s " << std::endl;
         std::cout << "True X: " << std::endl << X_true << std::endl << std::endl;
         std::cout << "QPEP X (Small Rotation): " << std::endl << X0 << std::endl;
         std::cout << "QPEP X (Small Rotation, Refined): " << std::endl << X << std::endl << std::endl;

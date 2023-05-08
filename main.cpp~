@@ -378,6 +378,7 @@ void test_pTop_WQD(const bool& verbose) {
 #pragma omp critical
     if(verbose)
     {
+        std::cout << "Time DataPrepare: " << timeDataPrepare << " s " << std::endl;
         std::cout << "Time DecompositionDataPrepare: " << stat.timeDecompositionDataPrepare << " s " << std::endl;
         std::cout << "Time Decomposition: " << stat.timeDecomposition << " s " << std::endl;
         std::cout << "Time Grobner: " << stat.timeGrobner << " s " << std::endl;
@@ -453,6 +454,7 @@ void test_hand_eye(const bool& verbose) {
 #pragma omp critical
     if(verbose)
     {
+	std::cout << "Time DataPrepare: " << timeDataPrepare << " s " << std::endl;
         std::cout << "Time DecompositionDataPrepare: " << stat.timeDecompositionDataPrepare << " s " << std::endl;
         std::cout << "Time Decomposition: " << stat.timeDecomposition << " s " << std::endl;
         std::cout << "Time Grobner: " << stat.timeGrobner << " s " << std::endl;

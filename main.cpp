@@ -1,9 +1,9 @@
 // LibQPEP: A Library for Globally Optimal Solving Quadratic Pose Estimation Problems,
 //          It also gives highly accurate uncertainty description of the solutions.
 //
-// Authors: Jin Wu and Ming Liu
+// Author: Jin Wu
 // Affiliation: Hong Kong University of Science and Technology (HKUST)
-// Emails: jin_wu_uestc@hotmail.com; eelium@ust.hk
+// Emails: jin_wu_uestc@hotmail.com; jwucp@connect.ust.hk
 // Reference: Wu, J., et al. (2022) Quadratic Pose Estimation Problems: 
 //                                  Globally Optimal Solutions, 
 //                                  Solvability/Observability Analysis,
@@ -793,7 +793,7 @@ int main(int argc,char ** argv) {
     //TODO: Change this to METHOD_PTOP
     //      if you need to test Point-to-Plane Registration
     method = METHOD_PTOP;
-    std::string data_file;
+    std::string data_file = std::string("/data/pTop_data-250000pt-1.txt");
     if(argc > 1)
     {
         if(!strcmp(argv[1], "PnP")){
@@ -834,6 +834,7 @@ int main(int argc,char ** argv) {
 
     std::string src_dir(CURRENT_SRC_DIR);
     std::string full_file = src_dir + data_file;
+    std::cout.precision(16);
 #ifdef USE_OPENCV
     if(method == METHOD_PTOP)
     {
@@ -854,9 +855,6 @@ int main(int argc,char ** argv) {
         cv::waitKey(0);
     }
 #endif
-
-
-    std::cout.precision(16);
 
     time1 = clock();
     loops = 1000.0;

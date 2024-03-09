@@ -9,3 +9,4 @@ t2 = -coef_J77;
 t3 = -coef_J78;
 t4 = -coef_J81;
 obj = reshape([coef_J76.*-2.0,t2,t3,t2,coef_J80.*-2.0,t4,t3,t4,coef_J83.*-2.0],[3,3]);
+end

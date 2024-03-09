@@ -1,9 +1,9 @@
 // LibQPEP: A Library for Globally Optimal Solving Quadratic Pose Estimation Problems,
 //          It also gives highly accurate uncertainty description of the solutions.
 //
-// Authors: Jin Wu and Ming Liu
+// Author: Jin Wu
 // Affiliation: Hong Kong University of Science and Technology (HKUST)
-// Emails: jin_wu_uestc@hotmail.com; eelium@ust.hk
+// Emails: jin_wu_uestc@hotmail.com; jwucp@connect.ust.hk
 // Reference: Wu, J., et al. (2022) Quadratic Pose Estimation Problems: 
 //                                  Globally Optimal Solutions, 
 //                                  Solvability/Observability Analysis,
@@ -2213,1312 +2213,1312 @@ void mixed3_pTop_func(Eigen::Matrix<double, 4, 24> &coef_f_q_sym,
               coefs_tq1_1 * coef_Jacob1_qt_syms13 * pinvG3_1 - coefs_tq2_1 * coef_Jacob1_qt_syms12 * pinvG2_2 -
               coefs_tq3_1 * coef_Jacob1_qt_syms11 * pinvG1_3 - coefs_tq2_1 * coef_Jacob1_qt_syms13 * pinvG3_2 -
               coefs_tq3_1 * coef_Jacob1_qt_syms12 * pinvG2_3 - coefs_tq3_1 * coef_Jacob1_qt_syms13 * pinvG3_3;
-    W(0, 1) = coef_Jacob1_qt_syms2 * (-1.0 / 3.0) - (coefs_tq1_2 * coef_Jacob1_qt_syms11 * pinvG1_1) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob1_qt_syms21 * pinvG1_1) / 3.0 -
-              (coefs_tq1_2 * coef_Jacob1_qt_syms12 * pinvG2_1) / 3.0 -
-              (coefs_tq2_2 * coef_Jacob1_qt_syms11 * pinvG1_2) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob1_qt_syms22 * pinvG2_1) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob1_qt_syms21 * pinvG1_2) / 3.0 -
-              (coefs_tq1_2 * coef_Jacob1_qt_syms13 * pinvG3_1) / 3.0 -
-              (coefs_tq2_2 * coef_Jacob1_qt_syms12 * pinvG2_2) / 3.0 -
-              (coefs_tq3_2 * coef_Jacob1_qt_syms11 * pinvG1_3) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob1_qt_syms23 * pinvG3_1) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob1_qt_syms22 * pinvG2_2) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob1_qt_syms21 * pinvG1_3) / 3.0 -
-              (coefs_tq2_2 * coef_Jacob1_qt_syms13 * pinvG3_2) / 3.0 -
-              (coefs_tq3_2 * coef_Jacob1_qt_syms12 * pinvG2_3) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob1_qt_syms23 * pinvG3_2) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob1_qt_syms22 * pinvG2_3) / 3.0 -
-              (coefs_tq3_2 * coef_Jacob1_qt_syms13 * pinvG3_3) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob1_qt_syms23 * pinvG3_3) / 3.0;
-    W(0, 2) = coef_Jacob1_qt_syms3 * (-1.0 / 3.0) - (coefs_tq1_3 * coef_Jacob1_qt_syms11 * pinvG1_1) / 3.0 -
-              (coefs_tq1_3 * coef_Jacob1_qt_syms12 * pinvG2_1) / 3.0 -
-              (coefs_tq2_3 * coef_Jacob1_qt_syms11 * pinvG1_2) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob1_qt_syms28 * pinvG1_1) / 3.0 -
-              (coefs_tq1_3 * coef_Jacob1_qt_syms13 * pinvG3_1) / 3.0 -
-              (coefs_tq2_3 * coef_Jacob1_qt_syms12 * pinvG2_2) / 3.0 -
-              (coefs_tq3_3 * coef_Jacob1_qt_syms11 * pinvG1_3) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob1_qt_syms29 * pinvG2_1) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob1_qt_syms28 * pinvG1_2) / 3.0 -
-              (coefs_tq2_3 * coef_Jacob1_qt_syms13 * pinvG3_2) / 3.0 -
-              (coefs_tq3_3 * coef_Jacob1_qt_syms12 * pinvG2_3) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob1_qt_syms30 * pinvG3_1) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob1_qt_syms29 * pinvG2_2) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob1_qt_syms28 * pinvG1_3) / 3.0 -
-              (coefs_tq3_3 * coef_Jacob1_qt_syms13 * pinvG3_3) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob1_qt_syms30 * pinvG3_2) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob1_qt_syms29 * pinvG2_3) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob1_qt_syms30 * pinvG3_3) / 3.0;
-    W(0, 3) = coef_Jacob1_qt_syms4 * (-1.0 / 3.0) - (coefs_tq1_4 * coef_Jacob1_qt_syms11 * pinvG1_1) / 3.0 -
-              (coefs_tq1_4 * coef_Jacob1_qt_syms12 * pinvG2_1) / 3.0 -
-              (coefs_tq2_4 * coef_Jacob1_qt_syms11 * pinvG1_2) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob1_qt_syms33 * pinvG1_1) / 3.0 -
-              (coefs_tq1_4 * coef_Jacob1_qt_syms13 * pinvG3_1) / 3.0 -
-              (coefs_tq2_4 * coef_Jacob1_qt_syms12 * pinvG2_2) / 3.0 -
-              (coefs_tq3_4 * coef_Jacob1_qt_syms11 * pinvG1_3) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob1_qt_syms34 * pinvG2_1) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob1_qt_syms33 * pinvG1_2) / 3.0 -
-              (coefs_tq2_4 * coef_Jacob1_qt_syms13 * pinvG3_2) / 3.0 -
-              (coefs_tq3_4 * coef_Jacob1_qt_syms12 * pinvG2_3) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob1_qt_syms35 * pinvG3_1) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob1_qt_syms34 * pinvG2_2) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob1_qt_syms33 * pinvG1_3) / 3.0 -
-              (coefs_tq3_4 * coef_Jacob1_qt_syms13 * pinvG3_3) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob1_qt_syms35 * pinvG3_2) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob1_qt_syms34 * pinvG2_3) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob1_qt_syms35 * pinvG3_3) / 3.0;
-    W(0, 4) = coef_Jacob1_qt_syms2 * (-1.0 / 3.0) - (coefs_tq1_2 * coef_Jacob1_qt_syms11 * pinvG1_1) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob1_qt_syms21 * pinvG1_1) / 3.0 -
-              (coefs_tq1_2 * coef_Jacob1_qt_syms12 * pinvG2_1) / 3.0 -
-              (coefs_tq2_2 * coef_Jacob1_qt_syms11 * pinvG1_2) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob1_qt_syms22 * pinvG2_1) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob1_qt_syms21 * pinvG1_2) / 3.0 -
-              (coefs_tq1_2 * coef_Jacob1_qt_syms13 * pinvG3_1) / 3.0 -
-              (coefs_tq2_2 * coef_Jacob1_qt_syms12 * pinvG2_2) / 3.0 -
-              (coefs_tq3_2 * coef_Jacob1_qt_syms11 * pinvG1_3) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob1_qt_syms23 * pinvG3_1) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob1_qt_syms22 * pinvG2_2) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob1_qt_syms21 * pinvG1_3) / 3.0 -
-              (coefs_tq2_2 * coef_Jacob1_qt_syms13 * pinvG3_2) / 3.0 -
-              (coefs_tq3_2 * coef_Jacob1_qt_syms12 * pinvG2_3) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob1_qt_syms23 * pinvG3_2) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob1_qt_syms22 * pinvG2_3) / 3.0 -
-              (coefs_tq3_2 * coef_Jacob1_qt_syms13 * pinvG3_3) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob1_qt_syms23 * pinvG3_3) / 3.0;
-    W(0, 5) = coef_Jacob1_qt_syms5 * (-1.0 / 3.0) - (coefs_tq1_5 * coef_Jacob1_qt_syms11 * pinvG1_1) / 3.0 -
-              (coefs_tq1_2 * coef_Jacob1_qt_syms21 * pinvG1_1) / 3.0 -
-              (coefs_tq1_5 * coef_Jacob1_qt_syms12 * pinvG2_1) / 3.0 -
-              (coefs_tq2_5 * coef_Jacob1_qt_syms11 * pinvG1_2) / 3.0 -
-              (coefs_tq1_2 * coef_Jacob1_qt_syms22 * pinvG2_1) / 3.0 -
-              (coefs_tq2_2 * coef_Jacob1_qt_syms21 * pinvG1_2) / 3.0 -
-              (coefs_tq1_5 * coef_Jacob1_qt_syms13 * pinvG3_1) / 3.0 -
-              (coefs_tq2_5 * coef_Jacob1_qt_syms12 * pinvG2_2) / 3.0 -
-              (coefs_tq3_5 * coef_Jacob1_qt_syms11 * pinvG1_3) / 3.0 -
-              (coefs_tq1_2 * coef_Jacob1_qt_syms23 * pinvG3_1) / 3.0 -
-              (coefs_tq2_2 * coef_Jacob1_qt_syms22 * pinvG2_2) / 3.0 -
-              (coefs_tq3_2 * coef_Jacob1_qt_syms21 * pinvG1_3) / 3.0 -
-              (coefs_tq2_5 * coef_Jacob1_qt_syms13 * pinvG3_2) / 3.0 -
-              (coefs_tq3_5 * coef_Jacob1_qt_syms12 * pinvG2_3) / 3.0 -
-              (coefs_tq2_2 * coef_Jacob1_qt_syms23 * pinvG3_2) / 3.0 -
-              (coefs_tq3_2 * coef_Jacob1_qt_syms22 * pinvG2_3) / 3.0 -
-              (coefs_tq3_5 * coef_Jacob1_qt_syms13 * pinvG3_3) / 3.0 -
-              (coefs_tq3_2 * coef_Jacob1_qt_syms23 * pinvG3_3) / 3.0;
-    W(0, 6) = coef_Jacob1_qt_syms6 * (-1.0 / 6.0) - (coefs_tq1_6 * coef_Jacob1_qt_syms11 * pinvG1_1) / 6.0 -
-              (coefs_tq1_3 * coef_Jacob1_qt_syms21 * pinvG1_1) / 6.0 -
-              (coefs_tq1_6 * coef_Jacob1_qt_syms12 * pinvG2_1) / 6.0 -
-              (coefs_tq2_6 * coef_Jacob1_qt_syms11 * pinvG1_2) / 6.0 -
-              (coefs_tq1_2 * coef_Jacob1_qt_syms28 * pinvG1_1) / 6.0 -
-              (coefs_tq1_3 * coef_Jacob1_qt_syms22 * pinvG2_1) / 6.0 -
-              (coefs_tq2_3 * coef_Jacob1_qt_syms21 * pinvG1_2) / 6.0 -
-              (coefs_tq1_6 * coef_Jacob1_qt_syms13 * pinvG3_1) / 6.0 -
-              (coefs_tq2_6 * coef_Jacob1_qt_syms12 * pinvG2_2) / 6.0 -
-              (coefs_tq3_6 * coef_Jacob1_qt_syms11 * pinvG1_3) / 6.0 -
-              (coefs_tq1_2 * coef_Jacob1_qt_syms29 * pinvG2_1) / 6.0 -
-              (coefs_tq2_2 * coef_Jacob1_qt_syms28 * pinvG1_2) / 6.0 -
-              (coefs_tq1_3 * coef_Jacob1_qt_syms23 * pinvG3_1) / 6.0 -
-              (coefs_tq2_3 * coef_Jacob1_qt_syms22 * pinvG2_2) / 6.0 -
-              (coefs_tq3_3 * coef_Jacob1_qt_syms21 * pinvG1_3) / 6.0 -
-              (coefs_tq2_6 * coef_Jacob1_qt_syms13 * pinvG3_2) / 6.0 -
-              (coefs_tq3_6 * coef_Jacob1_qt_syms12 * pinvG2_3) / 6.0 -
-              (coefs_tq1_2 * coef_Jacob1_qt_syms30 * pinvG3_1) / 6.0 -
-              (coefs_tq2_2 * coef_Jacob1_qt_syms29 * pinvG2_2) / 6.0 -
-              (coefs_tq3_2 * coef_Jacob1_qt_syms28 * pinvG1_3) / 6.0 -
-              (coefs_tq2_3 * coef_Jacob1_qt_syms23 * pinvG3_2) / 6.0 -
-              (coefs_tq3_3 * coef_Jacob1_qt_syms22 * pinvG2_3) / 6.0 -
-              (coefs_tq3_6 * coef_Jacob1_qt_syms13 * pinvG3_3) / 6.0 -
-              (coefs_tq2_2 * coef_Jacob1_qt_syms30 * pinvG3_2) / 6.0 -
-              (coefs_tq3_2 * coef_Jacob1_qt_syms29 * pinvG2_3) / 6.0 -
-              (coefs_tq3_3 * coef_Jacob1_qt_syms23 * pinvG3_3) / 6.0 -
-              (coefs_tq3_2 * coef_Jacob1_qt_syms30 * pinvG3_3) / 6.0;
-    W(0, 7) = coef_Jacob1_qt_syms7 * (-1.0 / 6.0) - (coefs_tq1_7 * coef_Jacob1_qt_syms11 * pinvG1_1) / 6.0 -
-              (coefs_tq1_4 * coef_Jacob1_qt_syms21 * pinvG1_1) / 6.0 -
-              (coefs_tq1_7 * coef_Jacob1_qt_syms12 * pinvG2_1) / 6.0 -
-              (coefs_tq2_7 * coef_Jacob1_qt_syms11 * pinvG1_2) / 6.0 -
-              (coefs_tq1_2 * coef_Jacob1_qt_syms33 * pinvG1_1) / 6.0 -
-              (coefs_tq1_4 * coef_Jacob1_qt_syms22 * pinvG2_1) / 6.0 -
-              (coefs_tq2_4 * coef_Jacob1_qt_syms21 * pinvG1_2) / 6.0 -
-              (coefs_tq1_7 * coef_Jacob1_qt_syms13 * pinvG3_1) / 6.0 -
-              (coefs_tq2_7 * coef_Jacob1_qt_syms12 * pinvG2_2) / 6.0 -
-              (coefs_tq3_7 * coef_Jacob1_qt_syms11 * pinvG1_3) / 6.0 -
-              (coefs_tq1_2 * coef_Jacob1_qt_syms34 * pinvG2_1) / 6.0 -
-              (coefs_tq2_2 * coef_Jacob1_qt_syms33 * pinvG1_2) / 6.0 -
-              (coefs_tq1_4 * coef_Jacob1_qt_syms23 * pinvG3_1) / 6.0 -
-              (coefs_tq2_4 * coef_Jacob1_qt_syms22 * pinvG2_2) / 6.0 -
-              (coefs_tq3_4 * coef_Jacob1_qt_syms21 * pinvG1_3) / 6.0 -
-              (coefs_tq2_7 * coef_Jacob1_qt_syms13 * pinvG3_2) / 6.0 -
-              (coefs_tq3_7 * coef_Jacob1_qt_syms12 * pinvG2_3) / 6.0 -
-              (coefs_tq1_2 * coef_Jacob1_qt_syms35 * pinvG3_1) / 6.0 -
-              (coefs_tq2_2 * coef_Jacob1_qt_syms34 * pinvG2_2) / 6.0 -
-              (coefs_tq3_2 * coef_Jacob1_qt_syms33 * pinvG1_3) / 6.0 -
-              (coefs_tq2_4 * coef_Jacob1_qt_syms23 * pinvG3_2) / 6.0 -
-              (coefs_tq3_4 * coef_Jacob1_qt_syms22 * pinvG2_3) / 6.0 -
-              (coefs_tq3_7 * coef_Jacob1_qt_syms13 * pinvG3_3) / 6.0 -
-              (coefs_tq2_2 * coef_Jacob1_qt_syms35 * pinvG3_2) / 6.0 -
-              (coefs_tq3_2 * coef_Jacob1_qt_syms34 * pinvG2_3) / 6.0 -
-              (coefs_tq3_4 * coef_Jacob1_qt_syms23 * pinvG3_3) / 6.0 -
-              (coefs_tq3_2 * coef_Jacob1_qt_syms35 * pinvG3_3) / 6.0;
-    W(0, 8) = coef_Jacob1_qt_syms3 * (-1.0 / 3.0) - (coefs_tq1_3 * coef_Jacob1_qt_syms11 * pinvG1_1) / 3.0 -
-              (coefs_tq1_3 * coef_Jacob1_qt_syms12 * pinvG2_1) / 3.0 -
-              (coefs_tq2_3 * coef_Jacob1_qt_syms11 * pinvG1_2) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob1_qt_syms28 * pinvG1_1) / 3.0 -
-              (coefs_tq1_3 * coef_Jacob1_qt_syms13 * pinvG3_1) / 3.0 -
-              (coefs_tq2_3 * coef_Jacob1_qt_syms12 * pinvG2_2) / 3.0 -
-              (coefs_tq3_3 * coef_Jacob1_qt_syms11 * pinvG1_3) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob1_qt_syms29 * pinvG2_1) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob1_qt_syms28 * pinvG1_2) / 3.0 -
-              (coefs_tq2_3 * coef_Jacob1_qt_syms13 * pinvG3_2) / 3.0 -
-              (coefs_tq3_3 * coef_Jacob1_qt_syms12 * pinvG2_3) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob1_qt_syms30 * pinvG3_1) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob1_qt_syms29 * pinvG2_2) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob1_qt_syms28 * pinvG1_3) / 3.0 -
-              (coefs_tq3_3 * coef_Jacob1_qt_syms13 * pinvG3_3) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob1_qt_syms30 * pinvG3_2) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob1_qt_syms29 * pinvG2_3) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob1_qt_syms30 * pinvG3_3) / 3.0;
-    W(0, 9) = coef_Jacob1_qt_syms6 * (-1.0 / 6.0) - (coefs_tq1_6 * coef_Jacob1_qt_syms11 * pinvG1_1) / 6.0 -
-              (coefs_tq1_3 * coef_Jacob1_qt_syms21 * pinvG1_1) / 6.0 -
-              (coefs_tq1_6 * coef_Jacob1_qt_syms12 * pinvG2_1) / 6.0 -
-              (coefs_tq2_6 * coef_Jacob1_qt_syms11 * pinvG1_2) / 6.0 -
-              (coefs_tq1_2 * coef_Jacob1_qt_syms28 * pinvG1_1) / 6.0 -
-              (coefs_tq1_3 * coef_Jacob1_qt_syms22 * pinvG2_1) / 6.0 -
-              (coefs_tq2_3 * coef_Jacob1_qt_syms21 * pinvG1_2) / 6.0 -
-              (coefs_tq1_6 * coef_Jacob1_qt_syms13 * pinvG3_1) / 6.0 -
-              (coefs_tq2_6 * coef_Jacob1_qt_syms12 * pinvG2_2) / 6.0 -
-              (coefs_tq3_6 * coef_Jacob1_qt_syms11 * pinvG1_3) / 6.0 -
-              (coefs_tq1_2 * coef_Jacob1_qt_syms29 * pinvG2_1) / 6.0 -
-              (coefs_tq2_2 * coef_Jacob1_qt_syms28 * pinvG1_2) / 6.0 -
-              (coefs_tq1_3 * coef_Jacob1_qt_syms23 * pinvG3_1) / 6.0 -
-              (coefs_tq2_3 * coef_Jacob1_qt_syms22 * pinvG2_2) / 6.0 -
-              (coefs_tq3_3 * coef_Jacob1_qt_syms21 * pinvG1_3) / 6.0 -
-              (coefs_tq2_6 * coef_Jacob1_qt_syms13 * pinvG3_2) / 6.0 -
-              (coefs_tq3_6 * coef_Jacob1_qt_syms12 * pinvG2_3) / 6.0 -
-              (coefs_tq1_2 * coef_Jacob1_qt_syms30 * pinvG3_1) / 6.0 -
-              (coefs_tq2_2 * coef_Jacob1_qt_syms29 * pinvG2_2) / 6.0 -
-              (coefs_tq3_2 * coef_Jacob1_qt_syms28 * pinvG1_3) / 6.0 -
-              (coefs_tq2_3 * coef_Jacob1_qt_syms23 * pinvG3_2) / 6.0 -
-              (coefs_tq3_3 * coef_Jacob1_qt_syms22 * pinvG2_3) / 6.0 -
-              (coefs_tq3_6 * coef_Jacob1_qt_syms13 * pinvG3_3) / 6.0 -
-              (coefs_tq2_2 * coef_Jacob1_qt_syms30 * pinvG3_2) / 6.0 -
-              (coefs_tq3_2 * coef_Jacob1_qt_syms29 * pinvG2_3) / 6.0 -
-              (coefs_tq3_3 * coef_Jacob1_qt_syms23 * pinvG3_3) / 6.0 -
-              (coefs_tq3_2 * coef_Jacob1_qt_syms30 * pinvG3_3) / 6.0;
-    W(0, 10) = coef_Jacob1_qt_syms8 * (-1.0 / 3.0) - (coefs_tq1_8 * coef_Jacob1_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob1_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob1_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq1_3 * coef_Jacob1_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob1_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob1_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob1_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq1_3 * coef_Jacob1_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob1_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob1_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob1_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq1_3 * coef_Jacob1_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob1_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob1_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob1_qt_syms13 * pinvG3_3) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob1_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob1_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob1_qt_syms30 * pinvG3_3) / 3.0;
-    W(0, 11) = coef_Jacob1_qt_syms9 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob1_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob1_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob1_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob1_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob1_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob1_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob1_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob1_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob1_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob1_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob1_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob1_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob1_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob1_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob1_qt_syms35 * pinvG3_3) / 6.0;
-    W(0, 12) = coef_Jacob1_qt_syms4 * (-1.0 / 3.0) - (coefs_tq1_4 * coef_Jacob1_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_4 * coef_Jacob1_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob1_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_4 * coef_Jacob1_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob1_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob1_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob1_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob1_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob1_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms13 * pinvG3_3) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob1_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob1_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob1_qt_syms35 * pinvG3_3) / 3.0;
-    W(0, 13) = coef_Jacob1_qt_syms7 * (-1.0 / 6.0) - (coefs_tq1_7 * coef_Jacob1_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob1_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob1_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob1_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob1_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob1_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob1_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob1_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob1_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob1_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob1_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob1_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob1_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob1_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob1_qt_syms35 * pinvG3_3) / 6.0;
-    W(0, 14) = coef_Jacob1_qt_syms9 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob1_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob1_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob1_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob1_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob1_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob1_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob1_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob1_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob1_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob1_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob1_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob1_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob1_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob1_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob1_qt_syms35 * pinvG3_3) / 6.0;
-    W(0, 15) = coef_Jacob1_qt_syms10 * (-1.0 / 3.0) - (coefs_tq1_4 * coef_Jacob1_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_4 * coef_Jacob1_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_4 * coef_Jacob1_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms35 * pinvG3_3) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob1_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob1_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob1_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob1_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob1_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob1_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob1_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob1_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob1_qt_syms13 * pinvG3_3) / 3.0;
-    W(0, 16) = coef_Jacob1_qt_syms2 * (-1.0 / 3.0) - (coefs_tq1_2 * coef_Jacob1_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob1_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_2 * coef_Jacob1_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq2_2 * coef_Jacob1_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob1_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob1_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_2 * coef_Jacob1_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_2 * coef_Jacob1_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq3_2 * coef_Jacob1_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob1_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob1_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob1_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq2_2 * coef_Jacob1_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_2 * coef_Jacob1_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob1_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob1_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq3_2 * coef_Jacob1_qt_syms13 * pinvG3_3) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob1_qt_syms23 * pinvG3_3) / 3.0;
-    W(0, 17) = coef_Jacob1_qt_syms5 * (-1.0 / 3.0) - (coefs_tq1_5 * coef_Jacob1_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_2 * coef_Jacob1_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob1_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob1_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq1_2 * coef_Jacob1_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_2 * coef_Jacob1_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob1_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob1_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob1_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq1_2 * coef_Jacob1_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_2 * coef_Jacob1_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_2 * coef_Jacob1_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob1_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob1_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq2_2 * coef_Jacob1_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_2 * coef_Jacob1_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob1_qt_syms13 * pinvG3_3) / 3.0 -
-               (coefs_tq3_2 * coef_Jacob1_qt_syms23 * pinvG3_3) / 3.0;
-    W(0, 18) = coef_Jacob1_qt_syms6 * (-1.0 / 6.0) - (coefs_tq1_6 * coef_Jacob1_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob1_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob1_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob1_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob1_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob1_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob1_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob1_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob1_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob1_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob1_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob1_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob1_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob1_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob1_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob1_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob1_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob1_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob1_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob1_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob1_qt_syms30 * pinvG3_3) / 6.0;
-    W(0, 19) = coef_Jacob1_qt_syms7 * (-1.0 / 6.0) - (coefs_tq1_7 * coef_Jacob1_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob1_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob1_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob1_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob1_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob1_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob1_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob1_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob1_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob1_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob1_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob1_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob1_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob1_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob1_qt_syms35 * pinvG3_3) / 6.0;
-    W(0, 20) = coef_Jacob1_qt_syms5 * (-1.0 / 3.0) - (coefs_tq1_5 * coef_Jacob1_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_2 * coef_Jacob1_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob1_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob1_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq1_2 * coef_Jacob1_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_2 * coef_Jacob1_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob1_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob1_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob1_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq1_2 * coef_Jacob1_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_2 * coef_Jacob1_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_2 * coef_Jacob1_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob1_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob1_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq2_2 * coef_Jacob1_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_2 * coef_Jacob1_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob1_qt_syms13 * pinvG3_3) / 3.0 -
-               (coefs_tq3_2 * coef_Jacob1_qt_syms23 * pinvG3_3) / 3.0;
+    W(0, 1) = coef_Jacob1_qt_syms2 * (-1.0 * 2.0) - (coefs_tq1_2 * coef_Jacob1_qt_syms11 * pinvG1_1) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob1_qt_syms21 * pinvG1_1) * 2.0 -
+              (coefs_tq1_2 * coef_Jacob1_qt_syms12 * pinvG2_1) * 2.0 -
+              (coefs_tq2_2 * coef_Jacob1_qt_syms11 * pinvG1_2) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob1_qt_syms22 * pinvG2_1) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob1_qt_syms21 * pinvG1_2) * 2.0 -
+              (coefs_tq1_2 * coef_Jacob1_qt_syms13 * pinvG3_1) * 2.0 -
+              (coefs_tq2_2 * coef_Jacob1_qt_syms12 * pinvG2_2) * 2.0 -
+              (coefs_tq3_2 * coef_Jacob1_qt_syms11 * pinvG1_3) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob1_qt_syms23 * pinvG3_1) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob1_qt_syms22 * pinvG2_2) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob1_qt_syms21 * pinvG1_3) * 2.0 -
+              (coefs_tq2_2 * coef_Jacob1_qt_syms13 * pinvG3_2) * 2.0 -
+              (coefs_tq3_2 * coef_Jacob1_qt_syms12 * pinvG2_3) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob1_qt_syms23 * pinvG3_2) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob1_qt_syms22 * pinvG2_3) * 2.0 -
+              (coefs_tq3_2 * coef_Jacob1_qt_syms13 * pinvG3_3) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob1_qt_syms23 * pinvG3_3) * 2.0;
+    W(0, 2) = coef_Jacob1_qt_syms3 * (-1.0 * 2.0) - (coefs_tq1_3 * coef_Jacob1_qt_syms11 * pinvG1_1) * 2.0 -
+              (coefs_tq1_3 * coef_Jacob1_qt_syms12 * pinvG2_1) * 2.0 -
+              (coefs_tq2_3 * coef_Jacob1_qt_syms11 * pinvG1_2) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob1_qt_syms28 * pinvG1_1) * 2.0 -
+              (coefs_tq1_3 * coef_Jacob1_qt_syms13 * pinvG3_1) * 2.0 -
+              (coefs_tq2_3 * coef_Jacob1_qt_syms12 * pinvG2_2) * 2.0 -
+              (coefs_tq3_3 * coef_Jacob1_qt_syms11 * pinvG1_3) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob1_qt_syms29 * pinvG2_1) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob1_qt_syms28 * pinvG1_2) * 2.0 -
+              (coefs_tq2_3 * coef_Jacob1_qt_syms13 * pinvG3_2) * 2.0 -
+              (coefs_tq3_3 * coef_Jacob1_qt_syms12 * pinvG2_3) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob1_qt_syms30 * pinvG3_1) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob1_qt_syms29 * pinvG2_2) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob1_qt_syms28 * pinvG1_3) * 2.0 -
+              (coefs_tq3_3 * coef_Jacob1_qt_syms13 * pinvG3_3) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob1_qt_syms30 * pinvG3_2) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob1_qt_syms29 * pinvG2_3) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob1_qt_syms30 * pinvG3_3) * 2.0;
+    W(0, 3) = coef_Jacob1_qt_syms4 * (-1.0 * 2.0) - (coefs_tq1_4 * coef_Jacob1_qt_syms11 * pinvG1_1) * 2.0 -
+              (coefs_tq1_4 * coef_Jacob1_qt_syms12 * pinvG2_1) * 2.0 -
+              (coefs_tq2_4 * coef_Jacob1_qt_syms11 * pinvG1_2) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob1_qt_syms33 * pinvG1_1) * 2.0 -
+              (coefs_tq1_4 * coef_Jacob1_qt_syms13 * pinvG3_1) * 2.0 -
+              (coefs_tq2_4 * coef_Jacob1_qt_syms12 * pinvG2_2) * 2.0 -
+              (coefs_tq3_4 * coef_Jacob1_qt_syms11 * pinvG1_3) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob1_qt_syms34 * pinvG2_1) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob1_qt_syms33 * pinvG1_2) * 2.0 -
+              (coefs_tq2_4 * coef_Jacob1_qt_syms13 * pinvG3_2) * 2.0 -
+              (coefs_tq3_4 * coef_Jacob1_qt_syms12 * pinvG2_3) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob1_qt_syms35 * pinvG3_1) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob1_qt_syms34 * pinvG2_2) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob1_qt_syms33 * pinvG1_3) * 2.0 -
+              (coefs_tq3_4 * coef_Jacob1_qt_syms13 * pinvG3_3) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob1_qt_syms35 * pinvG3_2) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob1_qt_syms34 * pinvG2_3) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob1_qt_syms35 * pinvG3_3) * 2.0;
+    W(0, 4) = coef_Jacob1_qt_syms2 * (-1.0 * 2.0) - (coefs_tq1_2 * coef_Jacob1_qt_syms11 * pinvG1_1) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob1_qt_syms21 * pinvG1_1) * 2.0 -
+              (coefs_tq1_2 * coef_Jacob1_qt_syms12 * pinvG2_1) * 2.0 -
+              (coefs_tq2_2 * coef_Jacob1_qt_syms11 * pinvG1_2) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob1_qt_syms22 * pinvG2_1) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob1_qt_syms21 * pinvG1_2) * 2.0 -
+              (coefs_tq1_2 * coef_Jacob1_qt_syms13 * pinvG3_1) * 2.0 -
+              (coefs_tq2_2 * coef_Jacob1_qt_syms12 * pinvG2_2) * 2.0 -
+              (coefs_tq3_2 * coef_Jacob1_qt_syms11 * pinvG1_3) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob1_qt_syms23 * pinvG3_1) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob1_qt_syms22 * pinvG2_2) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob1_qt_syms21 * pinvG1_3) * 2.0 -
+              (coefs_tq2_2 * coef_Jacob1_qt_syms13 * pinvG3_2) * 2.0 -
+              (coefs_tq3_2 * coef_Jacob1_qt_syms12 * pinvG2_3) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob1_qt_syms23 * pinvG3_2) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob1_qt_syms22 * pinvG2_3) * 2.0 -
+              (coefs_tq3_2 * coef_Jacob1_qt_syms13 * pinvG3_3) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob1_qt_syms23 * pinvG3_3) * 2.0;
+    W(0, 5) = coef_Jacob1_qt_syms5 * (-1.0 * 2.0) - (coefs_tq1_5 * coef_Jacob1_qt_syms11 * pinvG1_1) * 2.0 -
+              (coefs_tq1_2 * coef_Jacob1_qt_syms21 * pinvG1_1) * 2.0 -
+              (coefs_tq1_5 * coef_Jacob1_qt_syms12 * pinvG2_1) * 2.0 -
+              (coefs_tq2_5 * coef_Jacob1_qt_syms11 * pinvG1_2) * 2.0 -
+              (coefs_tq1_2 * coef_Jacob1_qt_syms22 * pinvG2_1) * 2.0 -
+              (coefs_tq2_2 * coef_Jacob1_qt_syms21 * pinvG1_2) * 2.0 -
+              (coefs_tq1_5 * coef_Jacob1_qt_syms13 * pinvG3_1) * 2.0 -
+              (coefs_tq2_5 * coef_Jacob1_qt_syms12 * pinvG2_2) * 2.0 -
+              (coefs_tq3_5 * coef_Jacob1_qt_syms11 * pinvG1_3) * 2.0 -
+              (coefs_tq1_2 * coef_Jacob1_qt_syms23 * pinvG3_1) * 2.0 -
+              (coefs_tq2_2 * coef_Jacob1_qt_syms22 * pinvG2_2) * 2.0 -
+              (coefs_tq3_2 * coef_Jacob1_qt_syms21 * pinvG1_3) * 2.0 -
+              (coefs_tq2_5 * coef_Jacob1_qt_syms13 * pinvG3_2) * 2.0 -
+              (coefs_tq3_5 * coef_Jacob1_qt_syms12 * pinvG2_3) * 2.0 -
+              (coefs_tq2_2 * coef_Jacob1_qt_syms23 * pinvG3_2) * 2.0 -
+              (coefs_tq3_2 * coef_Jacob1_qt_syms22 * pinvG2_3) * 2.0 -
+              (coefs_tq3_5 * coef_Jacob1_qt_syms13 * pinvG3_3) * 2.0 -
+              (coefs_tq3_2 * coef_Jacob1_qt_syms23 * pinvG3_3) * 2.0;
+    W(0, 6) = coef_Jacob1_qt_syms6 * (-1.0 ) - (coefs_tq1_6 * coef_Jacob1_qt_syms11 * pinvG1_1)  -
+              (coefs_tq1_3 * coef_Jacob1_qt_syms21 * pinvG1_1)  -
+              (coefs_tq1_6 * coef_Jacob1_qt_syms12 * pinvG2_1)  -
+              (coefs_tq2_6 * coef_Jacob1_qt_syms11 * pinvG1_2)  -
+              (coefs_tq1_2 * coef_Jacob1_qt_syms28 * pinvG1_1)  -
+              (coefs_tq1_3 * coef_Jacob1_qt_syms22 * pinvG2_1)  -
+              (coefs_tq2_3 * coef_Jacob1_qt_syms21 * pinvG1_2)  -
+              (coefs_tq1_6 * coef_Jacob1_qt_syms13 * pinvG3_1)  -
+              (coefs_tq2_6 * coef_Jacob1_qt_syms12 * pinvG2_2)  -
+              (coefs_tq3_6 * coef_Jacob1_qt_syms11 * pinvG1_3)  -
+              (coefs_tq1_2 * coef_Jacob1_qt_syms29 * pinvG2_1)  -
+              (coefs_tq2_2 * coef_Jacob1_qt_syms28 * pinvG1_2)  -
+              (coefs_tq1_3 * coef_Jacob1_qt_syms23 * pinvG3_1)  -
+              (coefs_tq2_3 * coef_Jacob1_qt_syms22 * pinvG2_2)  -
+              (coefs_tq3_3 * coef_Jacob1_qt_syms21 * pinvG1_3)  -
+              (coefs_tq2_6 * coef_Jacob1_qt_syms13 * pinvG3_2)  -
+              (coefs_tq3_6 * coef_Jacob1_qt_syms12 * pinvG2_3)  -
+              (coefs_tq1_2 * coef_Jacob1_qt_syms30 * pinvG3_1)  -
+              (coefs_tq2_2 * coef_Jacob1_qt_syms29 * pinvG2_2)  -
+              (coefs_tq3_2 * coef_Jacob1_qt_syms28 * pinvG1_3)  -
+              (coefs_tq2_3 * coef_Jacob1_qt_syms23 * pinvG3_2)  -
+              (coefs_tq3_3 * coef_Jacob1_qt_syms22 * pinvG2_3)  -
+              (coefs_tq3_6 * coef_Jacob1_qt_syms13 * pinvG3_3)  -
+              (coefs_tq2_2 * coef_Jacob1_qt_syms30 * pinvG3_2)  -
+              (coefs_tq3_2 * coef_Jacob1_qt_syms29 * pinvG2_3)  -
+              (coefs_tq3_3 * coef_Jacob1_qt_syms23 * pinvG3_3)  -
+              (coefs_tq3_2 * coef_Jacob1_qt_syms30 * pinvG3_3) ;
+    W(0, 7) = coef_Jacob1_qt_syms7 * (-1.0 ) - (coefs_tq1_7 * coef_Jacob1_qt_syms11 * pinvG1_1)  -
+              (coefs_tq1_4 * coef_Jacob1_qt_syms21 * pinvG1_1)  -
+              (coefs_tq1_7 * coef_Jacob1_qt_syms12 * pinvG2_1)  -
+              (coefs_tq2_7 * coef_Jacob1_qt_syms11 * pinvG1_2)  -
+              (coefs_tq1_2 * coef_Jacob1_qt_syms33 * pinvG1_1)  -
+              (coefs_tq1_4 * coef_Jacob1_qt_syms22 * pinvG2_1)  -
+              (coefs_tq2_4 * coef_Jacob1_qt_syms21 * pinvG1_2)  -
+              (coefs_tq1_7 * coef_Jacob1_qt_syms13 * pinvG3_1)  -
+              (coefs_tq2_7 * coef_Jacob1_qt_syms12 * pinvG2_2)  -
+              (coefs_tq3_7 * coef_Jacob1_qt_syms11 * pinvG1_3)  -
+              (coefs_tq1_2 * coef_Jacob1_qt_syms34 * pinvG2_1)  -
+              (coefs_tq2_2 * coef_Jacob1_qt_syms33 * pinvG1_2)  -
+              (coefs_tq1_4 * coef_Jacob1_qt_syms23 * pinvG3_1)  -
+              (coefs_tq2_4 * coef_Jacob1_qt_syms22 * pinvG2_2)  -
+              (coefs_tq3_4 * coef_Jacob1_qt_syms21 * pinvG1_3)  -
+              (coefs_tq2_7 * coef_Jacob1_qt_syms13 * pinvG3_2)  -
+              (coefs_tq3_7 * coef_Jacob1_qt_syms12 * pinvG2_3)  -
+              (coefs_tq1_2 * coef_Jacob1_qt_syms35 * pinvG3_1)  -
+              (coefs_tq2_2 * coef_Jacob1_qt_syms34 * pinvG2_2)  -
+              (coefs_tq3_2 * coef_Jacob1_qt_syms33 * pinvG1_3)  -
+              (coefs_tq2_4 * coef_Jacob1_qt_syms23 * pinvG3_2)  -
+              (coefs_tq3_4 * coef_Jacob1_qt_syms22 * pinvG2_3)  -
+              (coefs_tq3_7 * coef_Jacob1_qt_syms13 * pinvG3_3)  -
+              (coefs_tq2_2 * coef_Jacob1_qt_syms35 * pinvG3_2)  -
+              (coefs_tq3_2 * coef_Jacob1_qt_syms34 * pinvG2_3)  -
+              (coefs_tq3_4 * coef_Jacob1_qt_syms23 * pinvG3_3)  -
+              (coefs_tq3_2 * coef_Jacob1_qt_syms35 * pinvG3_3) ;
+    W(0, 8) = coef_Jacob1_qt_syms3 * (-1.0 * 2.0) - (coefs_tq1_3 * coef_Jacob1_qt_syms11 * pinvG1_1) * 2.0 -
+              (coefs_tq1_3 * coef_Jacob1_qt_syms12 * pinvG2_1) * 2.0 -
+              (coefs_tq2_3 * coef_Jacob1_qt_syms11 * pinvG1_2) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob1_qt_syms28 * pinvG1_1) * 2.0 -
+              (coefs_tq1_3 * coef_Jacob1_qt_syms13 * pinvG3_1) * 2.0 -
+              (coefs_tq2_3 * coef_Jacob1_qt_syms12 * pinvG2_2) * 2.0 -
+              (coefs_tq3_3 * coef_Jacob1_qt_syms11 * pinvG1_3) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob1_qt_syms29 * pinvG2_1) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob1_qt_syms28 * pinvG1_2) * 2.0 -
+              (coefs_tq2_3 * coef_Jacob1_qt_syms13 * pinvG3_2) * 2.0 -
+              (coefs_tq3_3 * coef_Jacob1_qt_syms12 * pinvG2_3) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob1_qt_syms30 * pinvG3_1) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob1_qt_syms29 * pinvG2_2) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob1_qt_syms28 * pinvG1_3) * 2.0 -
+              (coefs_tq3_3 * coef_Jacob1_qt_syms13 * pinvG3_3) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob1_qt_syms30 * pinvG3_2) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob1_qt_syms29 * pinvG2_3) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob1_qt_syms30 * pinvG3_3) * 2.0;
+    W(0, 9) = coef_Jacob1_qt_syms6 * (-1.0 ) - (coefs_tq1_6 * coef_Jacob1_qt_syms11 * pinvG1_1)  -
+              (coefs_tq1_3 * coef_Jacob1_qt_syms21 * pinvG1_1)  -
+              (coefs_tq1_6 * coef_Jacob1_qt_syms12 * pinvG2_1)  -
+              (coefs_tq2_6 * coef_Jacob1_qt_syms11 * pinvG1_2)  -
+              (coefs_tq1_2 * coef_Jacob1_qt_syms28 * pinvG1_1)  -
+              (coefs_tq1_3 * coef_Jacob1_qt_syms22 * pinvG2_1)  -
+              (coefs_tq2_3 * coef_Jacob1_qt_syms21 * pinvG1_2)  -
+              (coefs_tq1_6 * coef_Jacob1_qt_syms13 * pinvG3_1)  -
+              (coefs_tq2_6 * coef_Jacob1_qt_syms12 * pinvG2_2)  -
+              (coefs_tq3_6 * coef_Jacob1_qt_syms11 * pinvG1_3)  -
+              (coefs_tq1_2 * coef_Jacob1_qt_syms29 * pinvG2_1)  -
+              (coefs_tq2_2 * coef_Jacob1_qt_syms28 * pinvG1_2)  -
+              (coefs_tq1_3 * coef_Jacob1_qt_syms23 * pinvG3_1)  -
+              (coefs_tq2_3 * coef_Jacob1_qt_syms22 * pinvG2_2)  -
+              (coefs_tq3_3 * coef_Jacob1_qt_syms21 * pinvG1_3)  -
+              (coefs_tq2_6 * coef_Jacob1_qt_syms13 * pinvG3_2)  -
+              (coefs_tq3_6 * coef_Jacob1_qt_syms12 * pinvG2_3)  -
+              (coefs_tq1_2 * coef_Jacob1_qt_syms30 * pinvG3_1)  -
+              (coefs_tq2_2 * coef_Jacob1_qt_syms29 * pinvG2_2)  -
+              (coefs_tq3_2 * coef_Jacob1_qt_syms28 * pinvG1_3)  -
+              (coefs_tq2_3 * coef_Jacob1_qt_syms23 * pinvG3_2)  -
+              (coefs_tq3_3 * coef_Jacob1_qt_syms22 * pinvG2_3)  -
+              (coefs_tq3_6 * coef_Jacob1_qt_syms13 * pinvG3_3)  -
+              (coefs_tq2_2 * coef_Jacob1_qt_syms30 * pinvG3_2)  -
+              (coefs_tq3_2 * coef_Jacob1_qt_syms29 * pinvG2_3)  -
+              (coefs_tq3_3 * coef_Jacob1_qt_syms23 * pinvG3_3)  -
+              (coefs_tq3_2 * coef_Jacob1_qt_syms30 * pinvG3_3) ;
+    W(0, 10) = coef_Jacob1_qt_syms8 * (-1.0 * 2.0) - (coefs_tq1_8 * coef_Jacob1_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob1_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob1_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq1_3 * coef_Jacob1_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob1_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob1_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob1_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq1_3 * coef_Jacob1_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob1_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob1_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob1_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq1_3 * coef_Jacob1_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob1_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob1_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob1_qt_syms13 * pinvG3_3) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob1_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob1_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob1_qt_syms30 * pinvG3_3) * 2.0;
+    W(0, 11) = coef_Jacob1_qt_syms9 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob1_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob1_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_4 * coef_Jacob1_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob1_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob1_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_4 * coef_Jacob1_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_3 * coef_Jacob1_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_3 * coef_Jacob1_qt_syms33 * pinvG1_2)  -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_4 * coef_Jacob1_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_3 * coef_Jacob1_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_3 * coef_Jacob1_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_3 * coef_Jacob1_qt_syms33 * pinvG1_3)  -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_3 * coef_Jacob1_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_3 * coef_Jacob1_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_3 * coef_Jacob1_qt_syms35 * pinvG3_3) ;
+    W(0, 12) = coef_Jacob1_qt_syms4 * (-1.0 * 2.0) - (coefs_tq1_4 * coef_Jacob1_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_4 * coef_Jacob1_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob1_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_4 * coef_Jacob1_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob1_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob1_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob1_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob1_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob1_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms13 * pinvG3_3) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob1_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob1_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob1_qt_syms35 * pinvG3_3) * 2.0;
+    W(0, 13) = coef_Jacob1_qt_syms7 * (-1.0 ) - (coefs_tq1_7 * coef_Jacob1_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_4 * coef_Jacob1_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_7 * coef_Jacob1_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_2 * coef_Jacob1_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_4 * coef_Jacob1_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_7 * coef_Jacob1_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_2 * coef_Jacob1_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_2 * coef_Jacob1_qt_syms33 * pinvG1_2)  -
+               (coefs_tq1_4 * coef_Jacob1_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms21 * pinvG1_3)  -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_2 * coef_Jacob1_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_2 * coef_Jacob1_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_2 * coef_Jacob1_qt_syms33 * pinvG1_3)  -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms22 * pinvG2_3)  -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_2 * coef_Jacob1_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_2 * coef_Jacob1_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_2 * coef_Jacob1_qt_syms35 * pinvG3_3) ;
+    W(0, 14) = coef_Jacob1_qt_syms9 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob1_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob1_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_4 * coef_Jacob1_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob1_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob1_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_4 * coef_Jacob1_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_3 * coef_Jacob1_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_3 * coef_Jacob1_qt_syms33 * pinvG1_2)  -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_4 * coef_Jacob1_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_3 * coef_Jacob1_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_3 * coef_Jacob1_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_3 * coef_Jacob1_qt_syms33 * pinvG1_3)  -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_3 * coef_Jacob1_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_3 * coef_Jacob1_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_3 * coef_Jacob1_qt_syms35 * pinvG3_3) ;
+    W(0, 15) = coef_Jacob1_qt_syms10 * (-1.0 * 2.0) - (coefs_tq1_4 * coef_Jacob1_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_4 * coef_Jacob1_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_4 * coef_Jacob1_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms35 * pinvG3_3) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob1_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob1_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob1_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob1_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob1_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob1_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob1_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob1_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob1_qt_syms13 * pinvG3_3) * 2.0;
+    W(0, 16) = coef_Jacob1_qt_syms2 * (-1.0 * 2.0) - (coefs_tq1_2 * coef_Jacob1_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob1_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_2 * coef_Jacob1_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq2_2 * coef_Jacob1_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob1_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob1_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_2 * coef_Jacob1_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_2 * coef_Jacob1_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq3_2 * coef_Jacob1_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob1_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob1_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob1_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq2_2 * coef_Jacob1_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_2 * coef_Jacob1_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob1_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob1_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq3_2 * coef_Jacob1_qt_syms13 * pinvG3_3) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob1_qt_syms23 * pinvG3_3) * 2.0;
+    W(0, 17) = coef_Jacob1_qt_syms5 * (-1.0 * 2.0) - (coefs_tq1_5 * coef_Jacob1_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_2 * coef_Jacob1_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob1_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob1_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq1_2 * coef_Jacob1_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_2 * coef_Jacob1_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob1_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob1_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob1_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq1_2 * coef_Jacob1_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_2 * coef_Jacob1_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_2 * coef_Jacob1_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob1_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob1_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq2_2 * coef_Jacob1_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_2 * coef_Jacob1_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob1_qt_syms13 * pinvG3_3) * 2.0 -
+               (coefs_tq3_2 * coef_Jacob1_qt_syms23 * pinvG3_3) * 2.0;
+    W(0, 18) = coef_Jacob1_qt_syms6 * (-1.0 ) - (coefs_tq1_6 * coef_Jacob1_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob1_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_6 * coef_Jacob1_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_2 * coef_Jacob1_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob1_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_3 * coef_Jacob1_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_6 * coef_Jacob1_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_2 * coef_Jacob1_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_2 * coef_Jacob1_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_3 * coef_Jacob1_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_3 * coef_Jacob1_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_3 * coef_Jacob1_qt_syms21 * pinvG1_3)  -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_2 * coef_Jacob1_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_2 * coef_Jacob1_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_2 * coef_Jacob1_qt_syms28 * pinvG1_3)  -
+               (coefs_tq2_3 * coef_Jacob1_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_3 * coef_Jacob1_qt_syms22 * pinvG2_3)  -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_2 * coef_Jacob1_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_2 * coef_Jacob1_qt_syms29 * pinvG2_3)  -
+               (coefs_tq3_3 * coef_Jacob1_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_2 * coef_Jacob1_qt_syms30 * pinvG3_3) ;
+    W(0, 19) = coef_Jacob1_qt_syms7 * (-1.0 ) - (coefs_tq1_7 * coef_Jacob1_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_4 * coef_Jacob1_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_7 * coef_Jacob1_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_2 * coef_Jacob1_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_4 * coef_Jacob1_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_7 * coef_Jacob1_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_2 * coef_Jacob1_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_2 * coef_Jacob1_qt_syms33 * pinvG1_2)  -
+               (coefs_tq1_4 * coef_Jacob1_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms21 * pinvG1_3)  -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_2 * coef_Jacob1_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_2 * coef_Jacob1_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_2 * coef_Jacob1_qt_syms33 * pinvG1_3)  -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms22 * pinvG2_3)  -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_2 * coef_Jacob1_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_2 * coef_Jacob1_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_2 * coef_Jacob1_qt_syms35 * pinvG3_3) ;
+    W(0, 20) = coef_Jacob1_qt_syms5 * (-1.0 * 2.0) - (coefs_tq1_5 * coef_Jacob1_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_2 * coef_Jacob1_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob1_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob1_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq1_2 * coef_Jacob1_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_2 * coef_Jacob1_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob1_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob1_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob1_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq1_2 * coef_Jacob1_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_2 * coef_Jacob1_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_2 * coef_Jacob1_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob1_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob1_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq2_2 * coef_Jacob1_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_2 * coef_Jacob1_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob1_qt_syms13 * pinvG3_3) * 2.0 -
+               (coefs_tq3_2 * coef_Jacob1_qt_syms23 * pinvG3_3) * 2.0;
     W(0, 21) = -coef_Jacob1_qt_syms15 - coefs_tq1_5 * coef_Jacob1_qt_syms21 * pinvG1_1 -
                coefs_tq1_5 * coef_Jacob1_qt_syms22 * pinvG2_1 - coefs_tq2_5 * coef_Jacob1_qt_syms21 * pinvG1_2 -
                coefs_tq1_5 * coef_Jacob1_qt_syms23 * pinvG3_1 - coefs_tq2_5 * coef_Jacob1_qt_syms22 * pinvG2_2 -
                coefs_tq3_5 * coef_Jacob1_qt_syms21 * pinvG1_3 - coefs_tq2_5 * coef_Jacob1_qt_syms23 * pinvG3_2 -
                coefs_tq3_5 * coef_Jacob1_qt_syms22 * pinvG2_3 - coefs_tq3_5 * coef_Jacob1_qt_syms23 * pinvG3_3;
-    W(0, 22) = coef_Jacob1_qt_syms16 * (-1.0 / 3.0) - (coefs_tq1_6 * coef_Jacob1_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob1_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob1_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob1_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob1_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob1_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob1_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob1_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob1_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob1_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob1_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms23 * pinvG3_3) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob1_qt_syms30 * pinvG3_3) / 3.0;
-    W(0, 23) = coef_Jacob1_qt_syms17 * (-1.0 / 3.0) - (coefs_tq1_7 * coef_Jacob1_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob1_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob1_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob1_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob1_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob1_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob1_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob1_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob1_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob1_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob1_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms23 * pinvG3_3) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob1_qt_syms35 * pinvG3_3) / 3.0;
-    W(0, 24) = coef_Jacob1_qt_syms6 * (-1.0 / 6.0) - (coefs_tq1_6 * coef_Jacob1_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob1_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob1_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob1_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob1_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob1_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob1_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob1_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob1_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob1_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob1_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob1_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob1_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob1_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob1_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob1_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob1_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob1_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob1_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob1_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob1_qt_syms30 * pinvG3_3) / 6.0;
-    W(0, 25) = coef_Jacob1_qt_syms16 * (-1.0 / 3.0) - (coefs_tq1_6 * coef_Jacob1_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob1_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob1_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob1_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob1_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob1_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob1_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob1_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob1_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob1_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob1_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms23 * pinvG3_3) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob1_qt_syms30 * pinvG3_3) / 3.0;
-    W(0, 26) = coef_Jacob1_qt_syms18 * (-1.0 / 3.0) - (coefs_tq1_8 * coef_Jacob1_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob1_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob1_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob1_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob1_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob1_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob1_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob1_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob1_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob1_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob1_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob1_qt_syms23 * pinvG3_3) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms30 * pinvG3_3) / 3.0;
-    W(0, 27) = coef_Jacob1_qt_syms19 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob1_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob1_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob1_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob1_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob1_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob1_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob1_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob1_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob1_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms35 * pinvG3_3) / 6.0;
-    W(0, 28) = coef_Jacob1_qt_syms7 * (-1.0 / 6.0) - (coefs_tq1_7 * coef_Jacob1_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob1_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob1_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob1_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob1_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob1_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob1_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob1_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob1_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob1_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob1_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob1_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob1_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob1_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob1_qt_syms35 * pinvG3_3) / 6.0;
-    W(0, 29) = coef_Jacob1_qt_syms17 * (-1.0 / 3.0) - (coefs_tq1_7 * coef_Jacob1_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob1_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob1_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob1_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob1_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob1_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob1_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob1_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob1_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob1_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob1_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms23 * pinvG3_3) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob1_qt_syms35 * pinvG3_3) / 3.0;
-    W(0, 30) = coef_Jacob1_qt_syms19 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob1_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob1_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob1_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob1_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob1_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob1_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob1_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob1_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob1_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms35 * pinvG3_3) / 6.0;
-    W(0, 31) = coef_Jacob1_qt_syms20 * (-1.0 / 3.0) - (coefs_tq1_7 * coef_Jacob1_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob1_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob1_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms35 * pinvG3_3) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob1_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob1_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob1_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob1_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob1_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob1_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob1_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob1_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob1_qt_syms23 * pinvG3_3) / 3.0;
-    W(0, 32) = coef_Jacob1_qt_syms3 * (-1.0 / 3.0) - (coefs_tq1_3 * coef_Jacob1_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_3 * coef_Jacob1_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob1_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob1_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_3 * coef_Jacob1_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob1_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob1_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob1_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob1_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob1_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob1_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob1_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob1_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob1_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob1_qt_syms13 * pinvG3_3) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob1_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob1_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob1_qt_syms30 * pinvG3_3) / 3.0;
-    W(0, 33) = coef_Jacob1_qt_syms6 * (-1.0 / 6.0) - (coefs_tq1_6 * coef_Jacob1_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob1_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob1_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob1_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob1_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob1_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob1_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob1_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob1_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob1_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob1_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob1_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob1_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob1_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob1_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob1_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob1_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob1_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob1_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob1_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob1_qt_syms30 * pinvG3_3) / 6.0;
-    W(0, 34) = coef_Jacob1_qt_syms8 * (-1.0 / 3.0) - (coefs_tq1_8 * coef_Jacob1_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob1_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob1_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq1_3 * coef_Jacob1_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob1_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob1_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob1_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq1_3 * coef_Jacob1_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob1_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob1_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob1_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq1_3 * coef_Jacob1_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob1_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob1_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob1_qt_syms13 * pinvG3_3) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob1_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob1_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob1_qt_syms30 * pinvG3_3) / 3.0;
-    W(0, 35) = coef_Jacob1_qt_syms9 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob1_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob1_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob1_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob1_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob1_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob1_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob1_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob1_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob1_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob1_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob1_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob1_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob1_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob1_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob1_qt_syms35 * pinvG3_3) / 6.0;
-    W(0, 36) = coef_Jacob1_qt_syms6 * (-1.0 / 6.0) - (coefs_tq1_6 * coef_Jacob1_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob1_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob1_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob1_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob1_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob1_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob1_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob1_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob1_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob1_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob1_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob1_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob1_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob1_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob1_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob1_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob1_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob1_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob1_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob1_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob1_qt_syms30 * pinvG3_3) / 6.0;
-    W(0, 37) = coef_Jacob1_qt_syms16 * (-1.0 / 3.0) - (coefs_tq1_6 * coef_Jacob1_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob1_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob1_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob1_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob1_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob1_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob1_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob1_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob1_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob1_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob1_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms23 * pinvG3_3) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob1_qt_syms30 * pinvG3_3) / 3.0;
-    W(0, 38) = coef_Jacob1_qt_syms18 * (-1.0 / 3.0) - (coefs_tq1_8 * coef_Jacob1_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob1_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob1_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob1_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob1_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob1_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob1_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob1_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob1_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob1_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob1_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob1_qt_syms23 * pinvG3_3) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms30 * pinvG3_3) / 3.0;
-    W(0, 39) = coef_Jacob1_qt_syms19 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob1_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob1_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob1_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob1_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob1_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob1_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob1_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob1_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob1_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms35 * pinvG3_3) / 6.0;
-    W(0, 40) = coef_Jacob1_qt_syms8 * (-1.0 / 3.0) - (coefs_tq1_8 * coef_Jacob1_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob1_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob1_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq1_3 * coef_Jacob1_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob1_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob1_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob1_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq1_3 * coef_Jacob1_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob1_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob1_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob1_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq1_3 * coef_Jacob1_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob1_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob1_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob1_qt_syms13 * pinvG3_3) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob1_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob1_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob1_qt_syms30 * pinvG3_3) / 3.0;
-    W(0, 41) = coef_Jacob1_qt_syms18 * (-1.0 / 3.0) - (coefs_tq1_8 * coef_Jacob1_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob1_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob1_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob1_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob1_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob1_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob1_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob1_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob1_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob1_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob1_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob1_qt_syms23 * pinvG3_3) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms30 * pinvG3_3) / 3.0;
+    W(0, 22) = coef_Jacob1_qt_syms16 * (-1.0 * 2.0) - (coefs_tq1_6 * coef_Jacob1_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob1_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob1_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob1_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob1_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob1_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob1_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob1_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob1_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob1_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob1_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms23 * pinvG3_3) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob1_qt_syms30 * pinvG3_3) * 2.0;
+    W(0, 23) = coef_Jacob1_qt_syms17 * (-1.0 * 2.0) - (coefs_tq1_7 * coef_Jacob1_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob1_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob1_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob1_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob1_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob1_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob1_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob1_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob1_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob1_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob1_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms23 * pinvG3_3) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob1_qt_syms35 * pinvG3_3) * 2.0;
+    W(0, 24) = coef_Jacob1_qt_syms6 * (-1.0 ) - (coefs_tq1_6 * coef_Jacob1_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob1_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_6 * coef_Jacob1_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_2 * coef_Jacob1_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob1_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_3 * coef_Jacob1_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_6 * coef_Jacob1_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_2 * coef_Jacob1_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_2 * coef_Jacob1_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_3 * coef_Jacob1_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_3 * coef_Jacob1_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_3 * coef_Jacob1_qt_syms21 * pinvG1_3)  -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_2 * coef_Jacob1_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_2 * coef_Jacob1_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_2 * coef_Jacob1_qt_syms28 * pinvG1_3)  -
+               (coefs_tq2_3 * coef_Jacob1_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_3 * coef_Jacob1_qt_syms22 * pinvG2_3)  -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_2 * coef_Jacob1_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_2 * coef_Jacob1_qt_syms29 * pinvG2_3)  -
+               (coefs_tq3_3 * coef_Jacob1_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_2 * coef_Jacob1_qt_syms30 * pinvG3_3) ;
+    W(0, 25) = coef_Jacob1_qt_syms16 * (-1.0 * 2.0) - (coefs_tq1_6 * coef_Jacob1_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob1_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob1_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob1_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob1_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob1_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob1_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob1_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob1_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob1_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob1_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms23 * pinvG3_3) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob1_qt_syms30 * pinvG3_3) * 2.0;
+    W(0, 26) = coef_Jacob1_qt_syms18 * (-1.0 * 2.0) - (coefs_tq1_8 * coef_Jacob1_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob1_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob1_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob1_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob1_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob1_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob1_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob1_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob1_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob1_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob1_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob1_qt_syms23 * pinvG3_3) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms30 * pinvG3_3) * 2.0;
+    W(0, 27) = coef_Jacob1_qt_syms19 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob1_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_7 * coef_Jacob1_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_6 * coef_Jacob1_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob1_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_7 * coef_Jacob1_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_6 * coef_Jacob1_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms33 * pinvG1_2)  -
+               (coefs_tq1_9 * coef_Jacob1_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms21 * pinvG1_3)  -
+               (coefs_tq1_7 * coef_Jacob1_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_6 * coef_Jacob1_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms33 * pinvG1_3)  -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms22 * pinvG2_3)  -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms35 * pinvG3_3) ;
+    W(0, 28) = coef_Jacob1_qt_syms7 * (-1.0 ) - (coefs_tq1_7 * coef_Jacob1_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_4 * coef_Jacob1_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_7 * coef_Jacob1_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_2 * coef_Jacob1_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_4 * coef_Jacob1_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_7 * coef_Jacob1_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_2 * coef_Jacob1_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_2 * coef_Jacob1_qt_syms33 * pinvG1_2)  -
+               (coefs_tq1_4 * coef_Jacob1_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms21 * pinvG1_3)  -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_2 * coef_Jacob1_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_2 * coef_Jacob1_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_2 * coef_Jacob1_qt_syms33 * pinvG1_3)  -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms22 * pinvG2_3)  -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_2 * coef_Jacob1_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_2 * coef_Jacob1_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_2 * coef_Jacob1_qt_syms35 * pinvG3_3) ;
+    W(0, 29) = coef_Jacob1_qt_syms17 * (-1.0 * 2.0) - (coefs_tq1_7 * coef_Jacob1_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob1_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob1_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob1_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob1_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob1_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob1_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob1_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob1_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob1_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob1_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms23 * pinvG3_3) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob1_qt_syms35 * pinvG3_3) * 2.0;
+    W(0, 30) = coef_Jacob1_qt_syms19 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob1_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_7 * coef_Jacob1_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_6 * coef_Jacob1_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob1_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_7 * coef_Jacob1_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_6 * coef_Jacob1_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms33 * pinvG1_2)  -
+               (coefs_tq1_9 * coef_Jacob1_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms21 * pinvG1_3)  -
+               (coefs_tq1_7 * coef_Jacob1_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_6 * coef_Jacob1_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms33 * pinvG1_3)  -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms22 * pinvG2_3)  -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms35 * pinvG3_3) ;
+    W(0, 31) = coef_Jacob1_qt_syms20 * (-1.0 * 2.0) - (coefs_tq1_7 * coef_Jacob1_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob1_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob1_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms35 * pinvG3_3) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob1_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob1_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob1_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob1_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob1_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob1_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob1_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob1_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob1_qt_syms23 * pinvG3_3) * 2.0;
+    W(0, 32) = coef_Jacob1_qt_syms3 * (-1.0 * 2.0) - (coefs_tq1_3 * coef_Jacob1_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_3 * coef_Jacob1_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob1_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob1_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_3 * coef_Jacob1_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob1_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob1_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob1_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob1_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob1_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob1_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob1_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob1_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob1_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob1_qt_syms13 * pinvG3_3) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob1_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob1_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob1_qt_syms30 * pinvG3_3) * 2.0;
+    W(0, 33) = coef_Jacob1_qt_syms6 * (-1.0 ) - (coefs_tq1_6 * coef_Jacob1_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob1_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_6 * coef_Jacob1_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_2 * coef_Jacob1_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob1_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_3 * coef_Jacob1_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_6 * coef_Jacob1_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_2 * coef_Jacob1_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_2 * coef_Jacob1_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_3 * coef_Jacob1_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_3 * coef_Jacob1_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_3 * coef_Jacob1_qt_syms21 * pinvG1_3)  -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_2 * coef_Jacob1_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_2 * coef_Jacob1_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_2 * coef_Jacob1_qt_syms28 * pinvG1_3)  -
+               (coefs_tq2_3 * coef_Jacob1_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_3 * coef_Jacob1_qt_syms22 * pinvG2_3)  -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_2 * coef_Jacob1_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_2 * coef_Jacob1_qt_syms29 * pinvG2_3)  -
+               (coefs_tq3_3 * coef_Jacob1_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_2 * coef_Jacob1_qt_syms30 * pinvG3_3) ;
+    W(0, 34) = coef_Jacob1_qt_syms8 * (-1.0 * 2.0) - (coefs_tq1_8 * coef_Jacob1_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob1_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob1_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq1_3 * coef_Jacob1_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob1_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob1_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob1_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq1_3 * coef_Jacob1_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob1_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob1_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob1_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq1_3 * coef_Jacob1_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob1_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob1_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob1_qt_syms13 * pinvG3_3) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob1_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob1_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob1_qt_syms30 * pinvG3_3) * 2.0;
+    W(0, 35) = coef_Jacob1_qt_syms9 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob1_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob1_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_4 * coef_Jacob1_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob1_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob1_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_4 * coef_Jacob1_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_3 * coef_Jacob1_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_3 * coef_Jacob1_qt_syms33 * pinvG1_2)  -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_4 * coef_Jacob1_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_3 * coef_Jacob1_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_3 * coef_Jacob1_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_3 * coef_Jacob1_qt_syms33 * pinvG1_3)  -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_3 * coef_Jacob1_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_3 * coef_Jacob1_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_3 * coef_Jacob1_qt_syms35 * pinvG3_3) ;
+    W(0, 36) = coef_Jacob1_qt_syms6 * (-1.0 ) - (coefs_tq1_6 * coef_Jacob1_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob1_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_6 * coef_Jacob1_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_2 * coef_Jacob1_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob1_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_3 * coef_Jacob1_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_6 * coef_Jacob1_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_2 * coef_Jacob1_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_2 * coef_Jacob1_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_3 * coef_Jacob1_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_3 * coef_Jacob1_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_3 * coef_Jacob1_qt_syms21 * pinvG1_3)  -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_2 * coef_Jacob1_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_2 * coef_Jacob1_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_2 * coef_Jacob1_qt_syms28 * pinvG1_3)  -
+               (coefs_tq2_3 * coef_Jacob1_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_3 * coef_Jacob1_qt_syms22 * pinvG2_3)  -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_2 * coef_Jacob1_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_2 * coef_Jacob1_qt_syms29 * pinvG2_3)  -
+               (coefs_tq3_3 * coef_Jacob1_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_2 * coef_Jacob1_qt_syms30 * pinvG3_3) ;
+    W(0, 37) = coef_Jacob1_qt_syms16 * (-1.0 * 2.0) - (coefs_tq1_6 * coef_Jacob1_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob1_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob1_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob1_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob1_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob1_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob1_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob1_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob1_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob1_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob1_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms23 * pinvG3_3) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob1_qt_syms30 * pinvG3_3) * 2.0;
+    W(0, 38) = coef_Jacob1_qt_syms18 * (-1.0 * 2.0) - (coefs_tq1_8 * coef_Jacob1_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob1_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob1_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob1_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob1_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob1_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob1_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob1_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob1_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob1_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob1_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob1_qt_syms23 * pinvG3_3) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms30 * pinvG3_3) * 2.0;
+    W(0, 39) = coef_Jacob1_qt_syms19 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob1_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_7 * coef_Jacob1_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_6 * coef_Jacob1_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob1_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_7 * coef_Jacob1_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_6 * coef_Jacob1_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms33 * pinvG1_2)  -
+               (coefs_tq1_9 * coef_Jacob1_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms21 * pinvG1_3)  -
+               (coefs_tq1_7 * coef_Jacob1_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_6 * coef_Jacob1_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms33 * pinvG1_3)  -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms22 * pinvG2_3)  -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms35 * pinvG3_3) ;
+    W(0, 40) = coef_Jacob1_qt_syms8 * (-1.0 * 2.0) - (coefs_tq1_8 * coef_Jacob1_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob1_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob1_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq1_3 * coef_Jacob1_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob1_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob1_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob1_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq1_3 * coef_Jacob1_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob1_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob1_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob1_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq1_3 * coef_Jacob1_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob1_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob1_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob1_qt_syms13 * pinvG3_3) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob1_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob1_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob1_qt_syms30 * pinvG3_3) * 2.0;
+    W(0, 41) = coef_Jacob1_qt_syms18 * (-1.0 * 2.0) - (coefs_tq1_8 * coef_Jacob1_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob1_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob1_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob1_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob1_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob1_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob1_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob1_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob1_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob1_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob1_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob1_qt_syms23 * pinvG3_3) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms30 * pinvG3_3) * 2.0;
     W(0, 42) = -coef_Jacob1_qt_syms25 - coefs_tq1_8 * coef_Jacob1_qt_syms28 * pinvG1_1 -
                coefs_tq1_8 * coef_Jacob1_qt_syms29 * pinvG2_1 - coefs_tq2_8 * coef_Jacob1_qt_syms28 * pinvG1_2 -
                coefs_tq1_8 * coef_Jacob1_qt_syms30 * pinvG3_1 - coefs_tq2_8 * coef_Jacob1_qt_syms29 * pinvG2_2 -
                coefs_tq3_8 * coef_Jacob1_qt_syms28 * pinvG1_3 - coefs_tq2_8 * coef_Jacob1_qt_syms30 * pinvG3_2 -
                coefs_tq3_8 * coef_Jacob1_qt_syms29 * pinvG2_3 - coefs_tq3_8 * coef_Jacob1_qt_syms30 * pinvG3_3;
-    W(0, 43) = coef_Jacob1_qt_syms26 * (-1.0 / 3.0) - (coefs_tq1_9 * coef_Jacob1_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob1_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob1_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob1_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob1_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob1_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob1_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob1_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob1_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob1_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob1_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms30 * pinvG3_3) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob1_qt_syms35 * pinvG3_3) / 3.0;
-    W(0, 44) = coef_Jacob1_qt_syms9 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob1_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob1_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob1_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob1_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob1_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob1_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob1_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob1_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob1_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob1_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob1_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob1_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob1_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob1_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob1_qt_syms35 * pinvG3_3) / 6.0;
-    W(0, 45) = coef_Jacob1_qt_syms19 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob1_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob1_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob1_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob1_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob1_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob1_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob1_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob1_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob1_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms35 * pinvG3_3) / 6.0;
-    W(0, 46) = coef_Jacob1_qt_syms26 * (-1.0 / 3.0) - (coefs_tq1_9 * coef_Jacob1_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob1_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob1_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob1_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob1_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob1_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob1_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob1_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob1_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob1_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob1_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms30 * pinvG3_3) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob1_qt_syms35 * pinvG3_3) / 3.0;
-    W(0, 47) = coef_Jacob1_qt_syms27 * (-1.0 / 3.0) - (coefs_tq1_9 * coef_Jacob1_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob1_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob1_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms35 * pinvG3_3) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob1_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob1_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob1_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob1_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob1_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob1_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob1_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob1_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob1_qt_syms30 * pinvG3_3) / 3.0;
-    W(0, 48) = coef_Jacob1_qt_syms4 * (-1.0 / 3.0) - (coefs_tq1_4 * coef_Jacob1_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_4 * coef_Jacob1_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob1_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_4 * coef_Jacob1_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob1_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob1_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob1_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob1_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob1_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms13 * pinvG3_3) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob1_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob1_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob1_qt_syms35 * pinvG3_3) / 3.0;
-    W(0, 49) = coef_Jacob1_qt_syms7 * (-1.0 / 6.0) - (coefs_tq1_7 * coef_Jacob1_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob1_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob1_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob1_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob1_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob1_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob1_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob1_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob1_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob1_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob1_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob1_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob1_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob1_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob1_qt_syms35 * pinvG3_3) / 6.0;
-    W(0, 50) = coef_Jacob1_qt_syms9 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob1_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob1_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob1_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob1_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob1_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob1_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob1_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob1_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob1_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob1_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob1_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob1_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob1_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob1_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob1_qt_syms35 * pinvG3_3) / 6.0;
-    W(0, 51) = coef_Jacob1_qt_syms10 * (-1.0 / 3.0) - (coefs_tq1_4 * coef_Jacob1_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_4 * coef_Jacob1_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_4 * coef_Jacob1_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms35 * pinvG3_3) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob1_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob1_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob1_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob1_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob1_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob1_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob1_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob1_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob1_qt_syms13 * pinvG3_3) / 3.0;
-    W(0, 52) = coef_Jacob1_qt_syms7 * (-1.0 / 6.0) - (coefs_tq1_7 * coef_Jacob1_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob1_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob1_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob1_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob1_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob1_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob1_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob1_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob1_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob1_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob1_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob1_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob1_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob1_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob1_qt_syms35 * pinvG3_3) / 6.0;
-    W(0, 53) = coef_Jacob1_qt_syms17 * (-1.0 / 3.0) - (coefs_tq1_7 * coef_Jacob1_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob1_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob1_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob1_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob1_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob1_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob1_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob1_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob1_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob1_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob1_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms23 * pinvG3_3) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob1_qt_syms35 * pinvG3_3) / 3.0;
-    W(0, 54) = coef_Jacob1_qt_syms19 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob1_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob1_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob1_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob1_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob1_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob1_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob1_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob1_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob1_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms35 * pinvG3_3) / 6.0;
-    W(0, 55) = coef_Jacob1_qt_syms20 * (-1.0 / 3.0) - (coefs_tq1_7 * coef_Jacob1_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob1_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob1_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms35 * pinvG3_3) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob1_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob1_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob1_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob1_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob1_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob1_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob1_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob1_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob1_qt_syms23 * pinvG3_3) / 3.0;
-    W(0, 56) = coef_Jacob1_qt_syms9 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob1_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob1_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob1_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob1_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob1_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob1_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob1_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob1_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob1_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob1_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob1_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob1_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob1_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob1_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob1_qt_syms35 * pinvG3_3) / 6.0;
-    W(0, 57) = coef_Jacob1_qt_syms19 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob1_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob1_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob1_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob1_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob1_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob1_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob1_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob1_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob1_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob1_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob1_qt_syms35 * pinvG3_3) / 6.0;
-    W(0, 58) = coef_Jacob1_qt_syms26 * (-1.0 / 3.0) - (coefs_tq1_9 * coef_Jacob1_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob1_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob1_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob1_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob1_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob1_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob1_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob1_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob1_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob1_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob1_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms30 * pinvG3_3) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob1_qt_syms35 * pinvG3_3) / 3.0;
-    W(0, 59) = coef_Jacob1_qt_syms27 * (-1.0 / 3.0) - (coefs_tq1_9 * coef_Jacob1_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob1_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob1_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms35 * pinvG3_3) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob1_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob1_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob1_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob1_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob1_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob1_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob1_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob1_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob1_qt_syms30 * pinvG3_3) / 3.0;
-    W(0, 60) = coef_Jacob1_qt_syms10 * (-1.0 / 3.0) - (coefs_tq1_4 * coef_Jacob1_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_4 * coef_Jacob1_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_4 * coef_Jacob1_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob1_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob1_qt_syms35 * pinvG3_3) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob1_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob1_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob1_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob1_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob1_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob1_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob1_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob1_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob1_qt_syms13 * pinvG3_3) / 3.0;
-    W(0, 61) = coef_Jacob1_qt_syms20 * (-1.0 / 3.0) - (coefs_tq1_7 * coef_Jacob1_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob1_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob1_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob1_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob1_qt_syms35 * pinvG3_3) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob1_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob1_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob1_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob1_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob1_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob1_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob1_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob1_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob1_qt_syms23 * pinvG3_3) / 3.0;
-    W(0, 62) = coef_Jacob1_qt_syms27 * (-1.0 / 3.0) - (coefs_tq1_9 * coef_Jacob1_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob1_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob1_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob1_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob1_qt_syms35 * pinvG3_3) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob1_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob1_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob1_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob1_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob1_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob1_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob1_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob1_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob1_qt_syms30 * pinvG3_3) / 3.0;
+    W(0, 43) = coef_Jacob1_qt_syms26 * (-1.0 * 2.0) - (coefs_tq1_9 * coef_Jacob1_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob1_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob1_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob1_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob1_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob1_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob1_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob1_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob1_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob1_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob1_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms30 * pinvG3_3) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob1_qt_syms35 * pinvG3_3) * 2.0;
+    W(0, 44) = coef_Jacob1_qt_syms9 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob1_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob1_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_4 * coef_Jacob1_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob1_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob1_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_4 * coef_Jacob1_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_3 * coef_Jacob1_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_3 * coef_Jacob1_qt_syms33 * pinvG1_2)  -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_4 * coef_Jacob1_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_3 * coef_Jacob1_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_3 * coef_Jacob1_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_3 * coef_Jacob1_qt_syms33 * pinvG1_3)  -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_3 * coef_Jacob1_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_3 * coef_Jacob1_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_3 * coef_Jacob1_qt_syms35 * pinvG3_3) ;
+    W(0, 45) = coef_Jacob1_qt_syms19 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob1_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_7 * coef_Jacob1_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_6 * coef_Jacob1_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob1_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_7 * coef_Jacob1_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_6 * coef_Jacob1_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms33 * pinvG1_2)  -
+               (coefs_tq1_9 * coef_Jacob1_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms21 * pinvG1_3)  -
+               (coefs_tq1_7 * coef_Jacob1_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_6 * coef_Jacob1_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms33 * pinvG1_3)  -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms22 * pinvG2_3)  -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms35 * pinvG3_3) ;
+    W(0, 46) = coef_Jacob1_qt_syms26 * (-1.0 * 2.0) - (coefs_tq1_9 * coef_Jacob1_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob1_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob1_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob1_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob1_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob1_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob1_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob1_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob1_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob1_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob1_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms30 * pinvG3_3) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob1_qt_syms35 * pinvG3_3) * 2.0;
+    W(0, 47) = coef_Jacob1_qt_syms27 * (-1.0 * 2.0) - (coefs_tq1_9 * coef_Jacob1_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob1_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob1_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms35 * pinvG3_3) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob1_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob1_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob1_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob1_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob1_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob1_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob1_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob1_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob1_qt_syms30 * pinvG3_3) * 2.0;
+    W(0, 48) = coef_Jacob1_qt_syms4 * (-1.0 * 2.0) - (coefs_tq1_4 * coef_Jacob1_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_4 * coef_Jacob1_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob1_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_4 * coef_Jacob1_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob1_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob1_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob1_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob1_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob1_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms13 * pinvG3_3) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob1_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob1_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob1_qt_syms35 * pinvG3_3) * 2.0;
+    W(0, 49) = coef_Jacob1_qt_syms7 * (-1.0 ) - (coefs_tq1_7 * coef_Jacob1_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_4 * coef_Jacob1_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_7 * coef_Jacob1_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_2 * coef_Jacob1_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_4 * coef_Jacob1_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_7 * coef_Jacob1_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_2 * coef_Jacob1_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_2 * coef_Jacob1_qt_syms33 * pinvG1_2)  -
+               (coefs_tq1_4 * coef_Jacob1_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms21 * pinvG1_3)  -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_2 * coef_Jacob1_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_2 * coef_Jacob1_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_2 * coef_Jacob1_qt_syms33 * pinvG1_3)  -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms22 * pinvG2_3)  -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_2 * coef_Jacob1_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_2 * coef_Jacob1_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_2 * coef_Jacob1_qt_syms35 * pinvG3_3) ;
+    W(0, 50) = coef_Jacob1_qt_syms9 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob1_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob1_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_4 * coef_Jacob1_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob1_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob1_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_4 * coef_Jacob1_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_3 * coef_Jacob1_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_3 * coef_Jacob1_qt_syms33 * pinvG1_2)  -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_4 * coef_Jacob1_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_3 * coef_Jacob1_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_3 * coef_Jacob1_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_3 * coef_Jacob1_qt_syms33 * pinvG1_3)  -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_3 * coef_Jacob1_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_3 * coef_Jacob1_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_3 * coef_Jacob1_qt_syms35 * pinvG3_3) ;
+    W(0, 51) = coef_Jacob1_qt_syms10 * (-1.0 * 2.0) - (coefs_tq1_4 * coef_Jacob1_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_4 * coef_Jacob1_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_4 * coef_Jacob1_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms35 * pinvG3_3) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob1_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob1_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob1_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob1_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob1_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob1_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob1_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob1_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob1_qt_syms13 * pinvG3_3) * 2.0;
+    W(0, 52) = coef_Jacob1_qt_syms7 * (-1.0 ) - (coefs_tq1_7 * coef_Jacob1_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_4 * coef_Jacob1_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_7 * coef_Jacob1_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_2 * coef_Jacob1_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_4 * coef_Jacob1_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_7 * coef_Jacob1_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_2 * coef_Jacob1_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_2 * coef_Jacob1_qt_syms33 * pinvG1_2)  -
+               (coefs_tq1_4 * coef_Jacob1_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms21 * pinvG1_3)  -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_2 * coef_Jacob1_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_2 * coef_Jacob1_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_2 * coef_Jacob1_qt_syms33 * pinvG1_3)  -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms22 * pinvG2_3)  -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_2 * coef_Jacob1_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_2 * coef_Jacob1_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_2 * coef_Jacob1_qt_syms35 * pinvG3_3) ;
+    W(0, 53) = coef_Jacob1_qt_syms17 * (-1.0 * 2.0) - (coefs_tq1_7 * coef_Jacob1_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob1_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob1_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob1_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob1_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob1_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob1_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob1_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob1_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob1_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob1_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms23 * pinvG3_3) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob1_qt_syms35 * pinvG3_3) * 2.0;
+    W(0, 54) = coef_Jacob1_qt_syms19 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob1_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_7 * coef_Jacob1_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_6 * coef_Jacob1_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob1_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_7 * coef_Jacob1_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_6 * coef_Jacob1_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms33 * pinvG1_2)  -
+               (coefs_tq1_9 * coef_Jacob1_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms21 * pinvG1_3)  -
+               (coefs_tq1_7 * coef_Jacob1_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_6 * coef_Jacob1_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms33 * pinvG1_3)  -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms22 * pinvG2_3)  -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms35 * pinvG3_3) ;
+    W(0, 55) = coef_Jacob1_qt_syms20 * (-1.0 * 2.0) - (coefs_tq1_7 * coef_Jacob1_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob1_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob1_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms35 * pinvG3_3) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob1_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob1_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob1_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob1_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob1_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob1_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob1_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob1_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob1_qt_syms23 * pinvG3_3) * 2.0;
+    W(0, 56) = coef_Jacob1_qt_syms9 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob1_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob1_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_4 * coef_Jacob1_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob1_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob1_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_4 * coef_Jacob1_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_3 * coef_Jacob1_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_3 * coef_Jacob1_qt_syms33 * pinvG1_2)  -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_4 * coef_Jacob1_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_3 * coef_Jacob1_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_3 * coef_Jacob1_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_3 * coef_Jacob1_qt_syms33 * pinvG1_3)  -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_3 * coef_Jacob1_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_3 * coef_Jacob1_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_3 * coef_Jacob1_qt_syms35 * pinvG3_3) ;
+    W(0, 57) = coef_Jacob1_qt_syms19 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob1_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_7 * coef_Jacob1_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_6 * coef_Jacob1_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob1_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_7 * coef_Jacob1_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_6 * coef_Jacob1_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms33 * pinvG1_2)  -
+               (coefs_tq1_9 * coef_Jacob1_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms21 * pinvG1_3)  -
+               (coefs_tq1_7 * coef_Jacob1_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_6 * coef_Jacob1_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms33 * pinvG1_3)  -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms22 * pinvG2_3)  -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_6 * coef_Jacob1_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_6 * coef_Jacob1_qt_syms35 * pinvG3_3) ;
+    W(0, 58) = coef_Jacob1_qt_syms26 * (-1.0 * 2.0) - (coefs_tq1_9 * coef_Jacob1_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob1_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob1_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob1_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob1_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob1_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob1_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob1_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob1_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob1_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob1_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms30 * pinvG3_3) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob1_qt_syms35 * pinvG3_3) * 2.0;
+    W(0, 59) = coef_Jacob1_qt_syms27 * (-1.0 * 2.0) - (coefs_tq1_9 * coef_Jacob1_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob1_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob1_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms35 * pinvG3_3) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob1_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob1_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob1_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob1_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob1_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob1_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob1_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob1_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob1_qt_syms30 * pinvG3_3) * 2.0;
+    W(0, 60) = coef_Jacob1_qt_syms10 * (-1.0 * 2.0) - (coefs_tq1_4 * coef_Jacob1_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_4 * coef_Jacob1_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_4 * coef_Jacob1_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob1_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob1_qt_syms35 * pinvG3_3) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob1_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob1_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob1_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob1_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob1_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob1_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob1_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob1_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob1_qt_syms13 * pinvG3_3) * 2.0;
+    W(0, 61) = coef_Jacob1_qt_syms20 * (-1.0 * 2.0) - (coefs_tq1_7 * coef_Jacob1_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob1_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob1_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob1_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob1_qt_syms35 * pinvG3_3) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob1_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob1_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob1_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob1_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob1_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob1_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob1_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob1_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob1_qt_syms23 * pinvG3_3) * 2.0;
+    W(0, 62) = coef_Jacob1_qt_syms27 * (-1.0 * 2.0) - (coefs_tq1_9 * coef_Jacob1_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob1_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob1_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob1_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob1_qt_syms35 * pinvG3_3) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob1_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob1_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob1_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob1_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob1_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob1_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob1_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob1_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob1_qt_syms30 * pinvG3_3) * 2.0;
     W(0, 63) = -coef_Jacob1_qt_syms32 - coefs_tq1_10 * coef_Jacob1_qt_syms33 * pinvG1_1 -
                coefs_tq1_10 * coef_Jacob1_qt_syms34 * pinvG2_1 - coefs_tq1_10 * coef_Jacob1_qt_syms35 * pinvG3_1 -
                coefs_tq2_10 * coef_Jacob1_qt_syms33 * pinvG1_2 - coefs_tq2_10 * coef_Jacob1_qt_syms34 * pinvG2_2 -
@@ -3529,1312 +3529,1312 @@ void mixed3_pTop_func(Eigen::Matrix<double, 4, 24> &coef_f_q_sym,
               coefs_tq1_1 * coef_Jacob2_qt_syms13 * pinvG3_1 - coefs_tq2_1 * coef_Jacob2_qt_syms12 * pinvG2_2 -
               coefs_tq3_1 * coef_Jacob2_qt_syms11 * pinvG1_3 - coefs_tq2_1 * coef_Jacob2_qt_syms13 * pinvG3_2 -
               coefs_tq3_1 * coef_Jacob2_qt_syms12 * pinvG2_3 - coefs_tq3_1 * coef_Jacob2_qt_syms13 * pinvG3_3;
-    W(1, 1) = coef_Jacob2_qt_syms2 * (-1.0 / 3.0) - (coefs_tq1_2 * coef_Jacob2_qt_syms11 * pinvG1_1) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob2_qt_syms21 * pinvG1_1) / 3.0 -
-              (coefs_tq1_2 * coef_Jacob2_qt_syms12 * pinvG2_1) / 3.0 -
-              (coefs_tq2_2 * coef_Jacob2_qt_syms11 * pinvG1_2) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob2_qt_syms22 * pinvG2_1) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob2_qt_syms21 * pinvG1_2) / 3.0 -
-              (coefs_tq1_2 * coef_Jacob2_qt_syms13 * pinvG3_1) / 3.0 -
-              (coefs_tq2_2 * coef_Jacob2_qt_syms12 * pinvG2_2) / 3.0 -
-              (coefs_tq3_2 * coef_Jacob2_qt_syms11 * pinvG1_3) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob2_qt_syms23 * pinvG3_1) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob2_qt_syms22 * pinvG2_2) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob2_qt_syms21 * pinvG1_3) / 3.0 -
-              (coefs_tq2_2 * coef_Jacob2_qt_syms13 * pinvG3_2) / 3.0 -
-              (coefs_tq3_2 * coef_Jacob2_qt_syms12 * pinvG2_3) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob2_qt_syms23 * pinvG3_2) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob2_qt_syms22 * pinvG2_3) / 3.0 -
-              (coefs_tq3_2 * coef_Jacob2_qt_syms13 * pinvG3_3) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob2_qt_syms23 * pinvG3_3) / 3.0;
-    W(1, 2) = coef_Jacob2_qt_syms3 * (-1.0 / 3.0) - (coefs_tq1_3 * coef_Jacob2_qt_syms11 * pinvG1_1) / 3.0 -
-              (coefs_tq1_3 * coef_Jacob2_qt_syms12 * pinvG2_1) / 3.0 -
-              (coefs_tq2_3 * coef_Jacob2_qt_syms11 * pinvG1_2) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob2_qt_syms28 * pinvG1_1) / 3.0 -
-              (coefs_tq1_3 * coef_Jacob2_qt_syms13 * pinvG3_1) / 3.0 -
-              (coefs_tq2_3 * coef_Jacob2_qt_syms12 * pinvG2_2) / 3.0 -
-              (coefs_tq3_3 * coef_Jacob2_qt_syms11 * pinvG1_3) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob2_qt_syms29 * pinvG2_1) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob2_qt_syms28 * pinvG1_2) / 3.0 -
-              (coefs_tq2_3 * coef_Jacob2_qt_syms13 * pinvG3_2) / 3.0 -
-              (coefs_tq3_3 * coef_Jacob2_qt_syms12 * pinvG2_3) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob2_qt_syms30 * pinvG3_1) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob2_qt_syms29 * pinvG2_2) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob2_qt_syms28 * pinvG1_3) / 3.0 -
-              (coefs_tq3_3 * coef_Jacob2_qt_syms13 * pinvG3_3) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob2_qt_syms30 * pinvG3_2) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob2_qt_syms29 * pinvG2_3) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob2_qt_syms30 * pinvG3_3) / 3.0;
-    W(1, 3) = coef_Jacob2_qt_syms4 * (-1.0 / 3.0) - (coefs_tq1_4 * coef_Jacob2_qt_syms11 * pinvG1_1) / 3.0 -
-              (coefs_tq1_4 * coef_Jacob2_qt_syms12 * pinvG2_1) / 3.0 -
-              (coefs_tq2_4 * coef_Jacob2_qt_syms11 * pinvG1_2) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob2_qt_syms33 * pinvG1_1) / 3.0 -
-              (coefs_tq1_4 * coef_Jacob2_qt_syms13 * pinvG3_1) / 3.0 -
-              (coefs_tq2_4 * coef_Jacob2_qt_syms12 * pinvG2_2) / 3.0 -
-              (coefs_tq3_4 * coef_Jacob2_qt_syms11 * pinvG1_3) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob2_qt_syms34 * pinvG2_1) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob2_qt_syms33 * pinvG1_2) / 3.0 -
-              (coefs_tq2_4 * coef_Jacob2_qt_syms13 * pinvG3_2) / 3.0 -
-              (coefs_tq3_4 * coef_Jacob2_qt_syms12 * pinvG2_3) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob2_qt_syms35 * pinvG3_1) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob2_qt_syms34 * pinvG2_2) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob2_qt_syms33 * pinvG1_3) / 3.0 -
-              (coefs_tq3_4 * coef_Jacob2_qt_syms13 * pinvG3_3) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob2_qt_syms35 * pinvG3_2) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob2_qt_syms34 * pinvG2_3) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob2_qt_syms35 * pinvG3_3) / 3.0;
-    W(1, 4) = coef_Jacob2_qt_syms2 * (-1.0 / 3.0) - (coefs_tq1_2 * coef_Jacob2_qt_syms11 * pinvG1_1) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob2_qt_syms21 * pinvG1_1) / 3.0 -
-              (coefs_tq1_2 * coef_Jacob2_qt_syms12 * pinvG2_1) / 3.0 -
-              (coefs_tq2_2 * coef_Jacob2_qt_syms11 * pinvG1_2) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob2_qt_syms22 * pinvG2_1) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob2_qt_syms21 * pinvG1_2) / 3.0 -
-              (coefs_tq1_2 * coef_Jacob2_qt_syms13 * pinvG3_1) / 3.0 -
-              (coefs_tq2_2 * coef_Jacob2_qt_syms12 * pinvG2_2) / 3.0 -
-              (coefs_tq3_2 * coef_Jacob2_qt_syms11 * pinvG1_3) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob2_qt_syms23 * pinvG3_1) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob2_qt_syms22 * pinvG2_2) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob2_qt_syms21 * pinvG1_3) / 3.0 -
-              (coefs_tq2_2 * coef_Jacob2_qt_syms13 * pinvG3_2) / 3.0 -
-              (coefs_tq3_2 * coef_Jacob2_qt_syms12 * pinvG2_3) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob2_qt_syms23 * pinvG3_2) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob2_qt_syms22 * pinvG2_3) / 3.0 -
-              (coefs_tq3_2 * coef_Jacob2_qt_syms13 * pinvG3_3) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob2_qt_syms23 * pinvG3_3) / 3.0;
-    W(1, 5) = coef_Jacob2_qt_syms5 * (-1.0 / 3.0) - (coefs_tq1_5 * coef_Jacob2_qt_syms11 * pinvG1_1) / 3.0 -
-              (coefs_tq1_2 * coef_Jacob2_qt_syms21 * pinvG1_1) / 3.0 -
-              (coefs_tq1_5 * coef_Jacob2_qt_syms12 * pinvG2_1) / 3.0 -
-              (coefs_tq2_5 * coef_Jacob2_qt_syms11 * pinvG1_2) / 3.0 -
-              (coefs_tq1_2 * coef_Jacob2_qt_syms22 * pinvG2_1) / 3.0 -
-              (coefs_tq2_2 * coef_Jacob2_qt_syms21 * pinvG1_2) / 3.0 -
-              (coefs_tq1_5 * coef_Jacob2_qt_syms13 * pinvG3_1) / 3.0 -
-              (coefs_tq2_5 * coef_Jacob2_qt_syms12 * pinvG2_2) / 3.0 -
-              (coefs_tq3_5 * coef_Jacob2_qt_syms11 * pinvG1_3) / 3.0 -
-              (coefs_tq1_2 * coef_Jacob2_qt_syms23 * pinvG3_1) / 3.0 -
-              (coefs_tq2_2 * coef_Jacob2_qt_syms22 * pinvG2_2) / 3.0 -
-              (coefs_tq3_2 * coef_Jacob2_qt_syms21 * pinvG1_3) / 3.0 -
-              (coefs_tq2_5 * coef_Jacob2_qt_syms13 * pinvG3_2) / 3.0 -
-              (coefs_tq3_5 * coef_Jacob2_qt_syms12 * pinvG2_3) / 3.0 -
-              (coefs_tq2_2 * coef_Jacob2_qt_syms23 * pinvG3_2) / 3.0 -
-              (coefs_tq3_2 * coef_Jacob2_qt_syms22 * pinvG2_3) / 3.0 -
-              (coefs_tq3_5 * coef_Jacob2_qt_syms13 * pinvG3_3) / 3.0 -
-              (coefs_tq3_2 * coef_Jacob2_qt_syms23 * pinvG3_3) / 3.0;
-    W(1, 6) = coef_Jacob2_qt_syms6 * (-1.0 / 6.0) - (coefs_tq1_6 * coef_Jacob2_qt_syms11 * pinvG1_1) / 6.0 -
-              (coefs_tq1_3 * coef_Jacob2_qt_syms21 * pinvG1_1) / 6.0 -
-              (coefs_tq1_6 * coef_Jacob2_qt_syms12 * pinvG2_1) / 6.0 -
-              (coefs_tq2_6 * coef_Jacob2_qt_syms11 * pinvG1_2) / 6.0 -
-              (coefs_tq1_2 * coef_Jacob2_qt_syms28 * pinvG1_1) / 6.0 -
-              (coefs_tq1_3 * coef_Jacob2_qt_syms22 * pinvG2_1) / 6.0 -
-              (coefs_tq2_3 * coef_Jacob2_qt_syms21 * pinvG1_2) / 6.0 -
-              (coefs_tq1_6 * coef_Jacob2_qt_syms13 * pinvG3_1) / 6.0 -
-              (coefs_tq2_6 * coef_Jacob2_qt_syms12 * pinvG2_2) / 6.0 -
-              (coefs_tq3_6 * coef_Jacob2_qt_syms11 * pinvG1_3) / 6.0 -
-              (coefs_tq1_2 * coef_Jacob2_qt_syms29 * pinvG2_1) / 6.0 -
-              (coefs_tq2_2 * coef_Jacob2_qt_syms28 * pinvG1_2) / 6.0 -
-              (coefs_tq1_3 * coef_Jacob2_qt_syms23 * pinvG3_1) / 6.0 -
-              (coefs_tq2_3 * coef_Jacob2_qt_syms22 * pinvG2_2) / 6.0 -
-              (coefs_tq3_3 * coef_Jacob2_qt_syms21 * pinvG1_3) / 6.0 -
-              (coefs_tq2_6 * coef_Jacob2_qt_syms13 * pinvG3_2) / 6.0 -
-              (coefs_tq3_6 * coef_Jacob2_qt_syms12 * pinvG2_3) / 6.0 -
-              (coefs_tq1_2 * coef_Jacob2_qt_syms30 * pinvG3_1) / 6.0 -
-              (coefs_tq2_2 * coef_Jacob2_qt_syms29 * pinvG2_2) / 6.0 -
-              (coefs_tq3_2 * coef_Jacob2_qt_syms28 * pinvG1_3) / 6.0 -
-              (coefs_tq2_3 * coef_Jacob2_qt_syms23 * pinvG3_2) / 6.0 -
-              (coefs_tq3_3 * coef_Jacob2_qt_syms22 * pinvG2_3) / 6.0 -
-              (coefs_tq3_6 * coef_Jacob2_qt_syms13 * pinvG3_3) / 6.0 -
-              (coefs_tq2_2 * coef_Jacob2_qt_syms30 * pinvG3_2) / 6.0 -
-              (coefs_tq3_2 * coef_Jacob2_qt_syms29 * pinvG2_3) / 6.0 -
-              (coefs_tq3_3 * coef_Jacob2_qt_syms23 * pinvG3_3) / 6.0 -
-              (coefs_tq3_2 * coef_Jacob2_qt_syms30 * pinvG3_3) / 6.0;
-    W(1, 7) = coef_Jacob2_qt_syms7 * (-1.0 / 6.0) - (coefs_tq1_7 * coef_Jacob2_qt_syms11 * pinvG1_1) / 6.0 -
-              (coefs_tq1_4 * coef_Jacob2_qt_syms21 * pinvG1_1) / 6.0 -
-              (coefs_tq1_7 * coef_Jacob2_qt_syms12 * pinvG2_1) / 6.0 -
-              (coefs_tq2_7 * coef_Jacob2_qt_syms11 * pinvG1_2) / 6.0 -
-              (coefs_tq1_2 * coef_Jacob2_qt_syms33 * pinvG1_1) / 6.0 -
-              (coefs_tq1_4 * coef_Jacob2_qt_syms22 * pinvG2_1) / 6.0 -
-              (coefs_tq2_4 * coef_Jacob2_qt_syms21 * pinvG1_2) / 6.0 -
-              (coefs_tq1_7 * coef_Jacob2_qt_syms13 * pinvG3_1) / 6.0 -
-              (coefs_tq2_7 * coef_Jacob2_qt_syms12 * pinvG2_2) / 6.0 -
-              (coefs_tq3_7 * coef_Jacob2_qt_syms11 * pinvG1_3) / 6.0 -
-              (coefs_tq1_2 * coef_Jacob2_qt_syms34 * pinvG2_1) / 6.0 -
-              (coefs_tq2_2 * coef_Jacob2_qt_syms33 * pinvG1_2) / 6.0 -
-              (coefs_tq1_4 * coef_Jacob2_qt_syms23 * pinvG3_1) / 6.0 -
-              (coefs_tq2_4 * coef_Jacob2_qt_syms22 * pinvG2_2) / 6.0 -
-              (coefs_tq3_4 * coef_Jacob2_qt_syms21 * pinvG1_3) / 6.0 -
-              (coefs_tq2_7 * coef_Jacob2_qt_syms13 * pinvG3_2) / 6.0 -
-              (coefs_tq3_7 * coef_Jacob2_qt_syms12 * pinvG2_3) / 6.0 -
-              (coefs_tq1_2 * coef_Jacob2_qt_syms35 * pinvG3_1) / 6.0 -
-              (coefs_tq2_2 * coef_Jacob2_qt_syms34 * pinvG2_2) / 6.0 -
-              (coefs_tq3_2 * coef_Jacob2_qt_syms33 * pinvG1_3) / 6.0 -
-              (coefs_tq2_4 * coef_Jacob2_qt_syms23 * pinvG3_2) / 6.0 -
-              (coefs_tq3_4 * coef_Jacob2_qt_syms22 * pinvG2_3) / 6.0 -
-              (coefs_tq3_7 * coef_Jacob2_qt_syms13 * pinvG3_3) / 6.0 -
-              (coefs_tq2_2 * coef_Jacob2_qt_syms35 * pinvG3_2) / 6.0 -
-              (coefs_tq3_2 * coef_Jacob2_qt_syms34 * pinvG2_3) / 6.0 -
-              (coefs_tq3_4 * coef_Jacob2_qt_syms23 * pinvG3_3) / 6.0 -
-              (coefs_tq3_2 * coef_Jacob2_qt_syms35 * pinvG3_3) / 6.0;
-    W(1, 8) = coef_Jacob2_qt_syms3 * (-1.0 / 3.0) - (coefs_tq1_3 * coef_Jacob2_qt_syms11 * pinvG1_1) / 3.0 -
-              (coefs_tq1_3 * coef_Jacob2_qt_syms12 * pinvG2_1) / 3.0 -
-              (coefs_tq2_3 * coef_Jacob2_qt_syms11 * pinvG1_2) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob2_qt_syms28 * pinvG1_1) / 3.0 -
-              (coefs_tq1_3 * coef_Jacob2_qt_syms13 * pinvG3_1) / 3.0 -
-              (coefs_tq2_3 * coef_Jacob2_qt_syms12 * pinvG2_2) / 3.0 -
-              (coefs_tq3_3 * coef_Jacob2_qt_syms11 * pinvG1_3) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob2_qt_syms29 * pinvG2_1) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob2_qt_syms28 * pinvG1_2) / 3.0 -
-              (coefs_tq2_3 * coef_Jacob2_qt_syms13 * pinvG3_2) / 3.0 -
-              (coefs_tq3_3 * coef_Jacob2_qt_syms12 * pinvG2_3) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob2_qt_syms30 * pinvG3_1) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob2_qt_syms29 * pinvG2_2) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob2_qt_syms28 * pinvG1_3) / 3.0 -
-              (coefs_tq3_3 * coef_Jacob2_qt_syms13 * pinvG3_3) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob2_qt_syms30 * pinvG3_2) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob2_qt_syms29 * pinvG2_3) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob2_qt_syms30 * pinvG3_3) / 3.0;
-    W(1, 9) = coef_Jacob2_qt_syms6 * (-1.0 / 6.0) - (coefs_tq1_6 * coef_Jacob2_qt_syms11 * pinvG1_1) / 6.0 -
-              (coefs_tq1_3 * coef_Jacob2_qt_syms21 * pinvG1_1) / 6.0 -
-              (coefs_tq1_6 * coef_Jacob2_qt_syms12 * pinvG2_1) / 6.0 -
-              (coefs_tq2_6 * coef_Jacob2_qt_syms11 * pinvG1_2) / 6.0 -
-              (coefs_tq1_2 * coef_Jacob2_qt_syms28 * pinvG1_1) / 6.0 -
-              (coefs_tq1_3 * coef_Jacob2_qt_syms22 * pinvG2_1) / 6.0 -
-              (coefs_tq2_3 * coef_Jacob2_qt_syms21 * pinvG1_2) / 6.0 -
-              (coefs_tq1_6 * coef_Jacob2_qt_syms13 * pinvG3_1) / 6.0 -
-              (coefs_tq2_6 * coef_Jacob2_qt_syms12 * pinvG2_2) / 6.0 -
-              (coefs_tq3_6 * coef_Jacob2_qt_syms11 * pinvG1_3) / 6.0 -
-              (coefs_tq1_2 * coef_Jacob2_qt_syms29 * pinvG2_1) / 6.0 -
-              (coefs_tq2_2 * coef_Jacob2_qt_syms28 * pinvG1_2) / 6.0 -
-              (coefs_tq1_3 * coef_Jacob2_qt_syms23 * pinvG3_1) / 6.0 -
-              (coefs_tq2_3 * coef_Jacob2_qt_syms22 * pinvG2_2) / 6.0 -
-              (coefs_tq3_3 * coef_Jacob2_qt_syms21 * pinvG1_3) / 6.0 -
-              (coefs_tq2_6 * coef_Jacob2_qt_syms13 * pinvG3_2) / 6.0 -
-              (coefs_tq3_6 * coef_Jacob2_qt_syms12 * pinvG2_3) / 6.0 -
-              (coefs_tq1_2 * coef_Jacob2_qt_syms30 * pinvG3_1) / 6.0 -
-              (coefs_tq2_2 * coef_Jacob2_qt_syms29 * pinvG2_2) / 6.0 -
-              (coefs_tq3_2 * coef_Jacob2_qt_syms28 * pinvG1_3) / 6.0 -
-              (coefs_tq2_3 * coef_Jacob2_qt_syms23 * pinvG3_2) / 6.0 -
-              (coefs_tq3_3 * coef_Jacob2_qt_syms22 * pinvG2_3) / 6.0 -
-              (coefs_tq3_6 * coef_Jacob2_qt_syms13 * pinvG3_3) / 6.0 -
-              (coefs_tq2_2 * coef_Jacob2_qt_syms30 * pinvG3_2) / 6.0 -
-              (coefs_tq3_2 * coef_Jacob2_qt_syms29 * pinvG2_3) / 6.0 -
-              (coefs_tq3_3 * coef_Jacob2_qt_syms23 * pinvG3_3) / 6.0 -
-              (coefs_tq3_2 * coef_Jacob2_qt_syms30 * pinvG3_3) / 6.0;
-    W(1, 10) = coef_Jacob2_qt_syms8 * (-1.0 / 3.0) - (coefs_tq1_8 * coef_Jacob2_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob2_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob2_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq1_3 * coef_Jacob2_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob2_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob2_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob2_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq1_3 * coef_Jacob2_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob2_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob2_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob2_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq1_3 * coef_Jacob2_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob2_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob2_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob2_qt_syms13 * pinvG3_3) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob2_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob2_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob2_qt_syms30 * pinvG3_3) / 3.0;
-    W(1, 11) = coef_Jacob2_qt_syms9 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob2_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob2_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob2_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob2_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob2_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob2_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob2_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob2_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob2_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob2_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob2_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob2_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob2_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob2_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob2_qt_syms35 * pinvG3_3) / 6.0;
-    W(1, 12) = coef_Jacob2_qt_syms4 * (-1.0 / 3.0) - (coefs_tq1_4 * coef_Jacob2_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_4 * coef_Jacob2_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob2_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_4 * coef_Jacob2_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob2_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob2_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob2_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob2_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob2_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms13 * pinvG3_3) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob2_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob2_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob2_qt_syms35 * pinvG3_3) / 3.0;
-    W(1, 13) = coef_Jacob2_qt_syms7 * (-1.0 / 6.0) - (coefs_tq1_7 * coef_Jacob2_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob2_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob2_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob2_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob2_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob2_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob2_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob2_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob2_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob2_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob2_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob2_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob2_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob2_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob2_qt_syms35 * pinvG3_3) / 6.0;
-    W(1, 14) = coef_Jacob2_qt_syms9 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob2_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob2_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob2_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob2_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob2_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob2_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob2_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob2_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob2_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob2_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob2_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob2_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob2_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob2_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob2_qt_syms35 * pinvG3_3) / 6.0;
-    W(1, 15) = coef_Jacob2_qt_syms10 * (-1.0 / 3.0) - (coefs_tq1_4 * coef_Jacob2_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_4 * coef_Jacob2_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_4 * coef_Jacob2_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms35 * pinvG3_3) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob2_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob2_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob2_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob2_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob2_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob2_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob2_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob2_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob2_qt_syms13 * pinvG3_3) / 3.0;
-    W(1, 16) = coef_Jacob2_qt_syms2 * (-1.0 / 3.0) - (coefs_tq1_2 * coef_Jacob2_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob2_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_2 * coef_Jacob2_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq2_2 * coef_Jacob2_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob2_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob2_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_2 * coef_Jacob2_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_2 * coef_Jacob2_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq3_2 * coef_Jacob2_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob2_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob2_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob2_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq2_2 * coef_Jacob2_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_2 * coef_Jacob2_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob2_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob2_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq3_2 * coef_Jacob2_qt_syms13 * pinvG3_3) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob2_qt_syms23 * pinvG3_3) / 3.0;
-    W(1, 17) = coef_Jacob2_qt_syms5 * (-1.0 / 3.0) - (coefs_tq1_5 * coef_Jacob2_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_2 * coef_Jacob2_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob2_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob2_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq1_2 * coef_Jacob2_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_2 * coef_Jacob2_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob2_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob2_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob2_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq1_2 * coef_Jacob2_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_2 * coef_Jacob2_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_2 * coef_Jacob2_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob2_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob2_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq2_2 * coef_Jacob2_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_2 * coef_Jacob2_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob2_qt_syms13 * pinvG3_3) / 3.0 -
-               (coefs_tq3_2 * coef_Jacob2_qt_syms23 * pinvG3_3) / 3.0;
-    W(1, 18) = coef_Jacob2_qt_syms6 * (-1.0 / 6.0) - (coefs_tq1_6 * coef_Jacob2_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob2_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob2_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob2_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob2_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob2_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob2_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob2_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob2_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob2_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob2_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob2_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob2_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob2_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob2_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob2_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob2_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob2_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob2_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob2_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob2_qt_syms30 * pinvG3_3) / 6.0;
-    W(1, 19) = coef_Jacob2_qt_syms7 * (-1.0 / 6.0) - (coefs_tq1_7 * coef_Jacob2_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob2_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob2_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob2_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob2_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob2_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob2_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob2_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob2_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob2_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob2_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob2_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob2_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob2_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob2_qt_syms35 * pinvG3_3) / 6.0;
-    W(1, 20) = coef_Jacob2_qt_syms5 * (-1.0 / 3.0) - (coefs_tq1_5 * coef_Jacob2_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_2 * coef_Jacob2_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob2_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob2_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq1_2 * coef_Jacob2_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_2 * coef_Jacob2_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob2_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob2_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob2_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq1_2 * coef_Jacob2_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_2 * coef_Jacob2_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_2 * coef_Jacob2_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob2_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob2_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq2_2 * coef_Jacob2_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_2 * coef_Jacob2_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob2_qt_syms13 * pinvG3_3) / 3.0 -
-               (coefs_tq3_2 * coef_Jacob2_qt_syms23 * pinvG3_3) / 3.0;
+    W(1, 1) = coef_Jacob2_qt_syms2 * (-1.0 * 2.0) - (coefs_tq1_2 * coef_Jacob2_qt_syms11 * pinvG1_1) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob2_qt_syms21 * pinvG1_1) * 2.0 -
+              (coefs_tq1_2 * coef_Jacob2_qt_syms12 * pinvG2_1) * 2.0 -
+              (coefs_tq2_2 * coef_Jacob2_qt_syms11 * pinvG1_2) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob2_qt_syms22 * pinvG2_1) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob2_qt_syms21 * pinvG1_2) * 2.0 -
+              (coefs_tq1_2 * coef_Jacob2_qt_syms13 * pinvG3_1) * 2.0 -
+              (coefs_tq2_2 * coef_Jacob2_qt_syms12 * pinvG2_2) * 2.0 -
+              (coefs_tq3_2 * coef_Jacob2_qt_syms11 * pinvG1_3) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob2_qt_syms23 * pinvG3_1) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob2_qt_syms22 * pinvG2_2) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob2_qt_syms21 * pinvG1_3) * 2.0 -
+              (coefs_tq2_2 * coef_Jacob2_qt_syms13 * pinvG3_2) * 2.0 -
+              (coefs_tq3_2 * coef_Jacob2_qt_syms12 * pinvG2_3) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob2_qt_syms23 * pinvG3_2) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob2_qt_syms22 * pinvG2_3) * 2.0 -
+              (coefs_tq3_2 * coef_Jacob2_qt_syms13 * pinvG3_3) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob2_qt_syms23 * pinvG3_3) * 2.0;
+    W(1, 2) = coef_Jacob2_qt_syms3 * (-1.0 * 2.0) - (coefs_tq1_3 * coef_Jacob2_qt_syms11 * pinvG1_1) * 2.0 -
+              (coefs_tq1_3 * coef_Jacob2_qt_syms12 * pinvG2_1) * 2.0 -
+              (coefs_tq2_3 * coef_Jacob2_qt_syms11 * pinvG1_2) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob2_qt_syms28 * pinvG1_1) * 2.0 -
+              (coefs_tq1_3 * coef_Jacob2_qt_syms13 * pinvG3_1) * 2.0 -
+              (coefs_tq2_3 * coef_Jacob2_qt_syms12 * pinvG2_2) * 2.0 -
+              (coefs_tq3_3 * coef_Jacob2_qt_syms11 * pinvG1_3) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob2_qt_syms29 * pinvG2_1) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob2_qt_syms28 * pinvG1_2) * 2.0 -
+              (coefs_tq2_3 * coef_Jacob2_qt_syms13 * pinvG3_2) * 2.0 -
+              (coefs_tq3_3 * coef_Jacob2_qt_syms12 * pinvG2_3) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob2_qt_syms30 * pinvG3_1) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob2_qt_syms29 * pinvG2_2) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob2_qt_syms28 * pinvG1_3) * 2.0 -
+              (coefs_tq3_3 * coef_Jacob2_qt_syms13 * pinvG3_3) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob2_qt_syms30 * pinvG3_2) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob2_qt_syms29 * pinvG2_3) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob2_qt_syms30 * pinvG3_3) * 2.0;
+    W(1, 3) = coef_Jacob2_qt_syms4 * (-1.0 * 2.0) - (coefs_tq1_4 * coef_Jacob2_qt_syms11 * pinvG1_1) * 2.0 -
+              (coefs_tq1_4 * coef_Jacob2_qt_syms12 * pinvG2_1) * 2.0 -
+              (coefs_tq2_4 * coef_Jacob2_qt_syms11 * pinvG1_2) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob2_qt_syms33 * pinvG1_1) * 2.0 -
+              (coefs_tq1_4 * coef_Jacob2_qt_syms13 * pinvG3_1) * 2.0 -
+              (coefs_tq2_4 * coef_Jacob2_qt_syms12 * pinvG2_2) * 2.0 -
+              (coefs_tq3_4 * coef_Jacob2_qt_syms11 * pinvG1_3) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob2_qt_syms34 * pinvG2_1) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob2_qt_syms33 * pinvG1_2) * 2.0 -
+              (coefs_tq2_4 * coef_Jacob2_qt_syms13 * pinvG3_2) * 2.0 -
+              (coefs_tq3_4 * coef_Jacob2_qt_syms12 * pinvG2_3) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob2_qt_syms35 * pinvG3_1) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob2_qt_syms34 * pinvG2_2) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob2_qt_syms33 * pinvG1_3) * 2.0 -
+              (coefs_tq3_4 * coef_Jacob2_qt_syms13 * pinvG3_3) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob2_qt_syms35 * pinvG3_2) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob2_qt_syms34 * pinvG2_3) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob2_qt_syms35 * pinvG3_3) * 2.0;
+    W(1, 4) = coef_Jacob2_qt_syms2 * (-1.0 * 2.0) - (coefs_tq1_2 * coef_Jacob2_qt_syms11 * pinvG1_1) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob2_qt_syms21 * pinvG1_1) * 2.0 -
+              (coefs_tq1_2 * coef_Jacob2_qt_syms12 * pinvG2_1) * 2.0 -
+              (coefs_tq2_2 * coef_Jacob2_qt_syms11 * pinvG1_2) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob2_qt_syms22 * pinvG2_1) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob2_qt_syms21 * pinvG1_2) * 2.0 -
+              (coefs_tq1_2 * coef_Jacob2_qt_syms13 * pinvG3_1) * 2.0 -
+              (coefs_tq2_2 * coef_Jacob2_qt_syms12 * pinvG2_2) * 2.0 -
+              (coefs_tq3_2 * coef_Jacob2_qt_syms11 * pinvG1_3) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob2_qt_syms23 * pinvG3_1) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob2_qt_syms22 * pinvG2_2) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob2_qt_syms21 * pinvG1_3) * 2.0 -
+              (coefs_tq2_2 * coef_Jacob2_qt_syms13 * pinvG3_2) * 2.0 -
+              (coefs_tq3_2 * coef_Jacob2_qt_syms12 * pinvG2_3) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob2_qt_syms23 * pinvG3_2) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob2_qt_syms22 * pinvG2_3) * 2.0 -
+              (coefs_tq3_2 * coef_Jacob2_qt_syms13 * pinvG3_3) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob2_qt_syms23 * pinvG3_3) * 2.0;
+    W(1, 5) = coef_Jacob2_qt_syms5 * (-1.0 * 2.0) - (coefs_tq1_5 * coef_Jacob2_qt_syms11 * pinvG1_1) * 2.0 -
+              (coefs_tq1_2 * coef_Jacob2_qt_syms21 * pinvG1_1) * 2.0 -
+              (coefs_tq1_5 * coef_Jacob2_qt_syms12 * pinvG2_1) * 2.0 -
+              (coefs_tq2_5 * coef_Jacob2_qt_syms11 * pinvG1_2) * 2.0 -
+              (coefs_tq1_2 * coef_Jacob2_qt_syms22 * pinvG2_1) * 2.0 -
+              (coefs_tq2_2 * coef_Jacob2_qt_syms21 * pinvG1_2) * 2.0 -
+              (coefs_tq1_5 * coef_Jacob2_qt_syms13 * pinvG3_1) * 2.0 -
+              (coefs_tq2_5 * coef_Jacob2_qt_syms12 * pinvG2_2) * 2.0 -
+              (coefs_tq3_5 * coef_Jacob2_qt_syms11 * pinvG1_3) * 2.0 -
+              (coefs_tq1_2 * coef_Jacob2_qt_syms23 * pinvG3_1) * 2.0 -
+              (coefs_tq2_2 * coef_Jacob2_qt_syms22 * pinvG2_2) * 2.0 -
+              (coefs_tq3_2 * coef_Jacob2_qt_syms21 * pinvG1_3) * 2.0 -
+              (coefs_tq2_5 * coef_Jacob2_qt_syms13 * pinvG3_2) * 2.0 -
+              (coefs_tq3_5 * coef_Jacob2_qt_syms12 * pinvG2_3) * 2.0 -
+              (coefs_tq2_2 * coef_Jacob2_qt_syms23 * pinvG3_2) * 2.0 -
+              (coefs_tq3_2 * coef_Jacob2_qt_syms22 * pinvG2_3) * 2.0 -
+              (coefs_tq3_5 * coef_Jacob2_qt_syms13 * pinvG3_3) * 2.0 -
+              (coefs_tq3_2 * coef_Jacob2_qt_syms23 * pinvG3_3) * 2.0;
+    W(1, 6) = coef_Jacob2_qt_syms6 * (-1.0 ) - (coefs_tq1_6 * coef_Jacob2_qt_syms11 * pinvG1_1)  -
+              (coefs_tq1_3 * coef_Jacob2_qt_syms21 * pinvG1_1)  -
+              (coefs_tq1_6 * coef_Jacob2_qt_syms12 * pinvG2_1)  -
+              (coefs_tq2_6 * coef_Jacob2_qt_syms11 * pinvG1_2)  -
+              (coefs_tq1_2 * coef_Jacob2_qt_syms28 * pinvG1_1)  -
+              (coefs_tq1_3 * coef_Jacob2_qt_syms22 * pinvG2_1)  -
+              (coefs_tq2_3 * coef_Jacob2_qt_syms21 * pinvG1_2)  -
+              (coefs_tq1_6 * coef_Jacob2_qt_syms13 * pinvG3_1)  -
+              (coefs_tq2_6 * coef_Jacob2_qt_syms12 * pinvG2_2)  -
+              (coefs_tq3_6 * coef_Jacob2_qt_syms11 * pinvG1_3)  -
+              (coefs_tq1_2 * coef_Jacob2_qt_syms29 * pinvG2_1)  -
+              (coefs_tq2_2 * coef_Jacob2_qt_syms28 * pinvG1_2)  -
+              (coefs_tq1_3 * coef_Jacob2_qt_syms23 * pinvG3_1)  -
+              (coefs_tq2_3 * coef_Jacob2_qt_syms22 * pinvG2_2)  -
+              (coefs_tq3_3 * coef_Jacob2_qt_syms21 * pinvG1_3)  -
+              (coefs_tq2_6 * coef_Jacob2_qt_syms13 * pinvG3_2)  -
+              (coefs_tq3_6 * coef_Jacob2_qt_syms12 * pinvG2_3)  -
+              (coefs_tq1_2 * coef_Jacob2_qt_syms30 * pinvG3_1)  -
+              (coefs_tq2_2 * coef_Jacob2_qt_syms29 * pinvG2_2)  -
+              (coefs_tq3_2 * coef_Jacob2_qt_syms28 * pinvG1_3)  -
+              (coefs_tq2_3 * coef_Jacob2_qt_syms23 * pinvG3_2)  -
+              (coefs_tq3_3 * coef_Jacob2_qt_syms22 * pinvG2_3)  -
+              (coefs_tq3_6 * coef_Jacob2_qt_syms13 * pinvG3_3)  -
+              (coefs_tq2_2 * coef_Jacob2_qt_syms30 * pinvG3_2)  -
+              (coefs_tq3_2 * coef_Jacob2_qt_syms29 * pinvG2_3)  -
+              (coefs_tq3_3 * coef_Jacob2_qt_syms23 * pinvG3_3)  -
+              (coefs_tq3_2 * coef_Jacob2_qt_syms30 * pinvG3_3) ;
+    W(1, 7) = coef_Jacob2_qt_syms7 * (-1.0 ) - (coefs_tq1_7 * coef_Jacob2_qt_syms11 * pinvG1_1)  -
+              (coefs_tq1_4 * coef_Jacob2_qt_syms21 * pinvG1_1)  -
+              (coefs_tq1_7 * coef_Jacob2_qt_syms12 * pinvG2_1)  -
+              (coefs_tq2_7 * coef_Jacob2_qt_syms11 * pinvG1_2)  -
+              (coefs_tq1_2 * coef_Jacob2_qt_syms33 * pinvG1_1)  -
+              (coefs_tq1_4 * coef_Jacob2_qt_syms22 * pinvG2_1)  -
+              (coefs_tq2_4 * coef_Jacob2_qt_syms21 * pinvG1_2)  -
+              (coefs_tq1_7 * coef_Jacob2_qt_syms13 * pinvG3_1)  -
+              (coefs_tq2_7 * coef_Jacob2_qt_syms12 * pinvG2_2)  -
+              (coefs_tq3_7 * coef_Jacob2_qt_syms11 * pinvG1_3)  -
+              (coefs_tq1_2 * coef_Jacob2_qt_syms34 * pinvG2_1)  -
+              (coefs_tq2_2 * coef_Jacob2_qt_syms33 * pinvG1_2)  -
+              (coefs_tq1_4 * coef_Jacob2_qt_syms23 * pinvG3_1)  -
+              (coefs_tq2_4 * coef_Jacob2_qt_syms22 * pinvG2_2)  -
+              (coefs_tq3_4 * coef_Jacob2_qt_syms21 * pinvG1_3)  -
+              (coefs_tq2_7 * coef_Jacob2_qt_syms13 * pinvG3_2)  -
+              (coefs_tq3_7 * coef_Jacob2_qt_syms12 * pinvG2_3)  -
+              (coefs_tq1_2 * coef_Jacob2_qt_syms35 * pinvG3_1)  -
+              (coefs_tq2_2 * coef_Jacob2_qt_syms34 * pinvG2_2)  -
+              (coefs_tq3_2 * coef_Jacob2_qt_syms33 * pinvG1_3)  -
+              (coefs_tq2_4 * coef_Jacob2_qt_syms23 * pinvG3_2)  -
+              (coefs_tq3_4 * coef_Jacob2_qt_syms22 * pinvG2_3)  -
+              (coefs_tq3_7 * coef_Jacob2_qt_syms13 * pinvG3_3)  -
+              (coefs_tq2_2 * coef_Jacob2_qt_syms35 * pinvG3_2)  -
+              (coefs_tq3_2 * coef_Jacob2_qt_syms34 * pinvG2_3)  -
+              (coefs_tq3_4 * coef_Jacob2_qt_syms23 * pinvG3_3)  -
+              (coefs_tq3_2 * coef_Jacob2_qt_syms35 * pinvG3_3) ;
+    W(1, 8) = coef_Jacob2_qt_syms3 * (-1.0 * 2.0) - (coefs_tq1_3 * coef_Jacob2_qt_syms11 * pinvG1_1) * 2.0 -
+              (coefs_tq1_3 * coef_Jacob2_qt_syms12 * pinvG2_1) * 2.0 -
+              (coefs_tq2_3 * coef_Jacob2_qt_syms11 * pinvG1_2) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob2_qt_syms28 * pinvG1_1) * 2.0 -
+              (coefs_tq1_3 * coef_Jacob2_qt_syms13 * pinvG3_1) * 2.0 -
+              (coefs_tq2_3 * coef_Jacob2_qt_syms12 * pinvG2_2) * 2.0 -
+              (coefs_tq3_3 * coef_Jacob2_qt_syms11 * pinvG1_3) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob2_qt_syms29 * pinvG2_1) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob2_qt_syms28 * pinvG1_2) * 2.0 -
+              (coefs_tq2_3 * coef_Jacob2_qt_syms13 * pinvG3_2) * 2.0 -
+              (coefs_tq3_3 * coef_Jacob2_qt_syms12 * pinvG2_3) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob2_qt_syms30 * pinvG3_1) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob2_qt_syms29 * pinvG2_2) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob2_qt_syms28 * pinvG1_3) * 2.0 -
+              (coefs_tq3_3 * coef_Jacob2_qt_syms13 * pinvG3_3) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob2_qt_syms30 * pinvG3_2) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob2_qt_syms29 * pinvG2_3) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob2_qt_syms30 * pinvG3_3) * 2.0;
+    W(1, 9) = coef_Jacob2_qt_syms6 * (-1.0 ) - (coefs_tq1_6 * coef_Jacob2_qt_syms11 * pinvG1_1)  -
+              (coefs_tq1_3 * coef_Jacob2_qt_syms21 * pinvG1_1)  -
+              (coefs_tq1_6 * coef_Jacob2_qt_syms12 * pinvG2_1)  -
+              (coefs_tq2_6 * coef_Jacob2_qt_syms11 * pinvG1_2)  -
+              (coefs_tq1_2 * coef_Jacob2_qt_syms28 * pinvG1_1)  -
+              (coefs_tq1_3 * coef_Jacob2_qt_syms22 * pinvG2_1)  -
+              (coefs_tq2_3 * coef_Jacob2_qt_syms21 * pinvG1_2)  -
+              (coefs_tq1_6 * coef_Jacob2_qt_syms13 * pinvG3_1)  -
+              (coefs_tq2_6 * coef_Jacob2_qt_syms12 * pinvG2_2)  -
+              (coefs_tq3_6 * coef_Jacob2_qt_syms11 * pinvG1_3)  -
+              (coefs_tq1_2 * coef_Jacob2_qt_syms29 * pinvG2_1)  -
+              (coefs_tq2_2 * coef_Jacob2_qt_syms28 * pinvG1_2)  -
+              (coefs_tq1_3 * coef_Jacob2_qt_syms23 * pinvG3_1)  -
+              (coefs_tq2_3 * coef_Jacob2_qt_syms22 * pinvG2_2)  -
+              (coefs_tq3_3 * coef_Jacob2_qt_syms21 * pinvG1_3)  -
+              (coefs_tq2_6 * coef_Jacob2_qt_syms13 * pinvG3_2)  -
+              (coefs_tq3_6 * coef_Jacob2_qt_syms12 * pinvG2_3)  -
+              (coefs_tq1_2 * coef_Jacob2_qt_syms30 * pinvG3_1)  -
+              (coefs_tq2_2 * coef_Jacob2_qt_syms29 * pinvG2_2)  -
+              (coefs_tq3_2 * coef_Jacob2_qt_syms28 * pinvG1_3)  -
+              (coefs_tq2_3 * coef_Jacob2_qt_syms23 * pinvG3_2)  -
+              (coefs_tq3_3 * coef_Jacob2_qt_syms22 * pinvG2_3)  -
+              (coefs_tq3_6 * coef_Jacob2_qt_syms13 * pinvG3_3)  -
+              (coefs_tq2_2 * coef_Jacob2_qt_syms30 * pinvG3_2)  -
+              (coefs_tq3_2 * coef_Jacob2_qt_syms29 * pinvG2_3)  -
+              (coefs_tq3_3 * coef_Jacob2_qt_syms23 * pinvG3_3)  -
+              (coefs_tq3_2 * coef_Jacob2_qt_syms30 * pinvG3_3) ;
+    W(1, 10) = coef_Jacob2_qt_syms8 * (-1.0 * 2.0) - (coefs_tq1_8 * coef_Jacob2_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob2_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob2_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq1_3 * coef_Jacob2_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob2_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob2_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob2_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq1_3 * coef_Jacob2_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob2_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob2_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob2_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq1_3 * coef_Jacob2_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob2_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob2_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob2_qt_syms13 * pinvG3_3) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob2_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob2_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob2_qt_syms30 * pinvG3_3) * 2.0;
+    W(1, 11) = coef_Jacob2_qt_syms9 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob2_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob2_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_4 * coef_Jacob2_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob2_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob2_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_4 * coef_Jacob2_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_3 * coef_Jacob2_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_3 * coef_Jacob2_qt_syms33 * pinvG1_2)  -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_4 * coef_Jacob2_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_3 * coef_Jacob2_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_3 * coef_Jacob2_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_3 * coef_Jacob2_qt_syms33 * pinvG1_3)  -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_3 * coef_Jacob2_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_3 * coef_Jacob2_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_3 * coef_Jacob2_qt_syms35 * pinvG3_3) ;
+    W(1, 12) = coef_Jacob2_qt_syms4 * (-1.0 * 2.0) - (coefs_tq1_4 * coef_Jacob2_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_4 * coef_Jacob2_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob2_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_4 * coef_Jacob2_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob2_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob2_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob2_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob2_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob2_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms13 * pinvG3_3) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob2_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob2_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob2_qt_syms35 * pinvG3_3) * 2.0;
+    W(1, 13) = coef_Jacob2_qt_syms7 * (-1.0 ) - (coefs_tq1_7 * coef_Jacob2_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_4 * coef_Jacob2_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_7 * coef_Jacob2_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_2 * coef_Jacob2_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_4 * coef_Jacob2_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_7 * coef_Jacob2_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_2 * coef_Jacob2_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_2 * coef_Jacob2_qt_syms33 * pinvG1_2)  -
+               (coefs_tq1_4 * coef_Jacob2_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms21 * pinvG1_3)  -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_2 * coef_Jacob2_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_2 * coef_Jacob2_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_2 * coef_Jacob2_qt_syms33 * pinvG1_3)  -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms22 * pinvG2_3)  -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_2 * coef_Jacob2_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_2 * coef_Jacob2_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_2 * coef_Jacob2_qt_syms35 * pinvG3_3) ;
+    W(1, 14) = coef_Jacob2_qt_syms9 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob2_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob2_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_4 * coef_Jacob2_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob2_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob2_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_4 * coef_Jacob2_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_3 * coef_Jacob2_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_3 * coef_Jacob2_qt_syms33 * pinvG1_2)  -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_4 * coef_Jacob2_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_3 * coef_Jacob2_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_3 * coef_Jacob2_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_3 * coef_Jacob2_qt_syms33 * pinvG1_3)  -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_3 * coef_Jacob2_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_3 * coef_Jacob2_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_3 * coef_Jacob2_qt_syms35 * pinvG3_3) ;
+    W(1, 15) = coef_Jacob2_qt_syms10 * (-1.0 * 2.0) - (coefs_tq1_4 * coef_Jacob2_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_4 * coef_Jacob2_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_4 * coef_Jacob2_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms35 * pinvG3_3) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob2_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob2_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob2_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob2_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob2_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob2_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob2_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob2_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob2_qt_syms13 * pinvG3_3) * 2.0;
+    W(1, 16) = coef_Jacob2_qt_syms2 * (-1.0 * 2.0) - (coefs_tq1_2 * coef_Jacob2_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob2_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_2 * coef_Jacob2_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq2_2 * coef_Jacob2_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob2_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob2_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_2 * coef_Jacob2_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_2 * coef_Jacob2_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq3_2 * coef_Jacob2_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob2_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob2_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob2_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq2_2 * coef_Jacob2_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_2 * coef_Jacob2_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob2_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob2_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq3_2 * coef_Jacob2_qt_syms13 * pinvG3_3) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob2_qt_syms23 * pinvG3_3) * 2.0;
+    W(1, 17) = coef_Jacob2_qt_syms5 * (-1.0 * 2.0) - (coefs_tq1_5 * coef_Jacob2_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_2 * coef_Jacob2_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob2_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob2_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq1_2 * coef_Jacob2_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_2 * coef_Jacob2_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob2_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob2_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob2_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq1_2 * coef_Jacob2_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_2 * coef_Jacob2_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_2 * coef_Jacob2_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob2_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob2_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq2_2 * coef_Jacob2_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_2 * coef_Jacob2_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob2_qt_syms13 * pinvG3_3) * 2.0 -
+               (coefs_tq3_2 * coef_Jacob2_qt_syms23 * pinvG3_3) * 2.0;
+    W(1, 18) = coef_Jacob2_qt_syms6 * (-1.0 ) - (coefs_tq1_6 * coef_Jacob2_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob2_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_6 * coef_Jacob2_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_2 * coef_Jacob2_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob2_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_3 * coef_Jacob2_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_6 * coef_Jacob2_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_2 * coef_Jacob2_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_2 * coef_Jacob2_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_3 * coef_Jacob2_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_3 * coef_Jacob2_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_3 * coef_Jacob2_qt_syms21 * pinvG1_3)  -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_2 * coef_Jacob2_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_2 * coef_Jacob2_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_2 * coef_Jacob2_qt_syms28 * pinvG1_3)  -
+               (coefs_tq2_3 * coef_Jacob2_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_3 * coef_Jacob2_qt_syms22 * pinvG2_3)  -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_2 * coef_Jacob2_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_2 * coef_Jacob2_qt_syms29 * pinvG2_3)  -
+               (coefs_tq3_3 * coef_Jacob2_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_2 * coef_Jacob2_qt_syms30 * pinvG3_3) ;
+    W(1, 19) = coef_Jacob2_qt_syms7 * (-1.0 ) - (coefs_tq1_7 * coef_Jacob2_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_4 * coef_Jacob2_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_7 * coef_Jacob2_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_2 * coef_Jacob2_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_4 * coef_Jacob2_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_7 * coef_Jacob2_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_2 * coef_Jacob2_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_2 * coef_Jacob2_qt_syms33 * pinvG1_2)  -
+               (coefs_tq1_4 * coef_Jacob2_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms21 * pinvG1_3)  -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_2 * coef_Jacob2_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_2 * coef_Jacob2_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_2 * coef_Jacob2_qt_syms33 * pinvG1_3)  -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms22 * pinvG2_3)  -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_2 * coef_Jacob2_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_2 * coef_Jacob2_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_2 * coef_Jacob2_qt_syms35 * pinvG3_3) ;
+    W(1, 20) = coef_Jacob2_qt_syms5 * (-1.0 * 2.0) - (coefs_tq1_5 * coef_Jacob2_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_2 * coef_Jacob2_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob2_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob2_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq1_2 * coef_Jacob2_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_2 * coef_Jacob2_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob2_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob2_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob2_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq1_2 * coef_Jacob2_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_2 * coef_Jacob2_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_2 * coef_Jacob2_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob2_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob2_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq2_2 * coef_Jacob2_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_2 * coef_Jacob2_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob2_qt_syms13 * pinvG3_3) * 2.0 -
+               (coefs_tq3_2 * coef_Jacob2_qt_syms23 * pinvG3_3) * 2.0;
     W(1, 21) = -coef_Jacob2_qt_syms15 - coefs_tq1_5 * coef_Jacob2_qt_syms21 * pinvG1_1 -
                coefs_tq1_5 * coef_Jacob2_qt_syms22 * pinvG2_1 - coefs_tq2_5 * coef_Jacob2_qt_syms21 * pinvG1_2 -
                coefs_tq1_5 * coef_Jacob2_qt_syms23 * pinvG3_1 - coefs_tq2_5 * coef_Jacob2_qt_syms22 * pinvG2_2 -
                coefs_tq3_5 * coef_Jacob2_qt_syms21 * pinvG1_3 - coefs_tq2_5 * coef_Jacob2_qt_syms23 * pinvG3_2 -
                coefs_tq3_5 * coef_Jacob2_qt_syms22 * pinvG2_3 - coefs_tq3_5 * coef_Jacob2_qt_syms23 * pinvG3_3;
-    W(1, 22) = coef_Jacob2_qt_syms16 * (-1.0 / 3.0) - (coefs_tq1_6 * coef_Jacob2_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob2_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob2_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob2_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob2_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob2_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob2_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob2_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob2_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob2_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob2_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms23 * pinvG3_3) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob2_qt_syms30 * pinvG3_3) / 3.0;
-    W(1, 23) = coef_Jacob2_qt_syms17 * (-1.0 / 3.0) - (coefs_tq1_7 * coef_Jacob2_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob2_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob2_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob2_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob2_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob2_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob2_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob2_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob2_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob2_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob2_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms23 * pinvG3_3) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob2_qt_syms35 * pinvG3_3) / 3.0;
-    W(1, 24) = coef_Jacob2_qt_syms6 * (-1.0 / 6.0) - (coefs_tq1_6 * coef_Jacob2_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob2_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob2_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob2_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob2_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob2_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob2_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob2_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob2_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob2_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob2_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob2_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob2_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob2_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob2_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob2_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob2_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob2_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob2_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob2_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob2_qt_syms30 * pinvG3_3) / 6.0;
-    W(1, 25) = coef_Jacob2_qt_syms16 * (-1.0 / 3.0) - (coefs_tq1_6 * coef_Jacob2_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob2_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob2_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob2_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob2_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob2_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob2_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob2_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob2_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob2_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob2_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms23 * pinvG3_3) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob2_qt_syms30 * pinvG3_3) / 3.0;
-    W(1, 26) = coef_Jacob2_qt_syms18 * (-1.0 / 3.0) - (coefs_tq1_8 * coef_Jacob2_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob2_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob2_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob2_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob2_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob2_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob2_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob2_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob2_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob2_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob2_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob2_qt_syms23 * pinvG3_3) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms30 * pinvG3_3) / 3.0;
-    W(1, 27) = coef_Jacob2_qt_syms19 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob2_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob2_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob2_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob2_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob2_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob2_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob2_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob2_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob2_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms35 * pinvG3_3) / 6.0;
-    W(1, 28) = coef_Jacob2_qt_syms7 * (-1.0 / 6.0) - (coefs_tq1_7 * coef_Jacob2_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob2_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob2_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob2_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob2_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob2_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob2_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob2_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob2_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob2_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob2_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob2_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob2_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob2_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob2_qt_syms35 * pinvG3_3) / 6.0;
-    W(1, 29) = coef_Jacob2_qt_syms17 * (-1.0 / 3.0) - (coefs_tq1_7 * coef_Jacob2_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob2_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob2_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob2_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob2_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob2_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob2_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob2_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob2_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob2_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob2_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms23 * pinvG3_3) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob2_qt_syms35 * pinvG3_3) / 3.0;
-    W(1, 30) = coef_Jacob2_qt_syms19 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob2_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob2_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob2_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob2_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob2_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob2_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob2_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob2_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob2_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms35 * pinvG3_3) / 6.0;
-    W(1, 31) = coef_Jacob2_qt_syms20 * (-1.0 / 3.0) - (coefs_tq1_7 * coef_Jacob2_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob2_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob2_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms35 * pinvG3_3) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob2_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob2_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob2_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob2_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob2_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob2_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob2_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob2_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob2_qt_syms23 * pinvG3_3) / 3.0;
-    W(1, 32) = coef_Jacob2_qt_syms3 * (-1.0 / 3.0) - (coefs_tq1_3 * coef_Jacob2_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_3 * coef_Jacob2_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob2_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob2_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_3 * coef_Jacob2_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob2_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob2_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob2_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob2_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob2_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob2_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob2_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob2_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob2_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob2_qt_syms13 * pinvG3_3) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob2_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob2_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob2_qt_syms30 * pinvG3_3) / 3.0;
-    W(1, 33) = coef_Jacob2_qt_syms6 * (-1.0 / 6.0) - (coefs_tq1_6 * coef_Jacob2_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob2_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob2_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob2_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob2_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob2_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob2_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob2_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob2_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob2_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob2_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob2_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob2_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob2_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob2_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob2_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob2_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob2_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob2_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob2_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob2_qt_syms30 * pinvG3_3) / 6.0;
-    W(1, 34) = coef_Jacob2_qt_syms8 * (-1.0 / 3.0) - (coefs_tq1_8 * coef_Jacob2_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob2_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob2_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq1_3 * coef_Jacob2_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob2_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob2_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob2_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq1_3 * coef_Jacob2_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob2_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob2_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob2_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq1_3 * coef_Jacob2_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob2_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob2_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob2_qt_syms13 * pinvG3_3) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob2_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob2_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob2_qt_syms30 * pinvG3_3) / 3.0;
-    W(1, 35) = coef_Jacob2_qt_syms9 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob2_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob2_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob2_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob2_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob2_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob2_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob2_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob2_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob2_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob2_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob2_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob2_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob2_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob2_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob2_qt_syms35 * pinvG3_3) / 6.0;
-    W(1, 36) = coef_Jacob2_qt_syms6 * (-1.0 / 6.0) - (coefs_tq1_6 * coef_Jacob2_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob2_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob2_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob2_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob2_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob2_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob2_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob2_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob2_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob2_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob2_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob2_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob2_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob2_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob2_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob2_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob2_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob2_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob2_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob2_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob2_qt_syms30 * pinvG3_3) / 6.0;
-    W(1, 37) = coef_Jacob2_qt_syms16 * (-1.0 / 3.0) - (coefs_tq1_6 * coef_Jacob2_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob2_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob2_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob2_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob2_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob2_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob2_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob2_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob2_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob2_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob2_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms23 * pinvG3_3) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob2_qt_syms30 * pinvG3_3) / 3.0;
-    W(1, 38) = coef_Jacob2_qt_syms18 * (-1.0 / 3.0) - (coefs_tq1_8 * coef_Jacob2_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob2_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob2_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob2_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob2_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob2_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob2_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob2_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob2_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob2_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob2_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob2_qt_syms23 * pinvG3_3) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms30 * pinvG3_3) / 3.0;
-    W(1, 39) = coef_Jacob2_qt_syms19 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob2_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob2_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob2_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob2_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob2_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob2_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob2_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob2_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob2_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms35 * pinvG3_3) / 6.0;
-    W(1, 40) = coef_Jacob2_qt_syms8 * (-1.0 / 3.0) - (coefs_tq1_8 * coef_Jacob2_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob2_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob2_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq1_3 * coef_Jacob2_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob2_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob2_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob2_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq1_3 * coef_Jacob2_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob2_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob2_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob2_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq1_3 * coef_Jacob2_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob2_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob2_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob2_qt_syms13 * pinvG3_3) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob2_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob2_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob2_qt_syms30 * pinvG3_3) / 3.0;
-    W(1, 41) = coef_Jacob2_qt_syms18 * (-1.0 / 3.0) - (coefs_tq1_8 * coef_Jacob2_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob2_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob2_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob2_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob2_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob2_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob2_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob2_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob2_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob2_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob2_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob2_qt_syms23 * pinvG3_3) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms30 * pinvG3_3) / 3.0;
+    W(1, 22) = coef_Jacob2_qt_syms16 * (-1.0 * 2.0) - (coefs_tq1_6 * coef_Jacob2_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob2_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob2_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob2_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob2_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob2_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob2_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob2_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob2_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob2_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob2_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms23 * pinvG3_3) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob2_qt_syms30 * pinvG3_3) * 2.0;
+    W(1, 23) = coef_Jacob2_qt_syms17 * (-1.0 * 2.0) - (coefs_tq1_7 * coef_Jacob2_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob2_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob2_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob2_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob2_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob2_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob2_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob2_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob2_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob2_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob2_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms23 * pinvG3_3) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob2_qt_syms35 * pinvG3_3) * 2.0;
+    W(1, 24) = coef_Jacob2_qt_syms6 * (-1.0 ) - (coefs_tq1_6 * coef_Jacob2_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob2_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_6 * coef_Jacob2_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_2 * coef_Jacob2_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob2_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_3 * coef_Jacob2_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_6 * coef_Jacob2_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_2 * coef_Jacob2_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_2 * coef_Jacob2_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_3 * coef_Jacob2_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_3 * coef_Jacob2_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_3 * coef_Jacob2_qt_syms21 * pinvG1_3)  -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_2 * coef_Jacob2_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_2 * coef_Jacob2_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_2 * coef_Jacob2_qt_syms28 * pinvG1_3)  -
+               (coefs_tq2_3 * coef_Jacob2_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_3 * coef_Jacob2_qt_syms22 * pinvG2_3)  -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_2 * coef_Jacob2_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_2 * coef_Jacob2_qt_syms29 * pinvG2_3)  -
+               (coefs_tq3_3 * coef_Jacob2_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_2 * coef_Jacob2_qt_syms30 * pinvG3_3) ;
+    W(1, 25) = coef_Jacob2_qt_syms16 * (-1.0 * 2.0) - (coefs_tq1_6 * coef_Jacob2_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob2_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob2_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob2_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob2_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob2_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob2_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob2_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob2_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob2_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob2_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms23 * pinvG3_3) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob2_qt_syms30 * pinvG3_3) * 2.0;
+    W(1, 26) = coef_Jacob2_qt_syms18 * (-1.0 * 2.0) - (coefs_tq1_8 * coef_Jacob2_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob2_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob2_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob2_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob2_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob2_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob2_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob2_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob2_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob2_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob2_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob2_qt_syms23 * pinvG3_3) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms30 * pinvG3_3) * 2.0;
+    W(1, 27) = coef_Jacob2_qt_syms19 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob2_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_7 * coef_Jacob2_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_6 * coef_Jacob2_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob2_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_7 * coef_Jacob2_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_6 * coef_Jacob2_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms33 * pinvG1_2)  -
+               (coefs_tq1_9 * coef_Jacob2_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms21 * pinvG1_3)  -
+               (coefs_tq1_7 * coef_Jacob2_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_6 * coef_Jacob2_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms33 * pinvG1_3)  -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms22 * pinvG2_3)  -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms35 * pinvG3_3) ;
+    W(1, 28) = coef_Jacob2_qt_syms7 * (-1.0 ) - (coefs_tq1_7 * coef_Jacob2_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_4 * coef_Jacob2_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_7 * coef_Jacob2_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_2 * coef_Jacob2_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_4 * coef_Jacob2_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_7 * coef_Jacob2_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_2 * coef_Jacob2_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_2 * coef_Jacob2_qt_syms33 * pinvG1_2)  -
+               (coefs_tq1_4 * coef_Jacob2_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms21 * pinvG1_3)  -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_2 * coef_Jacob2_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_2 * coef_Jacob2_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_2 * coef_Jacob2_qt_syms33 * pinvG1_3)  -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms22 * pinvG2_3)  -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_2 * coef_Jacob2_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_2 * coef_Jacob2_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_2 * coef_Jacob2_qt_syms35 * pinvG3_3) ;
+    W(1, 29) = coef_Jacob2_qt_syms17 * (-1.0 * 2.0) - (coefs_tq1_7 * coef_Jacob2_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob2_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob2_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob2_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob2_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob2_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob2_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob2_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob2_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob2_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob2_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms23 * pinvG3_3) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob2_qt_syms35 * pinvG3_3) * 2.0;
+    W(1, 30) = coef_Jacob2_qt_syms19 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob2_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_7 * coef_Jacob2_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_6 * coef_Jacob2_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob2_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_7 * coef_Jacob2_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_6 * coef_Jacob2_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms33 * pinvG1_2)  -
+               (coefs_tq1_9 * coef_Jacob2_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms21 * pinvG1_3)  -
+               (coefs_tq1_7 * coef_Jacob2_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_6 * coef_Jacob2_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms33 * pinvG1_3)  -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms22 * pinvG2_3)  -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms35 * pinvG3_3) ;
+    W(1, 31) = coef_Jacob2_qt_syms20 * (-1.0 * 2.0) - (coefs_tq1_7 * coef_Jacob2_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob2_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob2_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms35 * pinvG3_3) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob2_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob2_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob2_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob2_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob2_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob2_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob2_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob2_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob2_qt_syms23 * pinvG3_3) * 2.0;
+    W(1, 32) = coef_Jacob2_qt_syms3 * (-1.0 * 2.0) - (coefs_tq1_3 * coef_Jacob2_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_3 * coef_Jacob2_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob2_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob2_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_3 * coef_Jacob2_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob2_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob2_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob2_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob2_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob2_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob2_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob2_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob2_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob2_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob2_qt_syms13 * pinvG3_3) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob2_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob2_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob2_qt_syms30 * pinvG3_3) * 2.0;
+    W(1, 33) = coef_Jacob2_qt_syms6 * (-1.0 ) - (coefs_tq1_6 * coef_Jacob2_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob2_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_6 * coef_Jacob2_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_2 * coef_Jacob2_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob2_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_3 * coef_Jacob2_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_6 * coef_Jacob2_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_2 * coef_Jacob2_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_2 * coef_Jacob2_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_3 * coef_Jacob2_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_3 * coef_Jacob2_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_3 * coef_Jacob2_qt_syms21 * pinvG1_3)  -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_2 * coef_Jacob2_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_2 * coef_Jacob2_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_2 * coef_Jacob2_qt_syms28 * pinvG1_3)  -
+               (coefs_tq2_3 * coef_Jacob2_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_3 * coef_Jacob2_qt_syms22 * pinvG2_3)  -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_2 * coef_Jacob2_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_2 * coef_Jacob2_qt_syms29 * pinvG2_3)  -
+               (coefs_tq3_3 * coef_Jacob2_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_2 * coef_Jacob2_qt_syms30 * pinvG3_3) ;
+    W(1, 34) = coef_Jacob2_qt_syms8 * (-1.0 * 2.0) - (coefs_tq1_8 * coef_Jacob2_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob2_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob2_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq1_3 * coef_Jacob2_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob2_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob2_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob2_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq1_3 * coef_Jacob2_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob2_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob2_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob2_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq1_3 * coef_Jacob2_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob2_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob2_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob2_qt_syms13 * pinvG3_3) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob2_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob2_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob2_qt_syms30 * pinvG3_3) * 2.0;
+    W(1, 35) = coef_Jacob2_qt_syms9 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob2_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob2_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_4 * coef_Jacob2_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob2_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob2_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_4 * coef_Jacob2_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_3 * coef_Jacob2_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_3 * coef_Jacob2_qt_syms33 * pinvG1_2)  -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_4 * coef_Jacob2_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_3 * coef_Jacob2_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_3 * coef_Jacob2_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_3 * coef_Jacob2_qt_syms33 * pinvG1_3)  -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_3 * coef_Jacob2_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_3 * coef_Jacob2_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_3 * coef_Jacob2_qt_syms35 * pinvG3_3) ;
+    W(1, 36) = coef_Jacob2_qt_syms6 * (-1.0 ) - (coefs_tq1_6 * coef_Jacob2_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob2_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_6 * coef_Jacob2_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_2 * coef_Jacob2_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob2_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_3 * coef_Jacob2_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_6 * coef_Jacob2_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_2 * coef_Jacob2_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_2 * coef_Jacob2_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_3 * coef_Jacob2_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_3 * coef_Jacob2_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_3 * coef_Jacob2_qt_syms21 * pinvG1_3)  -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_2 * coef_Jacob2_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_2 * coef_Jacob2_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_2 * coef_Jacob2_qt_syms28 * pinvG1_3)  -
+               (coefs_tq2_3 * coef_Jacob2_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_3 * coef_Jacob2_qt_syms22 * pinvG2_3)  -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_2 * coef_Jacob2_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_2 * coef_Jacob2_qt_syms29 * pinvG2_3)  -
+               (coefs_tq3_3 * coef_Jacob2_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_2 * coef_Jacob2_qt_syms30 * pinvG3_3) ;
+    W(1, 37) = coef_Jacob2_qt_syms16 * (-1.0 * 2.0) - (coefs_tq1_6 * coef_Jacob2_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob2_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob2_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob2_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob2_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob2_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob2_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob2_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob2_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob2_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob2_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms23 * pinvG3_3) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob2_qt_syms30 * pinvG3_3) * 2.0;
+    W(1, 38) = coef_Jacob2_qt_syms18 * (-1.0 * 2.0) - (coefs_tq1_8 * coef_Jacob2_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob2_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob2_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob2_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob2_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob2_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob2_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob2_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob2_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob2_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob2_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob2_qt_syms23 * pinvG3_3) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms30 * pinvG3_3) * 2.0;
+    W(1, 39) = coef_Jacob2_qt_syms19 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob2_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_7 * coef_Jacob2_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_6 * coef_Jacob2_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob2_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_7 * coef_Jacob2_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_6 * coef_Jacob2_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms33 * pinvG1_2)  -
+               (coefs_tq1_9 * coef_Jacob2_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms21 * pinvG1_3)  -
+               (coefs_tq1_7 * coef_Jacob2_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_6 * coef_Jacob2_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms33 * pinvG1_3)  -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms22 * pinvG2_3)  -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms35 * pinvG3_3) ;
+    W(1, 40) = coef_Jacob2_qt_syms8 * (-1.0 * 2.0) - (coefs_tq1_8 * coef_Jacob2_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob2_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob2_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq1_3 * coef_Jacob2_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob2_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob2_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob2_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq1_3 * coef_Jacob2_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob2_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob2_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob2_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq1_3 * coef_Jacob2_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob2_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob2_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob2_qt_syms13 * pinvG3_3) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob2_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob2_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob2_qt_syms30 * pinvG3_3) * 2.0;
+    W(1, 41) = coef_Jacob2_qt_syms18 * (-1.0 * 2.0) - (coefs_tq1_8 * coef_Jacob2_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob2_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob2_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob2_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob2_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob2_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob2_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob2_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob2_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob2_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob2_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob2_qt_syms23 * pinvG3_3) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms30 * pinvG3_3) * 2.0;
     W(1, 42) = -coef_Jacob2_qt_syms25 - coefs_tq1_8 * coef_Jacob2_qt_syms28 * pinvG1_1 -
                coefs_tq1_8 * coef_Jacob2_qt_syms29 * pinvG2_1 - coefs_tq2_8 * coef_Jacob2_qt_syms28 * pinvG1_2 -
                coefs_tq1_8 * coef_Jacob2_qt_syms30 * pinvG3_1 - coefs_tq2_8 * coef_Jacob2_qt_syms29 * pinvG2_2 -
                coefs_tq3_8 * coef_Jacob2_qt_syms28 * pinvG1_3 - coefs_tq2_8 * coef_Jacob2_qt_syms30 * pinvG3_2 -
                coefs_tq3_8 * coef_Jacob2_qt_syms29 * pinvG2_3 - coefs_tq3_8 * coef_Jacob2_qt_syms30 * pinvG3_3;
-    W(1, 43) = coef_Jacob2_qt_syms26 * (-1.0 / 3.0) - (coefs_tq1_9 * coef_Jacob2_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob2_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob2_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob2_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob2_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob2_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob2_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob2_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob2_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob2_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob2_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms30 * pinvG3_3) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob2_qt_syms35 * pinvG3_3) / 3.0;
-    W(1, 44) = coef_Jacob2_qt_syms9 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob2_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob2_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob2_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob2_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob2_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob2_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob2_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob2_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob2_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob2_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob2_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob2_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob2_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob2_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob2_qt_syms35 * pinvG3_3) / 6.0;
-    W(1, 45) = coef_Jacob2_qt_syms19 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob2_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob2_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob2_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob2_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob2_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob2_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob2_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob2_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob2_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms35 * pinvG3_3) / 6.0;
-    W(1, 46) = coef_Jacob2_qt_syms26 * (-1.0 / 3.0) - (coefs_tq1_9 * coef_Jacob2_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob2_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob2_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob2_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob2_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob2_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob2_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob2_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob2_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob2_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob2_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms30 * pinvG3_3) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob2_qt_syms35 * pinvG3_3) / 3.0;
-    W(1, 47) = coef_Jacob2_qt_syms27 * (-1.0 / 3.0) - (coefs_tq1_9 * coef_Jacob2_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob2_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob2_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms35 * pinvG3_3) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob2_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob2_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob2_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob2_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob2_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob2_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob2_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob2_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob2_qt_syms30 * pinvG3_3) / 3.0;
-    W(1, 48) = coef_Jacob2_qt_syms4 * (-1.0 / 3.0) - (coefs_tq1_4 * coef_Jacob2_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_4 * coef_Jacob2_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob2_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_4 * coef_Jacob2_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob2_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob2_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob2_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob2_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob2_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms13 * pinvG3_3) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob2_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob2_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob2_qt_syms35 * pinvG3_3) / 3.0;
-    W(1, 49) = coef_Jacob2_qt_syms7 * (-1.0 / 6.0) - (coefs_tq1_7 * coef_Jacob2_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob2_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob2_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob2_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob2_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob2_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob2_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob2_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob2_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob2_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob2_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob2_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob2_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob2_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob2_qt_syms35 * pinvG3_3) / 6.0;
-    W(1, 50) = coef_Jacob2_qt_syms9 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob2_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob2_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob2_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob2_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob2_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob2_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob2_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob2_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob2_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob2_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob2_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob2_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob2_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob2_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob2_qt_syms35 * pinvG3_3) / 6.0;
-    W(1, 51) = coef_Jacob2_qt_syms10 * (-1.0 / 3.0) - (coefs_tq1_4 * coef_Jacob2_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_4 * coef_Jacob2_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_4 * coef_Jacob2_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms35 * pinvG3_3) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob2_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob2_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob2_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob2_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob2_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob2_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob2_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob2_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob2_qt_syms13 * pinvG3_3) / 3.0;
-    W(1, 52) = coef_Jacob2_qt_syms7 * (-1.0 / 6.0) - (coefs_tq1_7 * coef_Jacob2_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob2_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob2_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob2_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob2_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob2_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob2_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob2_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob2_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob2_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob2_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob2_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob2_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob2_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob2_qt_syms35 * pinvG3_3) / 6.0;
-    W(1, 53) = coef_Jacob2_qt_syms17 * (-1.0 / 3.0) - (coefs_tq1_7 * coef_Jacob2_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob2_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob2_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob2_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob2_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob2_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob2_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob2_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob2_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob2_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob2_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms23 * pinvG3_3) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob2_qt_syms35 * pinvG3_3) / 3.0;
-    W(1, 54) = coef_Jacob2_qt_syms19 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob2_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob2_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob2_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob2_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob2_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob2_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob2_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob2_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob2_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms35 * pinvG3_3) / 6.0;
-    W(1, 55) = coef_Jacob2_qt_syms20 * (-1.0 / 3.0) - (coefs_tq1_7 * coef_Jacob2_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob2_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob2_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms35 * pinvG3_3) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob2_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob2_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob2_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob2_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob2_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob2_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob2_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob2_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob2_qt_syms23 * pinvG3_3) / 3.0;
-    W(1, 56) = coef_Jacob2_qt_syms9 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob2_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob2_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob2_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob2_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob2_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob2_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob2_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob2_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob2_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob2_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob2_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob2_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob2_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob2_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob2_qt_syms35 * pinvG3_3) / 6.0;
-    W(1, 57) = coef_Jacob2_qt_syms19 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob2_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob2_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob2_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob2_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob2_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob2_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob2_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob2_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob2_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob2_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob2_qt_syms35 * pinvG3_3) / 6.0;
-    W(1, 58) = coef_Jacob2_qt_syms26 * (-1.0 / 3.0) - (coefs_tq1_9 * coef_Jacob2_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob2_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob2_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob2_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob2_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob2_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob2_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob2_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob2_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob2_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob2_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms30 * pinvG3_3) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob2_qt_syms35 * pinvG3_3) / 3.0;
-    W(1, 59) = coef_Jacob2_qt_syms27 * (-1.0 / 3.0) - (coefs_tq1_9 * coef_Jacob2_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob2_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob2_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms35 * pinvG3_3) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob2_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob2_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob2_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob2_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob2_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob2_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob2_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob2_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob2_qt_syms30 * pinvG3_3) / 3.0;
-    W(1, 60) = coef_Jacob2_qt_syms10 * (-1.0 / 3.0) - (coefs_tq1_4 * coef_Jacob2_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_4 * coef_Jacob2_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_4 * coef_Jacob2_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob2_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob2_qt_syms35 * pinvG3_3) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob2_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob2_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob2_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob2_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob2_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob2_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob2_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob2_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob2_qt_syms13 * pinvG3_3) / 3.0;
-    W(1, 61) = coef_Jacob2_qt_syms20 * (-1.0 / 3.0) - (coefs_tq1_7 * coef_Jacob2_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob2_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob2_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob2_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob2_qt_syms35 * pinvG3_3) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob2_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob2_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob2_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob2_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob2_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob2_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob2_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob2_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob2_qt_syms23 * pinvG3_3) / 3.0;
-    W(1, 62) = coef_Jacob2_qt_syms27 * (-1.0 / 3.0) - (coefs_tq1_9 * coef_Jacob2_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob2_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob2_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob2_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob2_qt_syms35 * pinvG3_3) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob2_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob2_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob2_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob2_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob2_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob2_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob2_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob2_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob2_qt_syms30 * pinvG3_3) / 3.0;
+    W(1, 43) = coef_Jacob2_qt_syms26 * (-1.0 * 2.0) - (coefs_tq1_9 * coef_Jacob2_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob2_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob2_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob2_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob2_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob2_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob2_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob2_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob2_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob2_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob2_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms30 * pinvG3_3) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob2_qt_syms35 * pinvG3_3) * 2.0;
+    W(1, 44) = coef_Jacob2_qt_syms9 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob2_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob2_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_4 * coef_Jacob2_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob2_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob2_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_4 * coef_Jacob2_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_3 * coef_Jacob2_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_3 * coef_Jacob2_qt_syms33 * pinvG1_2)  -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_4 * coef_Jacob2_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_3 * coef_Jacob2_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_3 * coef_Jacob2_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_3 * coef_Jacob2_qt_syms33 * pinvG1_3)  -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_3 * coef_Jacob2_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_3 * coef_Jacob2_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_3 * coef_Jacob2_qt_syms35 * pinvG3_3) ;
+    W(1, 45) = coef_Jacob2_qt_syms19 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob2_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_7 * coef_Jacob2_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_6 * coef_Jacob2_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob2_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_7 * coef_Jacob2_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_6 * coef_Jacob2_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms33 * pinvG1_2)  -
+               (coefs_tq1_9 * coef_Jacob2_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms21 * pinvG1_3)  -
+               (coefs_tq1_7 * coef_Jacob2_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_6 * coef_Jacob2_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms33 * pinvG1_3)  -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms22 * pinvG2_3)  -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms35 * pinvG3_3) ;
+    W(1, 46) = coef_Jacob2_qt_syms26 * (-1.0 * 2.0) - (coefs_tq1_9 * coef_Jacob2_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob2_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob2_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob2_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob2_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob2_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob2_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob2_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob2_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob2_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob2_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms30 * pinvG3_3) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob2_qt_syms35 * pinvG3_3) * 2.0;
+    W(1, 47) = coef_Jacob2_qt_syms27 * (-1.0 * 2.0) - (coefs_tq1_9 * coef_Jacob2_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob2_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob2_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms35 * pinvG3_3) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob2_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob2_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob2_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob2_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob2_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob2_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob2_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob2_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob2_qt_syms30 * pinvG3_3) * 2.0;
+    W(1, 48) = coef_Jacob2_qt_syms4 * (-1.0 * 2.0) - (coefs_tq1_4 * coef_Jacob2_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_4 * coef_Jacob2_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob2_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_4 * coef_Jacob2_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob2_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob2_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob2_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob2_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob2_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms13 * pinvG3_3) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob2_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob2_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob2_qt_syms35 * pinvG3_3) * 2.0;
+    W(1, 49) = coef_Jacob2_qt_syms7 * (-1.0 ) - (coefs_tq1_7 * coef_Jacob2_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_4 * coef_Jacob2_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_7 * coef_Jacob2_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_2 * coef_Jacob2_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_4 * coef_Jacob2_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_7 * coef_Jacob2_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_2 * coef_Jacob2_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_2 * coef_Jacob2_qt_syms33 * pinvG1_2)  -
+               (coefs_tq1_4 * coef_Jacob2_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms21 * pinvG1_3)  -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_2 * coef_Jacob2_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_2 * coef_Jacob2_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_2 * coef_Jacob2_qt_syms33 * pinvG1_3)  -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms22 * pinvG2_3)  -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_2 * coef_Jacob2_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_2 * coef_Jacob2_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_2 * coef_Jacob2_qt_syms35 * pinvG3_3) ;
+    W(1, 50) = coef_Jacob2_qt_syms9 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob2_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob2_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_4 * coef_Jacob2_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob2_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob2_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_4 * coef_Jacob2_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_3 * coef_Jacob2_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_3 * coef_Jacob2_qt_syms33 * pinvG1_2)  -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_4 * coef_Jacob2_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_3 * coef_Jacob2_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_3 * coef_Jacob2_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_3 * coef_Jacob2_qt_syms33 * pinvG1_3)  -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_3 * coef_Jacob2_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_3 * coef_Jacob2_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_3 * coef_Jacob2_qt_syms35 * pinvG3_3) ;
+    W(1, 51) = coef_Jacob2_qt_syms10 * (-1.0 * 2.0) - (coefs_tq1_4 * coef_Jacob2_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_4 * coef_Jacob2_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_4 * coef_Jacob2_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms35 * pinvG3_3) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob2_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob2_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob2_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob2_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob2_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob2_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob2_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob2_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob2_qt_syms13 * pinvG3_3) * 2.0;
+    W(1, 52) = coef_Jacob2_qt_syms7 * (-1.0 ) - (coefs_tq1_7 * coef_Jacob2_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_4 * coef_Jacob2_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_7 * coef_Jacob2_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_2 * coef_Jacob2_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_4 * coef_Jacob2_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_7 * coef_Jacob2_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_2 * coef_Jacob2_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_2 * coef_Jacob2_qt_syms33 * pinvG1_2)  -
+               (coefs_tq1_4 * coef_Jacob2_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms21 * pinvG1_3)  -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_2 * coef_Jacob2_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_2 * coef_Jacob2_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_2 * coef_Jacob2_qt_syms33 * pinvG1_3)  -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms22 * pinvG2_3)  -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_2 * coef_Jacob2_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_2 * coef_Jacob2_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_2 * coef_Jacob2_qt_syms35 * pinvG3_3) ;
+    W(1, 53) = coef_Jacob2_qt_syms17 * (-1.0 * 2.0) - (coefs_tq1_7 * coef_Jacob2_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob2_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob2_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob2_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob2_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob2_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob2_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob2_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob2_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob2_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob2_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms23 * pinvG3_3) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob2_qt_syms35 * pinvG3_3) * 2.0;
+    W(1, 54) = coef_Jacob2_qt_syms19 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob2_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_7 * coef_Jacob2_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_6 * coef_Jacob2_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob2_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_7 * coef_Jacob2_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_6 * coef_Jacob2_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms33 * pinvG1_2)  -
+               (coefs_tq1_9 * coef_Jacob2_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms21 * pinvG1_3)  -
+               (coefs_tq1_7 * coef_Jacob2_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_6 * coef_Jacob2_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms33 * pinvG1_3)  -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms22 * pinvG2_3)  -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms35 * pinvG3_3) ;
+    W(1, 55) = coef_Jacob2_qt_syms20 * (-1.0 * 2.0) - (coefs_tq1_7 * coef_Jacob2_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob2_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob2_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms35 * pinvG3_3) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob2_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob2_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob2_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob2_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob2_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob2_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob2_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob2_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob2_qt_syms23 * pinvG3_3) * 2.0;
+    W(1, 56) = coef_Jacob2_qt_syms9 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob2_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob2_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_4 * coef_Jacob2_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob2_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob2_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_4 * coef_Jacob2_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_3 * coef_Jacob2_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_3 * coef_Jacob2_qt_syms33 * pinvG1_2)  -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_4 * coef_Jacob2_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_3 * coef_Jacob2_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_3 * coef_Jacob2_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_3 * coef_Jacob2_qt_syms33 * pinvG1_3)  -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_3 * coef_Jacob2_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_3 * coef_Jacob2_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_3 * coef_Jacob2_qt_syms35 * pinvG3_3) ;
+    W(1, 57) = coef_Jacob2_qt_syms19 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob2_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_7 * coef_Jacob2_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_6 * coef_Jacob2_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob2_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_7 * coef_Jacob2_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_6 * coef_Jacob2_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms33 * pinvG1_2)  -
+               (coefs_tq1_9 * coef_Jacob2_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms21 * pinvG1_3)  -
+               (coefs_tq1_7 * coef_Jacob2_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_6 * coef_Jacob2_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms33 * pinvG1_3)  -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms22 * pinvG2_3)  -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_6 * coef_Jacob2_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_6 * coef_Jacob2_qt_syms35 * pinvG3_3) ;
+    W(1, 58) = coef_Jacob2_qt_syms26 * (-1.0 * 2.0) - (coefs_tq1_9 * coef_Jacob2_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob2_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob2_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob2_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob2_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob2_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob2_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob2_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob2_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob2_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob2_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms30 * pinvG3_3) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob2_qt_syms35 * pinvG3_3) * 2.0;
+    W(1, 59) = coef_Jacob2_qt_syms27 * (-1.0 * 2.0) - (coefs_tq1_9 * coef_Jacob2_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob2_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob2_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms35 * pinvG3_3) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob2_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob2_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob2_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob2_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob2_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob2_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob2_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob2_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob2_qt_syms30 * pinvG3_3) * 2.0;
+    W(1, 60) = coef_Jacob2_qt_syms10 * (-1.0 * 2.0) - (coefs_tq1_4 * coef_Jacob2_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_4 * coef_Jacob2_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_4 * coef_Jacob2_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob2_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob2_qt_syms35 * pinvG3_3) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob2_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob2_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob2_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob2_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob2_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob2_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob2_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob2_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob2_qt_syms13 * pinvG3_3) * 2.0;
+    W(1, 61) = coef_Jacob2_qt_syms20 * (-1.0 * 2.0) - (coefs_tq1_7 * coef_Jacob2_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob2_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob2_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob2_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob2_qt_syms35 * pinvG3_3) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob2_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob2_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob2_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob2_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob2_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob2_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob2_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob2_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob2_qt_syms23 * pinvG3_3) * 2.0;
+    W(1, 62) = coef_Jacob2_qt_syms27 * (-1.0 * 2.0) - (coefs_tq1_9 * coef_Jacob2_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob2_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob2_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob2_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob2_qt_syms35 * pinvG3_3) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob2_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob2_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob2_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob2_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob2_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob2_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob2_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob2_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob2_qt_syms30 * pinvG3_3) * 2.0;
     W(1, 63) = -coef_Jacob2_qt_syms32 - coefs_tq1_10 * coef_Jacob2_qt_syms33 * pinvG1_1 -
                coefs_tq1_10 * coef_Jacob2_qt_syms34 * pinvG2_1 - coefs_tq1_10 * coef_Jacob2_qt_syms35 * pinvG3_1 -
                coefs_tq2_10 * coef_Jacob2_qt_syms33 * pinvG1_2 - coefs_tq2_10 * coef_Jacob2_qt_syms34 * pinvG2_2 -
@@ -4845,1312 +4845,1312 @@ void mixed3_pTop_func(Eigen::Matrix<double, 4, 24> &coef_f_q_sym,
               coefs_tq1_1 * coef_Jacob3_qt_syms13 * pinvG3_1 - coefs_tq2_1 * coef_Jacob3_qt_syms12 * pinvG2_2 -
               coefs_tq3_1 * coef_Jacob3_qt_syms11 * pinvG1_3 - coefs_tq2_1 * coef_Jacob3_qt_syms13 * pinvG3_2 -
               coefs_tq3_1 * coef_Jacob3_qt_syms12 * pinvG2_3 - coefs_tq3_1 * coef_Jacob3_qt_syms13 * pinvG3_3;
-    W(2, 1) = coef_Jacob3_qt_syms2 * (-1.0 / 3.0) - (coefs_tq1_2 * coef_Jacob3_qt_syms11 * pinvG1_1) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob3_qt_syms21 * pinvG1_1) / 3.0 -
-              (coefs_tq1_2 * coef_Jacob3_qt_syms12 * pinvG2_1) / 3.0 -
-              (coefs_tq2_2 * coef_Jacob3_qt_syms11 * pinvG1_2) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob3_qt_syms22 * pinvG2_1) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob3_qt_syms21 * pinvG1_2) / 3.0 -
-              (coefs_tq1_2 * coef_Jacob3_qt_syms13 * pinvG3_1) / 3.0 -
-              (coefs_tq2_2 * coef_Jacob3_qt_syms12 * pinvG2_2) / 3.0 -
-              (coefs_tq3_2 * coef_Jacob3_qt_syms11 * pinvG1_3) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob3_qt_syms23 * pinvG3_1) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob3_qt_syms22 * pinvG2_2) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob3_qt_syms21 * pinvG1_3) / 3.0 -
-              (coefs_tq2_2 * coef_Jacob3_qt_syms13 * pinvG3_2) / 3.0 -
-              (coefs_tq3_2 * coef_Jacob3_qt_syms12 * pinvG2_3) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob3_qt_syms23 * pinvG3_2) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob3_qt_syms22 * pinvG2_3) / 3.0 -
-              (coefs_tq3_2 * coef_Jacob3_qt_syms13 * pinvG3_3) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob3_qt_syms23 * pinvG3_3) / 3.0;
-    W(2, 2) = coef_Jacob3_qt_syms3 * (-1.0 / 3.0) - (coefs_tq1_3 * coef_Jacob3_qt_syms11 * pinvG1_1) / 3.0 -
-              (coefs_tq1_3 * coef_Jacob3_qt_syms12 * pinvG2_1) / 3.0 -
-              (coefs_tq2_3 * coef_Jacob3_qt_syms11 * pinvG1_2) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob3_qt_syms28 * pinvG1_1) / 3.0 -
-              (coefs_tq1_3 * coef_Jacob3_qt_syms13 * pinvG3_1) / 3.0 -
-              (coefs_tq2_3 * coef_Jacob3_qt_syms12 * pinvG2_2) / 3.0 -
-              (coefs_tq3_3 * coef_Jacob3_qt_syms11 * pinvG1_3) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob3_qt_syms29 * pinvG2_1) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob3_qt_syms28 * pinvG1_2) / 3.0 -
-              (coefs_tq2_3 * coef_Jacob3_qt_syms13 * pinvG3_2) / 3.0 -
-              (coefs_tq3_3 * coef_Jacob3_qt_syms12 * pinvG2_3) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob3_qt_syms30 * pinvG3_1) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob3_qt_syms29 * pinvG2_2) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob3_qt_syms28 * pinvG1_3) / 3.0 -
-              (coefs_tq3_3 * coef_Jacob3_qt_syms13 * pinvG3_3) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob3_qt_syms30 * pinvG3_2) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob3_qt_syms29 * pinvG2_3) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob3_qt_syms30 * pinvG3_3) / 3.0;
-    W(2, 3) = coef_Jacob3_qt_syms4 * (-1.0 / 3.0) - (coefs_tq1_4 * coef_Jacob3_qt_syms11 * pinvG1_1) / 3.0 -
-              (coefs_tq1_4 * coef_Jacob3_qt_syms12 * pinvG2_1) / 3.0 -
-              (coefs_tq2_4 * coef_Jacob3_qt_syms11 * pinvG1_2) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob3_qt_syms33 * pinvG1_1) / 3.0 -
-              (coefs_tq1_4 * coef_Jacob3_qt_syms13 * pinvG3_1) / 3.0 -
-              (coefs_tq2_4 * coef_Jacob3_qt_syms12 * pinvG2_2) / 3.0 -
-              (coefs_tq3_4 * coef_Jacob3_qt_syms11 * pinvG1_3) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob3_qt_syms34 * pinvG2_1) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob3_qt_syms33 * pinvG1_2) / 3.0 -
-              (coefs_tq2_4 * coef_Jacob3_qt_syms13 * pinvG3_2) / 3.0 -
-              (coefs_tq3_4 * coef_Jacob3_qt_syms12 * pinvG2_3) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob3_qt_syms35 * pinvG3_1) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob3_qt_syms34 * pinvG2_2) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob3_qt_syms33 * pinvG1_3) / 3.0 -
-              (coefs_tq3_4 * coef_Jacob3_qt_syms13 * pinvG3_3) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob3_qt_syms35 * pinvG3_2) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob3_qt_syms34 * pinvG2_3) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob3_qt_syms35 * pinvG3_3) / 3.0;
-    W(2, 4) = coef_Jacob3_qt_syms2 * (-1.0 / 3.0) - (coefs_tq1_2 * coef_Jacob3_qt_syms11 * pinvG1_1) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob3_qt_syms21 * pinvG1_1) / 3.0 -
-              (coefs_tq1_2 * coef_Jacob3_qt_syms12 * pinvG2_1) / 3.0 -
-              (coefs_tq2_2 * coef_Jacob3_qt_syms11 * pinvG1_2) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob3_qt_syms22 * pinvG2_1) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob3_qt_syms21 * pinvG1_2) / 3.0 -
-              (coefs_tq1_2 * coef_Jacob3_qt_syms13 * pinvG3_1) / 3.0 -
-              (coefs_tq2_2 * coef_Jacob3_qt_syms12 * pinvG2_2) / 3.0 -
-              (coefs_tq3_2 * coef_Jacob3_qt_syms11 * pinvG1_3) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob3_qt_syms23 * pinvG3_1) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob3_qt_syms22 * pinvG2_2) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob3_qt_syms21 * pinvG1_3) / 3.0 -
-              (coefs_tq2_2 * coef_Jacob3_qt_syms13 * pinvG3_2) / 3.0 -
-              (coefs_tq3_2 * coef_Jacob3_qt_syms12 * pinvG2_3) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob3_qt_syms23 * pinvG3_2) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob3_qt_syms22 * pinvG2_3) / 3.0 -
-              (coefs_tq3_2 * coef_Jacob3_qt_syms13 * pinvG3_3) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob3_qt_syms23 * pinvG3_3) / 3.0;
-    W(2, 5) = coef_Jacob3_qt_syms5 * (-1.0 / 3.0) - (coefs_tq1_5 * coef_Jacob3_qt_syms11 * pinvG1_1) / 3.0 -
-              (coefs_tq1_2 * coef_Jacob3_qt_syms21 * pinvG1_1) / 3.0 -
-              (coefs_tq1_5 * coef_Jacob3_qt_syms12 * pinvG2_1) / 3.0 -
-              (coefs_tq2_5 * coef_Jacob3_qt_syms11 * pinvG1_2) / 3.0 -
-              (coefs_tq1_2 * coef_Jacob3_qt_syms22 * pinvG2_1) / 3.0 -
-              (coefs_tq2_2 * coef_Jacob3_qt_syms21 * pinvG1_2) / 3.0 -
-              (coefs_tq1_5 * coef_Jacob3_qt_syms13 * pinvG3_1) / 3.0 -
-              (coefs_tq2_5 * coef_Jacob3_qt_syms12 * pinvG2_2) / 3.0 -
-              (coefs_tq3_5 * coef_Jacob3_qt_syms11 * pinvG1_3) / 3.0 -
-              (coefs_tq1_2 * coef_Jacob3_qt_syms23 * pinvG3_1) / 3.0 -
-              (coefs_tq2_2 * coef_Jacob3_qt_syms22 * pinvG2_2) / 3.0 -
-              (coefs_tq3_2 * coef_Jacob3_qt_syms21 * pinvG1_3) / 3.0 -
-              (coefs_tq2_5 * coef_Jacob3_qt_syms13 * pinvG3_2) / 3.0 -
-              (coefs_tq3_5 * coef_Jacob3_qt_syms12 * pinvG2_3) / 3.0 -
-              (coefs_tq2_2 * coef_Jacob3_qt_syms23 * pinvG3_2) / 3.0 -
-              (coefs_tq3_2 * coef_Jacob3_qt_syms22 * pinvG2_3) / 3.0 -
-              (coefs_tq3_5 * coef_Jacob3_qt_syms13 * pinvG3_3) / 3.0 -
-              (coefs_tq3_2 * coef_Jacob3_qt_syms23 * pinvG3_3) / 3.0;
-    W(2, 6) = coef_Jacob3_qt_syms6 * (-1.0 / 6.0) - (coefs_tq1_6 * coef_Jacob3_qt_syms11 * pinvG1_1) / 6.0 -
-              (coefs_tq1_3 * coef_Jacob3_qt_syms21 * pinvG1_1) / 6.0 -
-              (coefs_tq1_6 * coef_Jacob3_qt_syms12 * pinvG2_1) / 6.0 -
-              (coefs_tq2_6 * coef_Jacob3_qt_syms11 * pinvG1_2) / 6.0 -
-              (coefs_tq1_2 * coef_Jacob3_qt_syms28 * pinvG1_1) / 6.0 -
-              (coefs_tq1_3 * coef_Jacob3_qt_syms22 * pinvG2_1) / 6.0 -
-              (coefs_tq2_3 * coef_Jacob3_qt_syms21 * pinvG1_2) / 6.0 -
-              (coefs_tq1_6 * coef_Jacob3_qt_syms13 * pinvG3_1) / 6.0 -
-              (coefs_tq2_6 * coef_Jacob3_qt_syms12 * pinvG2_2) / 6.0 -
-              (coefs_tq3_6 * coef_Jacob3_qt_syms11 * pinvG1_3) / 6.0 -
-              (coefs_tq1_2 * coef_Jacob3_qt_syms29 * pinvG2_1) / 6.0 -
-              (coefs_tq2_2 * coef_Jacob3_qt_syms28 * pinvG1_2) / 6.0 -
-              (coefs_tq1_3 * coef_Jacob3_qt_syms23 * pinvG3_1) / 6.0 -
-              (coefs_tq2_3 * coef_Jacob3_qt_syms22 * pinvG2_2) / 6.0 -
-              (coefs_tq3_3 * coef_Jacob3_qt_syms21 * pinvG1_3) / 6.0 -
-              (coefs_tq2_6 * coef_Jacob3_qt_syms13 * pinvG3_2) / 6.0 -
-              (coefs_tq3_6 * coef_Jacob3_qt_syms12 * pinvG2_3) / 6.0 -
-              (coefs_tq1_2 * coef_Jacob3_qt_syms30 * pinvG3_1) / 6.0 -
-              (coefs_tq2_2 * coef_Jacob3_qt_syms29 * pinvG2_2) / 6.0 -
-              (coefs_tq3_2 * coef_Jacob3_qt_syms28 * pinvG1_3) / 6.0 -
-              (coefs_tq2_3 * coef_Jacob3_qt_syms23 * pinvG3_2) / 6.0 -
-              (coefs_tq3_3 * coef_Jacob3_qt_syms22 * pinvG2_3) / 6.0 -
-              (coefs_tq3_6 * coef_Jacob3_qt_syms13 * pinvG3_3) / 6.0 -
-              (coefs_tq2_2 * coef_Jacob3_qt_syms30 * pinvG3_2) / 6.0 -
-              (coefs_tq3_2 * coef_Jacob3_qt_syms29 * pinvG2_3) / 6.0 -
-              (coefs_tq3_3 * coef_Jacob3_qt_syms23 * pinvG3_3) / 6.0 -
-              (coefs_tq3_2 * coef_Jacob3_qt_syms30 * pinvG3_3) / 6.0;
-    W(2, 7) = coef_Jacob3_qt_syms7 * (-1.0 / 6.0) - (coefs_tq1_7 * coef_Jacob3_qt_syms11 * pinvG1_1) / 6.0 -
-              (coefs_tq1_4 * coef_Jacob3_qt_syms21 * pinvG1_1) / 6.0 -
-              (coefs_tq1_7 * coef_Jacob3_qt_syms12 * pinvG2_1) / 6.0 -
-              (coefs_tq2_7 * coef_Jacob3_qt_syms11 * pinvG1_2) / 6.0 -
-              (coefs_tq1_2 * coef_Jacob3_qt_syms33 * pinvG1_1) / 6.0 -
-              (coefs_tq1_4 * coef_Jacob3_qt_syms22 * pinvG2_1) / 6.0 -
-              (coefs_tq2_4 * coef_Jacob3_qt_syms21 * pinvG1_2) / 6.0 -
-              (coefs_tq1_7 * coef_Jacob3_qt_syms13 * pinvG3_1) / 6.0 -
-              (coefs_tq2_7 * coef_Jacob3_qt_syms12 * pinvG2_2) / 6.0 -
-              (coefs_tq3_7 * coef_Jacob3_qt_syms11 * pinvG1_3) / 6.0 -
-              (coefs_tq1_2 * coef_Jacob3_qt_syms34 * pinvG2_1) / 6.0 -
-              (coefs_tq2_2 * coef_Jacob3_qt_syms33 * pinvG1_2) / 6.0 -
-              (coefs_tq1_4 * coef_Jacob3_qt_syms23 * pinvG3_1) / 6.0 -
-              (coefs_tq2_4 * coef_Jacob3_qt_syms22 * pinvG2_2) / 6.0 -
-              (coefs_tq3_4 * coef_Jacob3_qt_syms21 * pinvG1_3) / 6.0 -
-              (coefs_tq2_7 * coef_Jacob3_qt_syms13 * pinvG3_2) / 6.0 -
-              (coefs_tq3_7 * coef_Jacob3_qt_syms12 * pinvG2_3) / 6.0 -
-              (coefs_tq1_2 * coef_Jacob3_qt_syms35 * pinvG3_1) / 6.0 -
-              (coefs_tq2_2 * coef_Jacob3_qt_syms34 * pinvG2_2) / 6.0 -
-              (coefs_tq3_2 * coef_Jacob3_qt_syms33 * pinvG1_3) / 6.0 -
-              (coefs_tq2_4 * coef_Jacob3_qt_syms23 * pinvG3_2) / 6.0 -
-              (coefs_tq3_4 * coef_Jacob3_qt_syms22 * pinvG2_3) / 6.0 -
-              (coefs_tq3_7 * coef_Jacob3_qt_syms13 * pinvG3_3) / 6.0 -
-              (coefs_tq2_2 * coef_Jacob3_qt_syms35 * pinvG3_2) / 6.0 -
-              (coefs_tq3_2 * coef_Jacob3_qt_syms34 * pinvG2_3) / 6.0 -
-              (coefs_tq3_4 * coef_Jacob3_qt_syms23 * pinvG3_3) / 6.0 -
-              (coefs_tq3_2 * coef_Jacob3_qt_syms35 * pinvG3_3) / 6.0;
-    W(2, 8) = coef_Jacob3_qt_syms3 * (-1.0 / 3.0) - (coefs_tq1_3 * coef_Jacob3_qt_syms11 * pinvG1_1) / 3.0 -
-              (coefs_tq1_3 * coef_Jacob3_qt_syms12 * pinvG2_1) / 3.0 -
-              (coefs_tq2_3 * coef_Jacob3_qt_syms11 * pinvG1_2) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob3_qt_syms28 * pinvG1_1) / 3.0 -
-              (coefs_tq1_3 * coef_Jacob3_qt_syms13 * pinvG3_1) / 3.0 -
-              (coefs_tq2_3 * coef_Jacob3_qt_syms12 * pinvG2_2) / 3.0 -
-              (coefs_tq3_3 * coef_Jacob3_qt_syms11 * pinvG1_3) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob3_qt_syms29 * pinvG2_1) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob3_qt_syms28 * pinvG1_2) / 3.0 -
-              (coefs_tq2_3 * coef_Jacob3_qt_syms13 * pinvG3_2) / 3.0 -
-              (coefs_tq3_3 * coef_Jacob3_qt_syms12 * pinvG2_3) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob3_qt_syms30 * pinvG3_1) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob3_qt_syms29 * pinvG2_2) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob3_qt_syms28 * pinvG1_3) / 3.0 -
-              (coefs_tq3_3 * coef_Jacob3_qt_syms13 * pinvG3_3) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob3_qt_syms30 * pinvG3_2) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob3_qt_syms29 * pinvG2_3) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob3_qt_syms30 * pinvG3_3) / 3.0;
-    W(2, 9) = coef_Jacob3_qt_syms6 * (-1.0 / 6.0) - (coefs_tq1_6 * coef_Jacob3_qt_syms11 * pinvG1_1) / 6.0 -
-              (coefs_tq1_3 * coef_Jacob3_qt_syms21 * pinvG1_1) / 6.0 -
-              (coefs_tq1_6 * coef_Jacob3_qt_syms12 * pinvG2_1) / 6.0 -
-              (coefs_tq2_6 * coef_Jacob3_qt_syms11 * pinvG1_2) / 6.0 -
-              (coefs_tq1_2 * coef_Jacob3_qt_syms28 * pinvG1_1) / 6.0 -
-              (coefs_tq1_3 * coef_Jacob3_qt_syms22 * pinvG2_1) / 6.0 -
-              (coefs_tq2_3 * coef_Jacob3_qt_syms21 * pinvG1_2) / 6.0 -
-              (coefs_tq1_6 * coef_Jacob3_qt_syms13 * pinvG3_1) / 6.0 -
-              (coefs_tq2_6 * coef_Jacob3_qt_syms12 * pinvG2_2) / 6.0 -
-              (coefs_tq3_6 * coef_Jacob3_qt_syms11 * pinvG1_3) / 6.0 -
-              (coefs_tq1_2 * coef_Jacob3_qt_syms29 * pinvG2_1) / 6.0 -
-              (coefs_tq2_2 * coef_Jacob3_qt_syms28 * pinvG1_2) / 6.0 -
-              (coefs_tq1_3 * coef_Jacob3_qt_syms23 * pinvG3_1) / 6.0 -
-              (coefs_tq2_3 * coef_Jacob3_qt_syms22 * pinvG2_2) / 6.0 -
-              (coefs_tq3_3 * coef_Jacob3_qt_syms21 * pinvG1_3) / 6.0 -
-              (coefs_tq2_6 * coef_Jacob3_qt_syms13 * pinvG3_2) / 6.0 -
-              (coefs_tq3_6 * coef_Jacob3_qt_syms12 * pinvG2_3) / 6.0 -
-              (coefs_tq1_2 * coef_Jacob3_qt_syms30 * pinvG3_1) / 6.0 -
-              (coefs_tq2_2 * coef_Jacob3_qt_syms29 * pinvG2_2) / 6.0 -
-              (coefs_tq3_2 * coef_Jacob3_qt_syms28 * pinvG1_3) / 6.0 -
-              (coefs_tq2_3 * coef_Jacob3_qt_syms23 * pinvG3_2) / 6.0 -
-              (coefs_tq3_3 * coef_Jacob3_qt_syms22 * pinvG2_3) / 6.0 -
-              (coefs_tq3_6 * coef_Jacob3_qt_syms13 * pinvG3_3) / 6.0 -
-              (coefs_tq2_2 * coef_Jacob3_qt_syms30 * pinvG3_2) / 6.0 -
-              (coefs_tq3_2 * coef_Jacob3_qt_syms29 * pinvG2_3) / 6.0 -
-              (coefs_tq3_3 * coef_Jacob3_qt_syms23 * pinvG3_3) / 6.0 -
-              (coefs_tq3_2 * coef_Jacob3_qt_syms30 * pinvG3_3) / 6.0;
-    W(2, 10) = coef_Jacob3_qt_syms8 * (-1.0 / 3.0) - (coefs_tq1_8 * coef_Jacob3_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob3_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob3_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq1_3 * coef_Jacob3_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob3_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob3_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob3_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq1_3 * coef_Jacob3_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob3_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob3_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob3_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq1_3 * coef_Jacob3_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob3_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob3_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob3_qt_syms13 * pinvG3_3) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob3_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob3_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob3_qt_syms30 * pinvG3_3) / 3.0;
-    W(2, 11) = coef_Jacob3_qt_syms9 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob3_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob3_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob3_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob3_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob3_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob3_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob3_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob3_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob3_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob3_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob3_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob3_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob3_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob3_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob3_qt_syms35 * pinvG3_3) / 6.0;
-    W(2, 12) = coef_Jacob3_qt_syms4 * (-1.0 / 3.0) - (coefs_tq1_4 * coef_Jacob3_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_4 * coef_Jacob3_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob3_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_4 * coef_Jacob3_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob3_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob3_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob3_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob3_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob3_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms13 * pinvG3_3) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob3_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob3_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob3_qt_syms35 * pinvG3_3) / 3.0;
-    W(2, 13) = coef_Jacob3_qt_syms7 * (-1.0 / 6.0) - (coefs_tq1_7 * coef_Jacob3_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob3_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob3_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob3_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob3_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob3_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob3_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob3_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob3_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob3_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob3_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob3_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob3_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob3_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob3_qt_syms35 * pinvG3_3) / 6.0;
-    W(2, 14) = coef_Jacob3_qt_syms9 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob3_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob3_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob3_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob3_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob3_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob3_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob3_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob3_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob3_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob3_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob3_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob3_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob3_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob3_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob3_qt_syms35 * pinvG3_3) / 6.0;
-    W(2, 15) = coef_Jacob3_qt_syms10 * (-1.0 / 3.0) - (coefs_tq1_4 * coef_Jacob3_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_4 * coef_Jacob3_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_4 * coef_Jacob3_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms35 * pinvG3_3) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob3_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob3_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob3_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob3_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob3_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob3_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob3_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob3_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob3_qt_syms13 * pinvG3_3) / 3.0;
-    W(2, 16) = coef_Jacob3_qt_syms2 * (-1.0 / 3.0) - (coefs_tq1_2 * coef_Jacob3_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob3_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_2 * coef_Jacob3_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq2_2 * coef_Jacob3_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob3_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob3_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_2 * coef_Jacob3_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_2 * coef_Jacob3_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq3_2 * coef_Jacob3_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob3_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob3_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob3_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq2_2 * coef_Jacob3_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_2 * coef_Jacob3_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob3_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob3_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq3_2 * coef_Jacob3_qt_syms13 * pinvG3_3) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob3_qt_syms23 * pinvG3_3) / 3.0;
-    W(2, 17) = coef_Jacob3_qt_syms5 * (-1.0 / 3.0) - (coefs_tq1_5 * coef_Jacob3_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_2 * coef_Jacob3_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob3_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob3_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq1_2 * coef_Jacob3_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_2 * coef_Jacob3_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob3_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob3_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob3_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq1_2 * coef_Jacob3_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_2 * coef_Jacob3_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_2 * coef_Jacob3_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob3_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob3_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq2_2 * coef_Jacob3_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_2 * coef_Jacob3_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob3_qt_syms13 * pinvG3_3) / 3.0 -
-               (coefs_tq3_2 * coef_Jacob3_qt_syms23 * pinvG3_3) / 3.0;
-    W(2, 18) = coef_Jacob3_qt_syms6 * (-1.0 / 6.0) - (coefs_tq1_6 * coef_Jacob3_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob3_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob3_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob3_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob3_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob3_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob3_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob3_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob3_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob3_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob3_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob3_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob3_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob3_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob3_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob3_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob3_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob3_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob3_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob3_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob3_qt_syms30 * pinvG3_3) / 6.0;
-    W(2, 19) = coef_Jacob3_qt_syms7 * (-1.0 / 6.0) - (coefs_tq1_7 * coef_Jacob3_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob3_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob3_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob3_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob3_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob3_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob3_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob3_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob3_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob3_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob3_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob3_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob3_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob3_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob3_qt_syms35 * pinvG3_3) / 6.0;
-    W(2, 20) = coef_Jacob3_qt_syms5 * (-1.0 / 3.0) - (coefs_tq1_5 * coef_Jacob3_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_2 * coef_Jacob3_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob3_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob3_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq1_2 * coef_Jacob3_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_2 * coef_Jacob3_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob3_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob3_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob3_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq1_2 * coef_Jacob3_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_2 * coef_Jacob3_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_2 * coef_Jacob3_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob3_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob3_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq2_2 * coef_Jacob3_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_2 * coef_Jacob3_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob3_qt_syms13 * pinvG3_3) / 3.0 -
-               (coefs_tq3_2 * coef_Jacob3_qt_syms23 * pinvG3_3) / 3.0;
+    W(2, 1) = coef_Jacob3_qt_syms2 * (-1.0 * 2.0) - (coefs_tq1_2 * coef_Jacob3_qt_syms11 * pinvG1_1) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob3_qt_syms21 * pinvG1_1) * 2.0 -
+              (coefs_tq1_2 * coef_Jacob3_qt_syms12 * pinvG2_1) * 2.0 -
+              (coefs_tq2_2 * coef_Jacob3_qt_syms11 * pinvG1_2) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob3_qt_syms22 * pinvG2_1) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob3_qt_syms21 * pinvG1_2) * 2.0 -
+              (coefs_tq1_2 * coef_Jacob3_qt_syms13 * pinvG3_1) * 2.0 -
+              (coefs_tq2_2 * coef_Jacob3_qt_syms12 * pinvG2_2) * 2.0 -
+              (coefs_tq3_2 * coef_Jacob3_qt_syms11 * pinvG1_3) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob3_qt_syms23 * pinvG3_1) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob3_qt_syms22 * pinvG2_2) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob3_qt_syms21 * pinvG1_3) * 2.0 -
+              (coefs_tq2_2 * coef_Jacob3_qt_syms13 * pinvG3_2) * 2.0 -
+              (coefs_tq3_2 * coef_Jacob3_qt_syms12 * pinvG2_3) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob3_qt_syms23 * pinvG3_2) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob3_qt_syms22 * pinvG2_3) * 2.0 -
+              (coefs_tq3_2 * coef_Jacob3_qt_syms13 * pinvG3_3) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob3_qt_syms23 * pinvG3_3) * 2.0;
+    W(2, 2) = coef_Jacob3_qt_syms3 * (-1.0 * 2.0) - (coefs_tq1_3 * coef_Jacob3_qt_syms11 * pinvG1_1) * 2.0 -
+              (coefs_tq1_3 * coef_Jacob3_qt_syms12 * pinvG2_1) * 2.0 -
+              (coefs_tq2_3 * coef_Jacob3_qt_syms11 * pinvG1_2) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob3_qt_syms28 * pinvG1_1) * 2.0 -
+              (coefs_tq1_3 * coef_Jacob3_qt_syms13 * pinvG3_1) * 2.0 -
+              (coefs_tq2_3 * coef_Jacob3_qt_syms12 * pinvG2_2) * 2.0 -
+              (coefs_tq3_3 * coef_Jacob3_qt_syms11 * pinvG1_3) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob3_qt_syms29 * pinvG2_1) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob3_qt_syms28 * pinvG1_2) * 2.0 -
+              (coefs_tq2_3 * coef_Jacob3_qt_syms13 * pinvG3_2) * 2.0 -
+              (coefs_tq3_3 * coef_Jacob3_qt_syms12 * pinvG2_3) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob3_qt_syms30 * pinvG3_1) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob3_qt_syms29 * pinvG2_2) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob3_qt_syms28 * pinvG1_3) * 2.0 -
+              (coefs_tq3_3 * coef_Jacob3_qt_syms13 * pinvG3_3) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob3_qt_syms30 * pinvG3_2) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob3_qt_syms29 * pinvG2_3) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob3_qt_syms30 * pinvG3_3) * 2.0;
+    W(2, 3) = coef_Jacob3_qt_syms4 * (-1.0 * 2.0) - (coefs_tq1_4 * coef_Jacob3_qt_syms11 * pinvG1_1) * 2.0 -
+              (coefs_tq1_4 * coef_Jacob3_qt_syms12 * pinvG2_1) * 2.0 -
+              (coefs_tq2_4 * coef_Jacob3_qt_syms11 * pinvG1_2) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob3_qt_syms33 * pinvG1_1) * 2.0 -
+              (coefs_tq1_4 * coef_Jacob3_qt_syms13 * pinvG3_1) * 2.0 -
+              (coefs_tq2_4 * coef_Jacob3_qt_syms12 * pinvG2_2) * 2.0 -
+              (coefs_tq3_4 * coef_Jacob3_qt_syms11 * pinvG1_3) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob3_qt_syms34 * pinvG2_1) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob3_qt_syms33 * pinvG1_2) * 2.0 -
+              (coefs_tq2_4 * coef_Jacob3_qt_syms13 * pinvG3_2) * 2.0 -
+              (coefs_tq3_4 * coef_Jacob3_qt_syms12 * pinvG2_3) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob3_qt_syms35 * pinvG3_1) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob3_qt_syms34 * pinvG2_2) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob3_qt_syms33 * pinvG1_3) * 2.0 -
+              (coefs_tq3_4 * coef_Jacob3_qt_syms13 * pinvG3_3) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob3_qt_syms35 * pinvG3_2) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob3_qt_syms34 * pinvG2_3) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob3_qt_syms35 * pinvG3_3) * 2.0;
+    W(2, 4) = coef_Jacob3_qt_syms2 * (-1.0 * 2.0) - (coefs_tq1_2 * coef_Jacob3_qt_syms11 * pinvG1_1) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob3_qt_syms21 * pinvG1_1) * 2.0 -
+              (coefs_tq1_2 * coef_Jacob3_qt_syms12 * pinvG2_1) * 2.0 -
+              (coefs_tq2_2 * coef_Jacob3_qt_syms11 * pinvG1_2) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob3_qt_syms22 * pinvG2_1) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob3_qt_syms21 * pinvG1_2) * 2.0 -
+              (coefs_tq1_2 * coef_Jacob3_qt_syms13 * pinvG3_1) * 2.0 -
+              (coefs_tq2_2 * coef_Jacob3_qt_syms12 * pinvG2_2) * 2.0 -
+              (coefs_tq3_2 * coef_Jacob3_qt_syms11 * pinvG1_3) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob3_qt_syms23 * pinvG3_1) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob3_qt_syms22 * pinvG2_2) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob3_qt_syms21 * pinvG1_3) * 2.0 -
+              (coefs_tq2_2 * coef_Jacob3_qt_syms13 * pinvG3_2) * 2.0 -
+              (coefs_tq3_2 * coef_Jacob3_qt_syms12 * pinvG2_3) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob3_qt_syms23 * pinvG3_2) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob3_qt_syms22 * pinvG2_3) * 2.0 -
+              (coefs_tq3_2 * coef_Jacob3_qt_syms13 * pinvG3_3) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob3_qt_syms23 * pinvG3_3) * 2.0;
+    W(2, 5) = coef_Jacob3_qt_syms5 * (-1.0 * 2.0) - (coefs_tq1_5 * coef_Jacob3_qt_syms11 * pinvG1_1) * 2.0 -
+              (coefs_tq1_2 * coef_Jacob3_qt_syms21 * pinvG1_1) * 2.0 -
+              (coefs_tq1_5 * coef_Jacob3_qt_syms12 * pinvG2_1) * 2.0 -
+              (coefs_tq2_5 * coef_Jacob3_qt_syms11 * pinvG1_2) * 2.0 -
+              (coefs_tq1_2 * coef_Jacob3_qt_syms22 * pinvG2_1) * 2.0 -
+              (coefs_tq2_2 * coef_Jacob3_qt_syms21 * pinvG1_2) * 2.0 -
+              (coefs_tq1_5 * coef_Jacob3_qt_syms13 * pinvG3_1) * 2.0 -
+              (coefs_tq2_5 * coef_Jacob3_qt_syms12 * pinvG2_2) * 2.0 -
+              (coefs_tq3_5 * coef_Jacob3_qt_syms11 * pinvG1_3) * 2.0 -
+              (coefs_tq1_2 * coef_Jacob3_qt_syms23 * pinvG3_1) * 2.0 -
+              (coefs_tq2_2 * coef_Jacob3_qt_syms22 * pinvG2_2) * 2.0 -
+              (coefs_tq3_2 * coef_Jacob3_qt_syms21 * pinvG1_3) * 2.0 -
+              (coefs_tq2_5 * coef_Jacob3_qt_syms13 * pinvG3_2) * 2.0 -
+              (coefs_tq3_5 * coef_Jacob3_qt_syms12 * pinvG2_3) * 2.0 -
+              (coefs_tq2_2 * coef_Jacob3_qt_syms23 * pinvG3_2) * 2.0 -
+              (coefs_tq3_2 * coef_Jacob3_qt_syms22 * pinvG2_3) * 2.0 -
+              (coefs_tq3_5 * coef_Jacob3_qt_syms13 * pinvG3_3) * 2.0 -
+              (coefs_tq3_2 * coef_Jacob3_qt_syms23 * pinvG3_3) * 2.0;
+    W(2, 6) = coef_Jacob3_qt_syms6 * (-1.0 ) - (coefs_tq1_6 * coef_Jacob3_qt_syms11 * pinvG1_1)  -
+              (coefs_tq1_3 * coef_Jacob3_qt_syms21 * pinvG1_1)  -
+              (coefs_tq1_6 * coef_Jacob3_qt_syms12 * pinvG2_1)  -
+              (coefs_tq2_6 * coef_Jacob3_qt_syms11 * pinvG1_2)  -
+              (coefs_tq1_2 * coef_Jacob3_qt_syms28 * pinvG1_1)  -
+              (coefs_tq1_3 * coef_Jacob3_qt_syms22 * pinvG2_1)  -
+              (coefs_tq2_3 * coef_Jacob3_qt_syms21 * pinvG1_2)  -
+              (coefs_tq1_6 * coef_Jacob3_qt_syms13 * pinvG3_1)  -
+              (coefs_tq2_6 * coef_Jacob3_qt_syms12 * pinvG2_2)  -
+              (coefs_tq3_6 * coef_Jacob3_qt_syms11 * pinvG1_3)  -
+              (coefs_tq1_2 * coef_Jacob3_qt_syms29 * pinvG2_1)  -
+              (coefs_tq2_2 * coef_Jacob3_qt_syms28 * pinvG1_2)  -
+              (coefs_tq1_3 * coef_Jacob3_qt_syms23 * pinvG3_1)  -
+              (coefs_tq2_3 * coef_Jacob3_qt_syms22 * pinvG2_2)  -
+              (coefs_tq3_3 * coef_Jacob3_qt_syms21 * pinvG1_3)  -
+              (coefs_tq2_6 * coef_Jacob3_qt_syms13 * pinvG3_2)  -
+              (coefs_tq3_6 * coef_Jacob3_qt_syms12 * pinvG2_3)  -
+              (coefs_tq1_2 * coef_Jacob3_qt_syms30 * pinvG3_1)  -
+              (coefs_tq2_2 * coef_Jacob3_qt_syms29 * pinvG2_2)  -
+              (coefs_tq3_2 * coef_Jacob3_qt_syms28 * pinvG1_3)  -
+              (coefs_tq2_3 * coef_Jacob3_qt_syms23 * pinvG3_2)  -
+              (coefs_tq3_3 * coef_Jacob3_qt_syms22 * pinvG2_3)  -
+              (coefs_tq3_6 * coef_Jacob3_qt_syms13 * pinvG3_3)  -
+              (coefs_tq2_2 * coef_Jacob3_qt_syms30 * pinvG3_2)  -
+              (coefs_tq3_2 * coef_Jacob3_qt_syms29 * pinvG2_3)  -
+              (coefs_tq3_3 * coef_Jacob3_qt_syms23 * pinvG3_3)  -
+              (coefs_tq3_2 * coef_Jacob3_qt_syms30 * pinvG3_3) ;
+    W(2, 7) = coef_Jacob3_qt_syms7 * (-1.0 ) - (coefs_tq1_7 * coef_Jacob3_qt_syms11 * pinvG1_1)  -
+              (coefs_tq1_4 * coef_Jacob3_qt_syms21 * pinvG1_1)  -
+              (coefs_tq1_7 * coef_Jacob3_qt_syms12 * pinvG2_1)  -
+              (coefs_tq2_7 * coef_Jacob3_qt_syms11 * pinvG1_2)  -
+              (coefs_tq1_2 * coef_Jacob3_qt_syms33 * pinvG1_1)  -
+              (coefs_tq1_4 * coef_Jacob3_qt_syms22 * pinvG2_1)  -
+              (coefs_tq2_4 * coef_Jacob3_qt_syms21 * pinvG1_2)  -
+              (coefs_tq1_7 * coef_Jacob3_qt_syms13 * pinvG3_1)  -
+              (coefs_tq2_7 * coef_Jacob3_qt_syms12 * pinvG2_2)  -
+              (coefs_tq3_7 * coef_Jacob3_qt_syms11 * pinvG1_3)  -
+              (coefs_tq1_2 * coef_Jacob3_qt_syms34 * pinvG2_1)  -
+              (coefs_tq2_2 * coef_Jacob3_qt_syms33 * pinvG1_2)  -
+              (coefs_tq1_4 * coef_Jacob3_qt_syms23 * pinvG3_1)  -
+              (coefs_tq2_4 * coef_Jacob3_qt_syms22 * pinvG2_2)  -
+              (coefs_tq3_4 * coef_Jacob3_qt_syms21 * pinvG1_3)  -
+              (coefs_tq2_7 * coef_Jacob3_qt_syms13 * pinvG3_2)  -
+              (coefs_tq3_7 * coef_Jacob3_qt_syms12 * pinvG2_3)  -
+              (coefs_tq1_2 * coef_Jacob3_qt_syms35 * pinvG3_1)  -
+              (coefs_tq2_2 * coef_Jacob3_qt_syms34 * pinvG2_2)  -
+              (coefs_tq3_2 * coef_Jacob3_qt_syms33 * pinvG1_3)  -
+              (coefs_tq2_4 * coef_Jacob3_qt_syms23 * pinvG3_2)  -
+              (coefs_tq3_4 * coef_Jacob3_qt_syms22 * pinvG2_3)  -
+              (coefs_tq3_7 * coef_Jacob3_qt_syms13 * pinvG3_3)  -
+              (coefs_tq2_2 * coef_Jacob3_qt_syms35 * pinvG3_2)  -
+              (coefs_tq3_2 * coef_Jacob3_qt_syms34 * pinvG2_3)  -
+              (coefs_tq3_4 * coef_Jacob3_qt_syms23 * pinvG3_3)  -
+              (coefs_tq3_2 * coef_Jacob3_qt_syms35 * pinvG3_3) ;
+    W(2, 8) = coef_Jacob3_qt_syms3 * (-1.0 * 2.0) - (coefs_tq1_3 * coef_Jacob3_qt_syms11 * pinvG1_1) * 2.0 -
+              (coefs_tq1_3 * coef_Jacob3_qt_syms12 * pinvG2_1) * 2.0 -
+              (coefs_tq2_3 * coef_Jacob3_qt_syms11 * pinvG1_2) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob3_qt_syms28 * pinvG1_1) * 2.0 -
+              (coefs_tq1_3 * coef_Jacob3_qt_syms13 * pinvG3_1) * 2.0 -
+              (coefs_tq2_3 * coef_Jacob3_qt_syms12 * pinvG2_2) * 2.0 -
+              (coefs_tq3_3 * coef_Jacob3_qt_syms11 * pinvG1_3) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob3_qt_syms29 * pinvG2_1) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob3_qt_syms28 * pinvG1_2) * 2.0 -
+              (coefs_tq2_3 * coef_Jacob3_qt_syms13 * pinvG3_2) * 2.0 -
+              (coefs_tq3_3 * coef_Jacob3_qt_syms12 * pinvG2_3) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob3_qt_syms30 * pinvG3_1) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob3_qt_syms29 * pinvG2_2) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob3_qt_syms28 * pinvG1_3) * 2.0 -
+              (coefs_tq3_3 * coef_Jacob3_qt_syms13 * pinvG3_3) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob3_qt_syms30 * pinvG3_2) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob3_qt_syms29 * pinvG2_3) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob3_qt_syms30 * pinvG3_3) * 2.0;
+    W(2, 9) = coef_Jacob3_qt_syms6 * (-1.0 ) - (coefs_tq1_6 * coef_Jacob3_qt_syms11 * pinvG1_1)  -
+              (coefs_tq1_3 * coef_Jacob3_qt_syms21 * pinvG1_1)  -
+              (coefs_tq1_6 * coef_Jacob3_qt_syms12 * pinvG2_1)  -
+              (coefs_tq2_6 * coef_Jacob3_qt_syms11 * pinvG1_2)  -
+              (coefs_tq1_2 * coef_Jacob3_qt_syms28 * pinvG1_1)  -
+              (coefs_tq1_3 * coef_Jacob3_qt_syms22 * pinvG2_1)  -
+              (coefs_tq2_3 * coef_Jacob3_qt_syms21 * pinvG1_2)  -
+              (coefs_tq1_6 * coef_Jacob3_qt_syms13 * pinvG3_1)  -
+              (coefs_tq2_6 * coef_Jacob3_qt_syms12 * pinvG2_2)  -
+              (coefs_tq3_6 * coef_Jacob3_qt_syms11 * pinvG1_3)  -
+              (coefs_tq1_2 * coef_Jacob3_qt_syms29 * pinvG2_1)  -
+              (coefs_tq2_2 * coef_Jacob3_qt_syms28 * pinvG1_2)  -
+              (coefs_tq1_3 * coef_Jacob3_qt_syms23 * pinvG3_1)  -
+              (coefs_tq2_3 * coef_Jacob3_qt_syms22 * pinvG2_2)  -
+              (coefs_tq3_3 * coef_Jacob3_qt_syms21 * pinvG1_3)  -
+              (coefs_tq2_6 * coef_Jacob3_qt_syms13 * pinvG3_2)  -
+              (coefs_tq3_6 * coef_Jacob3_qt_syms12 * pinvG2_3)  -
+              (coefs_tq1_2 * coef_Jacob3_qt_syms30 * pinvG3_1)  -
+              (coefs_tq2_2 * coef_Jacob3_qt_syms29 * pinvG2_2)  -
+              (coefs_tq3_2 * coef_Jacob3_qt_syms28 * pinvG1_3)  -
+              (coefs_tq2_3 * coef_Jacob3_qt_syms23 * pinvG3_2)  -
+              (coefs_tq3_3 * coef_Jacob3_qt_syms22 * pinvG2_3)  -
+              (coefs_tq3_6 * coef_Jacob3_qt_syms13 * pinvG3_3)  -
+              (coefs_tq2_2 * coef_Jacob3_qt_syms30 * pinvG3_2)  -
+              (coefs_tq3_2 * coef_Jacob3_qt_syms29 * pinvG2_3)  -
+              (coefs_tq3_3 * coef_Jacob3_qt_syms23 * pinvG3_3)  -
+              (coefs_tq3_2 * coef_Jacob3_qt_syms30 * pinvG3_3) ;
+    W(2, 10) = coef_Jacob3_qt_syms8 * (-1.0 * 2.0) - (coefs_tq1_8 * coef_Jacob3_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob3_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob3_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq1_3 * coef_Jacob3_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob3_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob3_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob3_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq1_3 * coef_Jacob3_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob3_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob3_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob3_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq1_3 * coef_Jacob3_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob3_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob3_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob3_qt_syms13 * pinvG3_3) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob3_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob3_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob3_qt_syms30 * pinvG3_3) * 2.0;
+    W(2, 11) = coef_Jacob3_qt_syms9 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob3_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob3_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_4 * coef_Jacob3_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob3_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob3_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_4 * coef_Jacob3_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_3 * coef_Jacob3_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_3 * coef_Jacob3_qt_syms33 * pinvG1_2)  -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_4 * coef_Jacob3_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_3 * coef_Jacob3_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_3 * coef_Jacob3_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_3 * coef_Jacob3_qt_syms33 * pinvG1_3)  -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_3 * coef_Jacob3_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_3 * coef_Jacob3_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_3 * coef_Jacob3_qt_syms35 * pinvG3_3) ;
+    W(2, 12) = coef_Jacob3_qt_syms4 * (-1.0 * 2.0) - (coefs_tq1_4 * coef_Jacob3_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_4 * coef_Jacob3_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob3_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_4 * coef_Jacob3_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob3_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob3_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob3_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob3_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob3_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms13 * pinvG3_3) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob3_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob3_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob3_qt_syms35 * pinvG3_3) * 2.0;
+    W(2, 13) = coef_Jacob3_qt_syms7 * (-1.0 ) - (coefs_tq1_7 * coef_Jacob3_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_4 * coef_Jacob3_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_7 * coef_Jacob3_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_2 * coef_Jacob3_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_4 * coef_Jacob3_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_7 * coef_Jacob3_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_2 * coef_Jacob3_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_2 * coef_Jacob3_qt_syms33 * pinvG1_2)  -
+               (coefs_tq1_4 * coef_Jacob3_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms21 * pinvG1_3)  -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_2 * coef_Jacob3_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_2 * coef_Jacob3_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_2 * coef_Jacob3_qt_syms33 * pinvG1_3)  -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms22 * pinvG2_3)  -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_2 * coef_Jacob3_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_2 * coef_Jacob3_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_2 * coef_Jacob3_qt_syms35 * pinvG3_3) ;
+    W(2, 14) = coef_Jacob3_qt_syms9 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob3_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob3_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_4 * coef_Jacob3_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob3_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob3_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_4 * coef_Jacob3_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_3 * coef_Jacob3_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_3 * coef_Jacob3_qt_syms33 * pinvG1_2)  -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_4 * coef_Jacob3_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_3 * coef_Jacob3_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_3 * coef_Jacob3_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_3 * coef_Jacob3_qt_syms33 * pinvG1_3)  -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_3 * coef_Jacob3_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_3 * coef_Jacob3_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_3 * coef_Jacob3_qt_syms35 * pinvG3_3) ;
+    W(2, 15) = coef_Jacob3_qt_syms10 * (-1.0 * 2.0) - (coefs_tq1_4 * coef_Jacob3_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_4 * coef_Jacob3_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_4 * coef_Jacob3_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms35 * pinvG3_3) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob3_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob3_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob3_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob3_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob3_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob3_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob3_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob3_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob3_qt_syms13 * pinvG3_3) * 2.0;
+    W(2, 16) = coef_Jacob3_qt_syms2 * (-1.0 * 2.0) - (coefs_tq1_2 * coef_Jacob3_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob3_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_2 * coef_Jacob3_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq2_2 * coef_Jacob3_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob3_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob3_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_2 * coef_Jacob3_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_2 * coef_Jacob3_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq3_2 * coef_Jacob3_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob3_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob3_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob3_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq2_2 * coef_Jacob3_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_2 * coef_Jacob3_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob3_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob3_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq3_2 * coef_Jacob3_qt_syms13 * pinvG3_3) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob3_qt_syms23 * pinvG3_3) * 2.0;
+    W(2, 17) = coef_Jacob3_qt_syms5 * (-1.0 * 2.0) - (coefs_tq1_5 * coef_Jacob3_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_2 * coef_Jacob3_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob3_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob3_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq1_2 * coef_Jacob3_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_2 * coef_Jacob3_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob3_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob3_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob3_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq1_2 * coef_Jacob3_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_2 * coef_Jacob3_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_2 * coef_Jacob3_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob3_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob3_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq2_2 * coef_Jacob3_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_2 * coef_Jacob3_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob3_qt_syms13 * pinvG3_3) * 2.0 -
+               (coefs_tq3_2 * coef_Jacob3_qt_syms23 * pinvG3_3) * 2.0;
+    W(2, 18) = coef_Jacob3_qt_syms6 * (-1.0 ) - (coefs_tq1_6 * coef_Jacob3_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob3_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_6 * coef_Jacob3_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_2 * coef_Jacob3_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob3_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_3 * coef_Jacob3_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_6 * coef_Jacob3_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_2 * coef_Jacob3_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_2 * coef_Jacob3_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_3 * coef_Jacob3_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_3 * coef_Jacob3_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_3 * coef_Jacob3_qt_syms21 * pinvG1_3)  -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_2 * coef_Jacob3_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_2 * coef_Jacob3_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_2 * coef_Jacob3_qt_syms28 * pinvG1_3)  -
+               (coefs_tq2_3 * coef_Jacob3_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_3 * coef_Jacob3_qt_syms22 * pinvG2_3)  -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_2 * coef_Jacob3_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_2 * coef_Jacob3_qt_syms29 * pinvG2_3)  -
+               (coefs_tq3_3 * coef_Jacob3_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_2 * coef_Jacob3_qt_syms30 * pinvG3_3) ;
+    W(2, 19) = coef_Jacob3_qt_syms7 * (-1.0 ) - (coefs_tq1_7 * coef_Jacob3_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_4 * coef_Jacob3_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_7 * coef_Jacob3_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_2 * coef_Jacob3_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_4 * coef_Jacob3_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_7 * coef_Jacob3_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_2 * coef_Jacob3_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_2 * coef_Jacob3_qt_syms33 * pinvG1_2)  -
+               (coefs_tq1_4 * coef_Jacob3_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms21 * pinvG1_3)  -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_2 * coef_Jacob3_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_2 * coef_Jacob3_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_2 * coef_Jacob3_qt_syms33 * pinvG1_3)  -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms22 * pinvG2_3)  -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_2 * coef_Jacob3_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_2 * coef_Jacob3_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_2 * coef_Jacob3_qt_syms35 * pinvG3_3) ;
+    W(2, 20) = coef_Jacob3_qt_syms5 * (-1.0 * 2.0) - (coefs_tq1_5 * coef_Jacob3_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_2 * coef_Jacob3_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob3_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob3_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq1_2 * coef_Jacob3_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_2 * coef_Jacob3_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob3_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob3_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob3_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq1_2 * coef_Jacob3_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_2 * coef_Jacob3_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_2 * coef_Jacob3_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob3_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob3_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq2_2 * coef_Jacob3_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_2 * coef_Jacob3_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob3_qt_syms13 * pinvG3_3) * 2.0 -
+               (coefs_tq3_2 * coef_Jacob3_qt_syms23 * pinvG3_3) * 2.0;
     W(2, 21) = -coef_Jacob3_qt_syms15 - coefs_tq1_5 * coef_Jacob3_qt_syms21 * pinvG1_1 -
                coefs_tq1_5 * coef_Jacob3_qt_syms22 * pinvG2_1 - coefs_tq2_5 * coef_Jacob3_qt_syms21 * pinvG1_2 -
                coefs_tq1_5 * coef_Jacob3_qt_syms23 * pinvG3_1 - coefs_tq2_5 * coef_Jacob3_qt_syms22 * pinvG2_2 -
                coefs_tq3_5 * coef_Jacob3_qt_syms21 * pinvG1_3 - coefs_tq2_5 * coef_Jacob3_qt_syms23 * pinvG3_2 -
                coefs_tq3_5 * coef_Jacob3_qt_syms22 * pinvG2_3 - coefs_tq3_5 * coef_Jacob3_qt_syms23 * pinvG3_3;
-    W(2, 22) = coef_Jacob3_qt_syms16 * (-1.0 / 3.0) - (coefs_tq1_6 * coef_Jacob3_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob3_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob3_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob3_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob3_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob3_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob3_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob3_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob3_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob3_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob3_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms23 * pinvG3_3) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob3_qt_syms30 * pinvG3_3) / 3.0;
-    W(2, 23) = coef_Jacob3_qt_syms17 * (-1.0 / 3.0) - (coefs_tq1_7 * coef_Jacob3_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob3_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob3_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob3_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob3_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob3_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob3_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob3_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob3_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob3_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob3_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms23 * pinvG3_3) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob3_qt_syms35 * pinvG3_3) / 3.0;
-    W(2, 24) = coef_Jacob3_qt_syms6 * (-1.0 / 6.0) - (coefs_tq1_6 * coef_Jacob3_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob3_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob3_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob3_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob3_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob3_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob3_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob3_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob3_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob3_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob3_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob3_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob3_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob3_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob3_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob3_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob3_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob3_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob3_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob3_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob3_qt_syms30 * pinvG3_3) / 6.0;
-    W(2, 25) = coef_Jacob3_qt_syms16 * (-1.0 / 3.0) - (coefs_tq1_6 * coef_Jacob3_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob3_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob3_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob3_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob3_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob3_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob3_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob3_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob3_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob3_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob3_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms23 * pinvG3_3) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob3_qt_syms30 * pinvG3_3) / 3.0;
-    W(2, 26) = coef_Jacob3_qt_syms18 * (-1.0 / 3.0) - (coefs_tq1_8 * coef_Jacob3_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob3_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob3_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob3_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob3_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob3_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob3_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob3_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob3_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob3_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob3_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob3_qt_syms23 * pinvG3_3) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms30 * pinvG3_3) / 3.0;
-    W(2, 27) = coef_Jacob3_qt_syms19 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob3_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob3_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob3_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob3_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob3_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob3_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob3_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob3_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob3_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms35 * pinvG3_3) / 6.0;
-    W(2, 28) = coef_Jacob3_qt_syms7 * (-1.0 / 6.0) - (coefs_tq1_7 * coef_Jacob3_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob3_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob3_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob3_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob3_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob3_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob3_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob3_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob3_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob3_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob3_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob3_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob3_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob3_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob3_qt_syms35 * pinvG3_3) / 6.0;
-    W(2, 29) = coef_Jacob3_qt_syms17 * (-1.0 / 3.0) - (coefs_tq1_7 * coef_Jacob3_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob3_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob3_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob3_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob3_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob3_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob3_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob3_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob3_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob3_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob3_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms23 * pinvG3_3) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob3_qt_syms35 * pinvG3_3) / 3.0;
-    W(2, 30) = coef_Jacob3_qt_syms19 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob3_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob3_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob3_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob3_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob3_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob3_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob3_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob3_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob3_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms35 * pinvG3_3) / 6.0;
-    W(2, 31) = coef_Jacob3_qt_syms20 * (-1.0 / 3.0) - (coefs_tq1_7 * coef_Jacob3_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob3_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob3_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms35 * pinvG3_3) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob3_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob3_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob3_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob3_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob3_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob3_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob3_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob3_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob3_qt_syms23 * pinvG3_3) / 3.0;
-    W(2, 32) = coef_Jacob3_qt_syms3 * (-1.0 / 3.0) - (coefs_tq1_3 * coef_Jacob3_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_3 * coef_Jacob3_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob3_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob3_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_3 * coef_Jacob3_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob3_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob3_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob3_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob3_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob3_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob3_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob3_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob3_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob3_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob3_qt_syms13 * pinvG3_3) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob3_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob3_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob3_qt_syms30 * pinvG3_3) / 3.0;
-    W(2, 33) = coef_Jacob3_qt_syms6 * (-1.0 / 6.0) - (coefs_tq1_6 * coef_Jacob3_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob3_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob3_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob3_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob3_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob3_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob3_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob3_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob3_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob3_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob3_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob3_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob3_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob3_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob3_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob3_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob3_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob3_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob3_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob3_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob3_qt_syms30 * pinvG3_3) / 6.0;
-    W(2, 34) = coef_Jacob3_qt_syms8 * (-1.0 / 3.0) - (coefs_tq1_8 * coef_Jacob3_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob3_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob3_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq1_3 * coef_Jacob3_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob3_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob3_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob3_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq1_3 * coef_Jacob3_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob3_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob3_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob3_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq1_3 * coef_Jacob3_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob3_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob3_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob3_qt_syms13 * pinvG3_3) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob3_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob3_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob3_qt_syms30 * pinvG3_3) / 3.0;
-    W(2, 35) = coef_Jacob3_qt_syms9 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob3_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob3_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob3_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob3_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob3_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob3_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob3_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob3_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob3_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob3_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob3_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob3_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob3_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob3_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob3_qt_syms35 * pinvG3_3) / 6.0;
-    W(2, 36) = coef_Jacob3_qt_syms6 * (-1.0 / 6.0) - (coefs_tq1_6 * coef_Jacob3_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob3_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob3_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob3_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob3_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob3_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob3_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob3_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob3_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob3_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob3_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob3_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob3_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob3_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob3_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob3_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob3_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob3_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob3_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob3_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob3_qt_syms30 * pinvG3_3) / 6.0;
-    W(2, 37) = coef_Jacob3_qt_syms16 * (-1.0 / 3.0) - (coefs_tq1_6 * coef_Jacob3_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob3_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob3_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob3_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob3_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob3_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob3_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob3_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob3_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob3_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob3_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms23 * pinvG3_3) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob3_qt_syms30 * pinvG3_3) / 3.0;
-    W(2, 38) = coef_Jacob3_qt_syms18 * (-1.0 / 3.0) - (coefs_tq1_8 * coef_Jacob3_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob3_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob3_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob3_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob3_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob3_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob3_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob3_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob3_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob3_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob3_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob3_qt_syms23 * pinvG3_3) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms30 * pinvG3_3) / 3.0;
-    W(2, 39) = coef_Jacob3_qt_syms19 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob3_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob3_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob3_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob3_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob3_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob3_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob3_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob3_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob3_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms35 * pinvG3_3) / 6.0;
-    W(2, 40) = coef_Jacob3_qt_syms8 * (-1.0 / 3.0) - (coefs_tq1_8 * coef_Jacob3_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob3_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob3_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq1_3 * coef_Jacob3_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob3_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob3_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob3_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq1_3 * coef_Jacob3_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob3_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob3_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob3_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq1_3 * coef_Jacob3_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob3_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob3_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob3_qt_syms13 * pinvG3_3) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob3_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob3_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob3_qt_syms30 * pinvG3_3) / 3.0;
-    W(2, 41) = coef_Jacob3_qt_syms18 * (-1.0 / 3.0) - (coefs_tq1_8 * coef_Jacob3_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob3_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob3_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob3_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob3_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob3_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob3_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob3_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob3_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob3_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob3_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob3_qt_syms23 * pinvG3_3) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms30 * pinvG3_3) / 3.0;
+    W(2, 22) = coef_Jacob3_qt_syms16 * (-1.0 * 2.0) - (coefs_tq1_6 * coef_Jacob3_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob3_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob3_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob3_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob3_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob3_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob3_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob3_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob3_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob3_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob3_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms23 * pinvG3_3) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob3_qt_syms30 * pinvG3_3) * 2.0;
+    W(2, 23) = coef_Jacob3_qt_syms17 * (-1.0 * 2.0) - (coefs_tq1_7 * coef_Jacob3_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob3_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob3_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob3_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob3_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob3_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob3_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob3_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob3_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob3_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob3_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms23 * pinvG3_3) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob3_qt_syms35 * pinvG3_3) * 2.0;
+    W(2, 24) = coef_Jacob3_qt_syms6 * (-1.0 ) - (coefs_tq1_6 * coef_Jacob3_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob3_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_6 * coef_Jacob3_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_2 * coef_Jacob3_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob3_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_3 * coef_Jacob3_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_6 * coef_Jacob3_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_2 * coef_Jacob3_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_2 * coef_Jacob3_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_3 * coef_Jacob3_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_3 * coef_Jacob3_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_3 * coef_Jacob3_qt_syms21 * pinvG1_3)  -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_2 * coef_Jacob3_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_2 * coef_Jacob3_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_2 * coef_Jacob3_qt_syms28 * pinvG1_3)  -
+               (coefs_tq2_3 * coef_Jacob3_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_3 * coef_Jacob3_qt_syms22 * pinvG2_3)  -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_2 * coef_Jacob3_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_2 * coef_Jacob3_qt_syms29 * pinvG2_3)  -
+               (coefs_tq3_3 * coef_Jacob3_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_2 * coef_Jacob3_qt_syms30 * pinvG3_3) ;
+    W(2, 25) = coef_Jacob3_qt_syms16 * (-1.0 * 2.0) - (coefs_tq1_6 * coef_Jacob3_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob3_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob3_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob3_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob3_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob3_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob3_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob3_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob3_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob3_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob3_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms23 * pinvG3_3) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob3_qt_syms30 * pinvG3_3) * 2.0;
+    W(2, 26) = coef_Jacob3_qt_syms18 * (-1.0 * 2.0) - (coefs_tq1_8 * coef_Jacob3_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob3_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob3_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob3_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob3_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob3_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob3_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob3_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob3_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob3_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob3_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob3_qt_syms23 * pinvG3_3) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms30 * pinvG3_3) * 2.0;
+    W(2, 27) = coef_Jacob3_qt_syms19 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob3_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_7 * coef_Jacob3_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_6 * coef_Jacob3_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob3_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_7 * coef_Jacob3_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_6 * coef_Jacob3_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms33 * pinvG1_2)  -
+               (coefs_tq1_9 * coef_Jacob3_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms21 * pinvG1_3)  -
+               (coefs_tq1_7 * coef_Jacob3_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_6 * coef_Jacob3_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms33 * pinvG1_3)  -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms22 * pinvG2_3)  -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms35 * pinvG3_3) ;
+    W(2, 28) = coef_Jacob3_qt_syms7 * (-1.0 ) - (coefs_tq1_7 * coef_Jacob3_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_4 * coef_Jacob3_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_7 * coef_Jacob3_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_2 * coef_Jacob3_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_4 * coef_Jacob3_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_7 * coef_Jacob3_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_2 * coef_Jacob3_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_2 * coef_Jacob3_qt_syms33 * pinvG1_2)  -
+               (coefs_tq1_4 * coef_Jacob3_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms21 * pinvG1_3)  -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_2 * coef_Jacob3_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_2 * coef_Jacob3_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_2 * coef_Jacob3_qt_syms33 * pinvG1_3)  -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms22 * pinvG2_3)  -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_2 * coef_Jacob3_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_2 * coef_Jacob3_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_2 * coef_Jacob3_qt_syms35 * pinvG3_3) ;
+    W(2, 29) = coef_Jacob3_qt_syms17 * (-1.0 * 2.0) - (coefs_tq1_7 * coef_Jacob3_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob3_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob3_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob3_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob3_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob3_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob3_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob3_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob3_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob3_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob3_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms23 * pinvG3_3) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob3_qt_syms35 * pinvG3_3) * 2.0;
+    W(2, 30) = coef_Jacob3_qt_syms19 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob3_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_7 * coef_Jacob3_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_6 * coef_Jacob3_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob3_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_7 * coef_Jacob3_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_6 * coef_Jacob3_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms33 * pinvG1_2)  -
+               (coefs_tq1_9 * coef_Jacob3_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms21 * pinvG1_3)  -
+               (coefs_tq1_7 * coef_Jacob3_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_6 * coef_Jacob3_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms33 * pinvG1_3)  -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms22 * pinvG2_3)  -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms35 * pinvG3_3) ;
+    W(2, 31) = coef_Jacob3_qt_syms20 * (-1.0 * 2.0) - (coefs_tq1_7 * coef_Jacob3_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob3_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob3_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms35 * pinvG3_3) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob3_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob3_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob3_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob3_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob3_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob3_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob3_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob3_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob3_qt_syms23 * pinvG3_3) * 2.0;
+    W(2, 32) = coef_Jacob3_qt_syms3 * (-1.0 * 2.0) - (coefs_tq1_3 * coef_Jacob3_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_3 * coef_Jacob3_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob3_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob3_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_3 * coef_Jacob3_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob3_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob3_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob3_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob3_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob3_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob3_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob3_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob3_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob3_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob3_qt_syms13 * pinvG3_3) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob3_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob3_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob3_qt_syms30 * pinvG3_3) * 2.0;
+    W(2, 33) = coef_Jacob3_qt_syms6 * (-1.0 ) - (coefs_tq1_6 * coef_Jacob3_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob3_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_6 * coef_Jacob3_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_2 * coef_Jacob3_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob3_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_3 * coef_Jacob3_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_6 * coef_Jacob3_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_2 * coef_Jacob3_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_2 * coef_Jacob3_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_3 * coef_Jacob3_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_3 * coef_Jacob3_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_3 * coef_Jacob3_qt_syms21 * pinvG1_3)  -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_2 * coef_Jacob3_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_2 * coef_Jacob3_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_2 * coef_Jacob3_qt_syms28 * pinvG1_3)  -
+               (coefs_tq2_3 * coef_Jacob3_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_3 * coef_Jacob3_qt_syms22 * pinvG2_3)  -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_2 * coef_Jacob3_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_2 * coef_Jacob3_qt_syms29 * pinvG2_3)  -
+               (coefs_tq3_3 * coef_Jacob3_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_2 * coef_Jacob3_qt_syms30 * pinvG3_3) ;
+    W(2, 34) = coef_Jacob3_qt_syms8 * (-1.0 * 2.0) - (coefs_tq1_8 * coef_Jacob3_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob3_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob3_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq1_3 * coef_Jacob3_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob3_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob3_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob3_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq1_3 * coef_Jacob3_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob3_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob3_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob3_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq1_3 * coef_Jacob3_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob3_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob3_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob3_qt_syms13 * pinvG3_3) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob3_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob3_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob3_qt_syms30 * pinvG3_3) * 2.0;
+    W(2, 35) = coef_Jacob3_qt_syms9 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob3_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob3_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_4 * coef_Jacob3_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob3_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob3_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_4 * coef_Jacob3_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_3 * coef_Jacob3_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_3 * coef_Jacob3_qt_syms33 * pinvG1_2)  -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_4 * coef_Jacob3_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_3 * coef_Jacob3_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_3 * coef_Jacob3_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_3 * coef_Jacob3_qt_syms33 * pinvG1_3)  -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_3 * coef_Jacob3_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_3 * coef_Jacob3_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_3 * coef_Jacob3_qt_syms35 * pinvG3_3) ;
+    W(2, 36) = coef_Jacob3_qt_syms6 * (-1.0 ) - (coefs_tq1_6 * coef_Jacob3_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob3_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_6 * coef_Jacob3_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_2 * coef_Jacob3_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob3_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_3 * coef_Jacob3_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_6 * coef_Jacob3_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_2 * coef_Jacob3_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_2 * coef_Jacob3_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_3 * coef_Jacob3_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_3 * coef_Jacob3_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_3 * coef_Jacob3_qt_syms21 * pinvG1_3)  -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_2 * coef_Jacob3_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_2 * coef_Jacob3_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_2 * coef_Jacob3_qt_syms28 * pinvG1_3)  -
+               (coefs_tq2_3 * coef_Jacob3_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_3 * coef_Jacob3_qt_syms22 * pinvG2_3)  -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_2 * coef_Jacob3_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_2 * coef_Jacob3_qt_syms29 * pinvG2_3)  -
+               (coefs_tq3_3 * coef_Jacob3_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_2 * coef_Jacob3_qt_syms30 * pinvG3_3) ;
+    W(2, 37) = coef_Jacob3_qt_syms16 * (-1.0 * 2.0) - (coefs_tq1_6 * coef_Jacob3_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob3_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob3_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob3_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob3_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob3_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob3_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob3_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob3_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob3_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob3_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms23 * pinvG3_3) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob3_qt_syms30 * pinvG3_3) * 2.0;
+    W(2, 38) = coef_Jacob3_qt_syms18 * (-1.0 * 2.0) - (coefs_tq1_8 * coef_Jacob3_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob3_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob3_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob3_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob3_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob3_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob3_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob3_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob3_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob3_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob3_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob3_qt_syms23 * pinvG3_3) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms30 * pinvG3_3) * 2.0;
+    W(2, 39) = coef_Jacob3_qt_syms19 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob3_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_7 * coef_Jacob3_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_6 * coef_Jacob3_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob3_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_7 * coef_Jacob3_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_6 * coef_Jacob3_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms33 * pinvG1_2)  -
+               (coefs_tq1_9 * coef_Jacob3_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms21 * pinvG1_3)  -
+               (coefs_tq1_7 * coef_Jacob3_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_6 * coef_Jacob3_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms33 * pinvG1_3)  -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms22 * pinvG2_3)  -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms35 * pinvG3_3) ;
+    W(2, 40) = coef_Jacob3_qt_syms8 * (-1.0 * 2.0) - (coefs_tq1_8 * coef_Jacob3_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob3_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob3_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq1_3 * coef_Jacob3_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob3_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob3_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob3_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq1_3 * coef_Jacob3_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob3_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob3_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob3_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq1_3 * coef_Jacob3_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob3_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob3_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob3_qt_syms13 * pinvG3_3) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob3_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob3_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob3_qt_syms30 * pinvG3_3) * 2.0;
+    W(2, 41) = coef_Jacob3_qt_syms18 * (-1.0 * 2.0) - (coefs_tq1_8 * coef_Jacob3_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob3_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob3_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob3_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob3_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob3_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob3_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob3_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob3_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob3_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob3_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob3_qt_syms23 * pinvG3_3) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms30 * pinvG3_3) * 2.0;
     W(2, 42) = -coef_Jacob3_qt_syms25 - coefs_tq1_8 * coef_Jacob3_qt_syms28 * pinvG1_1 -
                coefs_tq1_8 * coef_Jacob3_qt_syms29 * pinvG2_1 - coefs_tq2_8 * coef_Jacob3_qt_syms28 * pinvG1_2 -
                coefs_tq1_8 * coef_Jacob3_qt_syms30 * pinvG3_1 - coefs_tq2_8 * coef_Jacob3_qt_syms29 * pinvG2_2 -
                coefs_tq3_8 * coef_Jacob3_qt_syms28 * pinvG1_3 - coefs_tq2_8 * coef_Jacob3_qt_syms30 * pinvG3_2 -
                coefs_tq3_8 * coef_Jacob3_qt_syms29 * pinvG2_3 - coefs_tq3_8 * coef_Jacob3_qt_syms30 * pinvG3_3;
-    W(2, 43) = coef_Jacob3_qt_syms26 * (-1.0 / 3.0) - (coefs_tq1_9 * coef_Jacob3_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob3_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob3_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob3_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob3_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob3_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob3_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob3_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob3_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob3_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob3_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms30 * pinvG3_3) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob3_qt_syms35 * pinvG3_3) / 3.0;
-    W(2, 44) = coef_Jacob3_qt_syms9 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob3_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob3_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob3_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob3_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob3_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob3_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob3_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob3_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob3_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob3_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob3_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob3_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob3_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob3_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob3_qt_syms35 * pinvG3_3) / 6.0;
-    W(2, 45) = coef_Jacob3_qt_syms19 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob3_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob3_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob3_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob3_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob3_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob3_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob3_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob3_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob3_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms35 * pinvG3_3) / 6.0;
-    W(2, 46) = coef_Jacob3_qt_syms26 * (-1.0 / 3.0) - (coefs_tq1_9 * coef_Jacob3_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob3_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob3_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob3_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob3_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob3_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob3_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob3_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob3_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob3_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob3_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms30 * pinvG3_3) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob3_qt_syms35 * pinvG3_3) / 3.0;
-    W(2, 47) = coef_Jacob3_qt_syms27 * (-1.0 / 3.0) - (coefs_tq1_9 * coef_Jacob3_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob3_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob3_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms35 * pinvG3_3) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob3_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob3_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob3_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob3_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob3_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob3_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob3_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob3_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob3_qt_syms30 * pinvG3_3) / 3.0;
-    W(2, 48) = coef_Jacob3_qt_syms4 * (-1.0 / 3.0) - (coefs_tq1_4 * coef_Jacob3_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_4 * coef_Jacob3_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob3_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_4 * coef_Jacob3_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob3_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob3_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob3_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob3_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob3_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms13 * pinvG3_3) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob3_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob3_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob3_qt_syms35 * pinvG3_3) / 3.0;
-    W(2, 49) = coef_Jacob3_qt_syms7 * (-1.0 / 6.0) - (coefs_tq1_7 * coef_Jacob3_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob3_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob3_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob3_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob3_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob3_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob3_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob3_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob3_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob3_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob3_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob3_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob3_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob3_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob3_qt_syms35 * pinvG3_3) / 6.0;
-    W(2, 50) = coef_Jacob3_qt_syms9 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob3_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob3_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob3_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob3_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob3_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob3_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob3_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob3_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob3_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob3_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob3_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob3_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob3_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob3_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob3_qt_syms35 * pinvG3_3) / 6.0;
-    W(2, 51) = coef_Jacob3_qt_syms10 * (-1.0 / 3.0) - (coefs_tq1_4 * coef_Jacob3_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_4 * coef_Jacob3_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_4 * coef_Jacob3_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms35 * pinvG3_3) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob3_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob3_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob3_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob3_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob3_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob3_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob3_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob3_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob3_qt_syms13 * pinvG3_3) / 3.0;
-    W(2, 52) = coef_Jacob3_qt_syms7 * (-1.0 / 6.0) - (coefs_tq1_7 * coef_Jacob3_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob3_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob3_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob3_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob3_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob3_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob3_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob3_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob3_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob3_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob3_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob3_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob3_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob3_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob3_qt_syms35 * pinvG3_3) / 6.0;
-    W(2, 53) = coef_Jacob3_qt_syms17 * (-1.0 / 3.0) - (coefs_tq1_7 * coef_Jacob3_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob3_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob3_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob3_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob3_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob3_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob3_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob3_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob3_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob3_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob3_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms23 * pinvG3_3) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob3_qt_syms35 * pinvG3_3) / 3.0;
-    W(2, 54) = coef_Jacob3_qt_syms19 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob3_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob3_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob3_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob3_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob3_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob3_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob3_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob3_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob3_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms35 * pinvG3_3) / 6.0;
-    W(2, 55) = coef_Jacob3_qt_syms20 * (-1.0 / 3.0) - (coefs_tq1_7 * coef_Jacob3_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob3_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob3_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms35 * pinvG3_3) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob3_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob3_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob3_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob3_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob3_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob3_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob3_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob3_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob3_qt_syms23 * pinvG3_3) / 3.0;
-    W(2, 56) = coef_Jacob3_qt_syms9 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob3_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob3_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob3_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob3_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob3_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob3_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob3_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob3_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob3_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob3_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob3_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob3_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob3_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob3_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob3_qt_syms35 * pinvG3_3) / 6.0;
-    W(2, 57) = coef_Jacob3_qt_syms19 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob3_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob3_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob3_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob3_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob3_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob3_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob3_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob3_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob3_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob3_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob3_qt_syms35 * pinvG3_3) / 6.0;
-    W(2, 58) = coef_Jacob3_qt_syms26 * (-1.0 / 3.0) - (coefs_tq1_9 * coef_Jacob3_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob3_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob3_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob3_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob3_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob3_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob3_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob3_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob3_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob3_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob3_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms30 * pinvG3_3) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob3_qt_syms35 * pinvG3_3) / 3.0;
-    W(2, 59) = coef_Jacob3_qt_syms27 * (-1.0 / 3.0) - (coefs_tq1_9 * coef_Jacob3_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob3_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob3_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms35 * pinvG3_3) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob3_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob3_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob3_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob3_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob3_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob3_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob3_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob3_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob3_qt_syms30 * pinvG3_3) / 3.0;
-    W(2, 60) = coef_Jacob3_qt_syms10 * (-1.0 / 3.0) - (coefs_tq1_4 * coef_Jacob3_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_4 * coef_Jacob3_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_4 * coef_Jacob3_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob3_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob3_qt_syms35 * pinvG3_3) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob3_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob3_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob3_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob3_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob3_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob3_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob3_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob3_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob3_qt_syms13 * pinvG3_3) / 3.0;
-    W(2, 61) = coef_Jacob3_qt_syms20 * (-1.0 / 3.0) - (coefs_tq1_7 * coef_Jacob3_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob3_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob3_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob3_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob3_qt_syms35 * pinvG3_3) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob3_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob3_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob3_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob3_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob3_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob3_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob3_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob3_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob3_qt_syms23 * pinvG3_3) / 3.0;
-    W(2, 62) = coef_Jacob3_qt_syms27 * (-1.0 / 3.0) - (coefs_tq1_9 * coef_Jacob3_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob3_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob3_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob3_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob3_qt_syms35 * pinvG3_3) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob3_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob3_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob3_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob3_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob3_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob3_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob3_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob3_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob3_qt_syms30 * pinvG3_3) / 3.0;
+    W(2, 43) = coef_Jacob3_qt_syms26 * (-1.0 * 2.0) - (coefs_tq1_9 * coef_Jacob3_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob3_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob3_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob3_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob3_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob3_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob3_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob3_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob3_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob3_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob3_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms30 * pinvG3_3) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob3_qt_syms35 * pinvG3_3) * 2.0;
+    W(2, 44) = coef_Jacob3_qt_syms9 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob3_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob3_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_4 * coef_Jacob3_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob3_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob3_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_4 * coef_Jacob3_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_3 * coef_Jacob3_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_3 * coef_Jacob3_qt_syms33 * pinvG1_2)  -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_4 * coef_Jacob3_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_3 * coef_Jacob3_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_3 * coef_Jacob3_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_3 * coef_Jacob3_qt_syms33 * pinvG1_3)  -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_3 * coef_Jacob3_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_3 * coef_Jacob3_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_3 * coef_Jacob3_qt_syms35 * pinvG3_3) ;
+    W(2, 45) = coef_Jacob3_qt_syms19 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob3_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_7 * coef_Jacob3_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_6 * coef_Jacob3_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob3_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_7 * coef_Jacob3_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_6 * coef_Jacob3_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms33 * pinvG1_2)  -
+               (coefs_tq1_9 * coef_Jacob3_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms21 * pinvG1_3)  -
+               (coefs_tq1_7 * coef_Jacob3_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_6 * coef_Jacob3_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms33 * pinvG1_3)  -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms22 * pinvG2_3)  -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms35 * pinvG3_3) ;
+    W(2, 46) = coef_Jacob3_qt_syms26 * (-1.0 * 2.0) - (coefs_tq1_9 * coef_Jacob3_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob3_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob3_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob3_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob3_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob3_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob3_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob3_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob3_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob3_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob3_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms30 * pinvG3_3) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob3_qt_syms35 * pinvG3_3) * 2.0;
+    W(2, 47) = coef_Jacob3_qt_syms27 * (-1.0 * 2.0) - (coefs_tq1_9 * coef_Jacob3_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob3_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob3_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms35 * pinvG3_3) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob3_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob3_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob3_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob3_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob3_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob3_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob3_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob3_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob3_qt_syms30 * pinvG3_3) * 2.0;
+    W(2, 48) = coef_Jacob3_qt_syms4 * (-1.0 * 2.0) - (coefs_tq1_4 * coef_Jacob3_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_4 * coef_Jacob3_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob3_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_4 * coef_Jacob3_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob3_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob3_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob3_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob3_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob3_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms13 * pinvG3_3) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob3_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob3_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob3_qt_syms35 * pinvG3_3) * 2.0;
+    W(2, 49) = coef_Jacob3_qt_syms7 * (-1.0 ) - (coefs_tq1_7 * coef_Jacob3_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_4 * coef_Jacob3_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_7 * coef_Jacob3_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_2 * coef_Jacob3_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_4 * coef_Jacob3_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_7 * coef_Jacob3_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_2 * coef_Jacob3_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_2 * coef_Jacob3_qt_syms33 * pinvG1_2)  -
+               (coefs_tq1_4 * coef_Jacob3_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms21 * pinvG1_3)  -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_2 * coef_Jacob3_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_2 * coef_Jacob3_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_2 * coef_Jacob3_qt_syms33 * pinvG1_3)  -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms22 * pinvG2_3)  -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_2 * coef_Jacob3_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_2 * coef_Jacob3_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_2 * coef_Jacob3_qt_syms35 * pinvG3_3) ;
+    W(2, 50) = coef_Jacob3_qt_syms9 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob3_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob3_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_4 * coef_Jacob3_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob3_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob3_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_4 * coef_Jacob3_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_3 * coef_Jacob3_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_3 * coef_Jacob3_qt_syms33 * pinvG1_2)  -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_4 * coef_Jacob3_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_3 * coef_Jacob3_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_3 * coef_Jacob3_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_3 * coef_Jacob3_qt_syms33 * pinvG1_3)  -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_3 * coef_Jacob3_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_3 * coef_Jacob3_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_3 * coef_Jacob3_qt_syms35 * pinvG3_3) ;
+    W(2, 51) = coef_Jacob3_qt_syms10 * (-1.0 * 2.0) - (coefs_tq1_4 * coef_Jacob3_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_4 * coef_Jacob3_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_4 * coef_Jacob3_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms35 * pinvG3_3) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob3_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob3_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob3_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob3_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob3_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob3_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob3_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob3_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob3_qt_syms13 * pinvG3_3) * 2.0;
+    W(2, 52) = coef_Jacob3_qt_syms7 * (-1.0 ) - (coefs_tq1_7 * coef_Jacob3_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_4 * coef_Jacob3_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_7 * coef_Jacob3_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_2 * coef_Jacob3_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_4 * coef_Jacob3_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_7 * coef_Jacob3_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_2 * coef_Jacob3_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_2 * coef_Jacob3_qt_syms33 * pinvG1_2)  -
+               (coefs_tq1_4 * coef_Jacob3_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms21 * pinvG1_3)  -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_2 * coef_Jacob3_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_2 * coef_Jacob3_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_2 * coef_Jacob3_qt_syms33 * pinvG1_3)  -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms22 * pinvG2_3)  -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_2 * coef_Jacob3_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_2 * coef_Jacob3_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_2 * coef_Jacob3_qt_syms35 * pinvG3_3) ;
+    W(2, 53) = coef_Jacob3_qt_syms17 * (-1.0 * 2.0) - (coefs_tq1_7 * coef_Jacob3_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob3_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob3_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob3_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob3_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob3_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob3_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob3_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob3_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob3_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob3_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms23 * pinvG3_3) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob3_qt_syms35 * pinvG3_3) * 2.0;
+    W(2, 54) = coef_Jacob3_qt_syms19 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob3_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_7 * coef_Jacob3_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_6 * coef_Jacob3_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob3_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_7 * coef_Jacob3_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_6 * coef_Jacob3_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms33 * pinvG1_2)  -
+               (coefs_tq1_9 * coef_Jacob3_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms21 * pinvG1_3)  -
+               (coefs_tq1_7 * coef_Jacob3_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_6 * coef_Jacob3_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms33 * pinvG1_3)  -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms22 * pinvG2_3)  -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms35 * pinvG3_3) ;
+    W(2, 55) = coef_Jacob3_qt_syms20 * (-1.0 * 2.0) - (coefs_tq1_7 * coef_Jacob3_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob3_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob3_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms35 * pinvG3_3) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob3_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob3_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob3_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob3_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob3_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob3_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob3_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob3_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob3_qt_syms23 * pinvG3_3) * 2.0;
+    W(2, 56) = coef_Jacob3_qt_syms9 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob3_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob3_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_4 * coef_Jacob3_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob3_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob3_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_4 * coef_Jacob3_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_3 * coef_Jacob3_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_3 * coef_Jacob3_qt_syms33 * pinvG1_2)  -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_4 * coef_Jacob3_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_3 * coef_Jacob3_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_3 * coef_Jacob3_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_3 * coef_Jacob3_qt_syms33 * pinvG1_3)  -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_3 * coef_Jacob3_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_3 * coef_Jacob3_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_3 * coef_Jacob3_qt_syms35 * pinvG3_3) ;
+    W(2, 57) = coef_Jacob3_qt_syms19 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob3_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_7 * coef_Jacob3_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_6 * coef_Jacob3_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob3_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_7 * coef_Jacob3_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_6 * coef_Jacob3_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms33 * pinvG1_2)  -
+               (coefs_tq1_9 * coef_Jacob3_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms21 * pinvG1_3)  -
+               (coefs_tq1_7 * coef_Jacob3_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_6 * coef_Jacob3_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms33 * pinvG1_3)  -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms22 * pinvG2_3)  -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_6 * coef_Jacob3_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_6 * coef_Jacob3_qt_syms35 * pinvG3_3) ;
+    W(2, 58) = coef_Jacob3_qt_syms26 * (-1.0 * 2.0) - (coefs_tq1_9 * coef_Jacob3_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob3_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob3_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob3_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob3_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob3_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob3_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob3_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob3_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob3_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob3_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms30 * pinvG3_3) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob3_qt_syms35 * pinvG3_3) * 2.0;
+    W(2, 59) = coef_Jacob3_qt_syms27 * (-1.0 * 2.0) - (coefs_tq1_9 * coef_Jacob3_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob3_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob3_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms35 * pinvG3_3) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob3_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob3_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob3_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob3_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob3_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob3_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob3_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob3_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob3_qt_syms30 * pinvG3_3) * 2.0;
+    W(2, 60) = coef_Jacob3_qt_syms10 * (-1.0 * 2.0) - (coefs_tq1_4 * coef_Jacob3_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_4 * coef_Jacob3_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_4 * coef_Jacob3_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob3_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob3_qt_syms35 * pinvG3_3) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob3_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob3_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob3_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob3_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob3_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob3_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob3_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob3_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob3_qt_syms13 * pinvG3_3) * 2.0;
+    W(2, 61) = coef_Jacob3_qt_syms20 * (-1.0 * 2.0) - (coefs_tq1_7 * coef_Jacob3_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob3_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob3_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob3_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob3_qt_syms35 * pinvG3_3) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob3_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob3_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob3_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob3_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob3_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob3_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob3_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob3_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob3_qt_syms23 * pinvG3_3) * 2.0;
+    W(2, 62) = coef_Jacob3_qt_syms27 * (-1.0 * 2.0) - (coefs_tq1_9 * coef_Jacob3_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob3_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob3_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob3_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob3_qt_syms35 * pinvG3_3) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob3_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob3_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob3_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob3_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob3_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob3_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob3_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob3_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob3_qt_syms30 * pinvG3_3) * 2.0;
     W(2, 63) = -coef_Jacob3_qt_syms32 - coefs_tq1_10 * coef_Jacob3_qt_syms33 * pinvG1_1 -
                coefs_tq1_10 * coef_Jacob3_qt_syms34 * pinvG2_1 - coefs_tq1_10 * coef_Jacob3_qt_syms35 * pinvG3_1 -
                coefs_tq2_10 * coef_Jacob3_qt_syms33 * pinvG1_2 - coefs_tq2_10 * coef_Jacob3_qt_syms34 * pinvG2_2 -
@@ -6161,1317 +6161,1319 @@ void mixed3_pTop_func(Eigen::Matrix<double, 4, 24> &coef_f_q_sym,
               coefs_tq1_1 * coef_Jacob4_qt_syms13 * pinvG3_1 - coefs_tq2_1 * coef_Jacob4_qt_syms12 * pinvG2_2 -
               coefs_tq3_1 * coef_Jacob4_qt_syms11 * pinvG1_3 - coefs_tq2_1 * coef_Jacob4_qt_syms13 * pinvG3_2 -
               coefs_tq3_1 * coef_Jacob4_qt_syms12 * pinvG2_3 - coefs_tq3_1 * coef_Jacob4_qt_syms13 * pinvG3_3;
-    W(3, 1) = coef_Jacob4_qt_syms2 * (-1.0 / 3.0) - (coefs_tq1_2 * coef_Jacob4_qt_syms11 * pinvG1_1) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob4_qt_syms21 * pinvG1_1) / 3.0 -
-              (coefs_tq1_2 * coef_Jacob4_qt_syms12 * pinvG2_1) / 3.0 -
-              (coefs_tq2_2 * coef_Jacob4_qt_syms11 * pinvG1_2) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob4_qt_syms22 * pinvG2_1) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob4_qt_syms21 * pinvG1_2) / 3.0 -
-              (coefs_tq1_2 * coef_Jacob4_qt_syms13 * pinvG3_1) / 3.0 -
-              (coefs_tq2_2 * coef_Jacob4_qt_syms12 * pinvG2_2) / 3.0 -
-              (coefs_tq3_2 * coef_Jacob4_qt_syms11 * pinvG1_3) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob4_qt_syms23 * pinvG3_1) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob4_qt_syms22 * pinvG2_2) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob4_qt_syms21 * pinvG1_3) / 3.0 -
-              (coefs_tq2_2 * coef_Jacob4_qt_syms13 * pinvG3_2) / 3.0 -
-              (coefs_tq3_2 * coef_Jacob4_qt_syms12 * pinvG2_3) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob4_qt_syms23 * pinvG3_2) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob4_qt_syms22 * pinvG2_3) / 3.0 -
-              (coefs_tq3_2 * coef_Jacob4_qt_syms13 * pinvG3_3) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob4_qt_syms23 * pinvG3_3) / 3.0;
-    W(3, 2) = coef_Jacob4_qt_syms3 * (-1.0 / 3.0) - (coefs_tq1_3 * coef_Jacob4_qt_syms11 * pinvG1_1) / 3.0 -
-              (coefs_tq1_3 * coef_Jacob4_qt_syms12 * pinvG2_1) / 3.0 -
-              (coefs_tq2_3 * coef_Jacob4_qt_syms11 * pinvG1_2) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob4_qt_syms28 * pinvG1_1) / 3.0 -
-              (coefs_tq1_3 * coef_Jacob4_qt_syms13 * pinvG3_1) / 3.0 -
-              (coefs_tq2_3 * coef_Jacob4_qt_syms12 * pinvG2_2) / 3.0 -
-              (coefs_tq3_3 * coef_Jacob4_qt_syms11 * pinvG1_3) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob4_qt_syms29 * pinvG2_1) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob4_qt_syms28 * pinvG1_2) / 3.0 -
-              (coefs_tq2_3 * coef_Jacob4_qt_syms13 * pinvG3_2) / 3.0 -
-              (coefs_tq3_3 * coef_Jacob4_qt_syms12 * pinvG2_3) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob4_qt_syms30 * pinvG3_1) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob4_qt_syms29 * pinvG2_2) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob4_qt_syms28 * pinvG1_3) / 3.0 -
-              (coefs_tq3_3 * coef_Jacob4_qt_syms13 * pinvG3_3) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob4_qt_syms30 * pinvG3_2) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob4_qt_syms29 * pinvG2_3) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob4_qt_syms30 * pinvG3_3) / 3.0;
-    W(3, 3) = coef_Jacob4_qt_syms4 * (-1.0 / 3.0) - (coefs_tq1_4 * coef_Jacob4_qt_syms11 * pinvG1_1) / 3.0 -
-              (coefs_tq1_4 * coef_Jacob4_qt_syms12 * pinvG2_1) / 3.0 -
-              (coefs_tq2_4 * coef_Jacob4_qt_syms11 * pinvG1_2) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob4_qt_syms33 * pinvG1_1) / 3.0 -
-              (coefs_tq1_4 * coef_Jacob4_qt_syms13 * pinvG3_1) / 3.0 -
-              (coefs_tq2_4 * coef_Jacob4_qt_syms12 * pinvG2_2) / 3.0 -
-              (coefs_tq3_4 * coef_Jacob4_qt_syms11 * pinvG1_3) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob4_qt_syms34 * pinvG2_1) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob4_qt_syms33 * pinvG1_2) / 3.0 -
-              (coefs_tq2_4 * coef_Jacob4_qt_syms13 * pinvG3_2) / 3.0 -
-              (coefs_tq3_4 * coef_Jacob4_qt_syms12 * pinvG2_3) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob4_qt_syms35 * pinvG3_1) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob4_qt_syms34 * pinvG2_2) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob4_qt_syms33 * pinvG1_3) / 3.0 -
-              (coefs_tq3_4 * coef_Jacob4_qt_syms13 * pinvG3_3) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob4_qt_syms35 * pinvG3_2) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob4_qt_syms34 * pinvG2_3) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob4_qt_syms35 * pinvG3_3) / 3.0;
-    W(3, 4) = coef_Jacob4_qt_syms2 * (-1.0 / 3.0) - (coefs_tq1_2 * coef_Jacob4_qt_syms11 * pinvG1_1) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob4_qt_syms21 * pinvG1_1) / 3.0 -
-              (coefs_tq1_2 * coef_Jacob4_qt_syms12 * pinvG2_1) / 3.0 -
-              (coefs_tq2_2 * coef_Jacob4_qt_syms11 * pinvG1_2) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob4_qt_syms22 * pinvG2_1) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob4_qt_syms21 * pinvG1_2) / 3.0 -
-              (coefs_tq1_2 * coef_Jacob4_qt_syms13 * pinvG3_1) / 3.0 -
-              (coefs_tq2_2 * coef_Jacob4_qt_syms12 * pinvG2_2) / 3.0 -
-              (coefs_tq3_2 * coef_Jacob4_qt_syms11 * pinvG1_3) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob4_qt_syms23 * pinvG3_1) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob4_qt_syms22 * pinvG2_2) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob4_qt_syms21 * pinvG1_3) / 3.0 -
-              (coefs_tq2_2 * coef_Jacob4_qt_syms13 * pinvG3_2) / 3.0 -
-              (coefs_tq3_2 * coef_Jacob4_qt_syms12 * pinvG2_3) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob4_qt_syms23 * pinvG3_2) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob4_qt_syms22 * pinvG2_3) / 3.0 -
-              (coefs_tq3_2 * coef_Jacob4_qt_syms13 * pinvG3_3) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob4_qt_syms23 * pinvG3_3) / 3.0;
-    W(3, 5) = coef_Jacob4_qt_syms5 * (-1.0 / 3.0) - (coefs_tq1_5 * coef_Jacob4_qt_syms11 * pinvG1_1) / 3.0 -
-              (coefs_tq1_2 * coef_Jacob4_qt_syms21 * pinvG1_1) / 3.0 -
-              (coefs_tq1_5 * coef_Jacob4_qt_syms12 * pinvG2_1) / 3.0 -
-              (coefs_tq2_5 * coef_Jacob4_qt_syms11 * pinvG1_2) / 3.0 -
-              (coefs_tq1_2 * coef_Jacob4_qt_syms22 * pinvG2_1) / 3.0 -
-              (coefs_tq2_2 * coef_Jacob4_qt_syms21 * pinvG1_2) / 3.0 -
-              (coefs_tq1_5 * coef_Jacob4_qt_syms13 * pinvG3_1) / 3.0 -
-              (coefs_tq2_5 * coef_Jacob4_qt_syms12 * pinvG2_2) / 3.0 -
-              (coefs_tq3_5 * coef_Jacob4_qt_syms11 * pinvG1_3) / 3.0 -
-              (coefs_tq1_2 * coef_Jacob4_qt_syms23 * pinvG3_1) / 3.0 -
-              (coefs_tq2_2 * coef_Jacob4_qt_syms22 * pinvG2_2) / 3.0 -
-              (coefs_tq3_2 * coef_Jacob4_qt_syms21 * pinvG1_3) / 3.0 -
-              (coefs_tq2_5 * coef_Jacob4_qt_syms13 * pinvG3_2) / 3.0 -
-              (coefs_tq3_5 * coef_Jacob4_qt_syms12 * pinvG2_3) / 3.0 -
-              (coefs_tq2_2 * coef_Jacob4_qt_syms23 * pinvG3_2) / 3.0 -
-              (coefs_tq3_2 * coef_Jacob4_qt_syms22 * pinvG2_3) / 3.0 -
-              (coefs_tq3_5 * coef_Jacob4_qt_syms13 * pinvG3_3) / 3.0 -
-              (coefs_tq3_2 * coef_Jacob4_qt_syms23 * pinvG3_3) / 3.0;
-    W(3, 6) = coef_Jacob4_qt_syms6 * (-1.0 / 6.0) - (coefs_tq1_6 * coef_Jacob4_qt_syms11 * pinvG1_1) / 6.0 -
-              (coefs_tq1_3 * coef_Jacob4_qt_syms21 * pinvG1_1) / 6.0 -
-              (coefs_tq1_6 * coef_Jacob4_qt_syms12 * pinvG2_1) / 6.0 -
-              (coefs_tq2_6 * coef_Jacob4_qt_syms11 * pinvG1_2) / 6.0 -
-              (coefs_tq1_2 * coef_Jacob4_qt_syms28 * pinvG1_1) / 6.0 -
-              (coefs_tq1_3 * coef_Jacob4_qt_syms22 * pinvG2_1) / 6.0 -
-              (coefs_tq2_3 * coef_Jacob4_qt_syms21 * pinvG1_2) / 6.0 -
-              (coefs_tq1_6 * coef_Jacob4_qt_syms13 * pinvG3_1) / 6.0 -
-              (coefs_tq2_6 * coef_Jacob4_qt_syms12 * pinvG2_2) / 6.0 -
-              (coefs_tq3_6 * coef_Jacob4_qt_syms11 * pinvG1_3) / 6.0 -
-              (coefs_tq1_2 * coef_Jacob4_qt_syms29 * pinvG2_1) / 6.0 -
-              (coefs_tq2_2 * coef_Jacob4_qt_syms28 * pinvG1_2) / 6.0 -
-              (coefs_tq1_3 * coef_Jacob4_qt_syms23 * pinvG3_1) / 6.0 -
-              (coefs_tq2_3 * coef_Jacob4_qt_syms22 * pinvG2_2) / 6.0 -
-              (coefs_tq3_3 * coef_Jacob4_qt_syms21 * pinvG1_3) / 6.0 -
-              (coefs_tq2_6 * coef_Jacob4_qt_syms13 * pinvG3_2) / 6.0 -
-              (coefs_tq3_6 * coef_Jacob4_qt_syms12 * pinvG2_3) / 6.0 -
-              (coefs_tq1_2 * coef_Jacob4_qt_syms30 * pinvG3_1) / 6.0 -
-              (coefs_tq2_2 * coef_Jacob4_qt_syms29 * pinvG2_2) / 6.0 -
-              (coefs_tq3_2 * coef_Jacob4_qt_syms28 * pinvG1_3) / 6.0 -
-              (coefs_tq2_3 * coef_Jacob4_qt_syms23 * pinvG3_2) / 6.0 -
-              (coefs_tq3_3 * coef_Jacob4_qt_syms22 * pinvG2_3) / 6.0 -
-              (coefs_tq3_6 * coef_Jacob4_qt_syms13 * pinvG3_3) / 6.0 -
-              (coefs_tq2_2 * coef_Jacob4_qt_syms30 * pinvG3_2) / 6.0 -
-              (coefs_tq3_2 * coef_Jacob4_qt_syms29 * pinvG2_3) / 6.0 -
-              (coefs_tq3_3 * coef_Jacob4_qt_syms23 * pinvG3_3) / 6.0 -
-              (coefs_tq3_2 * coef_Jacob4_qt_syms30 * pinvG3_3) / 6.0;
-    W(3, 7) = coef_Jacob4_qt_syms7 * (-1.0 / 6.0) - (coefs_tq1_7 * coef_Jacob4_qt_syms11 * pinvG1_1) / 6.0 -
-              (coefs_tq1_4 * coef_Jacob4_qt_syms21 * pinvG1_1) / 6.0 -
-              (coefs_tq1_7 * coef_Jacob4_qt_syms12 * pinvG2_1) / 6.0 -
-              (coefs_tq2_7 * coef_Jacob4_qt_syms11 * pinvG1_2) / 6.0 -
-              (coefs_tq1_2 * coef_Jacob4_qt_syms33 * pinvG1_1) / 6.0 -
-              (coefs_tq1_4 * coef_Jacob4_qt_syms22 * pinvG2_1) / 6.0 -
-              (coefs_tq2_4 * coef_Jacob4_qt_syms21 * pinvG1_2) / 6.0 -
-              (coefs_tq1_7 * coef_Jacob4_qt_syms13 * pinvG3_1) / 6.0 -
-              (coefs_tq2_7 * coef_Jacob4_qt_syms12 * pinvG2_2) / 6.0 -
-              (coefs_tq3_7 * coef_Jacob4_qt_syms11 * pinvG1_3) / 6.0 -
-              (coefs_tq1_2 * coef_Jacob4_qt_syms34 * pinvG2_1) / 6.0 -
-              (coefs_tq2_2 * coef_Jacob4_qt_syms33 * pinvG1_2) / 6.0 -
-              (coefs_tq1_4 * coef_Jacob4_qt_syms23 * pinvG3_1) / 6.0 -
-              (coefs_tq2_4 * coef_Jacob4_qt_syms22 * pinvG2_2) / 6.0 -
-              (coefs_tq3_4 * coef_Jacob4_qt_syms21 * pinvG1_3) / 6.0 -
-              (coefs_tq2_7 * coef_Jacob4_qt_syms13 * pinvG3_2) / 6.0 -
-              (coefs_tq3_7 * coef_Jacob4_qt_syms12 * pinvG2_3) / 6.0 -
-              (coefs_tq1_2 * coef_Jacob4_qt_syms35 * pinvG3_1) / 6.0 -
-              (coefs_tq2_2 * coef_Jacob4_qt_syms34 * pinvG2_2) / 6.0 -
-              (coefs_tq3_2 * coef_Jacob4_qt_syms33 * pinvG1_3) / 6.0 -
-              (coefs_tq2_4 * coef_Jacob4_qt_syms23 * pinvG3_2) / 6.0 -
-              (coefs_tq3_4 * coef_Jacob4_qt_syms22 * pinvG2_3) / 6.0 -
-              (coefs_tq3_7 * coef_Jacob4_qt_syms13 * pinvG3_3) / 6.0 -
-              (coefs_tq2_2 * coef_Jacob4_qt_syms35 * pinvG3_2) / 6.0 -
-              (coefs_tq3_2 * coef_Jacob4_qt_syms34 * pinvG2_3) / 6.0 -
-              (coefs_tq3_4 * coef_Jacob4_qt_syms23 * pinvG3_3) / 6.0 -
-              (coefs_tq3_2 * coef_Jacob4_qt_syms35 * pinvG3_3) / 6.0;
-    W(3, 8) = coef_Jacob4_qt_syms3 * (-1.0 / 3.0) - (coefs_tq1_3 * coef_Jacob4_qt_syms11 * pinvG1_1) / 3.0 -
-              (coefs_tq1_3 * coef_Jacob4_qt_syms12 * pinvG2_1) / 3.0 -
-              (coefs_tq2_3 * coef_Jacob4_qt_syms11 * pinvG1_2) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob4_qt_syms28 * pinvG1_1) / 3.0 -
-              (coefs_tq1_3 * coef_Jacob4_qt_syms13 * pinvG3_1) / 3.0 -
-              (coefs_tq2_3 * coef_Jacob4_qt_syms12 * pinvG2_2) / 3.0 -
-              (coefs_tq3_3 * coef_Jacob4_qt_syms11 * pinvG1_3) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob4_qt_syms29 * pinvG2_1) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob4_qt_syms28 * pinvG1_2) / 3.0 -
-              (coefs_tq2_3 * coef_Jacob4_qt_syms13 * pinvG3_2) / 3.0 -
-              (coefs_tq3_3 * coef_Jacob4_qt_syms12 * pinvG2_3) / 3.0 -
-              (coefs_tq1_1 * coef_Jacob4_qt_syms30 * pinvG3_1) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob4_qt_syms29 * pinvG2_2) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob4_qt_syms28 * pinvG1_3) / 3.0 -
-              (coefs_tq3_3 * coef_Jacob4_qt_syms13 * pinvG3_3) / 3.0 -
-              (coefs_tq2_1 * coef_Jacob4_qt_syms30 * pinvG3_2) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob4_qt_syms29 * pinvG2_3) / 3.0 -
-              (coefs_tq3_1 * coef_Jacob4_qt_syms30 * pinvG3_3) / 3.0;
-    W(3, 9) = coef_Jacob4_qt_syms6 * (-1.0 / 6.0) - (coefs_tq1_6 * coef_Jacob4_qt_syms11 * pinvG1_1) / 6.0 -
-              (coefs_tq1_3 * coef_Jacob4_qt_syms21 * pinvG1_1) / 6.0 -
-              (coefs_tq1_6 * coef_Jacob4_qt_syms12 * pinvG2_1) / 6.0 -
-              (coefs_tq2_6 * coef_Jacob4_qt_syms11 * pinvG1_2) / 6.0 -
-              (coefs_tq1_2 * coef_Jacob4_qt_syms28 * pinvG1_1) / 6.0 -
-              (coefs_tq1_3 * coef_Jacob4_qt_syms22 * pinvG2_1) / 6.0 -
-              (coefs_tq2_3 * coef_Jacob4_qt_syms21 * pinvG1_2) / 6.0 -
-              (coefs_tq1_6 * coef_Jacob4_qt_syms13 * pinvG3_1) / 6.0 -
-              (coefs_tq2_6 * coef_Jacob4_qt_syms12 * pinvG2_2) / 6.0 -
-              (coefs_tq3_6 * coef_Jacob4_qt_syms11 * pinvG1_3) / 6.0 -
-              (coefs_tq1_2 * coef_Jacob4_qt_syms29 * pinvG2_1) / 6.0 -
-              (coefs_tq2_2 * coef_Jacob4_qt_syms28 * pinvG1_2) / 6.0 -
-              (coefs_tq1_3 * coef_Jacob4_qt_syms23 * pinvG3_1) / 6.0 -
-              (coefs_tq2_3 * coef_Jacob4_qt_syms22 * pinvG2_2) / 6.0 -
-              (coefs_tq3_3 * coef_Jacob4_qt_syms21 * pinvG1_3) / 6.0 -
-              (coefs_tq2_6 * coef_Jacob4_qt_syms13 * pinvG3_2) / 6.0 -
-              (coefs_tq3_6 * coef_Jacob4_qt_syms12 * pinvG2_3) / 6.0 -
-              (coefs_tq1_2 * coef_Jacob4_qt_syms30 * pinvG3_1) / 6.0 -
-              (coefs_tq2_2 * coef_Jacob4_qt_syms29 * pinvG2_2) / 6.0 -
-              (coefs_tq3_2 * coef_Jacob4_qt_syms28 * pinvG1_3) / 6.0 -
-              (coefs_tq2_3 * coef_Jacob4_qt_syms23 * pinvG3_2) / 6.0 -
-              (coefs_tq3_3 * coef_Jacob4_qt_syms22 * pinvG2_3) / 6.0 -
-              (coefs_tq3_6 * coef_Jacob4_qt_syms13 * pinvG3_3) / 6.0 -
-              (coefs_tq2_2 * coef_Jacob4_qt_syms30 * pinvG3_2) / 6.0 -
-              (coefs_tq3_2 * coef_Jacob4_qt_syms29 * pinvG2_3) / 6.0 -
-              (coefs_tq3_3 * coef_Jacob4_qt_syms23 * pinvG3_3) / 6.0 -
-              (coefs_tq3_2 * coef_Jacob4_qt_syms30 * pinvG3_3) / 6.0;
-    W(3, 10) = coef_Jacob4_qt_syms8 * (-1.0 / 3.0) - (coefs_tq1_8 * coef_Jacob4_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob4_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob4_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq1_3 * coef_Jacob4_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob4_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob4_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob4_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq1_3 * coef_Jacob4_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob4_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob4_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob4_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq1_3 * coef_Jacob4_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob4_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob4_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob4_qt_syms13 * pinvG3_3) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob4_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob4_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob4_qt_syms30 * pinvG3_3) / 3.0;
-    W(3, 11) = coef_Jacob4_qt_syms9 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob4_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob4_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob4_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob4_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob4_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob4_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob4_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob4_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob4_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob4_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob4_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob4_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob4_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob4_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob4_qt_syms35 * pinvG3_3) / 6.0;
-    W(3, 12) = coef_Jacob4_qt_syms4 * (-1.0 / 3.0) - (coefs_tq1_4 * coef_Jacob4_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_4 * coef_Jacob4_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob4_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_4 * coef_Jacob4_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob4_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob4_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob4_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob4_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob4_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms13 * pinvG3_3) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob4_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob4_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob4_qt_syms35 * pinvG3_3) / 3.0;
-    W(3, 13) = coef_Jacob4_qt_syms7 * (-1.0 / 6.0) - (coefs_tq1_7 * coef_Jacob4_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob4_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob4_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob4_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob4_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob4_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob4_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob4_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob4_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob4_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob4_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob4_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob4_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob4_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob4_qt_syms35 * pinvG3_3) / 6.0;
-    W(3, 14) = coef_Jacob4_qt_syms9 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob4_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob4_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob4_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob4_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob4_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob4_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob4_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob4_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob4_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob4_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob4_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob4_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob4_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob4_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob4_qt_syms35 * pinvG3_3) / 6.0;
-    W(3, 15) = coef_Jacob4_qt_syms10 * (-1.0 / 3.0) - (coefs_tq1_4 * coef_Jacob4_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_4 * coef_Jacob4_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_4 * coef_Jacob4_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms35 * pinvG3_3) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob4_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob4_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob4_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob4_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob4_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob4_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob4_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob4_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob4_qt_syms13 * pinvG3_3) / 3.0;
-    W(3, 16) = coef_Jacob4_qt_syms2 * (-1.0 / 3.0) - (coefs_tq1_2 * coef_Jacob4_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob4_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_2 * coef_Jacob4_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq2_2 * coef_Jacob4_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob4_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob4_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_2 * coef_Jacob4_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_2 * coef_Jacob4_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq3_2 * coef_Jacob4_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob4_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob4_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob4_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq2_2 * coef_Jacob4_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_2 * coef_Jacob4_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob4_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob4_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq3_2 * coef_Jacob4_qt_syms13 * pinvG3_3) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob4_qt_syms23 * pinvG3_3) / 3.0;
-    W(3, 17) = coef_Jacob4_qt_syms5 * (-1.0 / 3.0) - (coefs_tq1_5 * coef_Jacob4_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_2 * coef_Jacob4_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob4_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob4_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq1_2 * coef_Jacob4_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_2 * coef_Jacob4_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob4_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob4_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob4_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq1_2 * coef_Jacob4_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_2 * coef_Jacob4_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_2 * coef_Jacob4_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob4_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob4_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq2_2 * coef_Jacob4_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_2 * coef_Jacob4_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob4_qt_syms13 * pinvG3_3) / 3.0 -
-               (coefs_tq3_2 * coef_Jacob4_qt_syms23 * pinvG3_3) / 3.0;
-    W(3, 18) = coef_Jacob4_qt_syms6 * (-1.0 / 6.0) - (coefs_tq1_6 * coef_Jacob4_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob4_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob4_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob4_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob4_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob4_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob4_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob4_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob4_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob4_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob4_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob4_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob4_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob4_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob4_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob4_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob4_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob4_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob4_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob4_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob4_qt_syms30 * pinvG3_3) / 6.0;
-    W(3, 19) = coef_Jacob4_qt_syms7 * (-1.0 / 6.0) - (coefs_tq1_7 * coef_Jacob4_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob4_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob4_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob4_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob4_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob4_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob4_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob4_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob4_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob4_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob4_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob4_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob4_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob4_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob4_qt_syms35 * pinvG3_3) / 6.0;
-    W(3, 20) = coef_Jacob4_qt_syms5 * (-1.0 / 3.0) - (coefs_tq1_5 * coef_Jacob4_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_2 * coef_Jacob4_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob4_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob4_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq1_2 * coef_Jacob4_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_2 * coef_Jacob4_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob4_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob4_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob4_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq1_2 * coef_Jacob4_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_2 * coef_Jacob4_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_2 * coef_Jacob4_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob4_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob4_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq2_2 * coef_Jacob4_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_2 * coef_Jacob4_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob4_qt_syms13 * pinvG3_3) / 3.0 -
-               (coefs_tq3_2 * coef_Jacob4_qt_syms23 * pinvG3_3) / 3.0;
+    W(3, 1) = coef_Jacob4_qt_syms2 * (-1.0 * 2.0) - (coefs_tq1_2 * coef_Jacob4_qt_syms11 * pinvG1_1) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob4_qt_syms21 * pinvG1_1) * 2.0 -
+              (coefs_tq1_2 * coef_Jacob4_qt_syms12 * pinvG2_1) * 2.0 -
+              (coefs_tq2_2 * coef_Jacob4_qt_syms11 * pinvG1_2) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob4_qt_syms22 * pinvG2_1) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob4_qt_syms21 * pinvG1_2) * 2.0 -
+              (coefs_tq1_2 * coef_Jacob4_qt_syms13 * pinvG3_1) * 2.0 -
+              (coefs_tq2_2 * coef_Jacob4_qt_syms12 * pinvG2_2) * 2.0 -
+              (coefs_tq3_2 * coef_Jacob4_qt_syms11 * pinvG1_3) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob4_qt_syms23 * pinvG3_1) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob4_qt_syms22 * pinvG2_2) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob4_qt_syms21 * pinvG1_3) * 2.0 -
+              (coefs_tq2_2 * coef_Jacob4_qt_syms13 * pinvG3_2) * 2.0 -
+              (coefs_tq3_2 * coef_Jacob4_qt_syms12 * pinvG2_3) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob4_qt_syms23 * pinvG3_2) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob4_qt_syms22 * pinvG2_3) * 2.0 -
+              (coefs_tq3_2 * coef_Jacob4_qt_syms13 * pinvG3_3) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob4_qt_syms23 * pinvG3_3) * 2.0;
+    W(3, 2) = coef_Jacob4_qt_syms3 * (-1.0 * 2.0) - (coefs_tq1_3 * coef_Jacob4_qt_syms11 * pinvG1_1) * 2.0 -
+              (coefs_tq1_3 * coef_Jacob4_qt_syms12 * pinvG2_1) * 2.0 -
+              (coefs_tq2_3 * coef_Jacob4_qt_syms11 * pinvG1_2) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob4_qt_syms28 * pinvG1_1) * 2.0 -
+              (coefs_tq1_3 * coef_Jacob4_qt_syms13 * pinvG3_1) * 2.0 -
+              (coefs_tq2_3 * coef_Jacob4_qt_syms12 * pinvG2_2) * 2.0 -
+              (coefs_tq3_3 * coef_Jacob4_qt_syms11 * pinvG1_3) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob4_qt_syms29 * pinvG2_1) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob4_qt_syms28 * pinvG1_2) * 2.0 -
+              (coefs_tq2_3 * coef_Jacob4_qt_syms13 * pinvG3_2) * 2.0 -
+              (coefs_tq3_3 * coef_Jacob4_qt_syms12 * pinvG2_3) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob4_qt_syms30 * pinvG3_1) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob4_qt_syms29 * pinvG2_2) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob4_qt_syms28 * pinvG1_3) * 2.0 -
+              (coefs_tq3_3 * coef_Jacob4_qt_syms13 * pinvG3_3) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob4_qt_syms30 * pinvG3_2) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob4_qt_syms29 * pinvG2_3) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob4_qt_syms30 * pinvG3_3) * 2.0;
+    W(3, 3) = coef_Jacob4_qt_syms4 * (-1.0 * 2.0) - (coefs_tq1_4 * coef_Jacob4_qt_syms11 * pinvG1_1) * 2.0 -
+              (coefs_tq1_4 * coef_Jacob4_qt_syms12 * pinvG2_1) * 2.0 -
+              (coefs_tq2_4 * coef_Jacob4_qt_syms11 * pinvG1_2) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob4_qt_syms33 * pinvG1_1) * 2.0 -
+              (coefs_tq1_4 * coef_Jacob4_qt_syms13 * pinvG3_1) * 2.0 -
+              (coefs_tq2_4 * coef_Jacob4_qt_syms12 * pinvG2_2) * 2.0 -
+              (coefs_tq3_4 * coef_Jacob4_qt_syms11 * pinvG1_3) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob4_qt_syms34 * pinvG2_1) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob4_qt_syms33 * pinvG1_2) * 2.0 -
+              (coefs_tq2_4 * coef_Jacob4_qt_syms13 * pinvG3_2) * 2.0 -
+              (coefs_tq3_4 * coef_Jacob4_qt_syms12 * pinvG2_3) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob4_qt_syms35 * pinvG3_1) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob4_qt_syms34 * pinvG2_2) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob4_qt_syms33 * pinvG1_3) * 2.0 -
+              (coefs_tq3_4 * coef_Jacob4_qt_syms13 * pinvG3_3) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob4_qt_syms35 * pinvG3_2) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob4_qt_syms34 * pinvG2_3) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob4_qt_syms35 * pinvG3_3) * 2.0;
+    W(3, 4) = coef_Jacob4_qt_syms2 * (-1.0 * 2.0) - (coefs_tq1_2 * coef_Jacob4_qt_syms11 * pinvG1_1) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob4_qt_syms21 * pinvG1_1) * 2.0 -
+              (coefs_tq1_2 * coef_Jacob4_qt_syms12 * pinvG2_1) * 2.0 -
+              (coefs_tq2_2 * coef_Jacob4_qt_syms11 * pinvG1_2) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob4_qt_syms22 * pinvG2_1) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob4_qt_syms21 * pinvG1_2) * 2.0 -
+              (coefs_tq1_2 * coef_Jacob4_qt_syms13 * pinvG3_1) * 2.0 -
+              (coefs_tq2_2 * coef_Jacob4_qt_syms12 * pinvG2_2) * 2.0 -
+              (coefs_tq3_2 * coef_Jacob4_qt_syms11 * pinvG1_3) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob4_qt_syms23 * pinvG3_1) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob4_qt_syms22 * pinvG2_2) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob4_qt_syms21 * pinvG1_3) * 2.0 -
+              (coefs_tq2_2 * coef_Jacob4_qt_syms13 * pinvG3_2) * 2.0 -
+              (coefs_tq3_2 * coef_Jacob4_qt_syms12 * pinvG2_3) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob4_qt_syms23 * pinvG3_2) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob4_qt_syms22 * pinvG2_3) * 2.0 -
+              (coefs_tq3_2 * coef_Jacob4_qt_syms13 * pinvG3_3) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob4_qt_syms23 * pinvG3_3) * 2.0;
+    W(3, 5) = coef_Jacob4_qt_syms5 * (-1.0 * 2.0) - (coefs_tq1_5 * coef_Jacob4_qt_syms11 * pinvG1_1) * 2.0 -
+              (coefs_tq1_2 * coef_Jacob4_qt_syms21 * pinvG1_1) * 2.0 -
+              (coefs_tq1_5 * coef_Jacob4_qt_syms12 * pinvG2_1) * 2.0 -
+              (coefs_tq2_5 * coef_Jacob4_qt_syms11 * pinvG1_2) * 2.0 -
+              (coefs_tq1_2 * coef_Jacob4_qt_syms22 * pinvG2_1) * 2.0 -
+              (coefs_tq2_2 * coef_Jacob4_qt_syms21 * pinvG1_2) * 2.0 -
+              (coefs_tq1_5 * coef_Jacob4_qt_syms13 * pinvG3_1) * 2.0 -
+              (coefs_tq2_5 * coef_Jacob4_qt_syms12 * pinvG2_2) * 2.0 -
+              (coefs_tq3_5 * coef_Jacob4_qt_syms11 * pinvG1_3) * 2.0 -
+              (coefs_tq1_2 * coef_Jacob4_qt_syms23 * pinvG3_1) * 2.0 -
+              (coefs_tq2_2 * coef_Jacob4_qt_syms22 * pinvG2_2) * 2.0 -
+              (coefs_tq3_2 * coef_Jacob4_qt_syms21 * pinvG1_3) * 2.0 -
+              (coefs_tq2_5 * coef_Jacob4_qt_syms13 * pinvG3_2) * 2.0 -
+              (coefs_tq3_5 * coef_Jacob4_qt_syms12 * pinvG2_3) * 2.0 -
+              (coefs_tq2_2 * coef_Jacob4_qt_syms23 * pinvG3_2) * 2.0 -
+              (coefs_tq3_2 * coef_Jacob4_qt_syms22 * pinvG2_3) * 2.0 -
+              (coefs_tq3_5 * coef_Jacob4_qt_syms13 * pinvG3_3) * 2.0 -
+              (coefs_tq3_2 * coef_Jacob4_qt_syms23 * pinvG3_3) * 2.0;
+    W(3, 6) = coef_Jacob4_qt_syms6 * (-1.0 ) - (coefs_tq1_6 * coef_Jacob4_qt_syms11 * pinvG1_1)  -
+              (coefs_tq1_3 * coef_Jacob4_qt_syms21 * pinvG1_1)  -
+              (coefs_tq1_6 * coef_Jacob4_qt_syms12 * pinvG2_1)  -
+              (coefs_tq2_6 * coef_Jacob4_qt_syms11 * pinvG1_2)  -
+              (coefs_tq1_2 * coef_Jacob4_qt_syms28 * pinvG1_1)  -
+              (coefs_tq1_3 * coef_Jacob4_qt_syms22 * pinvG2_1)  -
+              (coefs_tq2_3 * coef_Jacob4_qt_syms21 * pinvG1_2)  -
+              (coefs_tq1_6 * coef_Jacob4_qt_syms13 * pinvG3_1)  -
+              (coefs_tq2_6 * coef_Jacob4_qt_syms12 * pinvG2_2)  -
+              (coefs_tq3_6 * coef_Jacob4_qt_syms11 * pinvG1_3)  -
+              (coefs_tq1_2 * coef_Jacob4_qt_syms29 * pinvG2_1)  -
+              (coefs_tq2_2 * coef_Jacob4_qt_syms28 * pinvG1_2)  -
+              (coefs_tq1_3 * coef_Jacob4_qt_syms23 * pinvG3_1)  -
+              (coefs_tq2_3 * coef_Jacob4_qt_syms22 * pinvG2_2)  -
+              (coefs_tq3_3 * coef_Jacob4_qt_syms21 * pinvG1_3)  -
+              (coefs_tq2_6 * coef_Jacob4_qt_syms13 * pinvG3_2)  -
+              (coefs_tq3_6 * coef_Jacob4_qt_syms12 * pinvG2_3)  -
+              (coefs_tq1_2 * coef_Jacob4_qt_syms30 * pinvG3_1)  -
+              (coefs_tq2_2 * coef_Jacob4_qt_syms29 * pinvG2_2)  -
+              (coefs_tq3_2 * coef_Jacob4_qt_syms28 * pinvG1_3)  -
+              (coefs_tq2_3 * coef_Jacob4_qt_syms23 * pinvG3_2)  -
+              (coefs_tq3_3 * coef_Jacob4_qt_syms22 * pinvG2_3)  -
+              (coefs_tq3_6 * coef_Jacob4_qt_syms13 * pinvG3_3)  -
+              (coefs_tq2_2 * coef_Jacob4_qt_syms30 * pinvG3_2)  -
+              (coefs_tq3_2 * coef_Jacob4_qt_syms29 * pinvG2_3)  -
+              (coefs_tq3_3 * coef_Jacob4_qt_syms23 * pinvG3_3)  -
+              (coefs_tq3_2 * coef_Jacob4_qt_syms30 * pinvG3_3) ;
+    W(3, 7) = coef_Jacob4_qt_syms7 * (-1.0 ) - (coefs_tq1_7 * coef_Jacob4_qt_syms11 * pinvG1_1)  -
+              (coefs_tq1_4 * coef_Jacob4_qt_syms21 * pinvG1_1)  -
+              (coefs_tq1_7 * coef_Jacob4_qt_syms12 * pinvG2_1)  -
+              (coefs_tq2_7 * coef_Jacob4_qt_syms11 * pinvG1_2)  -
+              (coefs_tq1_2 * coef_Jacob4_qt_syms33 * pinvG1_1)  -
+              (coefs_tq1_4 * coef_Jacob4_qt_syms22 * pinvG2_1)  -
+              (coefs_tq2_4 * coef_Jacob4_qt_syms21 * pinvG1_2)  -
+              (coefs_tq1_7 * coef_Jacob4_qt_syms13 * pinvG3_1)  -
+              (coefs_tq2_7 * coef_Jacob4_qt_syms12 * pinvG2_2)  -
+              (coefs_tq3_7 * coef_Jacob4_qt_syms11 * pinvG1_3)  -
+              (coefs_tq1_2 * coef_Jacob4_qt_syms34 * pinvG2_1)  -
+              (coefs_tq2_2 * coef_Jacob4_qt_syms33 * pinvG1_2)  -
+              (coefs_tq1_4 * coef_Jacob4_qt_syms23 * pinvG3_1)  -
+              (coefs_tq2_4 * coef_Jacob4_qt_syms22 * pinvG2_2)  -
+              (coefs_tq3_4 * coef_Jacob4_qt_syms21 * pinvG1_3)  -
+              (coefs_tq2_7 * coef_Jacob4_qt_syms13 * pinvG3_2)  -
+              (coefs_tq3_7 * coef_Jacob4_qt_syms12 * pinvG2_3)  -
+              (coefs_tq1_2 * coef_Jacob4_qt_syms35 * pinvG3_1)  -
+              (coefs_tq2_2 * coef_Jacob4_qt_syms34 * pinvG2_2)  -
+              (coefs_tq3_2 * coef_Jacob4_qt_syms33 * pinvG1_3)  -
+              (coefs_tq2_4 * coef_Jacob4_qt_syms23 * pinvG3_2)  -
+              (coefs_tq3_4 * coef_Jacob4_qt_syms22 * pinvG2_3)  -
+              (coefs_tq3_7 * coef_Jacob4_qt_syms13 * pinvG3_3)  -
+              (coefs_tq2_2 * coef_Jacob4_qt_syms35 * pinvG3_2)  -
+              (coefs_tq3_2 * coef_Jacob4_qt_syms34 * pinvG2_3)  -
+              (coefs_tq3_4 * coef_Jacob4_qt_syms23 * pinvG3_3)  -
+              (coefs_tq3_2 * coef_Jacob4_qt_syms35 * pinvG3_3) ;
+    W(3, 8) = coef_Jacob4_qt_syms3 * (-1.0 * 2.0) - (coefs_tq1_3 * coef_Jacob4_qt_syms11 * pinvG1_1) * 2.0 -
+              (coefs_tq1_3 * coef_Jacob4_qt_syms12 * pinvG2_1) * 2.0 -
+              (coefs_tq2_3 * coef_Jacob4_qt_syms11 * pinvG1_2) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob4_qt_syms28 * pinvG1_1) * 2.0 -
+              (coefs_tq1_3 * coef_Jacob4_qt_syms13 * pinvG3_1) * 2.0 -
+              (coefs_tq2_3 * coef_Jacob4_qt_syms12 * pinvG2_2) * 2.0 -
+              (coefs_tq3_3 * coef_Jacob4_qt_syms11 * pinvG1_3) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob4_qt_syms29 * pinvG2_1) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob4_qt_syms28 * pinvG1_2) * 2.0 -
+              (coefs_tq2_3 * coef_Jacob4_qt_syms13 * pinvG3_2) * 2.0 -
+              (coefs_tq3_3 * coef_Jacob4_qt_syms12 * pinvG2_3) * 2.0 -
+              (coefs_tq1_1 * coef_Jacob4_qt_syms30 * pinvG3_1) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob4_qt_syms29 * pinvG2_2) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob4_qt_syms28 * pinvG1_3) * 2.0 -
+              (coefs_tq3_3 * coef_Jacob4_qt_syms13 * pinvG3_3) * 2.0 -
+              (coefs_tq2_1 * coef_Jacob4_qt_syms30 * pinvG3_2) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob4_qt_syms29 * pinvG2_3) * 2.0 -
+              (coefs_tq3_1 * coef_Jacob4_qt_syms30 * pinvG3_3) * 2.0;
+    W(3, 9) = coef_Jacob4_qt_syms6 * (-1.0 ) - (coefs_tq1_6 * coef_Jacob4_qt_syms11 * pinvG1_1)  -
+              (coefs_tq1_3 * coef_Jacob4_qt_syms21 * pinvG1_1)  -
+              (coefs_tq1_6 * coef_Jacob4_qt_syms12 * pinvG2_1)  -
+              (coefs_tq2_6 * coef_Jacob4_qt_syms11 * pinvG1_2)  -
+              (coefs_tq1_2 * coef_Jacob4_qt_syms28 * pinvG1_1)  -
+              (coefs_tq1_3 * coef_Jacob4_qt_syms22 * pinvG2_1)  -
+              (coefs_tq2_3 * coef_Jacob4_qt_syms21 * pinvG1_2)  -
+              (coefs_tq1_6 * coef_Jacob4_qt_syms13 * pinvG3_1)  -
+              (coefs_tq2_6 * coef_Jacob4_qt_syms12 * pinvG2_2)  -
+              (coefs_tq3_6 * coef_Jacob4_qt_syms11 * pinvG1_3)  -
+              (coefs_tq1_2 * coef_Jacob4_qt_syms29 * pinvG2_1)  -
+              (coefs_tq2_2 * coef_Jacob4_qt_syms28 * pinvG1_2)  -
+              (coefs_tq1_3 * coef_Jacob4_qt_syms23 * pinvG3_1)  -
+              (coefs_tq2_3 * coef_Jacob4_qt_syms22 * pinvG2_2)  -
+              (coefs_tq3_3 * coef_Jacob4_qt_syms21 * pinvG1_3)  -
+              (coefs_tq2_6 * coef_Jacob4_qt_syms13 * pinvG3_2)  -
+              (coefs_tq3_6 * coef_Jacob4_qt_syms12 * pinvG2_3)  -
+              (coefs_tq1_2 * coef_Jacob4_qt_syms30 * pinvG3_1)  -
+              (coefs_tq2_2 * coef_Jacob4_qt_syms29 * pinvG2_2)  -
+              (coefs_tq3_2 * coef_Jacob4_qt_syms28 * pinvG1_3)  -
+              (coefs_tq2_3 * coef_Jacob4_qt_syms23 * pinvG3_2)  -
+              (coefs_tq3_3 * coef_Jacob4_qt_syms22 * pinvG2_3)  -
+              (coefs_tq3_6 * coef_Jacob4_qt_syms13 * pinvG3_3)  -
+              (coefs_tq2_2 * coef_Jacob4_qt_syms30 * pinvG3_2)  -
+              (coefs_tq3_2 * coef_Jacob4_qt_syms29 * pinvG2_3)  -
+              (coefs_tq3_3 * coef_Jacob4_qt_syms23 * pinvG3_3)  -
+              (coefs_tq3_2 * coef_Jacob4_qt_syms30 * pinvG3_3) ;
+    W(3, 10) = coef_Jacob4_qt_syms8 * (-1.0 * 2.0) - (coefs_tq1_8 * coef_Jacob4_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob4_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob4_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq1_3 * coef_Jacob4_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob4_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob4_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob4_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq1_3 * coef_Jacob4_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob4_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob4_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob4_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq1_3 * coef_Jacob4_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob4_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob4_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob4_qt_syms13 * pinvG3_3) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob4_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob4_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob4_qt_syms30 * pinvG3_3) * 2.0;
+    W(3, 11) = coef_Jacob4_qt_syms9 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob4_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob4_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_4 * coef_Jacob4_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob4_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob4_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_4 * coef_Jacob4_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_3 * coef_Jacob4_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_3 * coef_Jacob4_qt_syms33 * pinvG1_2)  -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_4 * coef_Jacob4_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_3 * coef_Jacob4_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_3 * coef_Jacob4_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_3 * coef_Jacob4_qt_syms33 * pinvG1_3)  -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_3 * coef_Jacob4_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_3 * coef_Jacob4_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_3 * coef_Jacob4_qt_syms35 * pinvG3_3) ;
+    W(3, 12) = coef_Jacob4_qt_syms4 * (-1.0 * 2.0) - (coefs_tq1_4 * coef_Jacob4_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_4 * coef_Jacob4_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob4_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_4 * coef_Jacob4_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob4_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob4_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob4_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob4_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob4_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms13 * pinvG3_3) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob4_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob4_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob4_qt_syms35 * pinvG3_3) * 2.0;
+    W(3, 13) = coef_Jacob4_qt_syms7 * (-1.0 ) - (coefs_tq1_7 * coef_Jacob4_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_4 * coef_Jacob4_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_7 * coef_Jacob4_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_2 * coef_Jacob4_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_4 * coef_Jacob4_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_7 * coef_Jacob4_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_2 * coef_Jacob4_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_2 * coef_Jacob4_qt_syms33 * pinvG1_2)  -
+               (coefs_tq1_4 * coef_Jacob4_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms21 * pinvG1_3)  -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_2 * coef_Jacob4_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_2 * coef_Jacob4_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_2 * coef_Jacob4_qt_syms33 * pinvG1_3)  -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms22 * pinvG2_3)  -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_2 * coef_Jacob4_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_2 * coef_Jacob4_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_2 * coef_Jacob4_qt_syms35 * pinvG3_3) ;
+    W(3, 14) = coef_Jacob4_qt_syms9 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob4_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob4_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_4 * coef_Jacob4_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob4_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob4_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_4 * coef_Jacob4_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_3 * coef_Jacob4_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_3 * coef_Jacob4_qt_syms33 * pinvG1_2)  -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_4 * coef_Jacob4_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_3 * coef_Jacob4_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_3 * coef_Jacob4_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_3 * coef_Jacob4_qt_syms33 * pinvG1_3)  -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_3 * coef_Jacob4_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_3 * coef_Jacob4_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_3 * coef_Jacob4_qt_syms35 * pinvG3_3) ;
+    W(3, 15) = coef_Jacob4_qt_syms10 * (-1.0 * 2.0) - (coefs_tq1_4 * coef_Jacob4_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_4 * coef_Jacob4_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_4 * coef_Jacob4_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms35 * pinvG3_3) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob4_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob4_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob4_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob4_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob4_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob4_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob4_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob4_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob4_qt_syms13 * pinvG3_3) * 2.0;
+    W(3, 16) = coef_Jacob4_qt_syms2 * (-1.0 * 2.0) - (coefs_tq1_2 * coef_Jacob4_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob4_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_2 * coef_Jacob4_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq2_2 * coef_Jacob4_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob4_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob4_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_2 * coef_Jacob4_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_2 * coef_Jacob4_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq3_2 * coef_Jacob4_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob4_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob4_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob4_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq2_2 * coef_Jacob4_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_2 * coef_Jacob4_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob4_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob4_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq3_2 * coef_Jacob4_qt_syms13 * pinvG3_3) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob4_qt_syms23 * pinvG3_3) * 2.0;
+    W(3, 17) = coef_Jacob4_qt_syms5 * (-1.0 * 2.0) - (coefs_tq1_5 * coef_Jacob4_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_2 * coef_Jacob4_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob4_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob4_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq1_2 * coef_Jacob4_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_2 * coef_Jacob4_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob4_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob4_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob4_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq1_2 * coef_Jacob4_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_2 * coef_Jacob4_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_2 * coef_Jacob4_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob4_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob4_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq2_2 * coef_Jacob4_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_2 * coef_Jacob4_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob4_qt_syms13 * pinvG3_3) * 2.0 -
+               (coefs_tq3_2 * coef_Jacob4_qt_syms23 * pinvG3_3) * 2.0;
+    W(3, 18) = coef_Jacob4_qt_syms6 * (-1.0 ) - (coefs_tq1_6 * coef_Jacob4_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob4_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_6 * coef_Jacob4_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_2 * coef_Jacob4_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob4_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_3 * coef_Jacob4_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_6 * coef_Jacob4_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_2 * coef_Jacob4_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_2 * coef_Jacob4_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_3 * coef_Jacob4_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_3 * coef_Jacob4_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_3 * coef_Jacob4_qt_syms21 * pinvG1_3)  -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_2 * coef_Jacob4_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_2 * coef_Jacob4_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_2 * coef_Jacob4_qt_syms28 * pinvG1_3)  -
+               (coefs_tq2_3 * coef_Jacob4_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_3 * coef_Jacob4_qt_syms22 * pinvG2_3)  -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_2 * coef_Jacob4_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_2 * coef_Jacob4_qt_syms29 * pinvG2_3)  -
+               (coefs_tq3_3 * coef_Jacob4_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_2 * coef_Jacob4_qt_syms30 * pinvG3_3) ;
+    W(3, 19) = coef_Jacob4_qt_syms7 * (-1.0 ) - (coefs_tq1_7 * coef_Jacob4_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_4 * coef_Jacob4_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_7 * coef_Jacob4_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_2 * coef_Jacob4_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_4 * coef_Jacob4_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_7 * coef_Jacob4_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_2 * coef_Jacob4_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_2 * coef_Jacob4_qt_syms33 * pinvG1_2)  -
+               (coefs_tq1_4 * coef_Jacob4_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms21 * pinvG1_3)  -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_2 * coef_Jacob4_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_2 * coef_Jacob4_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_2 * coef_Jacob4_qt_syms33 * pinvG1_3)  -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms22 * pinvG2_3)  -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_2 * coef_Jacob4_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_2 * coef_Jacob4_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_2 * coef_Jacob4_qt_syms35 * pinvG3_3) ;
+    W(3, 20) = coef_Jacob4_qt_syms5 * (-1.0 * 2.0) - (coefs_tq1_5 * coef_Jacob4_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_2 * coef_Jacob4_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob4_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob4_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq1_2 * coef_Jacob4_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_2 * coef_Jacob4_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob4_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob4_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob4_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq1_2 * coef_Jacob4_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_2 * coef_Jacob4_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_2 * coef_Jacob4_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob4_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob4_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq2_2 * coef_Jacob4_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_2 * coef_Jacob4_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob4_qt_syms13 * pinvG3_3) * 2.0 -
+               (coefs_tq3_2 * coef_Jacob4_qt_syms23 * pinvG3_3) * 2.0;
     W(3, 21) = -coef_Jacob4_qt_syms15 - coefs_tq1_5 * coef_Jacob4_qt_syms21 * pinvG1_1 -
                coefs_tq1_5 * coef_Jacob4_qt_syms22 * pinvG2_1 - coefs_tq2_5 * coef_Jacob4_qt_syms21 * pinvG1_2 -
                coefs_tq1_5 * coef_Jacob4_qt_syms23 * pinvG3_1 - coefs_tq2_5 * coef_Jacob4_qt_syms22 * pinvG2_2 -
                coefs_tq3_5 * coef_Jacob4_qt_syms21 * pinvG1_3 - coefs_tq2_5 * coef_Jacob4_qt_syms23 * pinvG3_2 -
                coefs_tq3_5 * coef_Jacob4_qt_syms22 * pinvG2_3 - coefs_tq3_5 * coef_Jacob4_qt_syms23 * pinvG3_3;
-    W(3, 22) = coef_Jacob4_qt_syms16 * (-1.0 / 3.0) - (coefs_tq1_6 * coef_Jacob4_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob4_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob4_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob4_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob4_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob4_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob4_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob4_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob4_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob4_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob4_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms23 * pinvG3_3) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob4_qt_syms30 * pinvG3_3) / 3.0;
-    W(3, 23) = coef_Jacob4_qt_syms17 * (-1.0 / 3.0) - (coefs_tq1_7 * coef_Jacob4_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob4_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob4_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob4_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob4_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob4_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob4_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob4_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob4_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob4_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob4_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms23 * pinvG3_3) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob4_qt_syms35 * pinvG3_3) / 3.0;
-    W(3, 24) = coef_Jacob4_qt_syms6 * (-1.0 / 6.0) - (coefs_tq1_6 * coef_Jacob4_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob4_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob4_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob4_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob4_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob4_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob4_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob4_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob4_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob4_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob4_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob4_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob4_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob4_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob4_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob4_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob4_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob4_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob4_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob4_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob4_qt_syms30 * pinvG3_3) / 6.0;
-    W(3, 25) = coef_Jacob4_qt_syms16 * (-1.0 / 3.0) - (coefs_tq1_6 * coef_Jacob4_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob4_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob4_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob4_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob4_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob4_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob4_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob4_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob4_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob4_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob4_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms23 * pinvG3_3) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob4_qt_syms30 * pinvG3_3) / 3.0;
-    W(3, 26) = coef_Jacob4_qt_syms18 * (-1.0 / 3.0) - (coefs_tq1_8 * coef_Jacob4_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob4_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob4_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob4_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob4_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob4_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob4_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob4_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob4_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob4_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob4_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob4_qt_syms23 * pinvG3_3) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms30 * pinvG3_3) / 3.0;
-    W(3, 27) = coef_Jacob4_qt_syms19 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob4_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob4_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob4_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob4_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob4_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob4_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob4_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob4_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob4_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms35 * pinvG3_3) / 6.0;
-    W(3, 28) = coef_Jacob4_qt_syms7 * (-1.0 / 6.0) - (coefs_tq1_7 * coef_Jacob4_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob4_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob4_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob4_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob4_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob4_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob4_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob4_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob4_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob4_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob4_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob4_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob4_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob4_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob4_qt_syms35 * pinvG3_3) / 6.0;
-    W(3, 29) = coef_Jacob4_qt_syms17 * (-1.0 / 3.0) - (coefs_tq1_7 * coef_Jacob4_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob4_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob4_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob4_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob4_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob4_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob4_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob4_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob4_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob4_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob4_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms23 * pinvG3_3) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob4_qt_syms35 * pinvG3_3) / 3.0;
-    W(3, 30) = coef_Jacob4_qt_syms19 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob4_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob4_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob4_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob4_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob4_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob4_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob4_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob4_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob4_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms35 * pinvG3_3) / 6.0;
-    W(3, 31) = coef_Jacob4_qt_syms20 * (-1.0 / 3.0) - (coefs_tq1_7 * coef_Jacob4_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob4_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob4_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms35 * pinvG3_3) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob4_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob4_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob4_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob4_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob4_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob4_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob4_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob4_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob4_qt_syms23 * pinvG3_3) / 3.0;
-    W(3, 32) = coef_Jacob4_qt_syms3 * (-1.0 / 3.0) - (coefs_tq1_3 * coef_Jacob4_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_3 * coef_Jacob4_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob4_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob4_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_3 * coef_Jacob4_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob4_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob4_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob4_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob4_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob4_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob4_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob4_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob4_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob4_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob4_qt_syms13 * pinvG3_3) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob4_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob4_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob4_qt_syms30 * pinvG3_3) / 3.0;
-    W(3, 33) = coef_Jacob4_qt_syms6 * (-1.0 / 6.0) - (coefs_tq1_6 * coef_Jacob4_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob4_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob4_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob4_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob4_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob4_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob4_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob4_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob4_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob4_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob4_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob4_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob4_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob4_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob4_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob4_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob4_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob4_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob4_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob4_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob4_qt_syms30 * pinvG3_3) / 6.0;
-    W(3, 34) = coef_Jacob4_qt_syms8 * (-1.0 / 3.0) - (coefs_tq1_8 * coef_Jacob4_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob4_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob4_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq1_3 * coef_Jacob4_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob4_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob4_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob4_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq1_3 * coef_Jacob4_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob4_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob4_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob4_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq1_3 * coef_Jacob4_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob4_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob4_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob4_qt_syms13 * pinvG3_3) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob4_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob4_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob4_qt_syms30 * pinvG3_3) / 3.0;
-    W(3, 35) = coef_Jacob4_qt_syms9 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob4_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob4_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob4_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob4_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob4_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob4_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob4_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob4_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob4_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob4_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob4_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob4_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob4_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob4_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob4_qt_syms35 * pinvG3_3) / 6.0;
-    W(3, 36) = coef_Jacob4_qt_syms6 * (-1.0 / 6.0) - (coefs_tq1_6 * coef_Jacob4_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob4_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob4_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob4_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob4_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob4_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob4_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob4_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob4_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob4_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob4_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob4_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob4_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob4_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob4_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob4_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob4_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob4_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob4_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob4_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob4_qt_syms30 * pinvG3_3) / 6.0;
-    W(3, 37) = coef_Jacob4_qt_syms16 * (-1.0 / 3.0) - (coefs_tq1_6 * coef_Jacob4_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob4_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob4_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob4_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob4_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob4_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob4_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob4_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob4_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob4_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob4_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms23 * pinvG3_3) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob4_qt_syms30 * pinvG3_3) / 3.0;
-    W(3, 38) = coef_Jacob4_qt_syms18 * (-1.0 / 3.0) - (coefs_tq1_8 * coef_Jacob4_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob4_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob4_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob4_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob4_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob4_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob4_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob4_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob4_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob4_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob4_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob4_qt_syms23 * pinvG3_3) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms30 * pinvG3_3) / 3.0;
-    W(3, 39) = coef_Jacob4_qt_syms19 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob4_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob4_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob4_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob4_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob4_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob4_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob4_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob4_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob4_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms35 * pinvG3_3) / 6.0;
-    W(3, 40) = coef_Jacob4_qt_syms8 * (-1.0 / 3.0) - (coefs_tq1_8 * coef_Jacob4_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob4_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob4_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq1_3 * coef_Jacob4_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob4_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob4_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob4_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq1_3 * coef_Jacob4_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob4_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob4_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob4_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq1_3 * coef_Jacob4_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob4_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob4_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob4_qt_syms13 * pinvG3_3) / 3.0 -
-               (coefs_tq2_3 * coef_Jacob4_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob4_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_3 * coef_Jacob4_qt_syms30 * pinvG3_3) / 3.0;
-    W(3, 41) = coef_Jacob4_qt_syms18 * (-1.0 / 3.0) - (coefs_tq1_8 * coef_Jacob4_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob4_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob4_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob4_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob4_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob4_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob4_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob4_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq1_6 * coef_Jacob4_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob4_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob4_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob4_qt_syms23 * pinvG3_3) / 3.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms30 * pinvG3_3) / 3.0;
+    W(3, 22) = coef_Jacob4_qt_syms16 * (-1.0 * 2.0) - (coefs_tq1_6 * coef_Jacob4_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob4_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob4_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob4_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob4_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob4_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob4_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob4_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob4_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob4_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob4_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms23 * pinvG3_3) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob4_qt_syms30 * pinvG3_3) * 2.0;
+    W(3, 23) = coef_Jacob4_qt_syms17 * (-1.0 * 2.0) - (coefs_tq1_7 * coef_Jacob4_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob4_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob4_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob4_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob4_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob4_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob4_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob4_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob4_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob4_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob4_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms23 * pinvG3_3) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob4_qt_syms35 * pinvG3_3) * 2.0;
+    W(3, 24) = coef_Jacob4_qt_syms6 * (-1.0 ) - (coefs_tq1_6 * coef_Jacob4_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob4_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_6 * coef_Jacob4_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_2 * coef_Jacob4_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob4_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_3 * coef_Jacob4_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_6 * coef_Jacob4_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_2 * coef_Jacob4_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_2 * coef_Jacob4_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_3 * coef_Jacob4_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_3 * coef_Jacob4_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_3 * coef_Jacob4_qt_syms21 * pinvG1_3)  -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_2 * coef_Jacob4_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_2 * coef_Jacob4_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_2 * coef_Jacob4_qt_syms28 * pinvG1_3)  -
+               (coefs_tq2_3 * coef_Jacob4_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_3 * coef_Jacob4_qt_syms22 * pinvG2_3)  -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_2 * coef_Jacob4_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_2 * coef_Jacob4_qt_syms29 * pinvG2_3)  -
+               (coefs_tq3_3 * coef_Jacob4_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_2 * coef_Jacob4_qt_syms30 * pinvG3_3) ;
+    W(3, 25) = coef_Jacob4_qt_syms16 * (-1.0 * 2.0) - (coefs_tq1_6 * coef_Jacob4_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob4_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob4_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob4_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob4_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob4_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob4_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob4_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob4_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob4_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob4_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms23 * pinvG3_3) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob4_qt_syms30 * pinvG3_3) * 2.0;
+    W(3, 26) = coef_Jacob4_qt_syms18 * (-1.0 * 2.0) - (coefs_tq1_8 * coef_Jacob4_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob4_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob4_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob4_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob4_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob4_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob4_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob4_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob4_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob4_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob4_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob4_qt_syms23 * pinvG3_3) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms30 * pinvG3_3) * 2.0;
+    W(3, 27) = coef_Jacob4_qt_syms19 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob4_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_7 * coef_Jacob4_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_6 * coef_Jacob4_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob4_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_7 * coef_Jacob4_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_6 * coef_Jacob4_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms33 * pinvG1_2)  -
+               (coefs_tq1_9 * coef_Jacob4_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms21 * pinvG1_3)  -
+               (coefs_tq1_7 * coef_Jacob4_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_6 * coef_Jacob4_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms33 * pinvG1_3)  -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms22 * pinvG2_3)  -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms35 * pinvG3_3) ;
+    W(3, 28) = coef_Jacob4_qt_syms7 * (-1.0 ) - (coefs_tq1_7 * coef_Jacob4_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_4 * coef_Jacob4_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_7 * coef_Jacob4_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_2 * coef_Jacob4_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_4 * coef_Jacob4_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_7 * coef_Jacob4_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_2 * coef_Jacob4_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_2 * coef_Jacob4_qt_syms33 * pinvG1_2)  -
+               (coefs_tq1_4 * coef_Jacob4_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms21 * pinvG1_3)  -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_2 * coef_Jacob4_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_2 * coef_Jacob4_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_2 * coef_Jacob4_qt_syms33 * pinvG1_3)  -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms22 * pinvG2_3)  -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_2 * coef_Jacob4_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_2 * coef_Jacob4_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_2 * coef_Jacob4_qt_syms35 * pinvG3_3) ;
+    W(3, 29) = coef_Jacob4_qt_syms17 * (-1.0 * 2.0) - (coefs_tq1_7 * coef_Jacob4_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob4_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob4_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob4_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob4_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob4_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob4_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob4_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob4_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob4_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob4_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms23 * pinvG3_3) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob4_qt_syms35 * pinvG3_3) * 2.0;
+    W(3, 30) = coef_Jacob4_qt_syms19 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob4_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_7 * coef_Jacob4_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_6 * coef_Jacob4_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob4_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_7 * coef_Jacob4_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_6 * coef_Jacob4_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms33 * pinvG1_2)  -
+               (coefs_tq1_9 * coef_Jacob4_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms21 * pinvG1_3)  -
+               (coefs_tq1_7 * coef_Jacob4_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_6 * coef_Jacob4_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms33 * pinvG1_3)  -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms22 * pinvG2_3)  -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms35 * pinvG3_3) ;
+    W(3, 31) = coef_Jacob4_qt_syms20 * (-1.0 * 2.0) - (coefs_tq1_7 * coef_Jacob4_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob4_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob4_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms35 * pinvG3_3) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob4_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob4_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob4_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob4_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob4_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob4_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob4_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob4_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob4_qt_syms23 * pinvG3_3) * 2.0;
+    W(3, 32) = coef_Jacob4_qt_syms3 * (-1.0 * 2.0) - (coefs_tq1_3 * coef_Jacob4_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_3 * coef_Jacob4_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob4_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob4_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_3 * coef_Jacob4_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob4_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob4_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob4_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob4_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob4_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob4_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob4_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob4_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob4_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob4_qt_syms13 * pinvG3_3) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob4_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob4_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob4_qt_syms30 * pinvG3_3) * 2.0;
+    W(3, 33) = coef_Jacob4_qt_syms6 * (-1.0 ) - (coefs_tq1_6 * coef_Jacob4_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob4_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_6 * coef_Jacob4_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_2 * coef_Jacob4_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob4_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_3 * coef_Jacob4_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_6 * coef_Jacob4_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_2 * coef_Jacob4_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_2 * coef_Jacob4_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_3 * coef_Jacob4_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_3 * coef_Jacob4_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_3 * coef_Jacob4_qt_syms21 * pinvG1_3)  -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_2 * coef_Jacob4_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_2 * coef_Jacob4_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_2 * coef_Jacob4_qt_syms28 * pinvG1_3)  -
+               (coefs_tq2_3 * coef_Jacob4_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_3 * coef_Jacob4_qt_syms22 * pinvG2_3)  -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_2 * coef_Jacob4_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_2 * coef_Jacob4_qt_syms29 * pinvG2_3)  -
+               (coefs_tq3_3 * coef_Jacob4_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_2 * coef_Jacob4_qt_syms30 * pinvG3_3) ;
+    W(3, 34) = coef_Jacob4_qt_syms8 * (-1.0 * 2.0) - (coefs_tq1_8 * coef_Jacob4_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob4_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob4_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq1_3 * coef_Jacob4_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob4_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob4_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob4_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq1_3 * coef_Jacob4_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob4_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob4_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob4_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq1_3 * coef_Jacob4_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob4_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob4_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob4_qt_syms13 * pinvG3_3) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob4_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob4_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob4_qt_syms30 * pinvG3_3) * 2.0;
+    W(3, 35) = coef_Jacob4_qt_syms9 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob4_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob4_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_4 * coef_Jacob4_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob4_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob4_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_4 * coef_Jacob4_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_3 * coef_Jacob4_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_3 * coef_Jacob4_qt_syms33 * pinvG1_2)  -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_4 * coef_Jacob4_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_3 * coef_Jacob4_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_3 * coef_Jacob4_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_3 * coef_Jacob4_qt_syms33 * pinvG1_3)  -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_3 * coef_Jacob4_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_3 * coef_Jacob4_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_3 * coef_Jacob4_qt_syms35 * pinvG3_3) ;
+    W(3, 36) = coef_Jacob4_qt_syms6 * (-1.0 ) - (coefs_tq1_6 * coef_Jacob4_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob4_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_6 * coef_Jacob4_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_2 * coef_Jacob4_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob4_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_3 * coef_Jacob4_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_6 * coef_Jacob4_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_2 * coef_Jacob4_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_2 * coef_Jacob4_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_3 * coef_Jacob4_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_3 * coef_Jacob4_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_3 * coef_Jacob4_qt_syms21 * pinvG1_3)  -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_2 * coef_Jacob4_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_2 * coef_Jacob4_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_2 * coef_Jacob4_qt_syms28 * pinvG1_3)  -
+               (coefs_tq2_3 * coef_Jacob4_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_3 * coef_Jacob4_qt_syms22 * pinvG2_3)  -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_2 * coef_Jacob4_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_2 * coef_Jacob4_qt_syms29 * pinvG2_3)  -
+               (coefs_tq3_3 * coef_Jacob4_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_2 * coef_Jacob4_qt_syms30 * pinvG3_3) ;
+    W(3, 37) = coef_Jacob4_qt_syms16 * (-1.0 * 2.0) - (coefs_tq1_6 * coef_Jacob4_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob4_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob4_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob4_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob4_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob4_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob4_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob4_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob4_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob4_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob4_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms23 * pinvG3_3) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob4_qt_syms30 * pinvG3_3) * 2.0;
+    W(3, 38) = coef_Jacob4_qt_syms18 * (-1.0 * 2.0) - (coefs_tq1_8 * coef_Jacob4_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob4_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob4_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob4_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob4_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob4_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob4_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob4_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob4_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob4_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob4_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob4_qt_syms23 * pinvG3_3) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms30 * pinvG3_3) * 2.0;
+    W(3, 39) = coef_Jacob4_qt_syms19 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob4_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_7 * coef_Jacob4_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_6 * coef_Jacob4_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob4_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_7 * coef_Jacob4_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_6 * coef_Jacob4_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms33 * pinvG1_2)  -
+               (coefs_tq1_9 * coef_Jacob4_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms21 * pinvG1_3)  -
+               (coefs_tq1_7 * coef_Jacob4_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_6 * coef_Jacob4_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms33 * pinvG1_3)  -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms22 * pinvG2_3)  -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms35 * pinvG3_3) ;
+    W(3, 40) = coef_Jacob4_qt_syms8 * (-1.0 * 2.0) - (coefs_tq1_8 * coef_Jacob4_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob4_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob4_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq1_3 * coef_Jacob4_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob4_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob4_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob4_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq1_3 * coef_Jacob4_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob4_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob4_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob4_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq1_3 * coef_Jacob4_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob4_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob4_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob4_qt_syms13 * pinvG3_3) * 2.0 -
+               (coefs_tq2_3 * coef_Jacob4_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob4_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_3 * coef_Jacob4_qt_syms30 * pinvG3_3) * 2.0;
+    W(3, 41) = coef_Jacob4_qt_syms18 * (-1.0 * 2.0) - (coefs_tq1_8 * coef_Jacob4_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob4_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob4_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob4_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob4_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob4_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob4_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob4_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq1_6 * coef_Jacob4_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob4_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob4_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob4_qt_syms23 * pinvG3_3) * 2.0 -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms30 * pinvG3_3) * 2.0;
     W(3, 42) = -coef_Jacob4_qt_syms25 - coefs_tq1_8 * coef_Jacob4_qt_syms28 * pinvG1_1 -
                coefs_tq1_8 * coef_Jacob4_qt_syms29 * pinvG2_1 - coefs_tq2_8 * coef_Jacob4_qt_syms28 * pinvG1_2 -
                coefs_tq1_8 * coef_Jacob4_qt_syms30 * pinvG3_1 - coefs_tq2_8 * coef_Jacob4_qt_syms29 * pinvG2_2 -
                coefs_tq3_8 * coef_Jacob4_qt_syms28 * pinvG1_3 - coefs_tq2_8 * coef_Jacob4_qt_syms30 * pinvG3_2 -
                coefs_tq3_8 * coef_Jacob4_qt_syms29 * pinvG2_3 - coefs_tq3_8 * coef_Jacob4_qt_syms30 * pinvG3_3;
-    W(3, 43) = coef_Jacob4_qt_syms26 * (-1.0 / 3.0) - (coefs_tq1_9 * coef_Jacob4_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob4_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob4_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob4_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob4_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob4_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob4_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob4_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob4_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob4_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob4_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms30 * pinvG3_3) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob4_qt_syms35 * pinvG3_3) / 3.0;
-    W(3, 44) = coef_Jacob4_qt_syms9 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob4_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob4_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob4_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob4_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob4_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob4_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob4_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob4_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob4_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob4_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob4_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob4_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob4_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob4_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob4_qt_syms35 * pinvG3_3) / 6.0;
-    W(3, 45) = coef_Jacob4_qt_syms19 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob4_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob4_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob4_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob4_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob4_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob4_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob4_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob4_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob4_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms35 * pinvG3_3) / 6.0;
-    W(3, 46) = coef_Jacob4_qt_syms26 * (-1.0 / 3.0) - (coefs_tq1_9 * coef_Jacob4_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob4_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob4_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob4_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob4_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob4_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob4_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob4_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob4_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob4_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob4_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms30 * pinvG3_3) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob4_qt_syms35 * pinvG3_3) / 3.0;
-    W(3, 47) = coef_Jacob4_qt_syms27 * (-1.0 / 3.0) - (coefs_tq1_9 * coef_Jacob4_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob4_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob4_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms35 * pinvG3_3) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob4_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob4_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob4_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob4_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob4_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob4_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob4_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob4_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob4_qt_syms30 * pinvG3_3) / 3.0;
-    W(3, 48) = coef_Jacob4_qt_syms4 * (-1.0 / 3.0) - (coefs_tq1_4 * coef_Jacob4_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_4 * coef_Jacob4_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob4_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_4 * coef_Jacob4_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob4_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob4_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq1_1 * coef_Jacob4_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob4_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob4_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms13 * pinvG3_3) / 3.0 -
-               (coefs_tq2_1 * coef_Jacob4_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob4_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_1 * coef_Jacob4_qt_syms35 * pinvG3_3) / 3.0;
-    W(3, 49) = coef_Jacob4_qt_syms7 * (-1.0 / 6.0) - (coefs_tq1_7 * coef_Jacob4_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob4_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob4_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob4_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob4_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob4_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob4_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob4_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob4_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob4_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob4_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob4_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob4_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob4_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob4_qt_syms35 * pinvG3_3) / 6.0;
-    W(3, 50) = coef_Jacob4_qt_syms9 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob4_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob4_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob4_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob4_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob4_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob4_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob4_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob4_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob4_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob4_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob4_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob4_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob4_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob4_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob4_qt_syms35 * pinvG3_3) / 6.0;
-    W(3, 51) = coef_Jacob4_qt_syms10 * (-1.0 / 3.0) - (coefs_tq1_4 * coef_Jacob4_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_4 * coef_Jacob4_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_4 * coef_Jacob4_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms35 * pinvG3_3) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob4_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob4_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob4_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob4_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob4_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob4_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob4_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob4_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob4_qt_syms13 * pinvG3_3) / 3.0;
-    W(3, 52) = coef_Jacob4_qt_syms7 * (-1.0 / 6.0) - (coefs_tq1_7 * coef_Jacob4_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob4_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob4_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob4_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob4_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob4_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob4_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob4_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob4_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_2 * coef_Jacob4_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob4_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob4_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_2 * coef_Jacob4_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob4_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_2 * coef_Jacob4_qt_syms35 * pinvG3_3) / 6.0;
-    W(3, 53) = coef_Jacob4_qt_syms17 * (-1.0 / 3.0) - (coefs_tq1_7 * coef_Jacob4_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob4_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob4_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob4_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob4_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob4_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq1_5 * coef_Jacob4_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob4_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob4_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq2_5 * coef_Jacob4_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob4_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms23 * pinvG3_3) / 3.0 -
-               (coefs_tq3_5 * coef_Jacob4_qt_syms35 * pinvG3_3) / 3.0;
-    W(3, 54) = coef_Jacob4_qt_syms19 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob4_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob4_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob4_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob4_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob4_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob4_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob4_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob4_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob4_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms35 * pinvG3_3) / 6.0;
-    W(3, 55) = coef_Jacob4_qt_syms20 * (-1.0 / 3.0) - (coefs_tq1_7 * coef_Jacob4_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob4_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob4_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms35 * pinvG3_3) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob4_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob4_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob4_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob4_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob4_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob4_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob4_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob4_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob4_qt_syms23 * pinvG3_3) / 3.0;
-    W(3, 56) = coef_Jacob4_qt_syms9 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob4_qt_syms11 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob4_qt_syms12 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms11 * pinvG1_2) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob4_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob4_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob4_qt_syms13 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms12 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms11 * pinvG1_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob4_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob4_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob4_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms13 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms12 * pinvG2_3) / 6.0 -
-               (coefs_tq1_4 * coef_Jacob4_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_3 * coef_Jacob4_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob4_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob4_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms13 * pinvG3_3) / 6.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_3 * coef_Jacob4_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob4_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_3 * coef_Jacob4_qt_syms35 * pinvG3_3) / 6.0;
-    W(3, 57) = coef_Jacob4_qt_syms19 * (-1.0 / 6.0) - (coefs_tq1_9 * coef_Jacob4_qt_syms21 * pinvG1_1) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob4_qt_syms28 * pinvG1_1) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob4_qt_syms33 * pinvG1_1) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob4_qt_syms22 * pinvG2_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms21 * pinvG1_2) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob4_qt_syms29 * pinvG2_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms28 * pinvG1_2) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob4_qt_syms34 * pinvG2_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms33 * pinvG1_2) / 6.0 -
-               (coefs_tq1_9 * coef_Jacob4_qt_syms23 * pinvG3_1) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms22 * pinvG2_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms21 * pinvG1_3) / 6.0 -
-               (coefs_tq1_7 * coef_Jacob4_qt_syms30 * pinvG3_1) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms29 * pinvG2_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms28 * pinvG1_3) / 6.0 -
-               (coefs_tq1_6 * coef_Jacob4_qt_syms35 * pinvG3_1) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms34 * pinvG2_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms33 * pinvG1_3) / 6.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms23 * pinvG3_2) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms22 * pinvG2_3) / 6.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms30 * pinvG3_2) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms29 * pinvG2_3) / 6.0 -
-               (coefs_tq2_6 * coef_Jacob4_qt_syms35 * pinvG3_2) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms34 * pinvG2_3) / 6.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms23 * pinvG3_3) / 6.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms30 * pinvG3_3) / 6.0 -
-               (coefs_tq3_6 * coef_Jacob4_qt_syms35 * pinvG3_3) / 6.0;
-    W(3, 58) = coef_Jacob4_qt_syms26 * (-1.0 / 3.0) - (coefs_tq1_9 * coef_Jacob4_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob4_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob4_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob4_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob4_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob4_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq1_8 * coef_Jacob4_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob4_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob4_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq2_8 * coef_Jacob4_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob4_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms30 * pinvG3_3) / 3.0 -
-               (coefs_tq3_8 * coef_Jacob4_qt_syms35 * pinvG3_3) / 3.0;
-    W(3, 59) = coef_Jacob4_qt_syms27 * (-1.0 / 3.0) - (coefs_tq1_9 * coef_Jacob4_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob4_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob4_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms35 * pinvG3_3) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob4_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob4_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob4_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob4_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob4_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob4_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob4_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob4_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob4_qt_syms30 * pinvG3_3) / 3.0;
-    W(3, 60) = coef_Jacob4_qt_syms10 * (-1.0 / 3.0) - (coefs_tq1_4 * coef_Jacob4_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_4 * coef_Jacob4_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_4 * coef_Jacob4_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_4 * coef_Jacob4_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_4 * coef_Jacob4_qt_syms35 * pinvG3_3) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob4_qt_syms11 * pinvG1_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob4_qt_syms12 * pinvG2_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob4_qt_syms13 * pinvG3_1) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob4_qt_syms11 * pinvG1_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob4_qt_syms12 * pinvG2_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob4_qt_syms13 * pinvG3_2) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob4_qt_syms11 * pinvG1_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob4_qt_syms12 * pinvG2_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob4_qt_syms13 * pinvG3_3) / 3.0;
-    W(3, 61) = coef_Jacob4_qt_syms20 * (-1.0 / 3.0) - (coefs_tq1_7 * coef_Jacob4_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob4_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_7 * coef_Jacob4_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_7 * coef_Jacob4_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_7 * coef_Jacob4_qt_syms35 * pinvG3_3) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob4_qt_syms21 * pinvG1_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob4_qt_syms22 * pinvG2_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob4_qt_syms23 * pinvG3_1) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob4_qt_syms21 * pinvG1_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob4_qt_syms22 * pinvG2_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob4_qt_syms23 * pinvG3_2) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob4_qt_syms21 * pinvG1_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob4_qt_syms22 * pinvG2_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob4_qt_syms23 * pinvG3_3) / 3.0;
-    W(3, 62) = coef_Jacob4_qt_syms27 * (-1.0 / 3.0) - (coefs_tq1_9 * coef_Jacob4_qt_syms33 * pinvG1_1) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob4_qt_syms34 * pinvG2_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms33 * pinvG1_2) / 3.0 -
-               (coefs_tq1_9 * coef_Jacob4_qt_syms35 * pinvG3_1) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms34 * pinvG2_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms33 * pinvG1_3) / 3.0 -
-               (coefs_tq2_9 * coef_Jacob4_qt_syms35 * pinvG3_2) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms34 * pinvG2_3) / 3.0 -
-               (coefs_tq3_9 * coef_Jacob4_qt_syms35 * pinvG3_3) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob4_qt_syms28 * pinvG1_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob4_qt_syms29 * pinvG2_1) / 3.0 -
-               (coefs_tq1_10 * coef_Jacob4_qt_syms30 * pinvG3_1) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob4_qt_syms28 * pinvG1_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob4_qt_syms29 * pinvG2_2) / 3.0 -
-               (coefs_tq2_10 * coef_Jacob4_qt_syms30 * pinvG3_2) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob4_qt_syms28 * pinvG1_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob4_qt_syms29 * pinvG2_3) / 3.0 -
-               (coefs_tq3_10 * coef_Jacob4_qt_syms30 * pinvG3_3) / 3.0;
+    W(3, 43) = coef_Jacob4_qt_syms26 * (-1.0 * 2.0) - (coefs_tq1_9 * coef_Jacob4_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob4_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob4_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob4_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob4_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob4_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob4_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob4_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob4_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob4_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob4_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms30 * pinvG3_3) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob4_qt_syms35 * pinvG3_3) * 2.0;
+    W(3, 44) = coef_Jacob4_qt_syms9 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob4_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob4_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_4 * coef_Jacob4_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob4_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob4_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_4 * coef_Jacob4_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_3 * coef_Jacob4_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_3 * coef_Jacob4_qt_syms33 * pinvG1_2)  -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_4 * coef_Jacob4_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_3 * coef_Jacob4_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_3 * coef_Jacob4_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_3 * coef_Jacob4_qt_syms33 * pinvG1_3)  -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_3 * coef_Jacob4_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_3 * coef_Jacob4_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_3 * coef_Jacob4_qt_syms35 * pinvG3_3) ;
+    W(3, 45) = coef_Jacob4_qt_syms19 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob4_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_7 * coef_Jacob4_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_6 * coef_Jacob4_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob4_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_7 * coef_Jacob4_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_6 * coef_Jacob4_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms33 * pinvG1_2)  -
+               (coefs_tq1_9 * coef_Jacob4_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms21 * pinvG1_3)  -
+               (coefs_tq1_7 * coef_Jacob4_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_6 * coef_Jacob4_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms33 * pinvG1_3)  -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms22 * pinvG2_3)  -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms35 * pinvG3_3) ;
+    W(3, 46) = coef_Jacob4_qt_syms26 * (-1.0 * 2.0) - (coefs_tq1_9 * coef_Jacob4_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob4_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob4_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob4_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob4_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob4_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob4_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob4_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob4_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob4_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob4_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms30 * pinvG3_3) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob4_qt_syms35 * pinvG3_3) * 2.0;
+    W(3, 47) = coef_Jacob4_qt_syms27 * (-1.0 * 2.0) - (coefs_tq1_9 * coef_Jacob4_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob4_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob4_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms35 * pinvG3_3) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob4_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob4_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob4_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob4_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob4_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob4_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob4_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob4_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob4_qt_syms30 * pinvG3_3) * 2.0;
+    W(3, 48) = coef_Jacob4_qt_syms4 * (-1.0 * 2.0) - (coefs_tq1_4 * coef_Jacob4_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_4 * coef_Jacob4_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob4_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_4 * coef_Jacob4_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob4_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob4_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq1_1 * coef_Jacob4_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob4_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob4_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms13 * pinvG3_3) * 2.0 -
+               (coefs_tq2_1 * coef_Jacob4_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob4_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_1 * coef_Jacob4_qt_syms35 * pinvG3_3) * 2.0;
+    W(3, 49) = coef_Jacob4_qt_syms7 * (-1.0 ) - (coefs_tq1_7 * coef_Jacob4_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_4 * coef_Jacob4_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_7 * coef_Jacob4_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_2 * coef_Jacob4_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_4 * coef_Jacob4_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_7 * coef_Jacob4_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_2 * coef_Jacob4_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_2 * coef_Jacob4_qt_syms33 * pinvG1_2)  -
+               (coefs_tq1_4 * coef_Jacob4_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms21 * pinvG1_3)  -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_2 * coef_Jacob4_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_2 * coef_Jacob4_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_2 * coef_Jacob4_qt_syms33 * pinvG1_3)  -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms22 * pinvG2_3)  -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_2 * coef_Jacob4_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_2 * coef_Jacob4_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_2 * coef_Jacob4_qt_syms35 * pinvG3_3) ;
+    W(3, 50) = coef_Jacob4_qt_syms9 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob4_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob4_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_4 * coef_Jacob4_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob4_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob4_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_4 * coef_Jacob4_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_3 * coef_Jacob4_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_3 * coef_Jacob4_qt_syms33 * pinvG1_2)  -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_4 * coef_Jacob4_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_3 * coef_Jacob4_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_3 * coef_Jacob4_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_3 * coef_Jacob4_qt_syms33 * pinvG1_3)  -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_3 * coef_Jacob4_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_3 * coef_Jacob4_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_3 * coef_Jacob4_qt_syms35 * pinvG3_3) ;
+    W(3, 51) = coef_Jacob4_qt_syms10 * (-1.0 * 2.0) - (coefs_tq1_4 * coef_Jacob4_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_4 * coef_Jacob4_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_4 * coef_Jacob4_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms35 * pinvG3_3) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob4_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob4_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob4_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob4_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob4_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob4_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob4_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob4_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob4_qt_syms13 * pinvG3_3) * 2.0;
+    W(3, 52) = coef_Jacob4_qt_syms7 * (-1.0 ) - (coefs_tq1_7 * coef_Jacob4_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_4 * coef_Jacob4_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_7 * coef_Jacob4_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_2 * coef_Jacob4_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_4 * coef_Jacob4_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_7 * coef_Jacob4_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_2 * coef_Jacob4_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_2 * coef_Jacob4_qt_syms33 * pinvG1_2)  -
+               (coefs_tq1_4 * coef_Jacob4_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms21 * pinvG1_3)  -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_2 * coef_Jacob4_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_2 * coef_Jacob4_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_2 * coef_Jacob4_qt_syms33 * pinvG1_3)  -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms22 * pinvG2_3)  -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_2 * coef_Jacob4_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_2 * coef_Jacob4_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_2 * coef_Jacob4_qt_syms35 * pinvG3_3) ;
+    W(3, 53) = coef_Jacob4_qt_syms17 * (-1.0 * 2.0) - (coefs_tq1_7 * coef_Jacob4_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob4_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob4_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob4_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob4_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob4_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq1_5 * coef_Jacob4_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob4_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob4_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq2_5 * coef_Jacob4_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob4_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms23 * pinvG3_3) * 2.0 -
+               (coefs_tq3_5 * coef_Jacob4_qt_syms35 * pinvG3_3) * 2.0;
+    W(3, 54) = coef_Jacob4_qt_syms19 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob4_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_7 * coef_Jacob4_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_6 * coef_Jacob4_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob4_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_7 * coef_Jacob4_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_6 * coef_Jacob4_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms33 * pinvG1_2)  -
+               (coefs_tq1_9 * coef_Jacob4_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms21 * pinvG1_3)  -
+               (coefs_tq1_7 * coef_Jacob4_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_6 * coef_Jacob4_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms33 * pinvG1_3)  -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms22 * pinvG2_3)  -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms35 * pinvG3_3) ;
+    W(3, 55) = coef_Jacob4_qt_syms20 * (-1.0 * 2.0) - (coefs_tq1_7 * coef_Jacob4_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob4_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob4_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms35 * pinvG3_3) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob4_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob4_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob4_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob4_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob4_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob4_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob4_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob4_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob4_qt_syms23 * pinvG3_3) * 2.0;
+    W(3, 56) = coef_Jacob4_qt_syms9 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob4_qt_syms11 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob4_qt_syms12 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms11 * pinvG1_2)  -
+               (coefs_tq1_4 * coef_Jacob4_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_3 * coef_Jacob4_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob4_qt_syms13 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms12 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms11 * pinvG1_3)  -
+               (coefs_tq1_4 * coef_Jacob4_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_3 * coef_Jacob4_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_3 * coef_Jacob4_qt_syms33 * pinvG1_2)  -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms13 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms12 * pinvG2_3)  -
+               (coefs_tq1_4 * coef_Jacob4_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_3 * coef_Jacob4_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_3 * coef_Jacob4_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_3 * coef_Jacob4_qt_syms33 * pinvG1_3)  -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms13 * pinvG3_3)  -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_3 * coef_Jacob4_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_3 * coef_Jacob4_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_3 * coef_Jacob4_qt_syms35 * pinvG3_3) ;
+    W(3, 57) = coef_Jacob4_qt_syms19 * (-1.0 ) - (coefs_tq1_9 * coef_Jacob4_qt_syms21 * pinvG1_1)  -
+               (coefs_tq1_7 * coef_Jacob4_qt_syms28 * pinvG1_1)  -
+               (coefs_tq1_6 * coef_Jacob4_qt_syms33 * pinvG1_1)  -
+               (coefs_tq1_9 * coef_Jacob4_qt_syms22 * pinvG2_1)  -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms21 * pinvG1_2)  -
+               (coefs_tq1_7 * coef_Jacob4_qt_syms29 * pinvG2_1)  -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms28 * pinvG1_2)  -
+               (coefs_tq1_6 * coef_Jacob4_qt_syms34 * pinvG2_1)  -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms33 * pinvG1_2)  -
+               (coefs_tq1_9 * coef_Jacob4_qt_syms23 * pinvG3_1)  -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms22 * pinvG2_2)  -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms21 * pinvG1_3)  -
+               (coefs_tq1_7 * coef_Jacob4_qt_syms30 * pinvG3_1)  -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms29 * pinvG2_2)  -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms28 * pinvG1_3)  -
+               (coefs_tq1_6 * coef_Jacob4_qt_syms35 * pinvG3_1)  -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms34 * pinvG2_2)  -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms33 * pinvG1_3)  -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms23 * pinvG3_2)  -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms22 * pinvG2_3)  -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms30 * pinvG3_2)  -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms29 * pinvG2_3)  -
+               (coefs_tq2_6 * coef_Jacob4_qt_syms35 * pinvG3_2)  -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms34 * pinvG2_3)  -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms23 * pinvG3_3)  -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms30 * pinvG3_3)  -
+               (coefs_tq3_6 * coef_Jacob4_qt_syms35 * pinvG3_3) ;
+    W(3, 58) = coef_Jacob4_qt_syms26 * (-1.0 * 2.0) - (coefs_tq1_9 * coef_Jacob4_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob4_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob4_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob4_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob4_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob4_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq1_8 * coef_Jacob4_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob4_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob4_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq2_8 * coef_Jacob4_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob4_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms30 * pinvG3_3) * 2.0 -
+               (coefs_tq3_8 * coef_Jacob4_qt_syms35 * pinvG3_3) * 2.0;
+    W(3, 59) = coef_Jacob4_qt_syms27 * (-1.0 * 2.0) - (coefs_tq1_9 * coef_Jacob4_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob4_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob4_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms35 * pinvG3_3) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob4_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob4_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob4_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob4_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob4_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob4_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob4_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob4_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob4_qt_syms30 * pinvG3_3) * 2.0;
+    W(3, 60) = coef_Jacob4_qt_syms10 * (-1.0 * 2.0) - (coefs_tq1_4 * coef_Jacob4_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_4 * coef_Jacob4_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_4 * coef_Jacob4_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_4 * coef_Jacob4_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_4 * coef_Jacob4_qt_syms35 * pinvG3_3) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob4_qt_syms11 * pinvG1_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob4_qt_syms12 * pinvG2_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob4_qt_syms13 * pinvG3_1) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob4_qt_syms11 * pinvG1_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob4_qt_syms12 * pinvG2_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob4_qt_syms13 * pinvG3_2) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob4_qt_syms11 * pinvG1_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob4_qt_syms12 * pinvG2_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob4_qt_syms13 * pinvG3_3) * 2.0;
+    W(3, 61) = coef_Jacob4_qt_syms20 * (-1.0 * 2.0) - (coefs_tq1_7 * coef_Jacob4_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob4_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_7 * coef_Jacob4_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_7 * coef_Jacob4_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_7 * coef_Jacob4_qt_syms35 * pinvG3_3) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob4_qt_syms21 * pinvG1_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob4_qt_syms22 * pinvG2_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob4_qt_syms23 * pinvG3_1) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob4_qt_syms21 * pinvG1_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob4_qt_syms22 * pinvG2_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob4_qt_syms23 * pinvG3_2) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob4_qt_syms21 * pinvG1_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob4_qt_syms22 * pinvG2_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob4_qt_syms23 * pinvG3_3) * 2.0;
+    W(3, 62) = coef_Jacob4_qt_syms27 * (-1.0 * 2.0) - (coefs_tq1_9 * coef_Jacob4_qt_syms33 * pinvG1_1) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob4_qt_syms34 * pinvG2_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms33 * pinvG1_2) * 2.0 -
+               (coefs_tq1_9 * coef_Jacob4_qt_syms35 * pinvG3_1) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms34 * pinvG2_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms33 * pinvG1_3) * 2.0 -
+               (coefs_tq2_9 * coef_Jacob4_qt_syms35 * pinvG3_2) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms34 * pinvG2_3) * 2.0 -
+               (coefs_tq3_9 * coef_Jacob4_qt_syms35 * pinvG3_3) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob4_qt_syms28 * pinvG1_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob4_qt_syms29 * pinvG2_1) * 2.0 -
+               (coefs_tq1_10 * coef_Jacob4_qt_syms30 * pinvG3_1) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob4_qt_syms28 * pinvG1_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob4_qt_syms29 * pinvG2_2) * 2.0 -
+               (coefs_tq2_10 * coef_Jacob4_qt_syms30 * pinvG3_2) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob4_qt_syms28 * pinvG1_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob4_qt_syms29 * pinvG2_3) * 2.0 -
+               (coefs_tq3_10 * coef_Jacob4_qt_syms30 * pinvG3_3) * 2.0;
     W(3, 63) = -coef_Jacob4_qt_syms32 - coefs_tq1_10 * coef_Jacob4_qt_syms33 * pinvG1_1 -
                coefs_tq1_10 * coef_Jacob4_qt_syms34 * pinvG2_1 - coefs_tq1_10 * coef_Jacob4_qt_syms35 * pinvG3_1 -
                coefs_tq2_10 * coef_Jacob4_qt_syms33 * pinvG1_2 - coefs_tq2_10 * coef_Jacob4_qt_syms34 * pinvG2_2 -
                coefs_tq2_10 * coef_Jacob4_qt_syms35 * pinvG3_2 - coefs_tq3_10 * coef_Jacob4_qt_syms33 * pinvG1_3 -
                coefs_tq3_10 * coef_Jacob4_qt_syms34 * pinvG2_3 - coefs_tq3_10 * coef_Jacob4_qt_syms35 * pinvG3_3;
+
+    W = W * (1.0 / 6.0);
 
 
     Q(0, 0) = coef_Jacob1_qt_syms14 + coefs_tq1_11 * coef_Jacob1_qt_syms11 * pinvG1_1 +

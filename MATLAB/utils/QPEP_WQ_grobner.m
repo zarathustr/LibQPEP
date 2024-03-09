@@ -83,20 +83,22 @@ elseif(strcmp(char(solver_func), char(@solver_WQ_1_2_3_4_5_9_13_17_33_49_approx)
     q3_ = sols(4, :);
 end
 len = size(q0_, 2);
-Js = zeros(len, 1);
-qs = zeros(4, len);
-ts = zeros(3, len);
+Js = [];
+qs = [];
+ts = [];
 for i = 1 : len
-    q0 = real(q0_(i));
-    q1 = real(q1_(i));
-    q2 = real(q2_(i));
-    q3 = real(q3_(i));
-    q = [q0; q1; q2; q3];
-    q = q ./ norm(q);
-    t = t_func(q);
-    qs(:, i) = q;
-    ts(:, i) = t;
-    Js(i) = J_func(q, t);
+    if(isreal(q0_(i)))
+        q0 = real(q0_(i));
+        q1 = real(q1_(i));
+        q2 = real(q2_(i));
+        q3 = real(q3_(i));
+        q = [q0; q1; q2; q3];
+        q = q ./ norm(q);
+        t = t_func(q);
+        qs = [qs, q];
+        ts = [ts, t];
+        Js = [Js; J_func(q, t)];
+    end
 end
 [min, idx] = sort(Js);
 R = quat2dcm(qs(:, idx(1)).');

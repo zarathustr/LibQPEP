@@ -1,9 +1,9 @@
 // LibQPEP: A Library for Globally Optimal Solving Quadratic Pose Estimation Problems,
 //          It also gives highly accurate uncertainty description of the solutions.
 //
-// Authors: Jin Wu and Ming Liu
+// Author: Jin Wu
 // Affiliation: Hong Kong University of Science and Technology (HKUST)
-// Emails: jin_wu_uestc@hotmail.com; eelium@ust.hk
+// Emails: jin_wu_uestc@hotmail.com; jwucp@connect.ust.hk
 // Reference: Wu, J., et al. (2022) Quadratic Pose Estimation Problems: 
 //                                  Globally Optimal Solutions, 
 //                                  Solvability/Observability Analysis,

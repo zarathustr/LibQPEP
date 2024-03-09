@@ -11,3 +11,4 @@ coef_J69 = in1(:,69);
 coef_J74 = in1(:,74);
 coef_J84 = in1(:,84);
 obj = [coef_J13,coef_J23,coef_J30,coef_J35,coef_J45,coef_J52,coef_J57,coef_J64,coef_J69,coef_J74,coef_J84];
+end

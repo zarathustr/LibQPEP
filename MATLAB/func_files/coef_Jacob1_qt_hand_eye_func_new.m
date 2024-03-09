@@ -36,3 +36,4 @@ coef_J34 = in1(:,34);
 coef_J35 = in1(:,35);
 coef_J36 = in1(:,36);
 obj = [coef_J1.*4.0,coef_J2.*3.0,coef_J3.*3.0,coef_J4.*3.0,coef_J5.*2.0,coef_J6.*2.0,coef_J7.*2.0,coef_J8.*2.0,coef_J9.*2.0,coef_J10.*2.0,coef_J11.*2.0,coef_J12.*2.0,coef_J13.*2.0,coef_J14.*2.0,coef_J15,coef_J16,coef_J17,coef_J18,coef_J19,coef_J20,coef_J21,coef_J22,coef_J23,coef_J24,coef_J25,coef_J26,coef_J27,coef_J28,coef_J29,coef_J30,coef_J31,coef_J32,coef_J33,coef_J34,coef_J35,coef_J36];
+end

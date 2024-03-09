@@ -40,3 +40,4 @@ q1 = in3(2,:);
 q2 = in3(3,:);
 q3 = in3(4,:);
 obj = q0.^2.*(coefs_tq1_1.*pinvG3_1+coefs_tq2_1.*pinvG3_2+coefs_tq3_1.*pinvG3_3)+q1.^2.*(coefs_tq1_5.*pinvG3_1+coefs_tq2_5.*pinvG3_2+coefs_tq3_5.*pinvG3_3)+q2.^2.*(coefs_tq1_8.*pinvG3_1+coefs_tq2_8.*pinvG3_2+coefs_tq3_8.*pinvG3_3)+q3.^2.*(coefs_tq1_10.*pinvG3_1+coefs_tq2_10.*pinvG3_2+coefs_tq3_10.*pinvG3_3)+coefs_tq1_11.*pinvG3_1+coefs_tq2_11.*pinvG3_2+coefs_tq3_11.*pinvG3_3+q0.*q1.*(coefs_tq1_2.*pinvG3_1+coefs_tq2_2.*pinvG3_2+coefs_tq3_2.*pinvG3_3)+q0.*q2.*(coefs_tq1_3.*pinvG3_1+coefs_tq2_3.*pinvG3_2+coefs_tq3_3.*pinvG3_3)+q0.*q3.*(coefs_tq1_4.*pinvG3_1+coefs_tq2_4.*pinvG3_2+coefs_tq3_4.*pinvG3_3)+q1.*q2.*(coefs_tq1_6.*pinvG3_1+coefs_tq2_6.*pinvG3_2+coefs_tq3_6.*pinvG3_3)+q1.*q3.*(coefs_tq1_7.*pinvG3_1+coefs_tq2_7.*pinvG3_2+coefs_tq3_7.*pinvG3_3)+q2.*q3.*(coefs_tq1_9.*pinvG3_1+coefs_tq2_9.*pinvG3_2+coefs_tq3_9.*pinvG3_3);
+end

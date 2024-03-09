@@ -89,7 +89,7 @@ Q0_(2, :) = Q0(2, :) + Q0(3, :) + Q0(4, :);
 Q0_(3, :) = Q0(3, :) + Q0(4, :) + Q0(1, :);
 X0
 
-[~, ~, X] = QPEP_WQ_grobner(W0, Q0, @solver_WQ_approx, ...
+[~, ~, X] = QPEP_WQ_grobner(W0, Q0, @solver_WQ, ...
                             @mon_J_pure_pTop_func_new, t_funcs, coef_J_pure, coefs_tq, pinvG, {[1, 2, 3]});
 X_grobner = X
 

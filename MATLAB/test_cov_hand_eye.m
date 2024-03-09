@@ -46,7 +46,7 @@ p = genpath('YALMIP');
 addpath(p);
 
 
-len = 3;
+len = 30;
 A0 = zeros(4, 4, len);
 B0 = zeros(4, 4, len);
 R0 = orthonormalize(randn(3, 3));
@@ -54,7 +54,7 @@ q0 = positive_quat(dcm2quat(R0).');
 t0 = randn(3, 1);
 X0 = [R0, t0;
      zeros(1, 3), 1];
-noise = 0e-1;
+noise = 1e-3;
 for i = 1 : len
     A0(1 : 3, 1 : 3, i) = orthonormalize(randn(3, 3));
     A0(1 : 3, 4, i) = randn(3, 1);
@@ -78,15 +78,39 @@ Q0_(3, :) = Q0(3, :) + Q0(4, :) + Q0(1, :);
 X0
 
 
-[~, ~, X] = QPEP_WQ_grobner(W0, Q0, @solver_WQ_approx, @mon_J_pure_hand_eye_func_new, ...
+[~, ~, X, ~, qs] = QPEP_WQ_grobner(W0, Q0, @solver_WQ, @mon_J_pure_hand_eye_func_new, ...
                             t_funcs, coef_J_pure, coefs_tq, pinvG, {[1, 2, 3]});
 X_grobner = X
 [~, ~, X_] = QPEP_lm_single(dcm2quat(X(1 : 3, 1 : 3)).', 1000, 5e-2, ...
                           @eq_hand_eye_func_new, @Jacob_hand_eye_func_new, t_funcs, ...
                           coef_f_q_sym, coefs_tq, pinvG);
 X_
+syms qq [4, 1]
+uu = kron(qq, kron(qq, qq));
+MM = jacobian(uu, qq);
+u_func = matlabFunction(uu, 'Vars', {qq});
+MM_func = matlabFunction(MM / 3, 'Vars', {qq});
+iter = 1000;
+q_trj = sym(zeros(4, iter));
+% q = randn(4, 1); 
+q = dcm2quat(X(1 : 3, 1 : 3)).';
+q = q ./ norm(q);
+vpa_len = 500;
+q = vpa(q, vpa_len);
+QQ0 = vpa(Q0, vpa_len);
+for i = 1 : iter
+    q_trj(:, iter) = q;
+    M = vpa(W0 * MM_func(q), vpa_len);
+    [V, D] = eig(M - QQ0);
+    D
+    q = V(:, 1);
+    q = q ./ norm(q)
+    QQ0 = QQ0 + D(1, 1) * eye(4);
+end
+q
+dcm2quat(X(1 : 3, 1 : 3)).'
 
-num = 100;
+num = 5000;
 quat_noise = 1e-2;
 trans_noise = 1e-2;
 ys = zeros(9, num);

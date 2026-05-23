@@ -27,10 +27,13 @@ Contributor: **Jin Wu** (https://github.com/zarathustr), jin_wu_uestc@hotmail.co
 
 Co-Contributor: **Xiangcheng Hu**, HKUST (https://github.com/JokerJohn)
 
+## Project Layout
+The C++ library is organized with public headers in ```include/``` and implementation files in ```src/```. The main demo entry point is ```src/main.cpp```, and the linear-system backend benchmark entry point is ```src/benchmark_linear_solvers.cpp```.
+
 # Usage
 The C++ codes are built using ```CMake``` toolkit under the ```C++11``` programming standard. The codes have been verified on the ```Ubuntu 14.04/16.04/18.04``` (```GCC``` Compilers 5.0 ~ 10.0), Mac ```OS X 10.5.8/10.6.8/10.7.5/10.8.5/10.9.5/10.10/10.12/10.14/10.15``` (```Clang``` Compilers 3 ~ 11). We support multiple architectures, including x86, armhf, arm64, etc.
 
-In the C++ code, the file ```main.cpp``` contains demos of pose and covariance estimation. The function ```QPEP_grobner``` solves the QPEP via Groebner-basis elimination by Larsson et al. https://github.com/vlarsson. Using ```QPEP_lm_single```, the solved pose will be refined by the Levenberg-Marquadt (LM) iteration. Finally, the function ```csdp_cov``` estimates the covariance information.
+In the C++ code, the file ```src/main.cpp``` contains demos of pose and covariance estimation. The function ```QPEP_grobner``` solves the QPEP via Groebner-basis elimination by Larsson et al. https://github.com/vlarsson. Using ```QPEP_lm_single```, the solved pose will be refined by the Levenberg-Marquadt (LM) iteration. Finally, the function ```csdp_cov``` estimates the covariance information.
 
 The LibQPEP can be accelerated by many parallel-computing approaches, including BLAS, LAPACK, CUBLAS (CUDA), Metal Performance Shaders, and OpenCL. 
 
@@ -57,7 +60,7 @@ make install
 where ```/usr/bin/clang``` directs to the path of the installed ```Clang``` compiler.
 
 ## Demo Program
-Just run
+After compilation, run the demo executable from the build directory:
 ```bash
 ./LibQPEP-test
 ```
@@ -80,6 +83,39 @@ For instance, if you would like to try dataset ```pTop_data-2500pt-1.txt``` in `
 which will output:
 
 ![alt tag](test_result2.png)
+
+### Linear Solver Backends
+The Groebner elimination step supports multiple linear-system solving backends. To list the backends compiled into the current build, run:
+```bash
+./LibQPEP-test --list-linear-solvers
+```
+
+To select a backend for the demo program, pass ```--linear-solver``` or ```--backend```:
+```bash
+./LibQPEP-test PtoP --linear-solver LAPACK-GESV
+./LibQPEP-test PnP --backend posv
+```
+
+Backend names are normalized, so aliases such as ```gesv```, ```dgesv```, ```posv```, and ```dposv``` map to the LAPACK backends. Typical available backends include ```PartialPivLU```, ```SparseLU```, ```SparseQR```, ```LinSolve```, ```LAPACK-GESV```, and ```LAPACK-POSV```. OpenCL/ViennaCL backends appear in the list when the optional dependencies are found.
+
+### Linear Solver Benchmark
+The build also creates ```LibQPEP-benchmark-linear-solvers```, which benchmarks linear-system solving backends on the QPEP Groebner elimination path. It prints organized tables for the benchmark case, solve status/loss, and average timings.
+
+Example:
+```bash
+./LibQPEP-benchmark-linear-solvers --problem PtoP --loops 5 --backends PartialPivLU,gesv,posv
+```
+
+Available options:
+```bash
+./LibQPEP-benchmark-linear-solvers --problem [PnP | PtoP | Hand-eye]
+./LibQPEP-benchmark-linear-solvers --data /data/pTop_data-4096pt-1.txt
+./LibQPEP-benchmark-linear-solvers --loops 10
+./LibQPEP-benchmark-linear-solvers --backends PartialPivLU,LAPACK-GESV,LAPACK-POSV
+./LibQPEP-benchmark-linear-solvers --list-linear-solvers
+```
+
+The benchmark output includes a ```Solve Status``` table with success/failure counts and average loss, followed by an ```Average Timings (s)``` table with wall, data-preparation, decomposition, Groebner, and eigen timings.
 
 ## Library Installation
 This depends on the CMake prefix you set by ```-DCMAKE_INSTALL_PREFIX=path_to_your_install```. The standard path is ```/usr/local```. Use ```make install``` to install the headers and libraries along with ```CMake``` and ```pkgconfig``` files.
@@ -123,7 +159,7 @@ VINS-Mono: https://github.com/zarathustr/VINS-Mono-QPEP
 The usage of the theoretical proofs and mapping toolbox can be found in the supplementary file ```suppl.pdf```
 
 # How to Contribute to LibQPEP?
-The C++ version of LibQPEP originates from its MATLAB version codes in the ```code``` folder. To define a quadratic pose estimation problem (QPEP), we recommend that the problem can be written in the form of scalar objective function ```L``` such that the pose ```T``` on SE(3) is optimized via ```argmin J```, subject to the SO(3) constraints in ```T```. Then, please follow the ```syms*``` files in the root of MATLAB demo codes to generate the required numerical matrices for QPEP. After that, you may need to convert the matrices into C++ callable functions. Please refer to ```misc_*_funcs.cpp``` files for such a conversion. Finally, you may solve the problem via the provided solvers. If one needs the covariance estimation, please follow the steps in ```main.cpp```, where an example of the covariance estimation of point-to-plane registration has been presented. We expect that more problems can be solved in the QPEP fashion!
+The C++ version of LibQPEP originates from its MATLAB version codes in the ```code``` folder. To define a quadratic pose estimation problem (QPEP), we recommend that the problem can be written in the form of scalar objective function ```L``` such that the pose ```T``` on SE(3) is optimized via ```argmin J```, subject to the SO(3) constraints in ```T```. Then, please follow the ```syms*``` files in the root of MATLAB demo codes to generate the required numerical matrices for QPEP. After that, you may need to convert the matrices into C++ callable functions. Please refer to ```src/misc_*_funcs.cpp``` files for such a conversion. Finally, you may solve the problem via the provided solvers. If one needs the covariance estimation, please follow the steps in ```src/main.cpp```, where an example of the covariance estimation of point-to-plane registration has been presented. We expect that more problems can be solved in the QPEP fashion!
 
 # References
 1. **Wu, J.**, et al. (2022)

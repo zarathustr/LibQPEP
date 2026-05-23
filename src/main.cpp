@@ -16,6 +16,8 @@
 
 
 #include <iostream>
+#include <cstdlib>
+#include <cstring>
 #include "generateProjectedPoints.h"
 #include "solver_WQ_1_2_3_4_5_9_13_17_33_49_approx.h"
 #include "solver_WQ_approx.h"
@@ -79,6 +81,15 @@ static std::vector<Eigen::Vector3d> __bb0;
 static std::vector<Eigen::Vector3d> __nv0;
 static std::vector<Eigen::Matrix4d> __As0;
 static std::vector<Eigen::Matrix4d> __Bs0;
+static std::string __linear_solver_backend;
+
+static std::string selected_linear_solver_backend(const std::string& fallback)
+{
+    if(!__linear_solver_backend.empty()) {
+        return __linear_solver_backend;
+    }
+    return fallback;
+}
 
 void test_pnp_WQD_init(const std::string& filename)
 {
@@ -163,9 +174,9 @@ void test_pnp_WQD(const bool& verbose,
     struct QPEP_options opt;
     opt.ModuleName = "solver_WQ_1_2_3_4_5_9_13_17_33_49_approx";
 #ifndef USE_DARWIN
-    opt.DecompositionMethod = "PartialPivLU";
+    opt.DecompositionMethod = selected_linear_solver_backend("PartialPivLU");
 #else
-    opt.DecompositionMethod = "LinSolve";
+    opt.DecompositionMethod = selected_linear_solver_backend("LinSolve");
 #endif
 
     struct QPEP_runtime stat = QPEP_WQ_grobner(R, t, X, min, W_, Q_,
@@ -356,9 +367,9 @@ void test_pTop_WQD(const bool& verbose) {
     struct QPEP_options opt;
     opt.ModuleName = "solver_WQ_approx";
 #ifdef USE_OPENCL
-    opt.DecompositionMethod = "ViennaCL-GMRES";
+    opt.DecompositionMethod = selected_linear_solver_backend("ViennaCL-GMRES");
 #else
-    opt.DecompositionMethod = "PartialPivLU";
+    opt.DecompositionMethod = selected_linear_solver_backend("PartialPivLU");
 #endif
 
     struct QPEP_runtime stat =
@@ -431,9 +442,9 @@ void test_hand_eye(const bool& verbose) {
     struct QPEP_options opt;
     opt.ModuleName = "solver_WQ_approx";
 #ifdef USE_OPENCL
-    opt.DecompositionMethod = "ViennaCL-GMRES";
+    opt.DecompositionMethod = selected_linear_solver_backend("ViennaCL-GMRES");
 #else
-    opt.DecompositionMethod = "PartialPivLU";
+    opt.DecompositionMethod = selected_linear_solver_backend("PartialPivLU");
 #endif
 
     struct QPEP_runtime stat =
@@ -574,9 +585,9 @@ void test_pTop_noise(cv::Mat& img,
         struct QPEP_options opt;
         opt.ModuleName = "solver_WQ_approx";
 #ifdef USE_OPENCL
-        opt.DecompositionMethod = "ViennaCL-GMRES";
+        opt.DecompositionMethod = selected_linear_solver_backend("ViennaCL-GMRES");
 #else
-        opt.DecompositionMethod = "PartialPivLU";
+        opt.DecompositionMethod = selected_linear_solver_backend("PartialPivLU");
 #endif
 
         struct QPEP_runtime stat =
@@ -675,7 +686,7 @@ void test_pTop_noise(cv::Mat& img,
     double min[27];
     struct QPEP_options opt;
     opt.ModuleName = "solver_WQ_approx";
-    opt.DecompositionMethod = "PartialPivLU";
+    opt.DecompositionMethod = selected_linear_solver_backend("PartialPivLU");
 
     struct QPEP_runtime stat =
             QPEP_WQ_grobner(R, t, X, min, W_, Q_,
@@ -783,53 +794,119 @@ static void print_usage()
     std::cout << "Bare running of this program executes the test of Point-to-Plane registration with covariance tests (Needs OpenCV)." << std::endl;
     std::cout << "To test other solvers, please run: ./LibQPEP-test [PnP | PtoP | Hand-eye]" << std::endl;
     std::cout << "To include specific data file, please run: ./LibQPEP-test [PnP | PtoP | Hand-eye] [data_file_name]" << std::endl;
+    std::cout << "To select a linear solver backend, please run: ./LibQPEP-test [PnP | PtoP | Hand-eye] --linear-solver [backend]" << std::endl;
+    std::cout << "Available linear solver backends: " << LinearSolverBackendsDescription() << std::endl;
 }
 int main(int argc,char ** argv) {
 
     double time = 0.0;
     clock_t time1 = clock(), time2;
     double loops = 100.0;
+    std::vector<std::string> positional_args;
+    std::string requested_backend;
+
+    for(int i = 1; i < argc; ++i)
+    {
+        std::string arg(argv[i]);
+        if(arg == "-h" || arg == "--help")
+        {
+            print_usage();
+            return 0;
+        }
+        else if(arg == "--list-linear-solvers" || arg == "--list-backends")
+        {
+            std::cout << LinearSolverBackendsDescription() << std::endl;
+            return 0;
+        }
+        else if(arg == "--linear-solver" || arg == "--backend")
+        {
+            if(i + 1 >= argc)
+            {
+                std::cout << arg << " requires a backend name." << std::endl;
+                print_usage();
+                return 1;
+            }
+            requested_backend = argv[++i];
+        }
+        else if(arg.compare(0, 16, "--linear-solver=") == 0)
+        {
+            requested_backend = arg.substr(16);
+        }
+        else if(arg.compare(0, 10, "--backend=") == 0)
+        {
+            requested_backend = arg.substr(10);
+        }
+        else
+        {
+            positional_args.push_back(arg);
+        }
+    }
+
+    if(!requested_backend.empty())
+    {
+        __linear_solver_backend = NormalizeLinearSolverBackend(requested_backend);
+        if(__linear_solver_backend.empty())
+        {
+            std::cout << "Unknown linear solver backend: " << requested_backend << std::endl;
+            std::cout << "Available linear solver backends: " << LinearSolverBackendsDescription() << std::endl;
+            return 1;
+        }
+    }
     
     //TODO: Change this to METHOD_PTOP
     //      if you need to test Point-to-Plane Registration
     method = METHOD_PTOP;
     std::string data_file = std::string("/data/pTop_data-250000pt-1.txt");
-    if(argc > 1)
+    if(!positional_args.empty())
     {
-        if(!strcmp(argv[1], "PnP")){
+        if(positional_args[0] == "PnP"){
             method = METHOD_PNP;
             std::cout << "Testing Perspective-n-Points (PnP) Examples!" << std::endl;
-            if(argc == 2)
+            if(positional_args.size() == 1)
                 data_file = std::string("/data/pnp_data-500pt-1.txt");
         }
-        else if(!strcmp(argv[1], "PtoP")){
+        else if(positional_args[0] == "PtoP"){
             method = METHOD_PTOP;
             std::cout << "Testing Point-to-Plane Registration Examples!" << std::endl;
-            if(argc == 2)
+            if(positional_args.size() == 1)
                 data_file = std::string("/data/pTop_data-4096pt-1.txt");
         }
-        else if(!strcmp(argv[1], "Hand-eye")){
+        else if(positional_args[0] == "Hand-eye"){
             method = METHOD_HAND_EYE;
             std::cout << "Testing Hand-eye Calibration Examples!" << std::endl;
-            if(argc == 2)
+            if(positional_args.size() == 1)
                 data_file = std::string("/data/hand_eye_data-20pt-1.txt");
         }
         else
         {
             print_usage();
+            return 1;
         }
 
-        if(argc > 2)
+        if(positional_args.size() > 1)
         {
-            data_file = std::string(argv[2]);
+            data_file = positional_args[1];
+        }
+        if(positional_args.size() > 2)
+        {
+            std::cout << "Too many positional arguments." << std::endl;
+            print_usage();
+            return 1;
         }
     }
     else
         std::cout << "Testing Point-to-Plane Registration Examples!" << std::endl;
     
     
+    if(!__linear_solver_backend.empty())
+    {
+        std::cout << "Using " << __linear_solver_backend << " for solution to linear systems" << std::endl;
+    }
 #ifdef USE_OPENCL
-    std::cout << "Using ViennaCL for Solution to Linear Systems" << std::endl;
+    else
+    {
+        std::cout << "Using ViennaCL for solution to linear systems where it is the default" << std::endl;
+    }
 #endif
 
     std::string src_dir(CURRENT_SRC_DIR);

@@ -5,24 +5,24 @@ include(LibQPEP-basics.cmake)
 
 
 set(srcs
-        generateProjectedPoints.cpp
-        pnp_WQD.cpp
-        solver_WQ_1_2_3_4_5_9_13_17_33_49_approx.cpp
-        QPEP_grobner.cpp
-        misc_pnp_funcs.cpp
-        QPEP_lm_single.cpp
-        misc_pTop_funcs.cpp
-        misc_hand_eye_funcs.cpp
-        pTop_WQD.cpp
-        hand_eye_WQD.cpp
-        hand_eye_small_rotation.cpp
-        pTop_small_rotation.cpp
-        solver_WQ_approx_helper.cpp
-        solver_WQ_1_2_3_4_5_9_13_17_33_49_approx_helper.cpp
-        solver_WQ_approx.cpp
-        solver_WQ.cpp
-        solver_WQ_helper.cpp
-        CVLib.cpp
+        src/generateProjectedPoints.cpp
+        src/pnp_WQD.cpp
+        src/solver_WQ_1_2_3_4_5_9_13_17_33_49_approx.cpp
+        src/QPEP_grobner.cpp
+        src/misc_pnp_funcs.cpp
+        src/QPEP_lm_single.cpp
+        src/misc_pTop_funcs.cpp
+        src/misc_hand_eye_funcs.cpp
+        src/pTop_WQD.cpp
+        src/hand_eye_WQD.cpp
+        src/hand_eye_small_rotation.cpp
+        src/pTop_small_rotation.cpp
+        src/solver_WQ_approx_helper.cpp
+        src/solver_WQ_1_2_3_4_5_9_13_17_33_49_approx_helper.cpp
+        src/solver_WQ_approx.cpp
+        src/solver_WQ.cpp
+        src/solver_WQ_helper.cpp
+        src/CVLib.cpp
         ./csdp/lib/Fnorm.c
         ./csdp/lib/chol.c
         ./csdp/lib/linesearch.c
@@ -60,36 +60,37 @@ set(srcs
         ./csdp/lib/psd_feas.c
         ./csdp/lib/sortentries.c
         ./csdp/lib/writesol.c
-        CovEstimation.cpp
-        utils.cpp
+        src/CovEstimation.cpp
+        src/utils.cpp
         )
 
 set(incs
-        generateProjectedPoints.h
-        pnp_WQD.h
-        solver_WQ_1_2_3_4_5_9_13_17_33_49_approx.h
-        solver_WQ_1_2_3_4_5_9_13_17_33_49_approx_helper.h
-        QPEP_grobner.h
-        utils.h
-        misc_pnp_funcs.h
-        QPEP_lm_single.h
-        pTop_WQD.h
-        hand_eye_WQD.h
-        hand_eye_small_rotation.h
-        pTop_small_rotation.h
-        misc_pTop_funcs.h
-        misc_hand_eye_funcs.h
-        solver_WQ_approx_helper.h
-        solver_WQ_approx.h
-        QPEP.h
-        solver_WQ.h
-        solver_WQ_helper.h
-        CVLib.h
-        CovEstimation.h)
-include_directories(fsolve_wrapper)
+        include/generateProjectedPoints.h
+        include/pnp_WQD.h
+        include/solver_WQ_1_2_3_4_5_9_13_17_33_49_approx.h
+        include/solver_WQ_1_2_3_4_5_9_13_17_33_49_approx_helper.h
+        include/QPEP_grobner.h
+        include/utils.h
+        include/misc_pnp_funcs.h
+        include/QPEP_lm_single.h
+        include/pTop_WQD.h
+        include/hand_eye_WQD.h
+        include/hand_eye_small_rotation.h
+        include/pTop_small_rotation.h
+        include/misc_pTop_funcs.h
+        include/misc_hand_eye_funcs.h
+        include/solver_WQ_approx_helper.h
+        include/solver_WQ_approx.h
+        include/QPEP.h
+        include/solver_WQ.h
+        include/solver_WQ_helper.h
+        include/CVLib.h
+        include/CovEstimation.h)
+include_directories(include fsolve_wrapper)
 
-add_executable(LibQPEP-test main.cpp)
+add_executable(LibQPEP-test src/main.cpp)
 add_library (LibQPEP SHARED ${srcs})
+add_executable(LibQPEP-benchmark-linear-solvers src/benchmark_linear_solvers.cpp)
 
 if(LINUX_OS)
     if(NOT "${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "armhf" AND NOT "${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "armv7l" AND NOT "${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "aarch64" AND NOT "${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "arm64")
@@ -105,13 +106,16 @@ if(NOT LINUX_OS)
     find_library(CORE_GRAPHICS CoreGraphics QUIET)
     target_link_libraries(LibQPEP ${OpenCV_LIBS} ${LAPACK_LIBRARIES} ${X11_LIBRARIES} ${BLAS_LIBRARIES} ${CORE_GRAPHICS})
     target_link_libraries(LibQPEP-test LibQPEP ${OpenCV_LIBS} ${LAPACK_LIBRARIES} ${X11_LIBRARIES} ${BLAS_LIBRARIES})
+    target_link_libraries(LibQPEP-benchmark-linear-solvers LibQPEP ${OpenCV_LIBS} ${LAPACK_LIBRARIES} ${X11_LIBRARIES} ${BLAS_LIBRARIES})
 else()
     if(NOT "${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "armhf" AND NOT "${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "aarch64" AND NOT "${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "arm64")
     	target_link_libraries(LibQPEP ${OpenCV_LIBS} ${LAPACK_LIBRARIES} ${X11_LIBRARIES} ${BLAS_LIBRARIES} ${MKL_LIBS} -lX11)
     	target_link_libraries(LibQPEP-test LibQPEP ${OpenCV_LIBS} ${LAPACK_LIBRARIES} ${X11_LIBRARIES} ${BLAS_LIBRARIES} ${MKL_LIBS} -lX11)
+        target_link_libraries(LibQPEP-benchmark-linear-solvers LibQPEP ${OpenCV_LIBS} ${LAPACK_LIBRARIES} ${X11_LIBRARIES} ${BLAS_LIBRARIES} ${MKL_LIBS} -lX11)
     else()
         target_link_libraries(LibQPEP ${OpenCV_LIBS} ${LAPACK_LIBRARIES} ${X11_LIBRARIES} ${BLAS_LIBRARIES} ${OPENCL_LIBRARY} ${CUDA_CUBLAS_LIBRARIES} -lX11)
         target_link_libraries(LibQPEP-test LibQPEP ${OpenCV_LIBS} ${LAPACK_LIBRARIES} ${X11_LIBRARIES} ${BLAS_LIBRARIES} ${OPENCL_LIBRARY} ${CUDA_CUBLAS_LIBRARIES} -lX11)
+        target_link_libraries(LibQPEP-benchmark-linear-solvers LibQPEP ${OpenCV_LIBS} ${LAPACK_LIBRARIES} ${X11_LIBRARIES} ${BLAS_LIBRARIES} ${OPENCL_LIBRARY} ${CUDA_CUBLAS_LIBRARIES} -lX11)
     endif()
 endif()
 

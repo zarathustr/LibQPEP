@@ -16,7 +16,10 @@
 
 
 #include "utils.h"
+#include <algorithm>
+#include <cctype>
 #include <random>
+#include <sstream>
 #include <ctime>
 #ifdef USE_OPENCL
 #include <viennacl/linalg/cg.hpp>
@@ -25,6 +28,13 @@
 #include <viennacl/linalg/ilu.hpp>
 #include <viennacl/linalg/jacobi_precond.hpp>
 #endif
+
+extern "C" {
+void dgesv_(const int* n, const int* nrhs, double* a, const int* lda,
+            int* ipiv, double* b, const int* ldb, int* info);
+void dposv_(const char* uplo, const int* n, const int* nrhs, double* a,
+            const int* lda, double* b, const int* ldb, int* info);
+}
 
 #ifdef USE_OPENCV
 
@@ -79,6 +89,92 @@ Eigen::MatrixXd randomMatrix(const int& dim1, const int& dim2, const int& resolu
     return m * (1.0 / res);
 }
 
+static std::string LinearSolverBackendKey(std::string backend)
+{
+    std::transform(backend.begin(), backend.end(), backend.begin(),
+                   [](unsigned char c) { return static_cast<char>(std::tolower(c)); });
+    backend.erase(std::remove_if(backend.begin(), backend.end(),
+                  [](unsigned char c) { return c == '-' || c == '_' || std::isspace(c); }),
+                  backend.end());
+    return backend;
+}
+
+std::vector<std::string> AvailableLinearSolverBackends()
+{
+    std::vector<std::string> backends;
+    backends.push_back("SparseLU");
+    backends.push_back("SparseQR");
+#ifdef USE_SUPERLU
+    backends.push_back("SuperLU");
+#endif
+    backends.push_back("HouseholderQR");
+    backends.push_back("PartialPivLU");
+    backends.push_back("SVD");
+#if EIGEN_VERSION_AT_LEAST(3,3,0)
+    backends.push_back("BDCSVD");
+#endif
+    backends.push_back("Inv");
+    backends.push_back("Cholesky");
+    backends.push_back("LinSolve");
+    backends.push_back("LAPACK-GESV");
+    backends.push_back("LAPACK-POSV");
+#ifdef USE_OPENCL
+    backends.push_back("ViennaCL-ConjugateGradient");
+    backends.push_back("ViennaCL-BiCGStab");
+    backends.push_back("ViennaCL-GMRES");
+    backends.push_back("ViennaCL-ILUT");
+    backends.push_back("ViennaCL-Jacobi");
+#endif
+    return backends;
+}
+
+std::string NormalizeLinearSolverBackend(const std::string& backend)
+{
+    const std::string key = LinearSolverBackendKey(backend);
+    if(key.empty()) {
+        return "";
+    }
+
+    if(key == "sparselu" || key == "eigensparselu") return "SparseLU";
+    if(key == "sparseqr" || key == "eigensparseqr") return "SparseQR";
+#ifdef USE_SUPERLU
+    if(key == "superlu" || key == "eigensuperlu") return "SuperLU";
+#endif
+    if(key == "householderqr" || key == "eigenhouseholderqr") return "HouseholderQR";
+    if(key == "partialpivlu" || key == "eigenpartialpivlu" || key == "lu") return "PartialPivLU";
+    if(key == "svd" || key == "jacobisvd" || key == "eigensvd") return "SVD";
+#if EIGEN_VERSION_AT_LEAST(3,3,0)
+    if(key == "bdcsvd" || key == "eigenbdcsvd") return "BDCSVD";
+#endif
+    if(key == "inv" || key == "inverse") return "Inv";
+    if(key == "cholesky" || key == "llt" || key == "eigencholesky") return "Cholesky";
+    if(key == "linsolve") return "LinSolve";
+    if(key == "gesv" || key == "dgesv" || key == "lapackgesv") return "LAPACK-GESV";
+    if(key == "posv" || key == "dposv" || key == "lapackposv") return "LAPACK-POSV";
+#ifdef USE_OPENCL
+    if(key == "viennaclconjugategradient" || key == "conjugategradient" || key == "cg") return "ViennaCL-ConjugateGradient";
+    if(key == "viennaclbicgstab" || key == "bicgstab") return "ViennaCL-BiCGStab";
+    if(key == "viennaclgmres" || key == "gmres") return "ViennaCL-GMRES";
+    if(key == "viennaclilut" || key == "ilut") return "ViennaCL-ILUT";
+    if(key == "viennacljacobi" || key == "jacobi") return "ViennaCL-Jacobi";
+#endif
+    return "";
+}
+
+std::string LinearSolverBackendsDescription()
+{
+    const std::vector<std::string> backends = AvailableLinearSolverBackends();
+    std::ostringstream out;
+    for(size_t i = 0; i < backends.size(); ++i)
+    {
+        if(i > 0) {
+            out << ", ";
+        }
+        out << backends[i];
+    }
+    return out.str();
+}
+
 QPEP_runtime GaussJordanElimination(
         Eigen::MatrixXd& C1_,
         const Eigen::VectorXd& data,
@@ -88,30 +184,24 @@ QPEP_runtime GaussJordanElimination(
         const struct QPEP_options& opt,
         const struct QPEP_runtime& stat_)
 {
-    assert(opt.DecompositionMethod == "SparseLU" ||
-           opt.DecompositionMethod == "SparseQR" ||
-           opt.DecompositionMethod == "SuperLU" ||
-           opt.DecompositionMethod == "HouseholderQR" ||
-           opt.DecompositionMethod == "PartialPivLU" ||
-           opt.DecompositionMethod == "SVD" ||
-           opt.DecompositionMethod == "BDCSVD" ||
-           opt.DecompositionMethod == "Inv" ||
-           opt.DecompositionMethod == "Cholesky" ||
-           opt.DecompositionMethod == "LinSolve" ||
-           opt.DecompositionMethod == "ViennaCL-ConjugateGradient" ||
-           opt.DecompositionMethod == "ViennaCL-BiCGStab" ||
-           opt.DecompositionMethod == "ViennaCL-GMRES" ||
-           opt.DecompositionMethod == "ViennaCL-ILUT" ||
-           opt.DecompositionMethod == "ViennaCL-Jacobi");
-
     struct QPEP_runtime stat = stat_;
+    const std::string method = NormalizeLinearSolverBackend(opt.DecompositionMethod);
+    if(method.empty())
+    {
+        std::cout << "Unknown linear solver backend: " << opt.DecompositionMethod << std::endl;
+        std::cout << "Available linear solver backends: " << LinearSolverBackendsDescription() << std::endl;
+        stat.statusDecomposition = -2;
+        return stat;
+    }
+
     C1_.resize(size_GJ, size_AM);
     C1_.setZero();
+    stat.timeDecompositionDataPrepare = 0.0;
     Eigen::MatrixXd C2;
     C2.resize(size_GJ, size_AM);
     C2.setZero();
 
-    if (opt.DecompositionMethod == "SparseLU")
+    if (method == "SparseLU")
     {
         clock_t time1 = clock();
         Eigen::SparseMatrix<double> C1(size_GJ, size_GJ);
@@ -137,7 +227,7 @@ QPEP_runtime GaussJordanElimination(
         clock_t time2 = clock();
         stat.timeDecomposition = (time2 - time1) / double(CLOCKS_PER_SEC);
     }
-    else if (opt.DecompositionMethod == "SparseQR")
+    else if (method == "SparseQR")
     {
         clock_t time1 = clock();
         Eigen::SparseMatrix<double> C1(size_GJ, size_GJ);
@@ -164,7 +254,7 @@ QPEP_runtime GaussJordanElimination(
         clock_t time2 = clock();
         stat.timeDecomposition = (time2 - time1) / double(CLOCKS_PER_SEC);
     }
-    else if(opt.DecompositionMethod == "HouseholderQR")
+    else if(method == "HouseholderQR")
     {
         clock_t time1 = clock();
         Eigen::SparseMatrix<double> C1(size_GJ, size_GJ);
@@ -181,7 +271,7 @@ QPEP_runtime GaussJordanElimination(
         clock_t time2 = clock();
         stat.timeDecomposition = (time2 - time1) / double(CLOCKS_PER_SEC);
     }
-    else if(opt.DecompositionMethod == "PartialPivLU")
+    else if(method == "PartialPivLU")
     {
         clock_t time1 = clock();
         Eigen::SparseMatrix<double> C1(size_GJ, size_GJ);
@@ -201,7 +291,7 @@ QPEP_runtime GaussJordanElimination(
             }
         }
         clock_t time2 = clock();
-        //std::cout << "GJ Elimination " << opt.DecompositionMethod << " data_func time: " << (time2 - time1) / double(CLOCKS_PER_SEC) << std::endl;
+        //std::cout << "GJ Elimination " << method << " data_func time: " << (time2 - time1) / double(CLOCKS_PER_SEC) << std::endl;
 
         Eigen::PartialPivLU<Eigen::MatrixXd > solver;
         if(is_symmetric)
@@ -217,7 +307,7 @@ QPEP_runtime GaussJordanElimination(
         clock_t time3 = clock();
         stat.timeDecomposition = (time3 - time1) / double(CLOCKS_PER_SEC);
     }
-    else if(opt.DecompositionMethod == "SVD") {
+    else if(method == "SVD") {
         clock_t time1 = clock();
         Eigen::SparseMatrix<double> C1(size_GJ, size_GJ);
         C1.setZero();
@@ -245,7 +335,7 @@ QPEP_runtime GaussJordanElimination(
         stat.timeDecomposition = (time2 - time1) / double(CLOCKS_PER_SEC);
     }
 #if EIGEN_VERSION_AT_LEAST(3,3,0)
-    else if(opt.DecompositionMethod == "BDCSVD") {
+    else if(method == "BDCSVD") {
         clock_t time1 = clock();
         Eigen::SparseMatrix<double> C1(size_GJ, size_GJ);
         C1.setZero();
@@ -259,7 +349,7 @@ QPEP_runtime GaussJordanElimination(
         stat.timeDecomposition = (time2 - time1) / double(CLOCKS_PER_SEC);
     }
 #endif
-    else if(opt.DecompositionMethod == "Inv") {
+    else if(method == "Inv") {
         clock_t time1 = clock();
         Eigen::SparseMatrix<double> C1(size_GJ, size_GJ);
         C1.setZero();
@@ -273,7 +363,7 @@ QPEP_runtime GaussJordanElimination(
         clock_t time2 = clock();
         stat.timeDecomposition = (time2 - time1) / double(CLOCKS_PER_SEC);
     }
-    else if(opt.DecompositionMethod == "Cholesky") {
+    else if(method == "Cholesky") {
         clock_t time1 = clock();
         Eigen::SparseMatrix<double> C1(size_GJ, size_GJ);
         C1.setZero();
@@ -287,7 +377,7 @@ QPEP_runtime GaussJordanElimination(
         clock_t time2 = clock();
         stat.timeDecomposition = (time2 - time1) / double(CLOCKS_PER_SEC);
     }
-    else if(opt.DecompositionMethod == "LinSolve") {
+    else if(method == "LinSolve") {
         clock_t time1 = clock();
         Eigen::SparseMatrix<double> C1(size_GJ, size_GJ);
         C1.setZero();
@@ -302,26 +392,81 @@ QPEP_runtime GaussJordanElimination(
         clock_t time3 = clock();
         stat.timeDecomposition = (time3 - time2) / double(CLOCKS_PER_SEC);
     }
-#ifdef USE_SUPERLU
-    else if(opt.DecompositionMethod == "Cholesky") {
+    else if(method == "LAPACK-GESV") {
+        clock_t time1 = clock();
+        Eigen::SparseMatrix<double> C1(size_GJ, size_GJ);
+        C1.setZero();
+        data_func(C1, C2, data);
+        Eigen::MatrixXd A(C1.toDense());
+        Eigen::MatrixXd B(C2);
+        std::vector<int> ipiv(size_GJ);
+        int n = size_GJ;
+        int nrhs = size_AM;
+        int lda = size_GJ;
+        int ldb = size_GJ;
+        int info = 0;
+        dgesv_(&n, &nrhs, A.data(), &lda, ipiv.data(), B.data(), &ldb, &info);
+        if(info != 0) {
+            std::cout << "LAPACK dgesv failed with info = " << info << std::endl;
+            stat.statusDecomposition = info > 0 ? -7 : -8;
+            return stat;
+        }
+        C1_ = B;
+        clock_t time2 = clock();
+        stat.timeDecomposition = (time2 - time1) / double(CLOCKS_PER_SEC);
+    }
+    else if(method == "LAPACK-POSV") {
         clock_t time1 = clock();
         Eigen::SparseMatrix<double> C1(size_GJ, size_GJ);
         C1.setZero();
         data_func(C1, C2, data);
         Eigen::MatrixXd CC1(C1.toDense());
-        Eigen::LLT<Eigen::MatrixXd> solver(CC1);
-        for (int i = 0; i < C2.cols(); ++i) {
-            Eigen::VectorXd c1 = solver.solve(C2.col(i));
-            C1_.col(i) = c1;
+        // POSV requires a symmetric positive definite matrix; use normal equations for this backend.
+        Eigen::MatrixXd A(CC1.transpose() * CC1);
+        Eigen::MatrixXd B(CC1.transpose() * C2);
+        char uplo = 'L';
+        int n = size_GJ;
+        int nrhs = size_AM;
+        int lda = size_GJ;
+        int ldb = size_GJ;
+        int info = 0;
+        dposv_(&uplo, &n, &nrhs, A.data(), &lda, B.data(), &ldb, &info);
+        if(info != 0) {
+            std::cout << "LAPACK dposv failed with info = " << info << std::endl;
+            stat.statusDecomposition = info > 0 ? -7 : -8;
+            return stat;
+        }
+        C1_ = B;
+        clock_t time2 = clock();
+        stat.timeDecomposition = (time2 - time1) / double(CLOCKS_PER_SEC);
+    }
+#ifdef USE_SUPERLU
+    else if(method == "SuperLU") {
+        clock_t time1 = clock();
+        Eigen::SparseMatrix<double> C1(size_GJ, size_GJ);
+        C1.setZero();
+        data_func(C1, C2, data);
+        Eigen::SuperLU<Eigen::SparseMatrix<double> > solver;
+        solver.compute(C1);
+        if (solver.info() != Eigen::Success) {
+            std::cout << "SuperLU Decomposition Failed!" << std::endl;
+            stat.statusDecomposition = -3;
+            return stat;
+        }
+        C1_ = solver.solve(C2);
+        if (solver.info() != Eigen::Success) {
+            std::cout << "SuperLU Solve Failed!" << std::endl;
+            stat.statusDecomposition = -6;
+            return stat;
         }
         clock_t time2 = clock();
         stat.timeDecomposition = (time2 - time1) / double(CLOCKS_PER_SEC);
     }
 #endif
 #ifdef USE_OPENCL
-    else if(opt.DecompositionMethod == "ViennaCL-ConjugateGradient" ||
-            opt.DecompositionMethod == "ViennaCL-BiCGStab" ||
-            opt.DecompositionMethod == "ViennaCL-GMRES")
+    else if(method == "ViennaCL-ConjugateGradient" ||
+            method == "ViennaCL-BiCGStab" ||
+            method == "ViennaCL-GMRES")
     {
         clock_t time1 = clock();
 
@@ -337,11 +482,11 @@ QPEP_runtime GaussJordanElimination(
             Eigen::Map<Eigen::VectorXd> C2_map(C2.col(i).data(), size_GJ);
             /* Set up matrix and vectors here */
             viennacl::copy(C2_map, vcl_rhs);
-            if(opt.DecompositionMethod == "ViennaCL-ConjugateGradient")
+            if(method == "ViennaCL-ConjugateGradient")
                 vcl_result = viennacl::linalg::solve(vcl_matrix, vcl_rhs, viennacl::linalg::cg_tag());
-            else if(opt.DecompositionMethod == "ViennaCL-BiCGStab")
+            else if(method == "ViennaCL-BiCGStab")
                 vcl_result = viennacl::linalg::solve(vcl_matrix, vcl_rhs, viennacl::linalg::bicgstab_tag());
-            else if(opt.DecompositionMethod == "ViennaCL-GMRES")
+            else if(method == "ViennaCL-GMRES")
                 vcl_result = viennacl::linalg::solve(vcl_matrix, vcl_rhs, viennacl::linalg::gmres_tag());
             viennacl::copy(vcl_result, C2_map);
             C1_.col(i) = C2_map;
@@ -350,7 +495,7 @@ QPEP_runtime GaussJordanElimination(
         clock_t time2 = clock();
         stat.timeDecomposition = (time2 - time1) / double(CLOCKS_PER_SEC);
     }
-    else if(opt.DecompositionMethod == "ViennaCL-ILUT")
+    else if(method == "ViennaCL-ILUT")
     {
         clock_t time1 = clock();
         Eigen::SparseMatrix<double> C1(size_GJ, size_GJ);
@@ -375,7 +520,7 @@ QPEP_runtime GaussJordanElimination(
         clock_t time2 = clock();
         stat.timeDecomposition = (time2 - time1) / double(CLOCKS_PER_SEC);
     }
-    else if(opt.DecompositionMethod == "ViennaCL-Jacobi")
+    else if(method == "ViennaCL-Jacobi")
     {
         clock_t time1 = clock();
         Eigen::SparseMatrix<double> C1(size_GJ, size_GJ);
@@ -402,6 +547,7 @@ QPEP_runtime GaussJordanElimination(
     }
 #endif
 
+    stat.statusDecomposition = 0;
     return stat;
 }
 

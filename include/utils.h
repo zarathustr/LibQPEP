@@ -20,6 +20,7 @@
 #include <map>
 #include <cassert>
 #include <fstream>
+#include <algorithm>
 
 #include <Eigen/Core>
 #include <Eigen/LU>
@@ -174,6 +175,10 @@ inline double powers(double x, double order)
 }
 
 typedef void (* data_func_handle)(Eigen::SparseMatrix<double>& C1, Eigen::MatrixXd& C2, const Eigen::VectorXd& data);
+
+std::string NormalizeLinearSolverBackend(const std::string& backend);
+std::vector<std::string> AvailableLinearSolverBackends();
+std::string LinearSolverBackendsDescription();
 
 void readpTopdata(const std::string& filename,
                   Eigen::Matrix3d& R0,

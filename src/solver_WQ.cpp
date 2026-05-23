@@ -28,7 +28,9 @@ struct QPEP_runtime solver_WQ(Eigen::MatrixXcd& sol_, const Eigen::VectorXd& dat
                                   reinterpret_cast<data_func_handle>(data_func_solver_WQ_func),
                                   596, 40,
                                   opt, stat);
-    stat.statusDecomposition = 0;
+    if(stat.statusDecomposition != 0) {
+        return stat;
+    }
 
     clock_t time1 = clock();
     Eigen::Matrix<double, 72, 40> RR;

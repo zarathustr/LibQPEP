@@ -12,27 +12,26 @@
 //                                  https://doi.org/10.1109/TRO.2022.3155880
 //
 //
-// solver_WQ_1_2_3_4_5_9_13_17_33_49_approx.cpp
+// solver_WQ_approx.cpp
 
-
-#include "solver_WQ_1_2_3_4_5_9_13_17_33_49_approx.h"
-#include "solver_WQ_1_2_3_4_5_9_13_17_33_49_approx_helper.h"
+#include "solver_WQ_approx.h"
+#include "solver_WQ_approx_helper.h"
 #include "utils.h"
 #include <ccomplex>
+#include <cassert>
 
-struct QPEP_runtime solver_WQ_1_2_3_4_5_9_13_17_33_49_approx(Eigen::MatrixXcd& sol_,
-                                                             const Eigen::VectorXd& data,
-                                                             const struct QPEP_options& opt)
-{
-    assert(opt.ModuleName == "solver_WQ_1_2_3_4_5_9_13_17_33_49_approx");
+struct QPEP_runtime solver_WQ_approx(Eigen::MatrixXcd& sol_, const Eigen::VectorXd& data, const struct QPEP_options& opt) {
+    assert(opt.ModuleName == "solver_WQ_approx");
 
     struct QPEP_runtime stat;
     Eigen::MatrixXd C1_;
     stat = GaussJordanElimination(C1_, data,
-                                  reinterpret_cast<data_func_handle>(data_func_WQ_1_2_3_4_5_9_13_17_33_49_approx),
-                                  239, 27,
+                                  reinterpret_cast<data_func_handle>(data_func_WQ_approx_sparse),
+                                  249, 27,
                                   opt, stat);
-    stat.statusDecomposition = 0;
+    if(stat.statusDecomposition != 0) {
+        return stat;
+    }
 
     clock_t time1 = clock();
     Eigen::Matrix<double, 40, 27> RR;
@@ -62,9 +61,9 @@ struct QPEP_runtime solver_WQ_1_2_3_4_5_9_13_17_33_49_approx(Eigen::MatrixXcd& s
         sol_(2, i) = V(3, i) / sol_(0, i);
         sol_(3, i) = V(2, i) / (sol_(0, i) * V(15, i));
     }
+
     clock_t time2 = clock();
     stat.timeGrobner = (time2 - time1) / double(CLOCKS_PER_SEC);
     stat.statusGrobner = 0;
     return stat;
 }
-

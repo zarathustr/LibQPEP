@@ -107,6 +107,9 @@ struct QPEP_runtime QPEP_WQ_grobner(Eigen::Matrix3d& R,
     Eigen::MatrixXcd sols;
     sols.resize(4, solution_size);
     stat = solver_func(sols, data, opt);
+    if(stat.statusDecomposition != 0) {
+        return stat;
+    }
 
     clock_t time1 = clock();
     Eigen::VectorXd q0_, q1_, q2_, q3_;

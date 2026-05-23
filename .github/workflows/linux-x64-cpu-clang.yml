@@ -29,7 +29,7 @@ jobs:
         run: sudo apt-get update
         
       - name: build-essential
-        run: sudo apt-get install cmake libeigen3-dev libblas-dev liblapack-dev
+        run: sudo apt-get install cmake libeigen3-dev libblas-dev liblapack-dev libx11-dev
                 
       - name: protobuf
         run: sudo apt-get install libopencv-dev
